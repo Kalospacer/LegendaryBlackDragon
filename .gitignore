@@ -1,0 +1,41 @@
+# RimWorld mod .gitignore
+
+# Visual Studio files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.csproj.user
+.vs/
+
+# Build artifacts
+bin/
+obj/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# OS generated files
+Thumbs.db
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Log files
+*.log
+
+# Package files
+*.zip
+*.rar
+*.7z
+
+# Mod specific temporary files
+*_data/
+*_cache/

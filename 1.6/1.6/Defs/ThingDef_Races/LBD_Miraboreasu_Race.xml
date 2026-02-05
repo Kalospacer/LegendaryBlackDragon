@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <AlienRace.ThingDef_AlienRace ParentName="Human">
+    <defName>LBD_Fatalis_Race</defName>
+    <label>Fatalis</label>
+    <description>古龙种之一，本体拥有修长的蛇颈和尾巴，以及一对巨大而强壮的翅膀，全身覆盖着坚硬的黑色鳞片，背部排列着白色的尖刺。头部有四根向后弯曲的角、几排巨大的牙齿和鳍状的耳朵。\n\n至少传说中是这样的。</description>
+    
+    <alienRace>
+      <generalSettings>
+        <maleGenderProbability>0</maleGenderProbability>
+        <immuneToXenophobia>true</immuneToXenophobia>
+        <minAgeForAdulthood>18</minAgeForAdulthood>
+        <humanRecipeImport>true</humanRecipeImport>
+        <maxDamageForSocialfight>6</maxDamageForSocialfight>
+        <immuneToAge>true</immuneToAge>
+        <canLayDown>true</canLayDown>
+        <!-- 各种零件定义 -->
+        <alienPartGenerator Inherit="False">
+          <!-- 允许的头部 -->
+          <headTypes Inherit="False">
+            <li>Female_AverageNormal</li>
+            <!-- <li>Female_AverageWide</li>
+            <li>Female_AveragePointy</li> -->
+          </headTypes>
+          <!-- 身体类型 -->
+          <bodyTypes Inherit="False">
+            <li>Thin</li>
+          </bodyTypes>
+          <!-- 颜色设置 -->
+          <colorChannels Inherit="false">
+            <li>
+              <name>hair</name>
+              <first Class="ColorGenerator_Options">
+                <options>
+                  <li>
+                    <weight>15</weight>
+                    <min>(255,255,255)</min>
+                    <max>(255,255,255)</max>
+                  </li>
+                  <li>
+                    <weight>15</weight>
+                    <min>(172,143,74)</min>
+                    <max>(184,155,89)</max>
+                  </li>
+                  <li>
+                    <weight>15</weight>
+                    <min>(166,140,131)</min>
+                    <max>(175,145,135)</max>
+                  </li>
+                  <li>
+                    <weight>15</weight>
+                    <min>(153,143,92)</min>
+                    <max>(166,156,106)</max>
+                  </li>
+                </options>
+              </first>
+            </li>
+            <!-- 皮肤是特殊的，因为现在由基因定义肤色 -->
+            <li>
+              <name>skin</name>
+              <first Class="AlienRace.ColorGenerator_SkinColorMelanin">
+                <minMelanin>0</minMelanin>
+                <maxMelanin>0</maxMelanin>
+              </first>
+            </li>
+          </colorChannels>
+          <bodyAddons>
+            <!-- <li>
+              <path>Endfield/Things/Perlica/Addons/Perlica_Feather_Ear</path>
+              <offsets>
+                <south>
+                  <offset>(0,0.32)</offset>
+                </south>
+                <north>
+                  <offset>(0,0.32)</offset>
+                </north>
+                <east>
+                  <offset>(-0.07,0)</offset>
+                </east>
+                <west>
+                  <offset>(-0.07,0)</offset>
+                </west>
+              </offsets>
+              <inFrontOfBody>true</inFrontOfBody>
+              <conditions>
+                <BodyPart>
+                  <bodyPart>WULA_Addons_Antenna_Bodypart</bodyPart>
+                </BodyPart>
+              </conditions>
+            </li> -->
+          </bodyAddons>
+          <!-- 图像放大 -->
+          <!-- <borderScale>4</borderScale>
+          <atlasScale>4</atlasScale> -->
+          <!-- <customDrawSize>(4,4)</customDrawSize>
+          <customHeadDrawSize>(1.0,1.0)</customHeadDrawSize>
+          <customPortraitDrawSize>(2,2)</customPortraitDrawSize> -->
+          <headOffsetDirectional>
+            <north>
+              <offset>(0.0, -0.35)</offset>
+            </north>
+            <south>
+              <offset>(0.0, -0.35)</offset>
+            </south>
+            <east>
+              <offset>(-0.05, -0.38)</offset>
+            </east>
+            <west>
+              <offset>(0.05, -0.38)</offset>
+            </west>
+          </headOffsetDirectional>
+        </alienPartGenerator>
+        <growthAges>
+          <li>0</li>
+        </growthAges>
+        <!-- 年龄工作效率等的覆盖 -->
+        <ageStatOverrides>
+          <WorkSpeedGlobal>
+            <useBiologicalYears>true</useBiologicalYears>
+            <curve>
+              <points>
+                <li>(0,1)</li>
+              </points>
+            </curve>
+          </WorkSpeedGlobal>
+          <ShootingAccuracyChildFactor MayRequire="Ludeon.RimWorld.Biotech">
+            <useBiologicalYears>true</useBiologicalYears>
+            <curve>
+              <points>
+                <li>(0,1)</li>
+              </points>
+            </curve>
+          </ShootingAccuracyChildFactor>
+          <MarketValue>
+            <useBiologicalYears>true</useBiologicalYears>
+            <curve>
+              <points>
+                <li>(0,1)</li>
+              </points>
+            </curve>
+          </MarketValue>
+          <MeleeHitChance>
+            <useBiologicalYears>true</useBiologicalYears>
+            <curve>
+              <points>
+                <li>(0,1)</li>
+              </points>
+            </curve>
+          </MeleeHitChance>
+          <AimingDelayFactor>
+            <useBiologicalYears>true</useBiologicalYears>
+            <curve>
+              <points>
+                <li>(0,1)</li>
+              </points>
+            </curve>
+          </AimingDelayFactor>
+          <ArrestSuccessChance>
+            <useBiologicalYears>true</useBiologicalYears>
+            <curve>
+              <points>
+                <li>(0, 1)</li>
+              </points>
+            </curve>
+          </ArrestSuccessChance>
+        </ageStatOverrides>
+        <!-- 生育设置，将妊娠设为男性来避免开局刷妊娠 -->
+        <reproduction>
+          <gestatingGender>Male</gestatingGender>
+          <femaleFertilityAgeFactor>
+            <points>
+              <li>(0,0)</li>
+              <li>(1,0)</li>
+              <li>(999,0)</li>
+              <li>(9999,0)</li>
+            </points>
+          </femaleFertilityAgeFactor>
+        </reproduction>
+        <growthFactorByAge>
+          <points>
+            <li>(0,1)</li>
+            <li>(12,0.5)</li>
+          </points>
+        </growthFactorByAge>
+      </generalSettings>
+      <!-- 图形，留空 -->
+      <graphicPaths>
+        <!-- 皮肤颜色 -->
+        <skinColor>(1,1,1,1)</skinColor>
+        <!-- 皮肤着色器 -->
+        <skinShader>Cutout</skinShader>
+        <body>LegendaryBlackDragon/Things/Miraboreasu/Bodies/</body>
+        <head>
+          <path>LegendaryBlackDragon/Things/Miraboreasu/Heads/</path>
+        </head>
+        <skeleton>Things/Pawn/Humanlike/Bodies/Dessicated/Dessicated_Thin</skeleton>
+        <stump>LegendaryBlackDragon/Things/Miraboreasu/Bodies/</stump>
+      </graphicPaths>
+      <!-- 风格设置 -->
+      <styleSettings>
+        <!-- 头发 -->
+        <li>
+          <key>HairDef</key>
+          <value>
+            <hasStyle>true</hasStyle>
+            <styleTagsOverride>
+              <li>LBD_Miraboreasu_Style</li>
+            </styleTagsOverride>
+          </value>
+        </li>
+        <!-- 纹身 -->
+        <li>
+          <key>TattooDef</key>
+          <value>
+            <hasStyle>false</hasStyle>
+          </value>
+        </li>
+        <!-- 胡须 -->
+        <li>
+          <key>BeardDef</key>
+          <value>
+            <hasStyle>false</hasStyle>
+          </value>
+        </li>
+      </styleSettings>
+      <!-- 种族的允许和禁止特化设置 -->
+      <raceRestriction>
+        <!-- 无法拥有的内源性基因 -->
+        <blackEndoCategories MayRequire="Ludeon.RimWorld.Biotech">
+          <li MayRequire="Ludeon.RimWorld.Biotech">HairColor</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Melanin</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">BodyType</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Ears</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Nose</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Voice</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Headbone</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Head</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Jaw</li>
+        </blackEndoCategories>
+        <!-- 无法拥有的Tag基因 -->
+        <blackGeneTags MayRequire="Ludeon.RimWorld.Biotech">
+          <li MayRequire="Ludeon.RimWorld.Biotech">EyeColor</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Tail</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">BeardStyle</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Fur</li>
+        </blackGeneTags>
+        <!-- 无法拥有的基因列表 -->
+        <blackGeneList>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Furskin</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Brow_Heavy</li>
+        </blackGeneList>
+        <!-- 禁止的异形变种 -->
+        <blackXenotypeList>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Dirtmole</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Genie</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Hussar</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Sanguophage</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Neanderthal</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Pigskin</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Impid</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Waster</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Yttakin</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">Highmate</li>
+        </blackXenotypeList>
+        <!-- 允许的异形类型 -->
+        <whiteXenotypeList MayRequire="Ludeon.RimWorld.Biotech">
+          <li MayRequire="Ludeon.RimWorld.Biotech">Baseliner</li>
+        </whiteXenotypeList>
+        <onlyUseRaceRestrictedXenotypes>false</onlyUseRaceRestrictedXenotypes>
+        <!-- 武器列表 -->
+        <weaponList>
+          <!-- <li>EF_Perlica_Weapon</li> -->
+        </weaponList>
+        <onlyUseRaceRestrictedWeapons>false</onlyUseRaceRestrictedWeapons>
+        <!-- 可以穿戴的衣服 -->
+        <apparelList>
+          <!-- <li>EF_Perlica_Cloth</li> -->
+        </apparelList>
+        <blackApparelList>
+          <li>Apparel_AdvancedHelmet</li>
+          <li>Apparel_ArmorHelmetRecon</li>
+          <li>Apparel_BowlerHat</li>
+          <li>Apparel_CowboyHat</li>
+          <li>Apparel_HatHood</li>
+          <li>Apparel_PowerArmorHelmet</li>
+          <li>Apparel_PsychicFoilHelmet</li>
+          <li>Apparel_SimpleHelmet</li>
+          <li>Apparel_TribalHeaddress</li>
+          <li>Apparel_Tuque</li>
+          <li>Apparel_WarMask</li>
+          <li>Apparel_WarVeil</li>
+          <li>Apparel_ArmorRecon</li>
+          <li>Apparel_BasicShirt</li>
+          <li>Apparel_Cape</li>
+          <li>Apparel_CollarShirt</li>
+          <li>Apparel_Duster</li>
+          <li>Apparel_FlakJacket</li>
+          <li>Apparel_FlakPants</li>
+          <li>Apparel_FlakVest</li>
+          <li>Apparel_Jacket</li>
+          <li>Apparel_Pants</li>
+          <li>Apparel_Parka</li>
+          <li>Apparel_PlateArmor</li>
+          <li>Apparel_PowerArmor</li>
+          <li>Apparel_Robe</li>
+          <li>Apparel_TribalA</li>
+          <li>Apparel_Sash</li>
+          <li>Apparel_Bandolier</li>
+          <li>Apparel_Broadwrap</li>
+          <li>Apparel_Headwrap</li>
+          <li>Apparel_Shadecone</li>
+          <li>Apparel_AuthorityCap</li>
+          <li>Apparel_Flophat</li>
+          <li>Apparel_Slicecap</li>
+          <li>Apparel_Tailcap</li>
+          <li>Apparel_VisageMask</li>
+        </blackApparelList>
+        <onlyUseRaceRestrictedApparel>false</onlyUseRaceRestrictedApparel>
+        <traitList>
+        </traitList>
+        <blackTraitList>
+          <li>BodyPurist</li>
+          <li>Cannibal</li>
+          <li>DislikesWomen</li>
+          <li>Gourmand</li>
+          <li>Wimp</li>
+          <li>DrugDesire</li>
+          <li>Pyromaniac</li>
+        </blackTraitList>
+      </raceRestriction>
+      <!-- 关系设置，不会生成任何随机关系 -->
+      <relationSettings>
+        <relationChanceModifierLover>0</relationChanceModifierLover>
+        <relationChanceModifierExLover>0</relationChanceModifierExLover>
+
+        <relationChanceModifierFiance>0</relationChanceModifierFiance>
+        <relationChanceModifierSpouse>0</relationChanceModifierSpouse>
+        <relationChanceModifierExSpouse>0</relationChanceModifierExSpouse>
+
+        <relationChanceModifierParent>0</relationChanceModifierParent>
+        <relationChanceModifierChild>0</relationChanceModifierChild>
+        <relationChanceModifierSibling>0</relationChanceModifierSibling>
+      </relationSettings>
+    </alienRace>
+
+    <!-- 基础属性设置 -->
+    <statBases>
+      <ComfyTemperatureMin>-30</ComfyTemperatureMin>
+      <ComfyTemperatureMax>9999</ComfyTemperatureMax>
+
+      <EatingSpeed>5</EatingSpeed>
+      <MoveSpeed>4</MoveSpeed>
+      <MaxNutrition>2</MaxNutrition>
+
+      <VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">1</VacuumResistance>
+      <ToxicResistance>1</ToxicResistance>
+      <ToxicEnvironmentResistance MayRequire="Ludeon.RimWorld.Biotech">1</ToxicEnvironmentResistance>
+
+      <MarketValue>10000</MarketValue>
+
+      <PainShockThreshold>0.25</PainShockThreshold>
+      <PsychicSensitivity>1.5</PsychicSensitivity>
+      <MentalBreakThreshold>0.5</MentalBreakThreshold>
+      <Flammability>0</Flammability>
+    </statBases>
+
+    <race>
+      <body>Human</body>
+      <lifeStageWorkSettings MayRequire="Ludeon.RimWorld.Biotech">
+        <Firefighter>0</Firefighter>
+        <Patient>0</Patient>
+        <Doctor>0</Doctor>
+        <PatientBedRest>0</PatientBedRest>
+        <Childcare MayRequire="Ludeon.RimWorld.Biotech">0</Childcare>
+        <BasicWorker>0</BasicWorker>
+        <Warden>0</Warden>
+        <Handling>0</Handling>
+        <Cooking>0</Cooking>
+        <Hunting>0</Hunting>
+        <Construction>0</Construction>
+        <Growing>0</Growing>
+        <Mining>0</Mining>
+        <PlantCutting>0</PlantCutting>
+        <Smithing>0</Smithing>
+        <Tailoring>0</Tailoring>
+        <Art>0</Art>
+        <Crafting>0</Crafting>
+        <Hauling>0</Hauling>
+        <Cleaning>0</Cleaning>
+        <Research>0</Research>
+        <DarkStudy MayRequire="Ludeon.RimWorld.Anomaly">0</DarkStudy>
+      </lifeStageWorkSettings>
+      <lifeStageAges Inherit="False">
+        <li>
+          <def>HumanlikeBaby</def>
+          <minAge>0</minAge>
+        </li>
+        <li>
+          <def>HumanlikeChild</def>
+          <minAge>0.25</minAge>
+        </li>
+        <li MayRequire="Ludeon.RimWorld.Biotech">
+          <def>HumanlikePreTeenager</def>
+          <minAge>0.5</minAge>
+        </li>
+        <li>
+          <def>HumanlikeTeenager</def>
+          <minAge>0.75</minAge>
+        </li>
+        <li>
+          <def>HumanlikeAdult</def>
+          <minAge>1</minAge>
+        </li>
+      </lifeStageAges>
+    </race>
+
+    <comps>
+			<li MayRequire="Nals.FacialAnimation">
+				<compClass>FacialAnimation.DrawFaceGraphicsComp</compClass>
+			</li>
+			<li MayRequire="Nals.FacialAnimation">
+				<compClass>FacialAnimation.HeadControllerComp</compClass>
+			</li>
+			<li MayRequire="Nals.FacialAnimation">
+				<compClass>FacialAnimation.EyeballControllerComp</compClass>
+			</li>
+      <li MayRequire="Nals.FacialAnimation">
+        <compClass>FacialAnimation.LidControllerComp</compClass>
+      </li>
+      <li MayRequire="Nals.FacialAnimation">
+				<compClass>FacialAnimation.BrowControllerComp</compClass>
+			</li>
+			<li MayRequire="Nals.FacialAnimation">
+				<compClass>FacialAnimation.MouthControllerComp</compClass>
+			</li>
+      <li MayRequire="Nals.FacialAnimation">
+        <compClass>FacialAnimation.SkinControllerComp</compClass>
+      </li>
+      <li MayRequire="Nals.FacialAnimation">
+				<compClass>FacialAnimation.FacialAnimationControllerComp</compClass>
+			</li>
+    </comps>
+  </AlienRace.ThingDef_AlienRace>
+  <StyleItemCategoryDef>
+    <defName>LBD_Miraboreasu_Style</defName>
+    <label>Miraboreasu</label>
+  </StyleItemCategoryDef>
+	<HairDef>
+		<defName>LBD_Miraboreasu_Hair</defName>
+		<label>Miraboreasu's Hair</label>
+		<hairGender>Female</hairGender>
+		<texPath>LegendaryBlackDragon/Things/Miraboreasu/Hair/Perlica_Hair</texPath>
+		<category>LBD_Miraboreasu_Style</category>
+		<styleTags>
+			<li>LBD_Miraboreasu_Style</li>
+		</styleTags>
+	</HairDef>
+</Defs>

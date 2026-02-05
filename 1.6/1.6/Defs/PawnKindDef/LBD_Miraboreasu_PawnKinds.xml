@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<PawnKindDef>
+		<defName>LBD_Miraboreasu</defName>
+		<label>Miraboreasu</label>
+		<race>LBD_Fatalis_Race</race>
+		<fixedGender>Female</fixedGender>
+		<defaultFactionType>PlayerColony</defaultFactionType>
+		<invNutrition>0</invNutrition>
+		<combatPower>50</combatPower>
+		<isFighter>true</isFighter>
+		<trader>false</trader>
+		<chemicalAddictionChance>0</chemicalAddictionChance>
+		<apparelIgnoreSeasons>true</apparelIgnoreSeasons>
+		<forceNormalGearQuality>true</forceNormalGearQuality>
+		<initialWillRange>99~99</initialWillRange>
+		<initialResistanceRange>99~99</initialResistanceRange>
+		<minGenerationAge>19</minGenerationAge>
+		<maxGenerationAge>25</maxGenerationAge>
+		<canBeScattered>false</canBeScattered>
+		<!-- <abilities>
+			<li>EF_Perlica_LightingStrike</li>
+			<li>EF_Perlica_OrbitStrike</li>
+		</abilities> -->
+		<nameMaker>LBD_Miraboreasu_NameMaker</nameMaker>
+		<fixedChildBackstories>
+			<li>LBD_Miraboreasu_Childhood</li>
+		</fixedChildBackstories>
+		<fixedAdultBackstories>
+			<li>LBD_Miraboreasu_Adulthood</li>
+		</fixedAdultBackstories>
+		<apparelRequired>
+			<!-- <li>EF_Perlica_Cloth</li> -->
+		</apparelRequired>
+		<forcedHairColor>(255,255,255,255)</forcedHairColor>
+    <itemQuality>Excellent</itemQuality>
+    <weaponMoney>9999~9999</weaponMoney>
+    <weaponTags>
+      <!-- <li>EF_Perlica_Weapon</li> -->
+    </weaponTags>
+		<xenotypeSet>
+			<xenotypeChances>
+
+				<Baseliner MayRequire="Ludeon.RimWorld.Biotech">0</Baseliner>
+
+				<Dirtmole MayRequire="Ludeon.RimWorld.Biotech">0</Dirtmole>
+				<Genie MayRequire="Ludeon.RimWorld.Biotech">0</Genie>
+				<Hussar MayRequire="Ludeon.RimWorld.Biotech">0</Hussar>
+				<Sanguophage MayRequire="Ludeon.RimWorld.Biotech">0</Sanguophage>
+				<Neanderthal MayRequire="Ludeon.RimWorld.Biotech">0</Neanderthal>
+				<Pigskin MayRequire="Ludeon.RimWorld.Biotech">0</Pigskin>
+				<Impid MayRequire="Ludeon.RimWorld.Biotech">0</Impid>
+				<Waster MayRequire="Ludeon.RimWorld.Biotech">0</Waster>
+				<Yttakin MayRequire="Ludeon.RimWorld.Biotech">0</Yttakin>
+				<Highmate MayRequire="Ludeon.RimWorld.Biotech">0</Highmate>
+			</xenotypeChances>
+		</xenotypeSet>
+		<useFactionXenotypes>false</useFactionXenotypes>
+    <startingHediffs>
+      <!-- <li>
+        <def>EF_Perlica_Hair_Draw_Hediff</def>
+      </li> -->
+    </startingHediffs>
+		<apparelMoney>0</apparelMoney>
+		<humanPregnancyChance>0</humanPregnancyChance>
+
+		<!-- <modExtensions>
+      <li Class="EndfieldPerlica.UniquePawnExtension">
+        <isSingleton>true</isSingleton>
+        <destroyDuplicates>true</destroyDuplicates>
+        <singletonScope>World</singletonScope>
+        <clearExistingRelations>true</clearExistingRelations>
+        <removeOnDeath>false</removeOnDeath>
+        <showSpawnMessage>false</showSpawnMessage>
+        <logLevel>Info</logLevel>
+      </li>
+		</modExtensions> -->
+	</PawnKindDef>
+  <!-- <HediffDef>
+    <defName>EF_Perlica_Hair_Draw_Hediff</defName>
+    <label>Perlica's Hair</label>
+    <description>Perlica's Hair</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <everCurableByItem>false</everCurableByItem>
+    <isBad>false</isBad>
+    <defaultLabelColor>(0, 0, 0)</defaultLabelColor>
+    <stages>
+      <li>
+        <becomeVisible>true</becomeVisible>
+        <minSeverity>0</minSeverity>
+      </li>
+    </stages>
+    <renderNodeProperties>
+      <li>
+        <nodeClass>PawnRenderNode_AttachmentHead</nodeClass>
+        <workerClass>PawnRenderNodeWorker_FlipWhenCrawling</workerClass>
+        <texPath>Endfield/Things/Perlica/Hair/Perlica_Hair_south_behind</texPath>
+        <parentTagDef>ApparelHead</parentTagDef>
+        <useSkinShader>false</useSkinShader>
+        <useRottenColor>false</useRottenColor>
+        <rotDrawMode>Fresh, Rotting</rotDrawMode>
+        <visibleFacing>
+          <li>South</li>
+        </visibleFacing>
+        <drawData>
+          <dataEast>
+            <layer>-99999</layer>
+          </dataEast>
+          <dataWest>
+            <layer>-99999</layer>
+          </dataWest>
+          <dataNorth>
+            <layer>-99999</layer>
+          </dataNorth>
+          <dataSouth>
+            <layer>-1</layer>
+            <offset>(0, 0, 0)</offset>
+          </dataSouth>
+        </drawData>
+      </li>
+    </renderNodeProperties>
+  </HediffDef> -->
+	<RulePackDef>
+		<defName>LBD_Miraboreasu_NameMaker</defName>
+		<rulePack>
+			<rulesStrings>
+				<li>r_name->[LBD_Miraboreasu_FirstName] '[LBD_Miraboreasu_nickName]' [LBD_Miraboreasu_LastName]</li>
+				<li>LBD_Miraboreasu_nickName->Black Dragon</li>
+				<li>LBD_Miraboreasu_FirstName->Mira</li>
+				<li>LBD_Miraboreasu_LastName->Boreasu</li>
+			</rulesStrings>
+		</rulePack>
+	</RulePackDef>
+
+  <AlienRace.AlienBackstoryDef>
+    <defName>LBD_Miraboreasu_Childhood</defName>
+    <slot>Childhood</slot>
+    <title>禁忌巨兽</title>
+    <titleShort>巨兽</titleShort>
+    <description>作为不详的毁灭象征，黑龙的诞生和其他古龙种一样笼罩在迷雾中，人们对这种超脱于生态系统的巨兽知之甚少，其名字已经成为命运之战的象征。黑龙对自身以外的事物都极度蔑视，不认同任何存在。</description>
+    <skillGains>
+      <Social>4</Social>
+      <Intellectual>4</Intellectual>
+    </skillGains>
+    <!-- <workDisables>ManualDumb,Cooking,Mining</workDisables> -->
+    <requiredWorkTags>Violent</requiredWorkTags>
+    <spawnCategories>
+      <li>LBD_Miraboreasu_Backstory_Categories</li>
+    </spawnCategories>
+    <bodyTypeGlobal>Thin</bodyTypeGlobal>
+    <bodyTypeFemale>Thin</bodyTypeFemale>
+    <bodyTypeMale>Thin</bodyTypeMale>
+    <forcedTraitsChance>
+      <li>
+        <defName Degree="2">Nerves</defName>
+        <chance>100</chance>
+      </li>
+    </forcedTraitsChance>
+    <passions>
+      <Intellectual>2</Intellectual>
+    </passions>
+    <shuffleable>false</shuffleable>
+  </AlienRace.AlienBackstoryDef>
+  <AlienRace.AlienBackstoryDef>
+    <defName>LBD_Miraboreasu_Adulthood</defName>
+    <slot>Adulthood</slot>
+    <title>毁灭之兆</title>
+    <titleShort>毁灭之兆</titleShort>
+    <description>传说中，曾经君临于世界的繁荣大国修雷德国，其王都在一夜之间被黑龙毁灭，曾经夸耀荣华的宫殿被付之一炬，以古城为中心的旧王都化为无法感受任何生命气息的不毛之地。黑龙将焚尽后的修雷德城堡作为自己的巢穴，这一带都被视为无法踏足的禁区，直到四位天尊骑乘翼龙飞临此地······</description>
+    <skillGains>
+      <Shooting>4</Shooting>
+      <Intellectual>5</Intellectual>
+      <Social>3</Social>
+      <Crafting>5</Crafting>
+      <Artistic>3</Artistic>
+    </skillGains>
+    <!-- <workDisables>ManualDumb,Cooking,Mining</workDisables> -->
+    <requiredWorkTags>Violent</requiredWorkTags>
+    <spawnCategories>
+      <li>LBD_Miraboreasu_Backstory_Categories</li>
+    </spawnCategories>
+    <bodyTypeGlobal>Thin</bodyTypeGlobal>
+    <bodyTypeFemale>Thin</bodyTypeFemale>
+    <bodyTypeMale>Thin</bodyTypeMale>
+    <forcedTraitsChance>
+      <li>
+        <defName Degree="0">FastLearner</defName>
+        <chance>100</chance>
+      </li>
+    </forcedTraitsChance>
+    <passions>
+      <Shooting>2</Shooting>
+      <Crafting>1</Crafting>
+    </passions>
+    <shuffleable>false</shuffleable>
+  </AlienRace.AlienBackstoryDef>
+</Defs>
