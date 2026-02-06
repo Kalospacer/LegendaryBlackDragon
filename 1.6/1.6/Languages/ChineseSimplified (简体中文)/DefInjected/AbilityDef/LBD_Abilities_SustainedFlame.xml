@@ -2,4 +2,7 @@
 <LanguageData>
   <LBD_SustainedFlameCone.label>持续龙焰</LBD_SustainedFlameCone.label>
   <LBD_SustainedFlameCone.description>短暂蓄力后，持续向前方扇形区域喷射龙焰；施法者必须维持施法，若被打断则喷焰立即终止。</LBD_SustainedFlameCone.description>
+
+  <LBD_SustainedFlameAura.label>持续龙焰吐息</LBD_SustainedFlameAura.label>
+  <LBD_SustainedFlameAura.description>以自身为中心向四周持续喷射龙焰，灼烧周围一切；施法者必须维持施法，若被打断则喷焰立即终止。</LBD_SustainedFlameAura.description>
 </LanguageData>

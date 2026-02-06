@@ -70,4 +70,62 @@
       </li>
     </comps>
   </AbilityDef>
+
+  <AbilityDef>
+    <defName>LBD_SustainedFlameAura</defName>
+    <label>sustained flame aura</label>
+    <description>Erupts in a sustained burst of flame in all directions, scorching everything nearby while the caster maintains focus.</description>
+    <iconPath>UI/Abilities/FireBurst</iconPath>
+    <jobDef>LBD_CastAbilityMaintainFlameAura</jobDef>
+    <waitForJobEnd>true</waitForJobEnd>
+    <targetRequired>false</targetRequired>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <showCastingProgressBar>true</showCastingProgressBar>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsIncendiary>true</ai_IsIncendiary>
+    <ai_SearchAOEForTargets>true</ai_SearchAOEForTargets>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <cooldownTicksRange>900~900</cooldownTicksRange>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>1</warmupTime>
+      <range>5.9</range>
+      <requireLineOfSight>false</requireLineOfSight>
+      <drawAimPie>false</drawAimPie>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_AbilitySustainedFlameAura">
+        <!-- 圆形范围半径 -->
+        <radius>5.9</radius>
+        <!-- 伤害类型 -->
+        <damageDef>Flame</damageDef>
+        <damAmount>10</damAmount>
+        <armorPenetration>0</armorPenetration>
+        <filthDef>Filth_Ash</filthDef>
+        <!-- 施法后第几 tick 开始伤害 -->
+        <startDamageTick>1</startDamageTick>
+        <!-- 每隔多少 tick 一次伤害脉冲 -->
+        <damageIntervalTicks>10</damageIntervalTicks>
+        <!-- 最长持续 tick（180 = 3秒） -->
+        <maxSustainTicks>180</maxSustainTicks>
+        <!-- 360° Effecter 特效 -->
+        <effecterDef>Fire_Burst</effecterDef>
+        <effecterIntervalTicks>5</effecterIntervalTicks>
+        <effecterDurationTicks>17</effecterDurationTicks>
+        <!-- 环形发射点数量 -->
+        <effecterRingPoints>12</effecterRingPoints>
+        <!-- 内圈发射起始距离（格） -->
+        <effecterRingRadius>1.5</effecterRingRadius>
+        <!-- 持续期间撒燃料概率 -->
+        <fuelSpawnChancePerTick>0.15</fuelSpawnChancePerTick>
+        <canHitFilledCells>true</canHitFilledCells>
+        <affectCaster>false</affectCaster>
+      </li>
+    </comps>
+  </AbilityDef>
 </Defs>

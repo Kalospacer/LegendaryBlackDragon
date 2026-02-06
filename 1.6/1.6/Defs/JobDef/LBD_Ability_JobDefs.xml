@@ -11,4 +11,16 @@
     <checkOverrideOnDamage>Always</checkOverrideOnDamage>
     <suspendable>false</suspendable>
   </JobDef>
+
+  <JobDef>
+    <defName>LBD_CastAbilityMaintainFlameAura</defName>
+    <driverClass>LegendaryBlackDragon.JobDriver_CastAbilityMaintainFlameAura</driverClass>
+    <reportString>maintaining a flame aura.</reportString>
+    <abilityCasting>true</abilityCasting>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <playerInterruptible>true</playerInterruptible>
+    <casualInterruptible>false</casualInterruptible>
+    <checkOverrideOnDamage>Always</checkOverrideOnDamage>
+    <suspendable>false</suspendable>
+  </JobDef>
 </Defs>
