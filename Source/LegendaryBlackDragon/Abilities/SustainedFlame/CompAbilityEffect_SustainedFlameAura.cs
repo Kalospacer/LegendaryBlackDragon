@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.AI;
 
 namespace LegendaryBlackDragon
 {
@@ -10,6 +11,8 @@ namespace LegendaryBlackDragon
     /// </summary>
     public class CompAbilityEffect_SustainedFlameAura : CompAbilityEffect
     {
+        private readonly List<IntVec3> tmpAffectedCells = new List<IntVec3>();
+
         private bool isActive;
         private int startTick;
         private int nextDamageTick;
@@ -59,7 +62,7 @@ namespace LegendaryBlackDragon
                 return;
             }
 
-            if (!parent.Casting && ActiveTicks > 2)
+            if (!CasterMaintainingAuraJob())
             {
                 StopFlame();
                 return;
@@ -129,6 +132,17 @@ namespace LegendaryBlackDragon
             startTick = 0;
             nextDamageTick = 0;
             nextEffecterTick = 0;
+        }
+
+        private bool CasterMaintainingAuraJob()
+        {
+            if (Caster?.jobs?.curJob == null)
+            {
+                return false;
+            }
+
+            Job curJob = Caster.jobs.curJob;
+            return curJob.ability == parent && curJob.def != null && curJob.def.abilityCasting;
         }
 
         /// <summary>
@@ -223,6 +237,17 @@ namespace LegendaryBlackDragon
             }
 
             DamageDef damageDef = Props.damageDef ?? DamageDefOf.Flame;
+            List<IntVec3> affectedCells = BuildAffectedCells();
+            if (affectedCells.Count == 0)
+            {
+                return;
+            }
+
+            List<Thing> ignoredThings = null;
+            if (!Props.affectCaster)
+            {
+                ignoredThings = new List<Thing> { Caster };
+            }
 
             GenExplosion.DoExplosion(
                 Caster.Position,
@@ -239,10 +264,46 @@ namespace LegendaryBlackDragon
                 applyDamageToExplosionCellsNeighbors: false,
                 null, 0f, 1, 1f,
                 damageFalloff: false,
-                null, null, null,
+                null, ignoredThings, null,
                 doVisualEffects: false,
                 0.6f, 0f,
-                doSoundEffects: false);
+                doSoundEffects: false,
+                null,
+                1f,
+                null,
+                affectedCells);
+        }
+
+        private List<IntVec3> BuildAffectedCells()
+        {
+            tmpAffectedCells.Clear();
+
+            if (Caster?.Map == null)
+            {
+                return tmpAffectedCells;
+            }
+
+            foreach (IntVec3 cell in GenRadial.RadialCellsAround(Caster.Position, Props.radius, useCenter: true))
+            {
+                if (!cell.InBounds(Caster.Map))
+                {
+                    continue;
+                }
+
+                if (!Props.affectCaster && cell == Caster.Position)
+                {
+                    continue;
+                }
+
+                if (!Props.canHitFilledCells && cell.Filled(Caster.Map))
+                {
+                    continue;
+                }
+
+                tmpAffectedCells.Add(cell);
+            }
+
+            return tmpAffectedCells;
         }
     }
 }

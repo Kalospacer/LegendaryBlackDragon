@@ -101,7 +101,7 @@
     <comps>
       <li Class="LegendaryBlackDragon.CompProperties_AbilitySustainedFlameAura">
         <!-- 圆形范围半径 -->
-        <radius>5.9</radius>
+        <radius>15.9</radius>
         <!-- 伤害类型 -->
         <damageDef>Flame</damageDef>
         <damAmount>10</damAmount>
