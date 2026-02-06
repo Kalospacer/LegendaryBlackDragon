@@ -53,8 +53,8 @@
         <!-- 视觉扇形半角（总角度=2倍；24表示总48°） -->
         <coneSizeDegrees>16</coneSizeDegrees>
         <!-- 视觉长度在伤害射程基础上的额外偏移 -->
-        <visualRangeOffset>1.1</visualRangeOffset>
-        <visualLengthMultiplier>100</visualLengthMultiplier>
+        <visualRangeOffset>1</visualRangeOffset>
+        <visualLengthMultiplier>2</visualLengthMultiplier>
         <!-- 视觉喷流长度随机噪声 -->
         <rangeNoise>0.4</rangeNoise>
         <!-- 火焰从施法者前方多远位置发射（视觉） -->

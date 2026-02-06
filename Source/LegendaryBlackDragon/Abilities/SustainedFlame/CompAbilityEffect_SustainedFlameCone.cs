@@ -160,7 +160,8 @@ namespace LegendaryBlackDragon
             IntVec3 tipCell = GetTipCell();
             Vector3 normalized = (tipCell.ToVector3Shifted() - drawPos).normalized;
             int streamCount = Mathf.Max(1, Props.numStreams);
-            float visualRange = Mathf.Max(0.1f, (Props.range + Props.visualRangeOffset) * Mathf.Max(0.1f, Props.visualLengthMultiplier));
+            float visualRange = Props.range + Props.visualRangeOffset;
+            float beamLengthFactor = Mathf.Max(0.01f, Props.visualLengthMultiplier);
 
             for (int i = 0; i < streamCount; i++)
             {
@@ -184,7 +185,7 @@ namespace LegendaryBlackDragon
                     targetDest = targetCell,
                     worldSource = drawPos + streamVector * Props.barrelOffsetDistance,
                     worldTarget = streamTarget.ToVector3(),
-                    moveVector = streamVector,
+                    moveVector = streamVector * beamLengthFactor,
                     startScale = Rand.Range(0.8f, 1.2f) * scaleFactor,
                     endScale = (1f + Rand.Range(0.1f, 0.4f)) * scaleFactor,
                     lifespanTicks = Mathf.FloorToInt(distance * 5f) + Rand.Range(-Props.lifespanNoise, Props.lifespanNoise)
