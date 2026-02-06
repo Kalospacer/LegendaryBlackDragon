@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <JobDef>
+    <defName>LBD_CastAbilityMaintainFlame</defName>
+    <driverClass>LegendaryBlackDragon.JobDriver_CastAbilityMaintainFlame</driverClass>
+    <reportString>maintaining a cone of flame.</reportString>
+    <abilityCasting>true</abilityCasting>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <playerInterruptible>true</playerInterruptible>
+    <casualInterruptible>false</casualInterruptible>
+    <checkOverrideOnDamage>Always</checkOverrideOnDamage>
+    <suspendable>false</suspendable>
+  </JobDef>
+</Defs>

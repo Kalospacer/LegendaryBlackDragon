@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <AbilityDef>
+    <defName>LBD_SustainedFlameCone</defName>
+    <label>sustained flame cone</label>
+    <description>After a short charge, continuously breathes a cone of flame while the caster maintains focus.</description>
+    <iconPath>UI/Abilities/Burner</iconPath>
+    <jobDef>LBD_CastAbilityMaintainFlame</jobDef>
+    <waitForJobEnd>true</waitForJobEnd>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsIncendiary>true</ai_IsIncendiary>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>22.9</range>
+      <warmupTime>0.6</warmupTime>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <cooldownTicksRange>900~900</cooldownTicksRange>
+    <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_AbilitySustainedFlameCone">
+        <range>22.9</range>
+        <lineWidthEnd>5</lineWidthEnd>
+        <damageDef>Flame</damageDef>
+        <damageAmount>12</damageAmount>
+        <armorPenetration>0</armorPenetration>
+        <filthDef>Filth_Ash</filthDef>
+        <startDamageTick>1</startDamageTick>
+        <damageIntervalTicks>6</damageIntervalTicks>
+        <visualIntervalTicks>3</visualIntervalTicks>
+        <maxSustainTicks>180</maxSustainTicks>
+        <effecterDef>BurnerUsed</effecterDef>
+        <numStreams>15</numStreams>
+        <coneSizeDegrees>12</coneSizeDegrees>
+        <visualRangeOffset>1.1</visualRangeOffset>
+        <rangeNoise>0.4</rangeNoise>
+        <barrelOffsetDistance>6</barrelOffsetDistance>
+        <sizeReductionDistanceThreshold>8</sizeReductionDistanceThreshold>
+        <lifespanNoise>40</lifespanNoise>
+        <canHitFilledCells>true</canHitFilledCells>
+        <affectCaster>false</affectCaster>
+      </li>
+    </comps>
+  </AbilityDef>
+</Defs>
