@@ -160,18 +160,14 @@ namespace LegendaryBlackDragon
             IntVec3 tipCell = GetTipCell();
             Vector3 normalized = (tipCell.ToVector3Shifted() - drawPos).normalized;
             int streamCount = Mathf.Max(1, Props.numStreams);
-            float visualRange = Props.range + Props.visualRangeOffset;
+            float visualRange = Mathf.Max(0.1f, (Props.range + Props.visualRangeOffset) * Mathf.Max(0.1f, Props.visualLengthMultiplier));
 
             for (int i = 0; i < streamCount; i++)
             {
                 float angle = Rand.Range(0f - Props.coneSizeDegrees, Props.coneSizeDegrees);
                 Vector3 streamVector = normalized.RotatedBy(angle);
                 Vector3 projectedTarget = drawPos + streamVector * (visualRange + Rand.Value * Props.rangeNoise);
-                IntVec3 streamTarget = GenSight.LastPointOnLineOfSight(sourceCell, projectedTarget.ToIntVec3(), c => c.CanBeSeenOverFast(map), skipFirstCell: true);
-                if (!streamTarget.IsValid)
-                {
-                    streamTarget = projectedTarget.ToIntVec3();
-                }
+                IntVec3 streamTarget = projectedTarget.ToIntVec3().ClampInsideMap(map);
 
                 float distance = Vector3.Distance(streamTarget.ToVector3(), drawPos);
                 float scaleFactor = Mathf.Clamp01(distance / Props.sizeReductionDistanceThreshold);
@@ -180,7 +176,8 @@ namespace LegendaryBlackDragon
                     continue;
                 }
 
-                MoteDualAttached mote = MoteMaker.MakeInteractionOverlay(ThingDefOf.Mote_IncineratorBurst, new TargetInfo(sourceCell, map), new TargetInfo(streamTarget, map));
+                ThingDef moteDef = Props.moteDef ?? ThingDefOf.Mote_IncineratorBurst;
+                MoteDualAttached mote = MoteMaker.MakeInteractionOverlay(moteDef, new TargetInfo(sourceCell, map), new TargetInfo(streamTarget, map));
                 spray.Add(new IncineratorProjectileMotion
                 {
                     mote = mote,
@@ -276,12 +273,6 @@ namespace LegendaryBlackDragon
             IntVec3 tip = clampedTarget;
             tip.x = Mathf.RoundToInt(casterPos.x + dirX * Props.range);
             tip.z = Mathf.RoundToInt(casterPos.z + dirZ * Props.range);
-
-            IntVec3 lastVisible = GenSight.LastPointOnLineOfSight(casterPos, tip, c => c.CanBeSeenOverFast(Caster.Map), skipFirstCell: true);
-            if (lastVisible.IsValid)
-            {
-                return lastVisible;
-            }
 
             return tip.ClampInsideMap(Caster.Map);
         }

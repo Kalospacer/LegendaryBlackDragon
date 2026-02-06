@@ -22,24 +22,49 @@
     <cooldownTicksRange>900~900</cooldownTicksRange>
     <comps>
       <li Class="LegendaryBlackDragon.CompProperties_AbilitySustainedFlameCone">
+        <!-- ===== 核心判定（伤害）===== -->
+        <!-- 伤害扇形最大距离（格） -->
         <range>22.9</range>
-        <lineWidthEnd>5</lineWidthEnd>
+        <!-- 伤害扇形在最远端的宽度（格） -->
+        <lineWidthEnd>12</lineWidthEnd>
+        <!-- 伤害类型与单次脉冲伤害 -->
         <damageDef>Flame</damageDef>
         <damageAmount>12</damageAmount>
         <armorPenetration>0</armorPenetration>
         <filthDef>Filth_Ash</filthDef>
+        <!-- 施法开始后第几 tick 开始造成伤害 -->
         <startDamageTick>1</startDamageTick>
+        <!-- 每隔多少 tick 造成一次伤害 -->
         <damageIntervalTicks>6</damageIntervalTicks>
-        <visualIntervalTicks>3</visualIntervalTicks>
+        
+        <!-- ===== 持续时长 ===== -->
+        <!-- 最长持续时间（tick，60tick=1秒） -->
+        <!-- 180 tick = 3 秒 -->
         <maxSustainTicks>180</maxSustainTicks>
-        <effecterDef>BurnerUsed</effecterDef>
+        
+        <!-- ===== 视觉喷流（Burner风格）===== -->
+        <!-- 视觉刷新间隔（tick） -->
+        <visualIntervalTicks>3</visualIntervalTicks>
+        <!-- 末端喷流附加特效 -->
+        <effecterDef>LBD_BurnerUsed_Long</effecterDef>
+        <moteDef>LBD_Mote_IncineratorBurst_Long</moteDef>
+        <!-- 单次喷流条数 -->
         <numStreams>15</numStreams>
-        <coneSizeDegrees>12</coneSizeDegrees>
+        <!-- 视觉扇形半角（总角度=2倍；24表示总48°） -->
+        <coneSizeDegrees>16</coneSizeDegrees>
+        <!-- 视觉长度在伤害射程基础上的额外偏移 -->
         <visualRangeOffset>1.1</visualRangeOffset>
+        <visualLengthMultiplier>100</visualLengthMultiplier>
+        <!-- 视觉喷流长度随机噪声 -->
         <rangeNoise>0.4</rangeNoise>
+        <!-- 火焰从施法者前方多远位置发射（视觉） -->
         <barrelOffsetDistance>6</barrelOffsetDistance>
+        <!-- 视觉缩放阈值（越小越容易显得“短粗”） -->
         <sizeReductionDistanceThreshold>8</sizeReductionDistanceThreshold>
+        <!-- 喷流寿命随机噪声 -->
         <lifespanNoise>40</lifespanNoise>
+        
+        <!-- ===== 其他 ===== -->
         <canHitFilledCells>true</canHitFilledCells>
         <affectCaster>false</affectCaster>
       </li>

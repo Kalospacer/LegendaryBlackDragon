@@ -51,6 +51,7 @@ namespace LegendaryBlackDragon
             maintainToil.initAction = delegate
             {
                 pawn.pather.StopDead();
+                rotateToFace = TargetIndex.A;
             };
             maintainToil.tickAction = delegate
             {
@@ -59,7 +60,7 @@ namespace LegendaryBlackDragon
                 CompAbilityEffect_SustainedFlameCone flameComp = FlameComp;
                 if (flameComp?.TargetCell.IsValid == true)
                 {
-                    pawn.rotationTracker.FaceCell(flameComp.TargetCell);
+                    job.targetA = flameComp.TargetCell;
                 }
 
                 if (flameComp == null || !flameComp.IsActive)
@@ -68,6 +69,7 @@ namespace LegendaryBlackDragon
                 }
             };
             maintainToil.FailOn(() => pawn.Dead || pawn.Downed || !pawn.Spawned);
+            maintainToil.handlingFacing = true;
             maintainToil.defaultCompleteMode = ToilCompleteMode.Never;
             yield return maintainToil;
         }

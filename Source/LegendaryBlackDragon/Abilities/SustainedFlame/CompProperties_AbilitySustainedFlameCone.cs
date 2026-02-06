@@ -16,11 +16,13 @@ namespace LegendaryBlackDragon
         public int visualIntervalTicks = 3;
         public int maxSustainTicks = 180;
         public EffecterDef effecterDef;
+        public ThingDef moteDef;
         public bool canHitFilledCells = true;
         public bool affectCaster = false;
         public int numStreams = 15;
         public float coneSizeDegrees = 12f;
         public float visualRangeOffset = 1.1f;
+        public float visualLengthMultiplier = 1f;
         public float rangeNoise = 0.4f;
         public float barrelOffsetDistance = 6f;
         public float sizeReductionDistanceThreshold = 8f;
