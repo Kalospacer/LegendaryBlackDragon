@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <LBD_DRM_ArmorMeltdown.label>融甲烈焰</LBD_DRM_ArmorMeltdown.label>
+  <LBD_DRM_ArmorMeltdown.description>目标护甲因高温持续熔解，耐热能力显著下降，并更容易受到火焰伤害。</LBD_DRM_ArmorMeltdown.description>
+  <LBD_DRM_ArmorMeltdown.stages.0.label>轻微</LBD_DRM_ArmorMeltdown.stages.0.label>
+  <LBD_DRM_ArmorMeltdown.stages.1.label>轻微</LBD_DRM_ArmorMeltdown.stages.1.label>
+  <LBD_DRM_ArmorMeltdown.stages.2.label>中度</LBD_DRM_ArmorMeltdown.stages.2.label>
+  <LBD_DRM_ArmorMeltdown.stages.3.label>严重</LBD_DRM_ArmorMeltdown.stages.3.label>
+  <LBD_DRM_ArmorMeltdown.stages.4.label>极重</LBD_DRM_ArmorMeltdown.stages.4.label>
+  <LBD_DRM_ArmorMeltdown.stages.5.label>完全熔毁</LBD_DRM_ArmorMeltdown.stages.5.label>
+</LanguageData>

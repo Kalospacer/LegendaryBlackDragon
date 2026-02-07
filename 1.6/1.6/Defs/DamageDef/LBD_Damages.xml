@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <DamageDef ParentName="Flame">
+    <defName>LBD_DRM_Flame</defName>
+    <label>flame</label>
+    <additionalHediffs>
+      <li>
+        <hediff>LBD_DRM_ArmorMeltdown</hediff>
+        <severityPerDamageDealt>0.02</severityPerDamageDealt>
+      </li>
+    </additionalHediffs>
+  </DamageDef>
+</Defs>

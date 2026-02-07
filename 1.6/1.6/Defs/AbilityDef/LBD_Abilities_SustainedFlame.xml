@@ -28,7 +28,7 @@
         <!-- 伤害扇形在最远端的宽度（格） -->
         <lineWidthEnd>12</lineWidthEnd>
         <!-- 伤害类型与单次脉冲伤害 -->
-        <damageDef>Flame</damageDef>
+        <damageDef>LBD_DRM_Flame</damageDef>
         <damageAmount>12</damageAmount>
         <armorPenetration>0</armorPenetration>
         <filthDef>Filth_Ash</filthDef>
@@ -91,7 +91,7 @@
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <warmupTime>1</warmupTime>
-      <range>5.9</range>
+      <range>15.9</range>
       <requireLineOfSight>false</requireLineOfSight>
       <drawAimPie>false</drawAimPie>
       <targetParams>
@@ -103,7 +103,7 @@
         <!-- 圆形范围半径 -->
         <radius>15.9</radius>
         <!-- 伤害类型 -->
-        <damageDef>Flame</damageDef>
+        <damageDef>LBD_DRM_Flame</damageDef>
         <damAmount>10</damAmount>
         <armorPenetration>0</armorPenetration>
         <filthDef>Filth_Ash</filthDef>
@@ -114,7 +114,7 @@
         <!-- 最长持续 tick（180 = 3秒） -->
         <maxSustainTicks>180</maxSustainTicks>
         <!-- 360° Effecter 特效 -->
-        <effecterDef>Fire_Burst</effecterDef>
+        <effecterDef>LBD_Fire_Burst</effecterDef>
         <effecterIntervalTicks>5</effecterIntervalTicks>
         <effecterDurationTicks>17</effecterDurationTicks>
         <!-- 环形发射点数量 -->
