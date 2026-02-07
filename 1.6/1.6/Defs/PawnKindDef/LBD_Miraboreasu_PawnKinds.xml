@@ -18,10 +18,9 @@
 		<minGenerationAge>19</minGenerationAge>
 		<maxGenerationAge>25</maxGenerationAge>
 		<canBeScattered>false</canBeScattered>
-		<!-- <abilities>
-			<li>EF_Perlica_LightingStrike</li>
-			<li>EF_Perlica_OrbitStrike</li>
-		</abilities> -->
+		<abilities>
+			<li>LBD_ToggleMeleeMode</li>
+		</abilities>
 		<nameMaker>LBD_Miraboreasu_NameMaker</nameMaker>
 		<fixedChildBackstories>
 			<li>LBD_Miraboreasu_Childhood</li>

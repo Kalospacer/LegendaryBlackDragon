@@ -414,7 +414,22 @@
       </lifeStageAges>
     </race>
 
+    <tools>
+      <li>
+        <label>dragon melee strike</label>
+        <capacities>
+          <li>LBD_Miraboreasu_MeleeMode</li>
+        </capacities>
+        <power>24</power>
+        <cooldownTime>1.8</cooldownTime>
+        <chanceFactor>2.0</chanceFactor>
+      </li>
+    </tools>
+
     <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_MeleeModeState">
+        <defaultScratchMode>false</defaultScratchMode>
+      </li>
 			<li MayRequire="Nals.FacialAnimation">
 				<compClass>FacialAnimation.DrawFaceGraphicsComp</compClass>
 			</li>

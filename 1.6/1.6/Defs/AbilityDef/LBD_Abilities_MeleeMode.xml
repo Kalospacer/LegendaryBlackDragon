@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <AbilityDef>
+    <defName>LBD_ToggleMeleeMode</defName>
+    <label>切换拍击/挠击</label>
+    <description>切换近战模式：拍击（范围伤害）与挠击（击飞目标）。</description>
+    <iconPath>UI/Abilities/FireBurst</iconPath>
+    <targetRequired>false</targetRequired>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0</warmupTime>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <cooldownTicksRange>30~30</cooldownTicksRange>
+    <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_AbilityToggleMeleeMode" />
+    </comps>
+  </AbilityDef>
+</Defs>

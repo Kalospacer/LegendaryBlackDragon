@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <LBD_MeleeMode_Slam>{PAWN_nameDef} 切换为拍击模式。</LBD_MeleeMode_Slam>
+  <LBD_MeleeMode_Scratch>{PAWN_nameDef} 切换为挠击模式。</LBD_MeleeMode_Scratch>
+</LanguageData>
