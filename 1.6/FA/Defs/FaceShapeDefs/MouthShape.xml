@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+  <FacialAnimation.MouthShapeDef MayRequire="Nals.FacialAnimation">
+  	<defName>normal</defName>
+  </FacialAnimation.MouthShapeDef>
+
+  <FacialAnimation.MouthShapeDef MayRequire="Nals.FacialAnimation">
+    <defName>open</defName>
+  </FacialAnimation.MouthShapeDef>
+
+  <FacialAnimation.MouthShapeDef MayRequire="Nals.FacialAnimation">
+    <defName>openex</defName>
+  </FacialAnimation.MouthShapeDef>
+
+  <FacialAnimation.MouthShapeDef MayRequire="Nals.FacialAnimation">
+    <defName>dissatisfaction</defName>
+  </FacialAnimation.MouthShapeDef>
+</Defs>

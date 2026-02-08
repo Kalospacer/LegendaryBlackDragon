@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+	<ThingDef ParentName="ApparelMakeableBase">
+		<defName>LBD_Miraboreasu_Armor</defName>
+		<label>黑龙铠甲</label>
+    <description>黑龙所穿的由龙鳞和龙骨构成的盔甲——似乎并不是可以被打造出来的装备</description>
+    <graphicData>
+			<texPath>LegendaryBlackDragon/Things/Miraboreasu/Clothes/Armor/Miraboreasu_Armor</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+		</graphicData>
+	  <destroyOnDrop>true</destroyOnDrop>
+		<costStuffCount>0</costStuffCount>
+    <useHitPoints>false</useHitPoints>
+		<tradeTags Inherit="False"/>
+    <tradeability>none</tradeability>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+    <apparel>
+      <tags>
+			  <li>LBD_Miraboreasu_Cloth</li>
+      </tags>
+			<bodyPartGroups>
+				<li>Neck</li>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+			<wornGraphicPath>LegendaryBlackDragon/Things/Miraboreasu/Clothes/Armor/Miraboreasu_Armor</wornGraphicPath>
+			<layers>
+        <li>Middle</li>
+			</layers>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+      <useWornGraphicMask>true</useWornGraphicMask>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(1,1,1,1)</only>
+        </li>
+      </options>
+    </colorGenerator>
+    <recipeMaker Inherit="False" IsNull="True"/>
+    <costList Inherit="False"/>
+		<statBases>
+			<WorkToMake>25000</WorkToMake>
+			<Mass>0.5</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+      <StuffEffectMultiplierArmor>1.75</StuffEffectMultiplierArmor>
+			<StuffEffectMultiplierInsulation_Cold>1.75</StuffEffectMultiplierInsulation_Cold>
+			<StuffEffectMultiplierInsulation_Heat>1.25</StuffEffectMultiplierInsulation_Heat>
+		</statBases>
+		<equippedStatOffsets>
+      <IncomingDamageFactor>-0.5</IncomingDamageFactor>
+		</equippedStatOffsets>
+	</ThingDef>
+</Defs>
