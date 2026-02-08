@@ -65,29 +65,73 @@
             </li>
           </colorChannels>
           <bodyAddons>
-            <!-- <li>
-              <path>Endfield/Things/Perlica/Addons/Perlica_Feather_Ear</path>
-              <offsets>
-                <south>
-                  <offset>(0,0.32)</offset>
-                </south>
-                <north>
-                  <offset>(0,0.32)</offset>
-                </north>
-                <east>
-                  <offset>(-0.07,0)</offset>
-                </east>
-                <west>
-                  <offset>(-0.07,0)</offset>
-                </west>
-              </offsets>
+            <li>
+              <name>Miraboreasu Horn</name>
+              <userCustomizable>true</userCustomizable>
+              <path>LegendaryBlackDragon/Things/Miraboreasu/Addons/Miraboreasu_Horn</path>
               <inFrontOfBody>true</inFrontOfBody>
+              <layerInvert>false</layerInvert>
+              <colorChannel>hair</colorChannel>
+              <defaultOffset>Center</defaultOffset>
+              <drawSize>1</drawSize>
+              <alignWithHead>true</alignWithHead>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
               <conditions>
                 <BodyPart>
-                  <bodyPart>WULA_Addons_Antenna_Bodypart</bodyPart>
+                  <bodyPart>Head</bodyPart>
                 </BodyPart>
+                <Posture>
+                  <drawnStanding>true</drawnStanding>
+                  <drawnInBed>true</drawnInBed>
+                  <drawnLaying>true</drawnLaying>
+                </Posture>
+                <RotStage>Fresh,Rotting</RotStage>
               </conditions>
-            </li> -->
+              <offsets>
+                <west>
+                  <layerOffset>-0.274</layerOffset>
+                </west>
+                <south>
+                  <layerOffset>-0.274</layerOffset>
+                </south>
+                <north>
+                  <layerOffset>-0.274</layerOffset>
+                </north>
+                <east>
+                  <layerOffset>-0.274</layerOffset>
+                </east>
+              </offsets>
+            </li>
+            <li>
+              <path>LegendaryBlackDragon/Things/Miraboreasu/Addons/Miraboreasu_Tail</path>
+              <inFrontOfBody>false</inFrontOfBody>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <offsets>
+                <north>
+                  <layerOffset>-0.275</layerOffset>
+                </north>
+              </offsets>
+            </li>
+            <li>
+              <path>LegendaryBlackDragon/Things/Miraboreasu/Addons/Miraboreasu_Tail</path>
+              <inFrontOfBody>false</inFrontOfBody>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <offsets>
+                <north>
+                  <layerOffset>-0.275</layerOffset>
+                </north>
+              </offsets>
+            </li>
+            <li>
+              <path>LegendaryBlackDragon/Things/Miraboreasu/Hair/Miraboreasu_Hair_behind</path>
+              <inFrontOfBody>false</inFrontOfBody>
+              <scaleWithPawnDrawsize>true</scaleWithPawnDrawsize>
+              <offsets>
+                <north>
+                  <layerOffset>-0.275</layerOffset>
+                </north>
+              </offsets>
+            </li>
           </bodyAddons>
           <!-- 图像放大 -->
           <!-- <borderScale>4</borderScale>
@@ -345,6 +389,9 @@
 
     <!-- 基础属性设置 -->
     <statBases>
+      <MaxFlightTime>9999</MaxFlightTime>
+      <FlightCooldown>0</FlightCooldown>
+
       <ComfyTemperatureMin>-30</ComfyTemperatureMin>
       <ComfyTemperatureMax>9999</ComfyTemperatureMax>
 
@@ -366,6 +413,8 @@
 
     <race>
       <body>Human</body>
+      <renderTree>LBD_MiraboreasuRenderTree</renderTree>
+      <flightStartChanceOnJobStart>1.0</flightStartChanceOnJobStart>
       <lifeStageWorkSettings MayRequire="Ludeon.RimWorld.Biotech">
         <Firefighter>0</Firefighter>
         <Patient>0</Patient>
@@ -427,6 +476,16 @@
     </tools>
 
     <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_PawnFlight">
+
+        <!-- 飞行触发条件：仅在征召时飞行 -->
+        <flightCondition>DraftedAndMove</flightCondition>
+
+        <!-- 链接到我们刚刚创建的 AnimationDef -->
+        <flyingAnimationNorth>LBD_FlyNorth</flyingAnimationNorth>
+        <flyingAnimationEast>LBD_FlyEast</flyingAnimationEast>
+        <flyingAnimationSouth>LBD_FlySouth</flyingAnimationSouth>
+      </li>
       <li Class="LegendaryBlackDragon.CompProperties_MeleeModeState">
         <defaultScratchMode>false</defaultScratchMode>
       </li>
@@ -454,6 +513,14 @@
       <li MayRequire="Nals.FacialAnimation">
 				<compClass>FacialAnimation.FacialAnimationControllerComp</compClass>
 			</li>
+      <li Class="ArachnaeSwarm.CompProperties_NodeSwarmLifetime">
+        <immuteHediff>ARA_Cycle_Suppression_Hediff</immuteHediff>
+        <lifespanHediff>ARA_LifespanHediff</lifespanHediff>
+        <lifetimeDays>60</lifetimeDays>
+        <labelOverride>寿命</labelOverride>
+        <tooltipOverride>阿拉克涅的督虫们生命如精密的发条般运转着。</tooltipOverride>
+        <showGizmoOnNonPlayerControlled>true</showGizmoOnNonPlayerControlled>
+      </li>
     </comps>
   </AlienRace.ThingDef_AlienRace>
   <StyleItemCategoryDef>
@@ -464,7 +531,7 @@
 		<defName>LBD_Miraboreasu_Hair</defName>
 		<label>Miraboreasu's Hair</label>
 		<hairGender>Female</hairGender>
-		<texPath>LegendaryBlackDragon/Things/Miraboreasu/Hair/Perlica_Hair</texPath>
+		<texPath>LegendaryBlackDragon/Things/Miraboreasu/Hair/Miraboreasu_Hair</texPath>
 		<category>LBD_Miraboreasu_Style</category>
 		<styleTags>
 			<li>LBD_Miraboreasu_Style</li>

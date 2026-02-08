@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<!-- 眉毛的定义 -->
+	<FacialAnimation.BrowTypeDef MayRequire="Nals.FacialAnimation">
+		<defName>LBD_Fatalis_Race_BrowNormal</defName>
+		<raceName>LBD_Fatalis_Race</raceName>
+		<texPath>LegendaryBlackDragon/Things/Miraboreasu/Brows/Normal</texPath>
+		<shader>Map/Transparent</shader>
+      <enableUnisexTexPath>True</enableUnisexTexPath>
+	</FacialAnimation.BrowTypeDef>
+  <!-- 眼睛的定义 -->
+  <FacialAnimation.EyeballTypeDef MayRequire="Nals.FacialAnimation">
+		<defName>LBD_Fatalis_Race_EyeA</defName>
+		<raceName>LBD_Fatalis_Race</raceName>
+    <texPath>LegendaryBlackDragon/Things/Miraboreasu/Eyes/Normal</texPath>
+	  <altMaskPath>LegendaryBlackDragon/Things/Miraboreasu/Eyes/Common</altMaskPath>
+    <shader>Map/CutoutSkinOverlay</shader>
+    <minColor>RGB(255,255,255)</minColor>
+    <maxColor>RGB(255,255,255)</maxColor>
+    <enableUnisexTexPath>True</enableUnisexTexPath>
+  </FacialAnimation.EyeballTypeDef>
+  <!-- 头的定义 -->
+  <FacialAnimation.HeadTypeDef MayRequire="Nals.FacialAnimation">
+		<defName>LBD_Fatalis_Race_Head</defName>
+		<raceName>LBD_Fatalis_Race</raceName>
+    <texPath>LegendaryBlackDragon/Things/Miraboreasu/Heads_Blank/Normal</texPath>
+	  <shader>Map/CutoutSkin</shader>
+    <shaderColorOverride>Map/CutoutSkinOverride</shaderColorOverride>
+    <enableUnisexTexPath>True</enableUnisexTexPath>
+  </FacialAnimation.HeadTypeDef>
+  <!-- 睫毛的定义 -->
+  <FacialAnimation.LidTypeDef MayRequire="Nals.FacialAnimation">
+		<defName>LBD_Fatalis_Race_Lid</defName>
+		<raceName>LBD_Fatalis_Race</raceName>
+	  <texPath>LegendaryBlackDragon/Things/Miraboreasu/Lids/Normal</texPath>
+	  <shader>Map/Transparent</shader>
+    <enableUnisexTexPath>True</enableUnisexTexPath>
+  </FacialAnimation.LidTypeDef>
+  <!-- 嘴的定义 -->
+  <FacialAnimation.MouthTypeDef MayRequire="Nals.FacialAnimation">
+		<defName>LBD_Fatalis_Race_Mouth</defName>
+		<raceName>LBD_Fatalis_Race</raceName>
+		<texPath>LegendaryBlackDragon/Things/Miraboreasu/Mouth/Normal</texPath>
+		<shader>Map/Transparent</shader>
+		<enableUnisexTexPath>True</enableUnisexTexPath>
+  </FacialAnimation.MouthTypeDef>
+  <!-- 皮肤的定义 -->
+  <FacialAnimation.SkinTypeDef MayRequire="Nals.FacialAnimation">
+		<defName>LBD_Fatalis_Race_Skin</defName>
+		<raceName>LBD_Fatalis_Race</raceName>
+	  <texPath>LegendaryBlackDragon/Things/Miraboreasu/Skins/Normal</texPath>
+	  <shader>Map/CutoutSkin</shader>
+    <enableUnisexTexPath>True</enableUnisexTexPath>
+  </FacialAnimation.SkinTypeDef>
+</Defs>

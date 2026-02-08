@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+  <FacialAnimation.HeadShapeDef MayRequire="Nals.FacialAnimation">
+  	<defName>normal</defName>
+  </FacialAnimation.HeadShapeDef>
+
+  <FacialAnimation.HeadShapeDef MayRequire="Nals.FacialAnimation">
+    <defName>blush</defName>
+  </FacialAnimation.HeadShapeDef>
+
+</Defs>

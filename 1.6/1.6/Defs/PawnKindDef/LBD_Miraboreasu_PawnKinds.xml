@@ -18,6 +18,13 @@
 		<minGenerationAge>19</minGenerationAge>
 		<maxGenerationAge>25</maxGenerationAge>
 		<canBeScattered>false</canBeScattered>
+
+		<flyingAnimationFramePathPrefix>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_</flyingAnimationFramePathPrefix>
+		<flyingAnimationDrawSize>1</flyingAnimationDrawSize>
+		<flyingAnimationFrameCount>2</flyingAnimationFrameCount>
+		<flyingAnimationTicksPerFrame>2</flyingAnimationTicksPerFrame>
+		<flyingAnimationInheritColors>false</flyingAnimationInheritColors>
+
 		<abilities>
 			<li>LBD_ToggleMeleeMode</li>
 		</abilities>
@@ -29,7 +36,7 @@
 			<li>LBD_Miraboreasu_Adulthood</li>
 		</fixedAdultBackstories>
 		<apparelRequired>
-			<!-- <li>EF_Perlica_Cloth</li> -->
+			<li>LBD_Miraboreasu_Armor</li>
 		</apparelRequired>
 		<forcedHairColor>(255,255,255,255)</forcedHairColor>
     <itemQuality>Excellent</itemQuality>
@@ -136,7 +143,7 @@
     <slot>Childhood</slot>
     <title>禁忌巨兽</title>
     <titleShort>巨兽</titleShort>
-    <description>作为不详的毁灭象征，黑龙的诞生和其他古龙种一样笼罩在迷雾中，人们对这种超脱于生态系统的巨兽知之甚少，其名字已经成为命运之战的象征。黑龙对自身以外的事物都极度蔑视，不认同任何存在。</description>
+    <description>作为不详的象征，黑龙的诞生和其他古龙种一样笼罩在迷雾中，人们对这种超脱于生态系统的巨兽知之甚少，其名字已经成为命运之战的象征。黑龙对自身以外的事物都极度蔑视，不认同任何存在。</description>
     <skillGains>
       <Social>4</Social>
       <Intellectual>4</Intellectual>
@@ -164,7 +171,7 @@
     <defName>LBD_Miraboreasu_Adulthood</defName>
     <slot>Adulthood</slot>
     <title>毁灭之兆</title>
-    <titleShort>毁灭之兆</titleShort>
+    <titleShort>黑龙</titleShort>
     <description>传说中，曾经君临于世界的繁荣大国修雷德国，其王都在一夜之间被黑龙毁灭，曾经夸耀荣华的宫殿被付之一炬，以古城为中心的旧王都化为无法感受任何生命气息的不毛之地。黑龙将焚尽后的修雷德城堡作为自己的巢穴，这一带都被视为无法踏足的禁区，直到四位天尊骑乘翼龙飞临此地······</description>
     <skillGains>
       <Shooting>4</Shooting>
