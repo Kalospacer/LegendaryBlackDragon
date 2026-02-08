@@ -68,7 +68,7 @@ namespace LegendaryBlackDragon
             {
                 shouldBeFlying = true;
             }
-            else if (compProps.flightCondition == FlightCondition.DraftedAndMove && ___pawn.Drafted || ___pawn.pather.Moving)
+            else if (compProps.flightCondition == FlightCondition.DraftedAndMove && (___pawn.Drafted || ___pawn.pather.Moving))
             {
                 shouldBeFlying = true;
             }

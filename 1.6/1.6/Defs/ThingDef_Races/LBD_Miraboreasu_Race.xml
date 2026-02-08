@@ -409,6 +409,8 @@
       <PsychicSensitivity>1.5</PsychicSensitivity>
       <MentalBreakThreshold>0.5</MentalBreakThreshold>
       <Flammability>0</Flammability>
+      <MaxFlightTime>9999</MaxFlightTime>
+      <FlightCooldown>0</FlightCooldown>
     </statBases>
 
     <race>

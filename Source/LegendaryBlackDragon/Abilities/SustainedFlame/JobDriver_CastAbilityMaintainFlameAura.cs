@@ -30,6 +30,11 @@ namespace LegendaryBlackDragon
                 {
                     job.ability.StartCooldown(job.ability.def.cooldownTicksRange.RandomInRange);
                 }
+
+                if (pawn?.flight != null && pawn.flight.Flying)
+                {
+                    pawn.flight.ForceLand();
+                }
             });
 
             // 停步
