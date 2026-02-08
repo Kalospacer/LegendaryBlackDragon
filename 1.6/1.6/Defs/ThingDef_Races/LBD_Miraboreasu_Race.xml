@@ -362,10 +362,14 @@
       <PsychicSensitivity>1.5</PsychicSensitivity>
       <MentalBreakThreshold>0.5</MentalBreakThreshold>
       <Flammability>0</Flammability>
+      <MaxFlightTime>9999</MaxFlightTime>
+      <FlightCooldown>0</FlightCooldown>
     </statBases>
 
     <race>
       <body>Human</body>
+      <flightStartChanceOnJobStart>1</flightStartChanceOnJobStart>
+      <flightSpeedFactor>2.8</flightSpeedFactor>
       <lifeStageWorkSettings MayRequire="Ludeon.RimWorld.Biotech">
         <Firefighter>0</Firefighter>
         <Patient>0</Patient>
@@ -464,7 +468,7 @@
 		<defName>LBD_Miraboreasu_Hair</defName>
 		<label>Miraboreasu's Hair</label>
 		<hairGender>Female</hairGender>
-		<texPath>LegendaryBlackDragon/Things/Miraboreasu/Hair/Perlica_Hair</texPath>
+		<texPath>LegendaryBlackDragon/Things/Miraboreasu/Hair/Miraboreasu_Hair</texPath>
 		<category>LBD_Miraboreasu_Style</category>
 		<styleTags>
 			<li>LBD_Miraboreasu_Style</li>

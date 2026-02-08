@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="EtherealThingBase">
+    <defName>LBD_DragonSkyNukeStrikeController</defName>
+    <label>dragon sky nuke controller</label>
+    <thingClass>LegendaryBlackDragon.LBD_DragonSkyNukeStrikeController</thingClass>
+    <tickerType>Normal</tickerType>
+    <drawerType>RealtimeOnly</drawerType>
+    <drawOffscreen>true</drawOffscreen>
+    <seeThroughFog>true</seeThroughFog>
+    <comps>
+      <li Class="CompProperties_AffectsSky">
+        <glow>0.58</glow>
+        <skyColors>
+          <sky>(180, 40, 28)</sky>
+          <shadow>(120, 28, 22)</shadow>
+          <overlay>(190, 60, 45)</overlay>
+          <saturation>1.25</saturation>
+        </skyColors>
+        <lightsourceShineSize>0.55</lightsourceShineSize>
+        <lightsourceShineIntensity>0.2</lightsourceShineIntensity>
+        <lerpDarken>true</lerpDarken>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>LBD_DragonSkyNukeFlyerLeaving</defName>
+    <label>dragon flying leave</label>
+    <thingClass>LegendaryBlackDragon.LBD_Skyfaller_DragonSkyNukeLeaving</thingClass>
+    <skyfaller>
+      <reversed>true</reversed>
+      <ticksToImpactRange>0~0</ticksToImpactRange>
+      <movementType>Decelerate</movementType>
+      <shadowSize>0.75</shadowSize>
+      <angleCurve>
+        <points>
+          <li>(0,90)</li>
+          <li>(0.05,70)</li>
+        </points>
+      </angleCurve>
+      <speedCurve>
+        <points>
+          <li>(0.0,0.05)</li>
+          <li>(0.4,0.15)</li>
+        </points>
+      </speedCurve>
+      <zPositionCurve>
+        <points>
+          <li>(0,0)</li>
+          <li>(0.1,0.5)</li>
+        </points>
+      </zPositionCurve>
+    </skyfaller>
+  </ThingDef>
+
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>LBD_DragonSkyNukeFlyerArrival</defName>
+    <label>dragon flying arrive</label>
+    <thingClass>LegendaryBlackDragon.LBD_Skyfaller_DragonSkyNukeArrival</thingClass>
+    <skyfaller>
+      <motesPerCell>0</motesPerCell>
+      <ticksToImpactRange>600~650</ticksToImpactRange>
+      <movementType>Decelerate</movementType>
+      <shadowSize>0.75</shadowSize>
+      <angleCurve>
+        <points>
+          <li>(0,-65)</li>
+          <li>(1,-90)</li>
+        </points>
+      </angleCurve>
+      <speedCurve>
+        <points>
+          <li>(0.60,0.10)</li>
+          <li>(0.95,0.05)</li>
+        </points>
+      </speedCurve>
+      <zPositionCurve>
+        <points>
+          <li>(0,3.5)</li>
+          <li>(0.8,2.5)</li>
+          <li>(1,0)</li>
+        </points>
+      </zPositionCurve>
+    </skyfaller>
+  </ThingDef>
+</Defs>

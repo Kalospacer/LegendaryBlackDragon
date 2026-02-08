@@ -20,6 +20,7 @@
 		<canBeScattered>false</canBeScattered>
 		<abilities>
 			<li>LBD_ToggleMeleeMode</li>
+      <li>LBD_DragonSkyNukeStrike</li>
 		</abilities>
 		<nameMaker>LBD_Miraboreasu_NameMaker</nameMaker>
 		<fixedChildBackstories>
@@ -125,8 +126,20 @@
 			<rulesStrings>
 				<li>r_name->[LBD_Miraboreasu_FirstName] '[LBD_Miraboreasu_nickName]' [LBD_Miraboreasu_LastName]</li>
 				<li>LBD_Miraboreasu_nickName->Black Dragon</li>
+				<li>LBD_Miraboreasu_nickName->Ash Tyrant</li>
+				<li>LBD_Miraboreasu_nickName->Night Scorch</li>
+				<li>LBD_Miraboreasu_nickName->Worldburner</li>
+				<li>LBD_Miraboreasu_nickName->Ruinwing</li>
 				<li>LBD_Miraboreasu_FirstName->Mira</li>
+				<li>LBD_Miraboreasu_FirstName->Nera</li>
+				<li>LBD_Miraboreasu_FirstName->Astra</li>
+				<li>LBD_Miraboreasu_FirstName->Vera</li>
+				<li>LBD_Miraboreasu_FirstName->Sera</li>
 				<li>LBD_Miraboreasu_LastName->Boreasu</li>
+				<li>LBD_Miraboreasu_LastName->Drakenfall</li>
+				<li>LBD_Miraboreasu_LastName->Noctflare</li>
+				<li>LBD_Miraboreasu_LastName->Ashscale</li>
+				<li>LBD_Miraboreasu_LastName->Obsidian</li>
 			</rulesStrings>
 		</rulePack>
 	</RulePackDef>
