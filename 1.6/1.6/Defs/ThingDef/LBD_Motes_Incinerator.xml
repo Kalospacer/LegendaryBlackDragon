@@ -17,7 +17,7 @@
     </mote>
     <drawOffscreen>true</drawOffscreen>
     <graphicData>
-      <texPath>Things/Mote/IncineratorFlameSheet</texPath>
+      <texPath>LegendaryBlackDragon/Mote/LBD_Fire_Mote</texPath>
       <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
       <shaderType>MoteIncineratorBeam</shaderType>
       <shaderParameters>
@@ -29,7 +29,7 @@
         <_NumFrames>12</_NumFrames>
         <_FramesPerSec>12</_FramesPerSec>
       </shaderParameters>
-      <drawSize>10</drawSize>
+      <drawSize>(10,15)</drawSize>
     </graphicData>
   </ThingDef>
 </Defs>

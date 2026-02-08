@@ -68,6 +68,7 @@ namespace LegendaryBlackDragon
                     EndJobWith(JobCondition.Succeeded);
                 }
             };
+            maintainToil.PlaySustainerOrSound(LBD_DefOf.LBD_Dragon_Fire_Ability_Maintain);
             maintainToil.FailOn(() => pawn.Dead || pawn.Downed || !pawn.Spawned);
             maintainToil.handlingFacing = true;
             maintainToil.defaultCompleteMode = ToilCompleteMode.Never;

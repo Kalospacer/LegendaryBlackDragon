@@ -11,6 +11,7 @@
     <ai_IsIncendiary>true</ai_IsIncendiary>
     <hostile>true</hostile>
     <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>22.9</range>
@@ -58,7 +59,7 @@
         <!-- 视觉喷流长度随机噪声 -->
         <rangeNoise>0.4</rangeNoise>
         <!-- 火焰从施法者前方多远位置发射（视觉） -->
-        <barrelOffsetDistance>6</barrelOffsetDistance>
+        <barrelOffsetDistance>8</barrelOffsetDistance>
         <!-- 视觉缩放阈值（越小越容易显得“短粗”） -->
         <sizeReductionDistanceThreshold>8</sizeReductionDistanceThreshold>
         <!-- 喷流寿命随机噪声 -->
@@ -86,6 +87,7 @@
     <hostile>true</hostile>
     <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
     <cooldownTicksRange>900~900</cooldownTicksRange>
+    <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
     <verbProperties>
       <verbClass>LegendaryBlackDragon.Verb_CastAbility_FlyingSustainedFlameAura</verbClass>
       <warmupTime>1</warmupTime>
@@ -139,12 +141,12 @@
     <charges>3</charges>
     <cooldownPerCharge>true</cooldownPerCharge>
     <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
-    <!-- <warmupStartSound>AcidSpray_Warmup</warmupStartSound> -->
+    <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>26</range>
-      <warmupTime>0.25</warmupTime>
-      <!-- <soundCast>AcidSpray_Resolve</soundCast> -->
+      <warmupTime>0.6</warmupTime>
+      <soundCast>LBD_FireBall_voice</soundCast>
       <targetParams>
         <canTargetLocations>true</canTargetLocations>
       </targetParams>
@@ -188,9 +190,11 @@
     <charges>2</charges>
     <cooldownPerCharge>true</cooldownPerCharge>
     <aiCanUse>false</aiCanUse>
+    <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
     <verbProperties>
       <verbClass>LegendaryBlackDragon.Verb_CastAbilityTrackingCharge</verbClass>
       <requireLineOfSight>false</requireLineOfSight>
+      <soundCast>LBD_Dragon_Charge_voice</soundCast>
       <targetParams>
         <canTargetPawns>true</canTargetPawns>
         <canTargetBuildings>true</canTargetBuildings>
