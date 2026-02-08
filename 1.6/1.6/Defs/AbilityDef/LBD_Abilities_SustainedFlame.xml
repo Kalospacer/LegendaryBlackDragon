@@ -89,7 +89,7 @@
     <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
     <cooldownTicksRange>900~900</cooldownTicksRange>
     <verbProperties>
-      <verbClass>Verb_CastAbility</verbClass>
+      <verbClass>LegendaryBlackDragon.Verb_CastAbility_FlyingSustainedFlameAura</verbClass>
       <warmupTime>1</warmupTime>
       <range>15.9</range>
       <requireLineOfSight>false</requireLineOfSight>

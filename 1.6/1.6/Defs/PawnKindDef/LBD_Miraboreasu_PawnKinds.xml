@@ -20,6 +20,8 @@
 		<canBeScattered>false</canBeScattered>
 		<abilities>
 			<li>LBD_ToggleMeleeMode</li>
+      <li>LBD_SustainedFlameCone</li>
+      <li>LBD_SustainedFlameAura</li>
       <li>LBD_DragonSkyNukeStrike</li>
 		</abilities>
 		<nameMaker>LBD_Miraboreasu_NameMaker</nameMaker>
