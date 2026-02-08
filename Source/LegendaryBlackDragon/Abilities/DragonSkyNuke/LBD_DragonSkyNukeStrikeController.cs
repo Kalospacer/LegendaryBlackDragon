@@ -12,6 +12,7 @@ namespace LegendaryBlackDragon
             None,
             Delay,
             Phase1,
+            Phase2Preload,
             Phase2,
             Finished
         }
@@ -39,6 +40,12 @@ namespace LegendaryBlackDragon
         private int phase2IgniteCellsPerPulse = -1;
         private float phase2IgniteFireSize = 0.16f;
         private int phase2IgniteCursor;
+        private float phase2ExplosionRadius = 1.9f;
+        private int phase2ExplosionDamage = 0;
+        private float phase2ExplosionChanceToStartFire = 0.35f;
+        private int phase2ExplosionVisualsPerPulse = 24;
+        private bool phase2PreloadQueued;
+        private bool phase2PreloadDone;
 
         private int damageAmount = 16;
         private float armorPenetration;
@@ -54,6 +61,7 @@ namespace LegendaryBlackDragon
 
         private int skyFadeInTicks = 20;
         private int skyFadeOutTicks = 40;
+        private const string Phase2PreloadLongEventTextKey = "LBD_DragonSkyNuke_Preloading";
 
         private List<Thing> phase1Targets = new List<Thing>();
         private List<Thing> phase2Targets = new List<Thing>();
@@ -90,6 +98,12 @@ namespace LegendaryBlackDragon
             Scribe_Values.Look(ref phase2IgniteCellsPerPulse, "phase2IgniteCellsPerPulse", -1);
             Scribe_Values.Look(ref phase2IgniteFireSize, "phase2IgniteFireSize", 0.16f);
             Scribe_Values.Look(ref phase2IgniteCursor, "phase2IgniteCursor", 0);
+            Scribe_Values.Look(ref phase2ExplosionRadius, "phase2ExplosionRadius", 1.9f);
+            Scribe_Values.Look(ref phase2ExplosionDamage, "phase2ExplosionDamage", 0);
+            Scribe_Values.Look(ref phase2ExplosionChanceToStartFire, "phase2ExplosionChanceToStartFire", 0.35f);
+            Scribe_Values.Look(ref phase2ExplosionVisualsPerPulse, "phase2ExplosionVisualsPerPulse", 24);
+            Scribe_Values.Look(ref phase2PreloadQueued, "phase2PreloadQueued", false);
+            Scribe_Values.Look(ref phase2PreloadDone, "phase2PreloadDone", false);
 
             Scribe_Values.Look(ref damageAmount, "damageAmount", 16);
             Scribe_Values.Look(ref armorPenetration, "armorPenetration", 0f);
@@ -132,6 +146,10 @@ namespace LegendaryBlackDragon
             phase2PulseCount = Mathf.Max(1, props.phase2PulseCount);
             phase2IgniteCellsPerPulse = props.phase2IgniteCellsPerPulse;
             phase2IgniteFireSize = Mathf.Max(0.01f, props.phase2IgniteFireSize);
+            phase2ExplosionRadius = Mathf.Max(0.1f, props.phase2ExplosionRadius);
+            phase2ExplosionDamage = Mathf.Max(0, props.phase2ExplosionDamage);
+            phase2ExplosionChanceToStartFire = Mathf.Clamp01(props.phase2ExplosionChanceToStartFire);
+            phase2ExplosionVisualsPerPulse = Mathf.Max(0, props.phase2ExplosionVisualsPerPulse);
 
             damageDef = props.damageDef ?? DamageDefOf.Burn;
             damageAmount = Mathf.Max(1, props.damageAmount);
@@ -196,6 +214,9 @@ namespace LegendaryBlackDragon
                     break;
                 case StrikeStage.Phase1:
                     TickPhase1(currentTick);
+                    break;
+                case StrikeStage.Phase2Preload:
+                    TickPhase2Preload();
                     break;
                 case StrikeStage.Phase2:
                     TickPhase2(currentTick);
@@ -272,13 +293,30 @@ namespace LegendaryBlackDragon
 
         private void StartPhase2()
         {
+            stage = StrikeStage.Phase2Preload;
+            QueuePhase2PreloadLongEvent();
+        }
+
+        private void TickPhase2Preload()
+        {
+            if (!phase2PreloadDone)
+            {
+                if (!phase2PreloadQueued)
+                {
+                    QueuePhase2PreloadLongEvent();
+                }
+                return;
+            }
+
+            BeginPhase2();
+        }
+
+        private void BeginPhase2()
+        {
             stage = StrikeStage.Phase2;
             stageStartTick = Find.TickManager.TicksGame;
             nextPhase2PulseTick = stageStartTick;
             phase2PulsesDone = 0;
-
-            PreloadPhase2Targets();
-            PreloadPhase2OutdoorCells();
         }
 
         private void TickPhase2(int currentTick)
@@ -535,12 +573,18 @@ namespace LegendaryBlackDragon
                     continue;
                 }
 
+                if (FireUtility.ChanceToStartFireIn(cell, Map) <= 0f)
+                {
+                    continue;
+                }
+
                 phase2OutdoorCells.Add(cell);
             }
 
             if (phase2IgniteCellsPerPulse <= 0)
             {
-                phase2IgniteCellsPerPulse = Mathf.Max(1, Mathf.CeilToInt(phase2OutdoorCells.Count / (float)Mathf.Max(1, phase2PulseCount)));
+                int autoIgnite = Mathf.Max(1, Mathf.CeilToInt(phase2OutdoorCells.Count / (float)Mathf.Max(1, phase2PulseCount)));
+                phase2IgniteCellsPerPulse = Mathf.Min(autoIgnite, 300);
             }
             else
             {
@@ -548,6 +592,37 @@ namespace LegendaryBlackDragon
             }
 
             phase2IgniteCursor = 0;
+        }
+
+        private void QueuePhase2PreloadLongEvent()
+        {
+            if (phase2PreloadQueued || phase2PreloadDone || Map == null)
+            {
+                return;
+            }
+
+            phase2PreloadQueued = true;
+            LongEventHandler.QueueLongEvent(delegate
+            {
+                if (Destroyed || Map == null)
+                {
+                    return;
+                }
+
+                BuildPhase2Caches();
+            }, Phase2PreloadLongEventTextKey, doAsynchronously: false, null);
+        }
+
+        private void BuildPhase2Caches()
+        {
+            if (phase2PreloadDone || Map == null)
+            {
+                return;
+            }
+
+            PreloadPhase2Targets();
+            PreloadPhase2OutdoorCells();
+            phase2PreloadDone = true;
         }
 
         private void ApplyPhase2PulseDamage()
@@ -580,6 +655,7 @@ namespace LegendaryBlackDragon
             }
 
             int igniteCount = Mathf.Max(1, phase2IgniteCellsPerPulse);
+            int explosionBudget = Mathf.Min(phase2ExplosionVisualsPerPulse, igniteCount);
             int cellCount = phase2OutdoorCells.Count;
             for (int i = 0; i < igniteCount; i++)
             {
@@ -591,6 +667,12 @@ namespace LegendaryBlackDragon
                 IntVec3 cell = phase2OutdoorCells[phase2IgniteCursor];
                 phase2IgniteCursor++;
                 IgniteCellGuaranteed(cell, phase2IgniteFireSize);
+
+                if (explosionBudget > 0)
+                {
+                    DoPhase2ExplosionVisual(cell);
+                    explosionBudget--;
+                }
             }
         }
 
@@ -600,6 +682,8 @@ namespace LegendaryBlackDragon
             {
                 return;
             }
+
+            TrySpawnAsh(cell);
 
             if (cell.ContainsStaticFire(Map))
             {
@@ -613,6 +697,36 @@ namespace LegendaryBlackDragon
                 fire.instigator = caster;
                 GenSpawn.Spawn(fire, cell, Map);
             }
+        }
+
+        private void TrySpawnAsh(IntVec3 cell)
+        {
+            if (Rand.Chance(0.75f))
+            {
+                FilthMaker.TryMakeFilth(cell, Map, ThingDefOf.Filth_Ash);
+            }
+        }
+
+        private void DoPhase2ExplosionVisual(IntVec3 cell)
+        {
+            if (!cell.InBounds(Map))
+            {
+                return;
+            }
+
+            DamageDef explosionDamageDef = damageDef ?? DamageDefOf.Flame;
+            GenExplosion.DoExplosion(
+                cell,
+                Map,
+                phase2ExplosionRadius,
+                explosionDamageDef,
+                caster,
+                damAmount: phase2ExplosionDamage,
+                armorPenetration: armorPenetration,
+                chanceToStartFire: phase2ExplosionChanceToStartFire,
+                damageFalloff: false,
+                doVisualEffects: true,
+                doSoundEffects: false);
         }
 
         private static IntVec3 RandomEdgeCell(Map map)

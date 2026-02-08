@@ -31,6 +31,10 @@
         <phase2PulseCount>20</phase2PulseCount>
         <phase2IgniteCellsPerPulse>-1</phase2IgniteCellsPerPulse>
         <phase2IgniteFireSize>0.16</phase2IgniteFireSize>
+        <phase2ExplosionRadius>1.9</phase2ExplosionRadius>
+        <phase2ExplosionDamage>0</phase2ExplosionDamage>
+        <phase2ExplosionChanceToStartFire>0.35</phase2ExplosionChanceToStartFire>
+        <phase2ExplosionVisualsPerPulse>24</phase2ExplosionVisualsPerPulse>
         <damageDef>LBD_DRM_Flame</damageDef>
         <damageAmount>18</damageAmount>
         <armorPenetration>2</armorPenetration>

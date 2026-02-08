@@ -15,6 +15,10 @@ namespace LegendaryBlackDragon
         public int phase2PulseCount = 20;
         public int phase2IgniteCellsPerPulse = -1;
         public float phase2IgniteFireSize = 0.16f;
+        public float phase2ExplosionRadius = 1.9f;
+        public int phase2ExplosionDamage = 0;
+        public float phase2ExplosionChanceToStartFire = 0.35f;
+        public int phase2ExplosionVisualsPerPulse = 24;
         public DamageDef damageDef;
         public int damageAmount = 16;
         public float armorPenetration;
