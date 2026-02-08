@@ -4,7 +4,7 @@
     <defName>LBD_SustainedFlameCone</defName>
     <label>sustained flame cone</label>
     <description>After a short charge, continuously breathes a cone of flame while the caster maintains focus.</description>
-    <iconPath>UI/Abilities/Burner</iconPath>
+    <iconPath>UI/Abilities/FireSpew</iconPath>
     <jobDef>LBD_CastAbilityMaintainFlame</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
     <aiCanUse>true</aiCanUse>
@@ -30,7 +30,7 @@
         <!-- 伤害类型与单次脉冲伤害 -->
         <damageDef>LBD_DRM_Flame</damageDef>
         <damageAmount>12</damageAmount>
-        <armorPenetration>0</armorPenetration>
+        <armorPenetration>1</armorPenetration>
         <filthDef>Filth_Ash</filthDef>
         <!-- 施法开始后第几 tick 开始造成伤害 -->
         <startDamageTick>1</startDamageTick>
@@ -79,8 +79,6 @@
     <jobDef>LBD_CastAbilityMaintainFlameAura</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
     <targetRequired>false</targetRequired>
-    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
     <showCastingProgressBar>true</showCastingProgressBar>
     <aiCanUse>true</aiCanUse>
     <ai_IsIncendiary>true</ai_IsIncendiary>
@@ -91,7 +89,7 @@
     <verbProperties>
       <verbClass>LegendaryBlackDragon.Verb_CastAbility_FlyingSustainedFlameAura</verbClass>
       <warmupTime>1</warmupTime>
-      <range>15.9</range>
+      <range>8.9</range>
       <requireLineOfSight>false</requireLineOfSight>
       <drawAimPie>false</drawAimPie>
       <targetParams>
@@ -101,7 +99,7 @@
     <comps>
       <li Class="LegendaryBlackDragon.CompProperties_AbilitySustainedFlameAura">
         <!-- 圆形范围半径 -->
-        <radius>15.9</radius>
+        <radius>8.9</radius>
         <!-- 伤害类型 -->
         <damageDef>LBD_DRM_Flame</damageDef>
         <damAmount>10</damAmount>
@@ -128,4 +126,57 @@
       </li>
     </comps>
   </AbilityDef>
+
+  <!-- 女皇 -->
+  <AbilityDef>
+    <defName>LBD_FireBall</defName>
+    <label>火球喷射</label>
+    <description>黑龙向目标位置喷射一发火球，火球在命中后会爆炸并造成范围性伤害。</description>
+    <iconPath>UI/Abilities/FireBurst</iconPath>
+    <cooldownTicksRange>5000</cooldownTicksRange>
+    <aiCanUse>false</aiCanUse>
+    <displayOrder>300</displayOrder>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <charges>3</charges>
+    <cooldownPerCharge>true</cooldownPerCharge>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <!-- <warmupStartSound>AcidSpray_Warmup</warmupStartSound> -->
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>26</range>
+      <warmupTime>0.25</warmupTime>
+      <!-- <soundCast>AcidSpray_Resolve</soundCast> -->
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityLaunchProjectile">
+        <projectileDef>LBD_FireBall_Proj</projectileDef>
+      </li>
+    </comps>
+  </AbilityDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>LBD_FireBall_Proj</defName>
+    <label>火球</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>LegendaryBlackDragon/Mote/LBD_Fireball_Mote</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>(2.5, 3)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>LBD_DRM_Flame</damageDef>
+      <damageAmountBase>30</damageAmountBase>
+      <speed>65</speed>
+      <!-- <soundAmbient>FleshmelterBolt_Launch</soundAmbient> -->
+      <explosionRadius>3.49</explosionRadius>
+      <screenShakeFactor>0.75</screenShakeFactor>
+      <explosionChanceToStartFire>1</explosionChanceToStartFire>
+      <armorPenetrationBase>1</armorPenetrationBase>
+      <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+      <!-- <flyOverhead>true</flyOverhead> -->
+    </projectile>
+  </ThingDef>
 </Defs>

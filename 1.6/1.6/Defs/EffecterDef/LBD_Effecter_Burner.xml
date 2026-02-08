@@ -5,22 +5,6 @@
     <children>
       <li>
         <subEffecterClass>SubEffecter_SprayerTriggeredDelayed</subEffecterClass>
-        <fleckDef>Fleck_BurnerUsedSmoke</fleckDef>
-        <initialDelayTicks>5</initialDelayTicks>
-        <scale>.1~1.2</scale>
-        <burstCount>8~12</burstCount>
-        <spawnLocType>OnSource</spawnLocType>
-        <absoluteAngle>True</absoluteAngle>
-        <positionRadius>5.2</positionRadius>
-        <positionRadiusMin>0</positionRadiusMin>
-        <angle>0</angle>
-        <speed>.2~1.1</speed>
-        <rotation>0~360</rotation>
-        <fleckUsesAngleForVelocity>True</fleckUsesAngleForVelocity>
-      </li>
-
-      <li>
-        <subEffecterClass>SubEffecter_SprayerTriggeredDelayed</subEffecterClass>
         <fleckDef>Fleck_BurnerUsedEmber</fleckDef>
         <initialDelayTicks>7</initialDelayTicks>
         <scale>.1~.6</scale>

@@ -411,6 +411,10 @@
       <Flammability>0</Flammability>
       <MaxFlightTime>9999</MaxFlightTime>
       <FlightCooldown>0</FlightCooldown>
+
+      <ArmorRating_Blunt>1</ArmorRating_Blunt>
+      <ArmorRating_Sharp>1</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.25</ArmorRating_Heat>
     </statBases>
 
     <race>
@@ -515,14 +519,6 @@
       <li MayRequire="Nals.FacialAnimation">
 				<compClass>FacialAnimation.FacialAnimationControllerComp</compClass>
 			</li>
-      <li Class="ArachnaeSwarm.CompProperties_NodeSwarmLifetime">
-        <immuteHediff>ARA_Cycle_Suppression_Hediff</immuteHediff>
-        <lifespanHediff>ARA_LifespanHediff</lifespanHediff>
-        <lifetimeDays>60</lifetimeDays>
-        <labelOverride>寿命</labelOverride>
-        <tooltipOverride>阿拉克涅的督虫们生命如精密的发条般运转着。</tooltipOverride>
-        <showGizmoOnNonPlayerControlled>true</showGizmoOnNonPlayerControlled>
-      </li>
     </comps>
   </AlienRace.ThingDef_AlienRace>
   <StyleItemCategoryDef>
