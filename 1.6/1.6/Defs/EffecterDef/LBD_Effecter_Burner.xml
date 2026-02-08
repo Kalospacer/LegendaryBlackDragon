@@ -52,4 +52,49 @@
       </li>
     </children>
   </EffecterDef>
+
+  <EffecterDef>
+    <defName>LBD_Fire_Burst</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <positionRadius>0</positionRadius>
+        <fleckDef>FireSpew_A</fleckDef>
+        <chancePerTick>1</chancePerTick>
+        <speed>9.5</speed>
+        <scale>0.8~1.2</scale>
+        <angle>0~360</angle>
+        <positionLerpFactor>0.85</positionLerpFactor>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <positionRadius>0</positionRadius>
+        <fleckDef>FireSpew_Base</fleckDef>
+        <chancePerTick>1</chancePerTick>
+        <speed>0.6</speed>
+        <scale>0.8</scale>
+        <angle>0~360</angle>
+        <positionLerpFactor>0.75</positionLerpFactor>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <positionRadius>0</positionRadius>
+        <fleckDef>FireSpew_Glow</fleckDef>
+        <chancePerTick>0.16</chancePerTick>
+        <positionLerpFactor>0.65</positionLerpFactor>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <positionRadius>0</positionRadius>
+        <fleckDef>FuelSpray</fleckDef>
+        <chancePerTick>1</chancePerTick>
+        <speed>6.5</speed>
+        <scale>0.8~1.2</scale>
+        <angle>0~360</angle>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+      </li>
+    </children>
+  </EffecterDef>
 </Defs>
