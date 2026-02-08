@@ -11,8 +11,8 @@ namespace LegendaryBlackDragon
         {
             None,
             Delay,
+            Precompute,
             Phase1,
-            Phase2Preload,
             Phase2,
             Finished
         }
@@ -39,13 +39,12 @@ namespace LegendaryBlackDragon
         private int nextPhase2PulseTick;
         private int phase2IgniteCellsPerPulse = -1;
         private float phase2IgniteFireSize = 0.16f;
-        private int phase2IgniteCursor;
         private float phase2ExplosionRadius = 1.9f;
         private int phase2ExplosionDamage = 0;
         private float phase2ExplosionChanceToStartFire = 0.35f;
         private int phase2ExplosionVisualsPerPulse = 24;
-        private bool phase2PreloadQueued;
-        private bool phase2PreloadDone;
+        private bool strikePrecomputeQueued;
+        private bool strikePrecomputeDone;
 
         private int damageAmount = 16;
         private float armorPenetration;
@@ -61,11 +60,17 @@ namespace LegendaryBlackDragon
 
         private int skyFadeInTicks = 20;
         private int skyFadeOutTicks = 40;
+        private bool skyEffectStarted;
+        private int casterLeavingFlyerThingID = -1;
+        private int casterDepartTick = -1;
+        private bool casterDepartureVisualDone;
         private const string Phase2PreloadLongEventTextKey = "LBD_DragonSkyNuke_Preloading";
 
         private List<Thing> phase1Targets = new List<Thing>();
         private List<Thing> phase2Targets = new List<Thing>();
         private List<IntVec3> phase2OutdoorCells = new List<IntVec3>();
+        private List<IntVec3> phase2PulseCellsFlat = new List<IntVec3>();
+        private List<int> phase2PulseCellOffsets = new List<int>();
 
         public Pawn Caster => caster;
 
@@ -97,13 +102,12 @@ namespace LegendaryBlackDragon
             Scribe_Values.Look(ref nextPhase2PulseTick, "nextPhase2PulseTick", 0);
             Scribe_Values.Look(ref phase2IgniteCellsPerPulse, "phase2IgniteCellsPerPulse", -1);
             Scribe_Values.Look(ref phase2IgniteFireSize, "phase2IgniteFireSize", 0.16f);
-            Scribe_Values.Look(ref phase2IgniteCursor, "phase2IgniteCursor", 0);
             Scribe_Values.Look(ref phase2ExplosionRadius, "phase2ExplosionRadius", 1.9f);
             Scribe_Values.Look(ref phase2ExplosionDamage, "phase2ExplosionDamage", 0);
             Scribe_Values.Look(ref phase2ExplosionChanceToStartFire, "phase2ExplosionChanceToStartFire", 0.35f);
             Scribe_Values.Look(ref phase2ExplosionVisualsPerPulse, "phase2ExplosionVisualsPerPulse", 24);
-            Scribe_Values.Look(ref phase2PreloadQueued, "phase2PreloadQueued", false);
-            Scribe_Values.Look(ref phase2PreloadDone, "phase2PreloadDone", false);
+            Scribe_Values.Look(ref strikePrecomputeQueued, "strikePrecomputeQueued", false);
+            Scribe_Values.Look(ref strikePrecomputeDone, "strikePrecomputeDone", false);
 
             Scribe_Values.Look(ref damageAmount, "damageAmount", 16);
             Scribe_Values.Look(ref armorPenetration, "armorPenetration", 0f);
@@ -119,16 +123,24 @@ namespace LegendaryBlackDragon
 
             Scribe_Values.Look(ref skyFadeInTicks, "skyFadeInTicks", 20);
             Scribe_Values.Look(ref skyFadeOutTicks, "skyFadeOutTicks", 40);
+            Scribe_Values.Look(ref skyEffectStarted, "skyEffectStarted", false);
+            Scribe_Values.Look(ref casterLeavingFlyerThingID, "casterLeavingFlyerThingID", -1);
+            Scribe_Values.Look(ref casterDepartTick, "casterDepartTick", -1);
+            Scribe_Values.Look(ref casterDepartureVisualDone, "casterDepartureVisualDone", false);
 
             Scribe_Collections.Look(ref phase1Targets, "phase1Targets", LookMode.Reference);
             Scribe_Collections.Look(ref phase2Targets, "phase2Targets", LookMode.Reference);
             Scribe_Collections.Look(ref phase2OutdoorCells, "phase2OutdoorCells", LookMode.Value);
+            Scribe_Collections.Look(ref phase2PulseCellsFlat, "phase2PulseCellsFlat", LookMode.Value);
+            Scribe_Collections.Look(ref phase2PulseCellOffsets, "phase2PulseCellOffsets", LookMode.Value);
 
             if (Scribe.mode == LoadSaveMode.PostLoadInit)
             {
                 phase1Targets ??= new List<Thing>();
                 phase2Targets ??= new List<Thing>();
                 phase2OutdoorCells ??= new List<IntVec3>();
+                phase2PulseCellsFlat ??= new List<IntVec3>();
+                phase2PulseCellOffsets ??= new List<int>();
             }
         }
 
@@ -166,9 +178,15 @@ namespace LegendaryBlackDragon
             skyFadeOutTicks = Mathf.Max(0, props.skyFadeOutTicks);
 
             initTick = Find.TickManager.TicksGame;
+            startTick = -1;
             stage = StrikeStage.Delay;
             fireEntryCell = RandomEdgeCell(Map);
-            phase2IgniteCursor = 0;
+            strikePrecomputeQueued = false;
+            strikePrecomputeDone = false;
+            skyEffectStarted = false;
+            casterLeavingFlyerThingID = -1;
+            casterDepartTick = -1;
+            casterDepartureVisualDone = false;
 
             SendCasterOffMap();
         }
@@ -188,18 +206,20 @@ namespace LegendaryBlackDragon
                 case StrikeStage.Delay:
                     if (startTick < 0)
                     {
-                        if (!casterWasDespawned && (caster == null || !caster.Spawned))
+                        if (!casterDepartureVisualDone)
                         {
-                            casterWasDespawned = true;
+                            if (!IsLeavingFlyerStillActive())
+                            {
+                                casterDepartureVisualDone = true;
+                            }
+                            else if (casterDepartTick >= 0 && currentTick >= casterDepartTick + 280)
+                            {
+                                // Fallback in case another mod invalidates the leaving skyfaller.
+                                casterDepartureVisualDone = true;
+                            }
                         }
 
-                        if (!casterWasDespawned && currentTick >= initTick + 120 && caster != null && caster.Spawned && caster.Map == Map)
-                        {
-                            caster.DeSpawn();
-                            casterWasDespawned = true;
-                        }
-
-                        if (caster == null || casterWasDespawned)
+                        if (casterDepartureVisualDone)
                         {
                             startTick = currentTick;
                             StartSkyEffect();
@@ -209,14 +229,14 @@ namespace LegendaryBlackDragon
 
                     if (currentTick >= startTick + phase1DelayTicks)
                     {
-                        StartPhase1();
+                        StartPrecompute();
                     }
+                    break;
+                case StrikeStage.Precompute:
+                    TickPrecompute();
                     break;
                 case StrikeStage.Phase1:
                     TickPhase1(currentTick);
-                    break;
-                case StrikeStage.Phase2Preload:
-                    TickPhase2Preload();
                     break;
                 case StrikeStage.Phase2:
                     TickPhase2(currentTick);
@@ -240,6 +260,12 @@ namespace LegendaryBlackDragon
 
         private void StartSkyEffect()
         {
+            if (skyEffectStarted)
+            {
+                return;
+            }
+            skyEffectStarted = true;
+
             CompAffectsSky affectsSky = GetComp<CompAffectsSky>();
             if (affectsSky == null)
             {
@@ -262,8 +288,33 @@ namespace LegendaryBlackDragon
             caster.pather?.StopDead();
             caster.DeSpawn();
             casterWasDespawned = true;
+            casterDepartTick = Find.TickManager.TicksGame;
+            casterDepartureVisualDone = !TrySpawnLeavingFlyer(leaveCell);
+        }
 
-            TrySpawnLeavingFlyer(leaveCell);
+        private void StartPrecompute()
+        {
+            if (stage == StrikeStage.Precompute || stage == StrikeStage.Phase1 || stage == StrikeStage.Phase2 || stage == StrikeStage.Finished)
+            {
+                return;
+            }
+
+            stage = StrikeStage.Precompute;
+            QueueStrikePrecomputeLongEvent();
+        }
+
+        private void TickPrecompute()
+        {
+            if (!strikePrecomputeDone)
+            {
+                if (!strikePrecomputeQueued)
+                {
+                    QueueStrikePrecomputeLongEvent();
+                }
+                return;
+            }
+
+            FinishStrike();
         }
 
         private void StartPhase1()
@@ -271,8 +322,6 @@ namespace LegendaryBlackDragon
             stage = StrikeStage.Phase1;
             stageStartTick = Find.TickManager.TicksGame;
             nextPhase1WaveTick = stageStartTick;
-
-            CachePhase1Targets();
             TriggerPhase1ItemEffects();
             IgniteOutdoorItemsGuaranteed();
         }
@@ -292,26 +341,6 @@ namespace LegendaryBlackDragon
         }
 
         private void StartPhase2()
-        {
-            stage = StrikeStage.Phase2Preload;
-            QueuePhase2PreloadLongEvent();
-        }
-
-        private void TickPhase2Preload()
-        {
-            if (!phase2PreloadDone)
-            {
-                if (!phase2PreloadQueued)
-                {
-                    QueuePhase2PreloadLongEvent();
-                }
-                return;
-            }
-
-            BeginPhase2();
-        }
-
-        private void BeginPhase2()
         {
             stage = StrikeStage.Phase2;
             stageStartTick = Find.TickManager.TicksGame;
@@ -333,7 +362,7 @@ namespace LegendaryBlackDragon
             }
 
             ApplyPhase2PulseDamage();
-            IgnitePhase2PulseFire();
+            IgnitePhase2PulseFire(phase2PulsesDone);
             phase2PulsesDone++;
             nextPhase2PulseTick += phase2IntervalTicks;
 
@@ -407,6 +436,7 @@ namespace LegendaryBlackDragon
             }
 
             GenSpawn.Spawn(skyfaller, leaveCell, Map);
+            casterLeavingFlyerThingID = skyfaller.thingIDNumber;
             bool flip = Rand.Bool;
             skyfaller.OverrideFlightFlippedHorizontal = flip;
             caster.Rotation = flip ? Rot4.West : Rot4.East;
@@ -590,18 +620,16 @@ namespace LegendaryBlackDragon
             {
                 phase2IgniteCellsPerPulse = Mathf.Max(1, phase2IgniteCellsPerPulse);
             }
-
-            phase2IgniteCursor = 0;
         }
 
-        private void QueuePhase2PreloadLongEvent()
+        private void QueueStrikePrecomputeLongEvent()
         {
-            if (phase2PreloadQueued || phase2PreloadDone || Map == null)
+            if (strikePrecomputeQueued || strikePrecomputeDone || Map == null)
             {
                 return;
             }
 
-            phase2PreloadQueued = true;
+            strikePrecomputeQueued = true;
             LongEventHandler.QueueLongEvent(delegate
             {
                 if (Destroyed || Map == null)
@@ -609,20 +637,83 @@ namespace LegendaryBlackDragon
                     return;
                 }
 
-                BuildPhase2Caches();
+                BuildStrikePrecomputedData();
             }, Phase2PreloadLongEventTextKey, doAsynchronously: false, null);
         }
 
-        private void BuildPhase2Caches()
+        private void BuildStrikePrecomputedData()
         {
-            if (phase2PreloadDone || Map == null)
+            if (strikePrecomputeDone || Map == null)
             {
                 return;
             }
 
+            CachePhase1Targets();
+            ExecutePhase1LongEvent();
             PreloadPhase2Targets();
             PreloadPhase2OutdoorCells();
-            phase2PreloadDone = true;
+            BuildPhase2PulsePlan();
+            ExecutePhase2LongEvent();
+            strikePrecomputeDone = true;
+        }
+
+        private void ExecutePhase1LongEvent()
+        {
+            TriggerPhase1ItemEffects();
+            IgniteOutdoorItemsGuaranteed();
+
+            int waveCount = Mathf.Max(1, Mathf.CeilToInt(phase1DurationTicks / (float)Mathf.Max(1, phase1WaveIntervalTicks)));
+            for (int i = 0; i < waveCount; i++)
+            {
+                SpawnIncomingSmallFireWave();
+            }
+        }
+
+        private void ExecutePhase2LongEvent()
+        {
+            phase2PulsesDone = 0;
+            for (int pulse = 0; pulse < phase2PulseCount; pulse++)
+            {
+                ApplyPhase2PulseDamage();
+                IgnitePhase2PulseFire(pulse);
+                phase2PulsesDone++;
+            }
+        }
+
+        private void BuildPhase2PulsePlan()
+        {
+            phase2PulseCellsFlat.Clear();
+            phase2PulseCellOffsets.Clear();
+
+            if (phase2PulseCount <= 0)
+            {
+                phase2PulseCellOffsets.Add(0);
+                return;
+            }
+
+            int sourceCount = phase2OutdoorCells.Count;
+            int cursor = 0;
+            for (int pulse = 0; pulse < phase2PulseCount; pulse++)
+            {
+                phase2PulseCellOffsets.Add(phase2PulseCellsFlat.Count);
+                if (sourceCount <= 0)
+                {
+                    continue;
+                }
+
+                for (int i = 0; i < phase2IgniteCellsPerPulse; i++)
+                {
+                    if (cursor >= sourceCount)
+                    {
+                        cursor = 0;
+                    }
+
+                    phase2PulseCellsFlat.Add(phase2OutdoorCells[cursor]);
+                    cursor++;
+                }
+            }
+
+            phase2PulseCellOffsets.Add(phase2PulseCellsFlat.Count);
         }
 
         private void ApplyPhase2PulseDamage()
@@ -647,25 +738,20 @@ namespace LegendaryBlackDragon
             }
         }
 
-        private void IgnitePhase2PulseFire()
+        private void IgnitePhase2PulseFire(int pulseIndex)
         {
-            if (phase2OutdoorCells == null || phase2OutdoorCells.Count == 0)
+            if (phase2PulseCellOffsets == null || phase2PulseCellsFlat == null || phase2PulseCellOffsets.Count < 2)
             {
                 return;
             }
 
-            int igniteCount = Mathf.Max(1, phase2IgniteCellsPerPulse);
-            int explosionBudget = Mathf.Min(phase2ExplosionVisualsPerPulse, igniteCount);
-            int cellCount = phase2OutdoorCells.Count;
-            for (int i = 0; i < igniteCount; i++)
+            int clampedPulseIndex = Mathf.Clamp(pulseIndex, 0, phase2PulseCellOffsets.Count - 2);
+            int start = phase2PulseCellOffsets[clampedPulseIndex];
+            int end = phase2PulseCellOffsets[clampedPulseIndex + 1];
+            int explosionBudget = Mathf.Min(phase2ExplosionVisualsPerPulse, end - start);
+            for (int i = start; i < end; i++)
             {
-                if (phase2IgniteCursor >= cellCount)
-                {
-                    phase2IgniteCursor = 0;
-                }
-
-                IntVec3 cell = phase2OutdoorCells[phase2IgniteCursor];
-                phase2IgniteCursor++;
+                IntVec3 cell = phase2PulseCellsFlat[i];
                 IgniteCellGuaranteed(cell, phase2IgniteFireSize);
 
                 if (explosionBudget > 0)
@@ -727,6 +813,31 @@ namespace LegendaryBlackDragon
                 damageFalloff: false,
                 doVisualEffects: true,
                 doSoundEffects: false);
+        }
+
+        private bool IsLeavingFlyerStillActive()
+        {
+            if (Map == null || casterLeavingFlyerThingID < 0)
+            {
+                return false;
+            }
+
+            ThingDef leavingDef = LBD_DefOf.LBD_DragonSkyNukeFlyerLeaving;
+            if (leavingDef == null)
+            {
+                return false;
+            }
+
+            List<Thing> flyers = Map.listerThings.ThingsOfDef(leavingDef);
+            for (int i = 0; i < flyers.Count; i++)
+            {
+                if (flyers[i].thingIDNumber == casterLeavingFlyerThingID)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private static IntVec3 RandomEdgeCell(Map map)
