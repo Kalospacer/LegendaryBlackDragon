@@ -3,7 +3,7 @@
   <JobDef>
     <defName>LBD_CastAbilityMaintainFlame</defName>
     <driverClass>LegendaryBlackDragon.JobDriver_CastAbilityMaintainFlame</driverClass>
-    <reportString>maintaining a cone of flame.</reportString>
+    <reportString>喷射火焰中。</reportString>
     <abilityCasting>true</abilityCasting>
     <alwaysShowWeapon>true</alwaysShowWeapon>
     <playerInterruptible>true</playerInterruptible>
@@ -15,7 +15,7 @@
   <JobDef>
     <defName>LBD_CastAbilityMaintainFlameAura</defName>
     <driverClass>LegendaryBlackDragon.JobDriver_CastAbilityMaintainFlameAura</driverClass>
-    <reportString>maintaining a flame aura.</reportString>
+    <reportString>喷射火焰中。</reportString>
     <abilityCasting>true</abilityCasting>
     <alwaysShowWeapon>true</alwaysShowWeapon>
     <playerInterruptible>true</playerInterruptible>

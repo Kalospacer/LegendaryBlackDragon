@@ -36,6 +36,97 @@
       </li>
     </children>
   </EffecterDef>
+  <EffecterDef>
+    <defName>LBD_BurnerUsed_Long_Blue</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggeredDelayed</subEffecterClass>
+        <fleckDef>LBD_Fleck_BurnerUsedEmber_Blue</fleckDef>
+        <initialDelayTicks>7</initialDelayTicks>
+        <scale>.1~.6</scale>
+        <burstCount>2~5</burstCount>
+        <spawnLocType>OnSource</spawnLocType>
+        <absoluteAngle>True</absoluteAngle>
+        <positionRadius>6</positionRadius>
+        <positionRadiusMin>0</positionRadiusMin>
+        <angle>0</angle>
+        <speed>.2~1.6</speed>
+        <rotation>0~360</rotation>
+        <fleckUsesAngleForVelocity>True</fleckUsesAngleForVelocity>
+      </li>
+
+      <li>
+        <subEffecterClass>SubEffecter_SprayerTriggeredDelayed</subEffecterClass>
+        <fleckDef>Fleck_BurnerUsedEmberBlack</fleckDef>
+        <initialDelayTicks>7</initialDelayTicks>
+        <scale>.1~.35</scale>
+        <burstCount>1~2</burstCount>
+        <spawnLocType>OnSource</spawnLocType>
+        <absoluteAngle>True</absoluteAngle>
+        <positionRadius>6</positionRadius>
+        <positionRadiusMin>0</positionRadiusMin>
+        <angle>0</angle>
+        <speed>.4~2.2</speed>
+        <rotation>0~360</rotation>
+        <fleckUsesAngleForVelocity>True</fleckUsesAngleForVelocity>
+      </li>
+    </children>
+  </EffecterDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LBD_Fleck_BurnerUsedEmber_Blue</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>3</solidTime>
+    <fadeOutTime>3</fadeOutTime>
+    <graphicData>
+      <graphicClass>Graphic_FleckPulse</graphicClass>
+      <texPath>Things/Mote/Ember</texPath>
+      <shaderType>EmberGlow</shaderType>
+      <drawSize>.5</drawSize>
+      <color>(0,0,1)</color>
+      <shaderParameters>
+        <_Color2>(.96, .6, .2, 1)</_Color2>
+        <_Interval>0.05</_Interval>
+      </shaderParameters>
+    </graphicData>
+    <scalers>
+      <li>
+        <scaleAmt>1~4</scaleAmt>
+        <scaleTime>.2~6</scaleTime>
+        <curve>
+          <points>
+            <li>(0,0)</li>
+            <li>(0.04,0.305448)</li>
+            <li>(0.08,0.6668836)</li>
+            <li>(0.12,0.9360147)</li>
+            <li>(0.16,0.9911547)</li>
+            <li>(0.2,0.9870781)</li>
+            <li>(0.24,0.9784655)</li>
+            <li>(0.28,0.9653521)</li>
+            <li>(0.32,0.9477734)</li>
+            <li>(0.36,0.9257647)</li>
+            <li>(0.3999999,0.8993613)</li>
+            <li>(0.4399999,0.8685986)</li>
+            <li>(0.4799999,0.8335121)</li>
+            <li>(0.5199999,0.7941369)</li>
+            <li>(0.5599999,0.7505086)</li>
+            <li>(0.6,0.7026625)</li>
+            <li>(0.64,0.6506338)</li>
+            <li>(0.68,0.594458)</li>
+            <li>(0.72,0.5341705)</li>
+            <li>(0.7600001,0.4698067)</li>
+            <li>(0.8000001,0.4014017)</li>
+            <li>(0.8400001,0.3289912)</li>
+            <li>(0.8800001,0.2526103)</li>
+            <li>(0.9200001,0.1722946)</li>
+            <li>(0.9600002,0.08807921)</li>
+            <li>(1,0)</li>
+          </points>
+        </curve>
+      </li>
+    </scalers>
+    
+  </FleckDef>
 
   <EffecterDef>
     <defName>LBD_Fire_Burst</defName>

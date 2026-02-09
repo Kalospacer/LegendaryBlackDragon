@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-
   <ThingDef ParentName="MoteBase">
     <defName>LBD_Mote_IncineratorBurst_Long</defName>
     <thingClass>MoteDualAttached</thingClass>
@@ -20,6 +19,38 @@
       <texPath>LegendaryBlackDragon/Mote/LBD_Fire_Mote</texPath>
       <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
       <shaderType>MoteIncineratorBeam</shaderType>
+      <shaderParameters>
+        <_GradientTex>/Things/Mote/IncineratorBeamGradient</_GradientTex>
+        <_AgeScalarNoise>/Things/Mote/IncineratorBeamAgeNoise</_AgeScalarNoise>
+        <_ScrollSpeedA>-4 </_ScrollSpeedA>
+        <_ScrollSpeedB>3</_ScrollSpeedB>
+        <_Intensity>0</_Intensity>
+        <_NumFrames>12</_NumFrames>
+        <_FramesPerSec>12</_FramesPerSec>
+      </shaderParameters>
+      <drawSize>(10,15)</drawSize>
+    </graphicData>
+  </ThingDef>
+  <ThingDef ParentName="MoteBase">
+    <defName>LBD_Mote_IncineratorBurst_Long_Blue</defName>
+    <thingClass>MoteDualAttached</thingClass>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <isSaveable>false</isSaveable> <!-- because it's pure-vis, and weirdly constructed, it's better to not persist them at all -->
+    <mote>
+      <fadeInTime>0</fadeInTime>
+      <fadeOutTime>3</fadeOutTime>
+      <solidTime>999999</solidTime>
+      <needsMaintenance>True</needsMaintenance>
+      <rotateTowardsTarget>True</rotateTowardsTarget>
+      <scaleToConnectTargets>False</scaleToConnectTargets>
+      <fadeOutUnmaintained>True</fadeOutUnmaintained>
+    </mote>
+    <drawOffscreen>true</drawOffscreen>
+    <graphicData>
+      <texPath>LegendaryBlackDragon/Mote/LBD_Fire_Mote</texPath>
+      <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
+      <shaderType>MoteIncineratorBeam</shaderType>
+      <color>(0,0,1)</color>
       <shaderParameters>
         <_GradientTex>/Things/Mote/IncineratorBeamGradient</_GradientTex>
         <_AgeScalarNoise>/Things/Mote/IncineratorBeamAgeNoise</_AgeScalarNoise>

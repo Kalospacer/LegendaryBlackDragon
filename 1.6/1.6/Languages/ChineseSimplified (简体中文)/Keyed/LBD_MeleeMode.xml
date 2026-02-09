@@ -2,4 +2,10 @@
 <LanguageData>
   <LBD_MeleeMode_Slam>{PAWN_nameDef} 切换为拍击模式。</LBD_MeleeMode_Slam>
   <LBD_MeleeMode_Scratch>{PAWN_nameDef} 切换为挠击模式。</LBD_MeleeMode_Scratch>
+
+  <LBD_CurrentMode>当前姿态：{0}</LBD_CurrentMode>
+  <LBD_CurrentModeTooltip>当前近战姿态：{0}</LBD_CurrentModeTooltip>
+  <LBD_Custom_Scratch_Mode>挠击（黑龙的徒手近战攻击会将敌人击飞）</LBD_Custom_Scratch_Mode>
+  <LBD_Custom_Slam_Mode>拍击（黑龙的徒手近战攻击会伤害多个敌人）</LBD_Custom_Slam_Mode>
+  <LBD_CurrentModeIndicator>近战姿态：{0}</LBD_CurrentModeIndicator>
 </LanguageData>

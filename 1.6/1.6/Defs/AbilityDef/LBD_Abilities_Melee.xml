@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <AbilityDef>
+    <defName>LBD_ToggleMeleeMode</defName>
+    <label>切换拍击/挠击</label>
+    <description>当未装备武器时，黑龙可在两种徒手近战姿态下切换：拍击与挠击。</description>
+    <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_ToggleMeleeMode</iconPath>
+    <targetRequired>false</targetRequired>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0</warmupTime>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <cooldownTicksRange>30~30</cooldownTicksRange>
+    <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_AbilityToggleMeleeMode">
+        <!-- 自定义标签键，可以覆盖默认值 -->
+        <scratchModeLabelKey>LBD_Custom_Scratch_Mode</scratchModeLabelKey>
+        <slamModeLabelKey>LBD_Custom_Slam_Mode</slamModeLabelKey>
+        <gizmoExtraLabelKey>LBD_CurrentModeIndicator</gizmoExtraLabelKey>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef>
+    <defName>LBD_TailSweep</defName>
+    <label>扫尾</label>
+    <description>黑龙甩动尾巴猛抽面前的敌人，对扇形范围内所有的敌对目标造成伤害，如果对方在攻击中幸存，就会被黑龙击飞并眩晕一段时间。</description>
+    <iconPath>UI/Abilities/FireSpew</iconPath>
+    <aiCanUse>true</aiCanUse>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <range>22.9</range>
+      <warmupTime>0.6</warmupTime>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+      </targetParams>
+    </verbProperties>
+    <cooldownTicksRange>900~900</cooldownTicksRange>
+    <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_AbilityFanShapedStunKnockback">
+        <!-- 扇形参数 -->
+        <range>6</range>
+        <coneSizeDegrees>100</coneSizeDegrees>
+        <lineWidthEnd>12</lineWidthEnd>
+        
+        <!-- 伤害参数 -->
+        <damageDef>Blunt</damageDef>
+        <damageAmount>25</damageAmount>
+        <armorPenetration>1</armorPenetration>
+        
+        <!-- 眩晕参数 -->
+        <stunTicks>120</stunTicks>
+        
+        <!-- 击退参数 -->
+        <maxKnockbackDistance>3</maxKnockbackDistance>
+        <canKnockbackIntoWalls>false</canKnockbackIntoWalls>
+        <requireLineOfSight>true</requireLineOfSight>
+        
+        <!-- 视觉效果 -->
+        <!-- <impactEffecter>Impact_Pound</impactEffecter> -->
+        <impactSound>Pawn_Melee_BigBash_HitPawn</impactSound>
+        
+        <!-- 飞行效果 -->
+        <knockbackFlyerDef>PawnFlyer</knockbackFlyerDef>
+        <!-- <flightEffecterDef>FlightEffect_Knockback</flightEffecterDef> -->
+        <landingSound>PawnFlyer_Land</landingSound>
+        
+        <!-- 过滤设置 -->
+        <affectCaster>false</affectCaster>
+        <canHitFilledCells>true</canHitFilledCells>
+        <onlyAffectEnemies>true</onlyAffectEnemies>
+        <requireLineOfSightToTarget>true</requireLineOfSightToTarget>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef>
+    <defName>LBD_Dragon_Charge</defName>
+    <label>龙车冲锋</label>
+    <description>黑龙以自身为武器，快速向前撞击，伤害目标和在冲撞途中碰到的所有建筑和敌人。尽管因为身体变小破坏力大不如前，但是依然能将敌人顶个七荤八素。\n\n当一次冲击没有杀死敌人时，黑龙会自动进行下一次冲击。</description>
+    <iconPath>UI/Abilities/FireBurst</iconPath>
+    <cooldownTicksRange>6000</cooldownTicksRange>
+    <charges>2</charges>
+    <cooldownPerCharge>true</cooldownPerCharge>
+    <aiCanUse>false</aiCanUse>
+    <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
+    <verbProperties>
+      <verbClass>LegendaryBlackDragon.Verb_CastAbilityTrackingCharge</verbClass>
+      <requireLineOfSight>false</requireLineOfSight>
+      <soundCast>LBD_Dragon_Charge_voice</soundCast>
+      <targetParams>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>true</canTargetBuildings>
+        <canTargetAnimals>true</canTargetAnimals>
+        <canTargetMechs>true</canTargetMechs>
+        <canTargetSelf>false</canTargetSelf>
+      </targetParams>
+      <range>18</range>
+      <warmupTime>1.0</warmupTime>
+    </verbProperties>
+    <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_TrackingCharge">
+        <homingSpeed>1.5</homingSpeed>
+        <initialDamage>25</initialDamage>
+        <damagePerTile>1.5</damagePerTile>
+        <inertiaDistance>6</inertiaDistance>
+        <collisionDamageDef>Demolish</collisionDamageDef>
+        <flyerDef>LBD_Flyer_TrackingCharge</flyerDef>
+        <collisionRadius>1.5</collisionRadius>        <!-- Larger collision radius -->
+        <impactSound>Pawn_Melee_BigBash_HitPawn</impactSound>
+        <damageHostileOnly>true</damageHostileOnly>        <!-- Set to false to damage everyone in the path -->
+      </li>
+      <li Class="CompProperties_AbilityEffecterOnCaster" MayRequire="Ludeon.Rimworld.Odyssey">
+        <effecterDef>WarTrumpet</effecterDef>
+        <maintainTicks>20</maintainTicks>        <!-- Long enough for the "2nd wave" to spawn -->
+      </li>
+    </comps>
+  </AbilityDef>
+  <ThingDef ParentName="PawnFlyerBase">
+    <defName>LBD_Flyer_TrackingCharge</defName>
+    <thingClass>LegendaryBlackDragon.PawnFlyer_TrackingCharge</thingClass>
+    <pawnFlyer>
+      <flightSpeed>1.5</flightSpeed>
+      <heightFactor>0</heightFactor>
+    </pawnFlyer>
+  </ThingDef>
+</Defs>

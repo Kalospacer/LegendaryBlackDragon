@@ -2,8 +2,8 @@
 <Defs>
   <AbilityDef>
     <defName>LBD_SustainedFlameCone</defName>
-    <label>sustained flame cone</label>
-    <description>After a short charge, continuously breathes a cone of flame while the caster maintains focus.</description>
+    <label>扇形龙焰</label>
+    <description>黑龙经过短暂蓄力后，持续向前方扇形区域喷射龙焰。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。</description>
     <iconPath>UI/Abilities/FireSpew</iconPath>
     <jobDef>LBD_CastAbilityMaintainFlame</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
@@ -68,14 +68,25 @@
         <!-- ===== 其他 ===== -->
         <canHitFilledCells>true</canHitFilledCells>
         <affectCaster>false</affectCaster>
+
+        <!-- ===== 状态列表 ===== -->
+        <states>
+          <li Class="LegendaryBlackDragon.FlameState">
+            <hediffDef>LBD_FlameEnhanced</hediffDef>
+            <damageAmount>25</damageAmount>
+            <armorPenetration>1.5</armorPenetration>
+            <effecterDef>LBD_BurnerUsed_Long_Blue</effecterDef>
+            <moteDef>LBD_Mote_IncineratorBurst_Long_Blue</moteDef>
+          </li>
+        </states>
       </li>
     </comps>
   </AbilityDef>
 
   <AbilityDef>
     <defName>LBD_SustainedFlameAura</defName>
-    <label>sustained flame aura</label>
-    <description>Erupts in a sustained burst of flame in all directions, scorching everything nearby while the caster maintains focus.</description>
+    <label>环形龙焰</label>
+    <description>黑龙经过短暂蓄力后，向地上喷射龙焰，龙焰会被大地反射，并灼烧周围一切。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。</description>
     <iconPath>UI/Abilities/FireBurst</iconPath>
     <jobDef>LBD_CastAbilityMaintainFlameAura</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
@@ -180,55 +191,5 @@
       <!-- <flyOverhead>true</flyOverhead> -->
     </projectile>
   </ThingDef>
-  
-  <AbilityDef>
-    <defName>LBD_Dragon_Charge</defName>
-    <label>龙车冲锋</label>
-    <description>黑龙以自身为武器，快速向前撞击。尽管因为身体变小破坏力大不如前，但是依然能将敌人顶个七荤八素。</description>
-    <iconPath>UI/Abilities/FireBurst</iconPath>
-    <cooldownTicksRange>6000</cooldownTicksRange>
-    <charges>2</charges>
-    <cooldownPerCharge>true</cooldownPerCharge>
-    <aiCanUse>false</aiCanUse>
-    <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
-    <verbProperties>
-      <verbClass>LegendaryBlackDragon.Verb_CastAbilityTrackingCharge</verbClass>
-      <requireLineOfSight>false</requireLineOfSight>
-      <soundCast>LBD_Dragon_Charge_voice</soundCast>
-      <targetParams>
-        <canTargetPawns>true</canTargetPawns>
-        <canTargetBuildings>true</canTargetBuildings>
-        <canTargetAnimals>true</canTargetAnimals>
-        <canTargetMechs>true</canTargetMechs>
-        <canTargetSelf>false</canTargetSelf>
-      </targetParams>
-      <range>18</range>
-      <warmupTime>1.0</warmupTime>
-    </verbProperties>
-    <comps>
-      <li Class="LegendaryBlackDragon.CompProperties_TrackingCharge">
-        <homingSpeed>1.5</homingSpeed>
-        <initialDamage>15</initialDamage>
-        <damagePerTile>1.5</damagePerTile>
-        <inertiaDistance>6</inertiaDistance>
-        <collisionDamageDef>Demolish</collisionDamageDef>
-        <flyerDef>LBD_Flyer_TrackingCharge</flyerDef>
-        <collisionRadius>1.5</collisionRadius>        <!-- Larger collision radius -->
-        <impactSound>Pawn_Melee_BigBash_HitPawn</impactSound>
-        <damageHostileOnly>true</damageHostileOnly>        <!-- Set to false to damage everyone in the path -->
-      </li>
-      <li Class="CompProperties_AbilityEffecterOnCaster">
-        <effecterDef>WarTrumpet</effecterDef>
-        <maintainTicks>20</maintainTicks>        <!-- Long enough for the "2nd wave" to spawn -->
-      </li>
-    </comps>
-  </AbilityDef>
-  <ThingDef ParentName="PawnFlyerBase">
-    <defName>LBD_Flyer_TrackingCharge</defName>
-    <thingClass>LegendaryBlackDragon.PawnFlyer_TrackingCharge</thingClass>
-    <pawnFlyer>
-      <flightSpeed>1.5</flightSpeed>
-      <heightFactor>0</heightFactor>
-    </pawnFlyer>
-  </ThingDef>
 </Defs>
+

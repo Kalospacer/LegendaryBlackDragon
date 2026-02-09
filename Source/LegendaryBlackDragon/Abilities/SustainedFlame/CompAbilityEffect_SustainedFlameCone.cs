@@ -27,7 +27,6 @@ namespace LegendaryBlackDragon
                 {
                     return 0;
                 }
-
                 return Find.TickManager.TicksGame - startTick;
             }
         }
@@ -163,6 +162,10 @@ namespace LegendaryBlackDragon
             float visualRange = Props.range + Props.visualRangeOffset;
             float beamLengthFactor = Mathf.Max(0.01f, Props.visualLengthMultiplier);
 
+            // 获取当前状态的参数
+            ThingDef currentMoteDef = GetCurrentMoteDef();
+            EffecterDef currentEffecterDef = GetCurrentEffecterDef();
+
             for (int i = 0; i < streamCount; i++)
             {
                 float angle = Rand.Range(0f - Props.coneSizeDegrees, Props.coneSizeDegrees);
@@ -177,7 +180,8 @@ namespace LegendaryBlackDragon
                     continue;
                 }
 
-                ThingDef moteDef = Props.moteDef ?? ThingDefOf.Mote_IncineratorBurst;
+                // 使用当前状态的moteDef
+                ThingDef moteDef = currentMoteDef ?? ThingDefOf.Mote_IncineratorBurst;
                 MoteDualAttached mote = MoteMaker.MakeInteractionOverlay(moteDef, new TargetInfo(sourceCell, map), new TargetInfo(streamTarget, map));
                 spray.Add(new IncineratorProjectileMotion
                 {
@@ -191,9 +195,10 @@ namespace LegendaryBlackDragon
                     lifespanTicks = Mathf.FloorToInt(distance * 5f) + Rand.Range(-Props.lifespanNoise, Props.lifespanNoise)
                 });
 
-                if (Props.effecterDef != null)
+                // 使用当前状态的effecterDef
+                if (currentEffecterDef != null)
                 {
-                    map.effecterMaintainer.AddEffecterToMaintain(Props.effecterDef.Spawn(streamTarget, map), streamTarget, 100);
+                    map.effecterMaintainer.AddEffecterToMaintain(currentEffecterDef.Spawn(streamTarget, map), streamTarget, 100);
                 }
             }
         }
@@ -212,17 +217,21 @@ namespace LegendaryBlackDragon
                 return;
             }
 
-            DamageDef damageDef = Props.damageDef ?? DamageDefOf.Flame;
+            // 使用当前状态的伤害参数
+            DamageDef currentDamageDef = GetCurrentDamageDef();
+            int currentDamageAmount = GetCurrentDamageAmount();
+            float currentArmorPenetration = GetCurrentArmorPenetration();
+
             SimpleCurve fireCurve = parent.verb?.verbProps?.flammabilityAttachFireChanceCurve;
 
             GenExplosion.DoExplosion(
                 targetCell,
                 Caster.MapHeld,
                 0f,
-                damageDef,
+                currentDamageDef,
                 Caster,
-                Props.damageAmount,
-                Props.armorPenetration,
+                currentDamageAmount,
+                currentArmorPenetration,
                 null,
                 null,
                 null,
@@ -375,5 +384,84 @@ namespace LegendaryBlackDragon
 
             return parent.verb.TryFindShootLineFromTo(Caster.Position, cell, out _);
         }
+
+        #region 状态获取方法
+
+        /// <summary>
+        /// 获取当前状态的伤害类型
+        /// </summary>
+        private DamageDef GetCurrentDamageDef()
+        {
+            if (Caster == null) return Props.damageDef ?? DamageDefOf.Flame;
+            
+            var state = GetCurrentState();
+            return state?.damageDef ?? Props.damageDef ?? DamageDefOf.Flame;
+        }
+
+        /// <summary>
+        /// 获取当前状态的伤害值
+        /// </summary>
+        private int GetCurrentDamageAmount()
+        {
+            if (Caster == null) return Props.damageAmount;
+            
+            var state = GetCurrentState();
+            return state?.damageAmount ?? Props.damageAmount;
+        }
+
+        /// <summary>
+        /// 获取当前状态的护甲穿透
+        /// </summary>
+        private float GetCurrentArmorPenetration()
+        {
+            if (Caster == null) return Props.armorPenetration;
+            
+            var state = GetCurrentState();
+            return state?.armorPenetration ?? Props.armorPenetration;
+        }
+
+        /// <summary>
+        /// 获取当前状态的EffecterDef
+        /// </summary>
+        private EffecterDef GetCurrentEffecterDef()
+        {
+            if (Caster == null) return Props.effecterDef;
+            
+            var state = GetCurrentState();
+            return state?.effecterDef ?? Props.effecterDef;
+        }
+
+        /// <summary>
+        /// 获取当前状态的MoteDef
+        /// </summary>
+        private ThingDef GetCurrentMoteDef()
+        {
+            if (Caster == null) return Props.moteDef;
+            
+            var state = GetCurrentState();
+            return state?.moteDef ?? Props.moteDef;
+        }
+
+        /// <summary>
+        /// 获取当前状态（基于施法者的Hediff）
+        /// </summary>
+        private FlameState GetCurrentState()
+        {
+            if (Caster == null || Caster.health?.hediffSet == null || Props.states == null)
+                return null;
+
+            // 检查施法者是否有匹配的Hediff
+            foreach (var state in Props.states)
+            {
+                if (state.hediffDef != null && Caster.health.hediffSet.HasHediff(state.hediffDef))
+                {
+                    return state;
+                }
+            }
+
+            return null;
+        }
+
+        #endregion
     }
 }
