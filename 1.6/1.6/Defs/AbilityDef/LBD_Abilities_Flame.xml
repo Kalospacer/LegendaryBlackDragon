@@ -72,7 +72,7 @@
         <!-- ===== 状态列表 ===== -->
         <states>
           <li Class="LegendaryBlackDragon.FlameState">
-            <hediffDef>LBD_FlameEnhanced</hediffDef>
+            <hediffDef>LBD_Angry_Bluefire</hediffDef>
             <damageAmount>25</damageAmount>
             <armorPenetration>1.5</armorPenetration>
             <effecterDef>LBD_BurnerUsed_Long_Blue</effecterDef>
@@ -192,4 +192,3 @@
     </projectile>
   </ThingDef>
 </Defs>
-

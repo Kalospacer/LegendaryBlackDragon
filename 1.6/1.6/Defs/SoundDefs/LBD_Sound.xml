@@ -92,6 +92,7 @@
     <sustain>true</sustain>
     <sustainStartSound>LBD_Dragon_Fire_Ability_Start</sustainStartSound>
     <sustainStopSound>LBD_Dragon_Fire_Ability_End</sustainStopSound>
+    <priorityMode>PrioritizeExisting</priorityMode>
     <subSounds>
       <li>
         <onCamera>True</onCamera>
