@@ -106,4 +106,21 @@
       </li>
     </subSounds>
   </SoundDef>
+  <SoundDef>
+    <defName>LBD_Angry_Bluefire_Switch_voice</defName>
+    <context>MapOnly</context>
+    <maxSimultaneous>2</maxSimultaneous>
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>LegendaryBlackDragon/LBD_Angry_Bluefire_Switch_voice</clipPath>
+          </li>
+        </grains>
+        <volumeRange>55</volumeRange>
+        <pitchRange>0.9~1.1</pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
 </Defs>

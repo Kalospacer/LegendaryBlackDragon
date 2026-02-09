@@ -82,7 +82,7 @@
   <HediffDef>
     <defName>LBD_Angry_Bluefire</defName>
     <label>核心超压</label>
-    <description>喜报：头部没有受到破坏，吐息目前处于威力最强的状态</description>
+    <description>喜报：头部没有受到破坏，吐息目前处于威力最强的状态！</description>
     <hediffClass>HediffWithComps</hediffClass>
     <everCurableByItem>false</everCurableByItem>
     <duplicationAllowed>false</duplicationAllowed>
@@ -93,7 +93,16 @@
         <statFactors>
           <MeleeDamageFactor>2</MeleeDamageFactor>
         </statFactors>
+        <damageFactors>
+					<LBD_DRM_Flame>0</LBD_DRM_Flame>
+				</damageFactors>
       </li>
     </stages>
+    <comps>
+      <li Class="HediffCompProperties_Disappears">
+        <showRemainingTime>true</showRemainingTime>
+      </li>
+      <li Class="HediffCompProperties_DisappearsOnDeath"/>
+    </comps>
   </HediffDef>
 </Defs>

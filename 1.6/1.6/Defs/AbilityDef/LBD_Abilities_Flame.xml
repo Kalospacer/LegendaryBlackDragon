@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
   <AbilityDef>
+    <defName>LBD_Angry_Bluefire_Switch</defName>
+    <label>红温</label>
+    <description>因为无法快速解决蝼蚁而感到烦闷，黑龙打算释放她最恐怖的毁灭之力。在这种情况下，黑龙的近战能力和火焰喷吐能力将得到极大的加强，但是心情会下降一段时间。</description>
+    <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Angry_Bluefire_Switch</iconPath>
+    <cooldownTicksRange>120000</cooldownTicksRange>    <!-- 2 days -->
+    <hostile>false</hostile>
+    <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsOffensive>true</ai_IsOffensive>
+    <targetRequired>false</targetRequired>
+    <jobDef>CastAbilityOnThing</jobDef> <!-- 添加jobDef -->
+    <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
+    <statBases>
+      <Ability_Duration>960</Ability_Duration>
+    </statBases>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <drawAimPie>false</drawAimPie>
+      <warmupTime>1.25</warmupTime>
+      <requireLineOfSight>false</requireLineOfSight>
+      <nonInterruptingSelfCast>true</nonInterruptingSelfCast>
+      <soundCast>LBD_Angry_Bluefire_Switch_voice</soundCast>
+      <targetable>false</targetable>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="CompProperties_AbilityEffecterOnCaster" MayRequire="Ludeon.Rimworld.Odyssey">
+        <effecterDef>WarTrumpet</effecterDef>
+        <maintainTicks>20</maintainTicks>        <!-- Long enough for the "2nd wave" to spawn -->
+      </li>
+      <li Class="CompProperties_AbilityGiveHediff">
+        <compClass>CompAbilityEffect_GiveHediff</compClass>
+        <hediffDef>LBD_Angry_Bluefire</hediffDef>
+        <onlyApplyToSelf>True</onlyApplyToSelf>
+        <replaceExisting>true</replaceExisting>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <AbilityDef>
     <defName>LBD_SustainedFlameCone</defName>
     <label>扇形龙焰</label>
     <description>黑龙经过短暂蓄力后，持续向前方扇形区域喷射龙焰。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。</description>
@@ -157,7 +200,7 @@
     <description>黑龙向目标位置喷射火球，火球在命中后会爆炸并造成范围性伤害。\n\n如果进入核心超压状态，黑龙喷射的火球将转变为蓝紫色火球，精准度下降但是一次性喷射三发，伤害和穿甲能力得到大幅提升。</description>
     <jobDef>LBD_Job_Dragon_Launch_FireBall</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
-    <iconPath>UI/Abilities/FireBurst</iconPath>
+    <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_FireBall</iconPath>
     <cooldownTicksRange>5000</cooldownTicksRange>
     <aiCanUse>false</aiCanUse>
     <displayOrder>300</displayOrder>

@@ -14,6 +14,12 @@ namespace LegendaryBlackDragon
         public float collisionRadius = 1.5f;
         public SoundDef impactSound;
         public bool damageHostileOnly = true;
+        
+        // 新增：是否将初始伤害乘以近战伤害系数
+        public bool multiplyInitialDamageByMeleeFactor = false;
+        
+        // 新增：是否将每格伤害乘以近战伤害系数
+        public bool multiplyPerTileDamageByMeleeFactor = false;
 
         public CompProperties_TrackingCharge()
         {

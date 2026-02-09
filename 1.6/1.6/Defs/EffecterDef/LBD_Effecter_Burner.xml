@@ -250,4 +250,61 @@
       <color>(0, 0, 1, 0.75)</color>
     </graphicData>
   </FleckDef>
+  
+  <EffecterDef>
+    <defName>LBD_TailSweep_Hit</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_Random</subEffecterClass>
+        <children>
+          <li>
+            <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+            <fleckDef>LBD_Mote_Melee_Attack</fleckDef>
+            <burstCount>1</burstCount>
+            <color>(170,74,68)</color>
+            <scale>5.5~6.5</scale>
+            <speed>0.5</speed>
+            <angle>0~0</angle>
+            <spawnLocType>OnSource</spawnLocType>
+            <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+          </li>
+          <li>
+            <subEffecterClass>SubEffecter_SprayerTriggered</subEffecterClass>
+            <fleckDef>LBD_Mote_Melee_Attack</fleckDef>
+            <burstCount>1</burstCount>
+            <color>(147,50,28)</color>
+            <scale>5.5~6.5</scale>
+            <speed>0.5</speed>
+            <angle>-5~5</angle>
+            <spawnLocType>OnSource</spawnLocType>
+            <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+          </li>
+        </children>
+      </li>
+    </children>
+    <!-- <positionRadius>0.1</positionRadius> -->
+  </EffecterDef>
+  <FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+    <defName>LBD_Mote_Melee_Attack</defName>
+    <growthRate>1.0</growthRate>
+    <altitudeLayer>MoteOverheadLow</altitudeLayer>
+    <fadeInTime>0</fadeInTime>
+    <solidTime>0</solidTime>
+    <fadeOutTime>0.6</fadeOutTime>
+    <rotateTowardsMoveDirection>true</rotateTowardsMoveDirection>
+    <randomGraphics>
+      <li>
+        <texPath>LegendaryBlackDragon/Mote/LBD_Melee_Slam</texPath>
+        <shaderType>MoteGlow</shaderType>
+        <renderInstanced>true</renderInstanced>
+        <graphicClass>Graphic_Fleck</graphicClass>
+      </li> 
+      <!-- <li>
+        <texPath>SRA/Effect/SRA_FlashSlash_Big_B</texPath>
+        <shaderType>MoteGlow</shaderType>
+        <renderInstanced>true</renderInstanced>
+        <graphicClass>Graphic_Fleck</graphicClass>
+      </li>  -->
+    </randomGraphics>
+  </FleckDef>
 </Defs>

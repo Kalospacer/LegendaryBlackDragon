@@ -44,6 +44,10 @@ namespace LegendaryBlackDragon
         private static FieldInfo JobQueueInfo;
         private static FieldInfo InnerContainerInfo;
 
+        // 在PawnFlyer_TrackingCharge类的字段部分添加
+        public bool multiplyInitialDamageByMeleeFactor;
+        public bool multiplyPerTileDamageByMeleeFactor;
+
         static PawnFlyer_TrackingCharge()
         {
             TicksFlyingInfo = typeof(PawnFlyer).GetField("ticksFlying", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -229,24 +233,32 @@ namespace LegendaryBlackDragon
             {
                 SoundStarter.PlayOneShot(this.impactSound, new TargetInfo(this.Position, this.Map));
             }
-
-            // 计算伤害
+            // 计算伤害（考虑近战伤害系数）
             Vector3 startPosition = (Vector3)StartVecInfo.GetValue(this);
             float distance = (this.DrawPos - startPosition).magnitude;
-            float calculatedDamage = this.initialDamage + (distance * this.damagePerTile);
-            var dinfo = new DamageInfo(this.collisionDamageDef, calculatedDamage, 1f, -1, this.FlyingPawn);
 
+            // 获取调整后的伤害值
+            float meleeFactor = FlyingPawn?.GetStatValue(StatDefOf.MeleeDamageFactor) ?? 1f;
+            float adjustedInitial = multiplyInitialDamageByMeleeFactor
+                ? this.initialDamage * meleeFactor
+                : this.initialDamage;
+            float adjustedPerTile = multiplyPerTileDamageByMeleeFactor
+                ? this.damagePerTile * meleeFactor
+                : this.damagePerTile;
+
+            float calculatedDamage = adjustedInitial + (distance * adjustedPerTile);
+
+            var dinfo = new DamageInfo(this.collisionDamageDef, calculatedDamage, 1f, -1, this.FlyingPawn);
             primaryTarget.Thing.TakeDamage(dinfo);
             hasHitPrimaryTarget = true;
-            
+
             // 将主目标添加到已伤害列表，避免后续路径伤害重复伤害
             if (!alreadyDamaged.Contains(primaryTarget.Thing))
             {
                 alreadyDamaged.Add(primaryTarget.Thing);
             }
-            
-            homing = false;
 
+            homing = false;
             // 计算期望的降落位置（目标身后一格）
             CalculateDesiredLandingCell();
         }

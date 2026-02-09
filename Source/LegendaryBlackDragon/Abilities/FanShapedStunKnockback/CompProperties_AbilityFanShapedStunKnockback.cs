@@ -23,7 +23,13 @@ namespace LegendaryBlackDragon
         public bool canKnockbackIntoWalls = false; // 是否可以击退到墙上
         public bool requireLineOfSight = true;   // 击退路径是否需要视线
         
-        // 视觉效果
+        // 新增：对非Pawn物体的处理参数
+        public bool affectNonPawnThings = true;  // 是否影响非Pawn物体
+        public bool canDamageNonPawnThings = true; // 是否可以对非Pawn物体造成伤害
+        public float nonPawnDamageMultiplier = 1.0f; // 非Pawn物体的伤害倍率
+        public bool applySpecialEffectsToNonPawn = false; // 是否对非Pawn物体应用特殊效果
+        
+        // 视觉和音效效果
         public EffecterDef impactEffecter;       // 命中效果
         public SoundDef impactSound;             // 命中音效
         
@@ -37,6 +43,12 @@ namespace LegendaryBlackDragon
         public bool canHitFilledCells = true;    // 是否可以击中已填充的单元格
         public bool onlyAffectEnemies = true;    // 只影响敌人
         public bool requireLineOfSightToTarget = true; // 是否需要视线到目标
+        
+        // 近战伤害系数加成
+        public bool multiplyDamageByMeleeFactor = false;   // 伤害是否乘以近战伤害系数
+        public bool multiplyStunTimeByMeleeFactor = false; // 眩晕时间是否乘以近战伤害系数
+        public StatDef damageMultiplierStat = null;        // 自定义伤害系数Stat（如果为空则使用MeleeDamageFactor）
+        public StatDef stunMultiplierStat = null;          // 自定义眩晕时间系数Stat（如果为空则使用MeleeDamageFactor）
 
         public CompProperties_AbilityFanShapedStunKnockback()
         {

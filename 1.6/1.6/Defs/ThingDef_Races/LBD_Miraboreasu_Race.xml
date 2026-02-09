@@ -405,7 +405,7 @@
 
       <MarketValue>10000</MarketValue>
 
-      <PainShockThreshold>0.25</PainShockThreshold>
+      <PainShockThreshold>0.99</PainShockThreshold>
       <PsychicSensitivity>1.5</PsychicSensitivity>
       <MentalBreakThreshold>0.5</MentalBreakThreshold>
       <Flammability>0</Flammability>
@@ -415,12 +415,15 @@
       <ArmorRating_Blunt>1</ArmorRating_Blunt>
       <ArmorRating_Sharp>1</ArmorRating_Sharp>
       <ArmorRating_Heat>0.25</ArmorRating_Heat>
+
     </statBases>
 
     <race>
       <body>Human</body>
       <renderTree>LBD_MiraboreasuRenderTree</renderTree>
       <flightStartChanceOnJobStart>1.0</flightStartChanceOnJobStart>
+      <baseHealthScale>3</baseHealthScale>
+      <baseBodySize>0.8</baseBodySize>
       <lifeStageWorkSettings MayRequire="Ludeon.RimWorld.Biotech">
         <Firefighter>0</Firefighter>
         <Patient>0</Patient>

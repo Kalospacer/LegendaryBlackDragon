@@ -29,22 +29,27 @@
   <AbilityDef>
     <defName>LBD_TailSweep</defName>
     <label>扫尾</label>
-    <description>黑龙甩动尾巴猛抽面前的敌人，对扇形范围内所有的敌对目标造成伤害，如果对方在攻击中幸存，就会被黑龙击飞并眩晕一段时间。</description>
-    <iconPath>UI/Abilities/FireSpew</iconPath>
+    <description>黑龙甩动尾巴猛抽面前的敌人，对扇形范围内所有的敌对目标造成伤害，如果对方在攻击中幸存，就会被黑龙击飞并眩晕一段时间。\n\n该技能受到近战伤害系数的额外加成。</description>
+    <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_TailSweep</iconPath>
     <aiCanUse>true</aiCanUse>
     <hostile>true</hostile>
     <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
     <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
+    <cooldownTicksRange>1000</cooldownTicksRange>
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
-      <range>22.9</range>
+      <range>6</range>
       <warmupTime>0.6</warmupTime>
+      <soundCast>LBD_Dragon_Charge_voice</soundCast>
       <targetParams>
         <canTargetLocations>true</canTargetLocations>
       </targetParams>
     </verbProperties>
-    <cooldownTicksRange>900~900</cooldownTicksRange>
     <comps>
+      <li Class="CompProperties_AbilityEffecterOnCaster" MayRequire="Ludeon.Rimworld.Odyssey">
+        <effecterDef>WarTrumpet</effecterDef>
+        <maintainTicks>20</maintainTicks>        <!-- Long enough for the "2nd wave" to spawn -->
+      </li>
       <li Class="LegendaryBlackDragon.CompProperties_AbilityFanShapedStunKnockback">
         <!-- 扇形参数 -->
         <range>6</range>
@@ -62,10 +67,15 @@
         <!-- 击退参数 -->
         <maxKnockbackDistance>3</maxKnockbackDistance>
         <canKnockbackIntoWalls>false</canKnockbackIntoWalls>
-        <requireLineOfSight>true</requireLineOfSight>
+        <requireLineOfSight>false</requireLineOfSight>
+
+        <affectNonPawnThings>true</affectNonPawnThings>
+        <canDamageNonPawnThings>true</canDamageNonPawnThings>
+        <nonPawnDamageMultiplier>5</nonPawnDamageMultiplier>
+        <applySpecialEffectsToNonPawn>false</applySpecialEffectsToNonPawn>
         
         <!-- 视觉效果 -->
-        <!-- <impactEffecter>Impact_Pound</impactEffecter> -->
+        <impactEffecter>LBD_TailSweep_Hit</impactEffecter>
         <impactSound>Pawn_Melee_BigBash_HitPawn</impactSound>
         
         <!-- 飞行效果 -->
@@ -76,8 +86,12 @@
         <!-- 过滤设置 -->
         <affectCaster>false</affectCaster>
         <canHitFilledCells>true</canHitFilledCells>
-        <onlyAffectEnemies>true</onlyAffectEnemies>
+        <onlyAffectEnemies>false</onlyAffectEnemies>
         <requireLineOfSightToTarget>true</requireLineOfSightToTarget>
+    
+        <!-- 近战伤害系数加成 -->
+        <multiplyDamageByMeleeFactor>true</multiplyDamageByMeleeFactor>
+        <multiplyStunTimeByMeleeFactor>true</multiplyStunTimeByMeleeFactor>
       </li>
     </comps>
   </AbilityDef>
@@ -85,9 +99,9 @@
   <AbilityDef>
     <defName>LBD_Dragon_Charge</defName>
     <label>龙车冲锋</label>
-    <description>黑龙以自身为武器，快速向前撞击，伤害目标和在冲撞途中碰到的所有建筑和敌人。尽管因为身体变小破坏力大不如前，但是依然能将敌人顶个七荤八素。\n\n当一次冲击没有杀死敌人时，黑龙会自动进行下一次冲击。</description>
-    <iconPath>UI/Abilities/FireBurst</iconPath>
-    <cooldownTicksRange>6000</cooldownTicksRange>
+    <description>黑龙以自身为武器，快速向前撞击，伤害目标和在冲撞途中碰到的所有建筑和敌人。尽管因为身体变小破坏力大不如前，但是依然能将敌人顶个七荤八素。当一次冲击没有杀死敌人时，黑龙会自动进行下一次冲击。\n\n该技能受到近战伤害系数的额外加成。</description>
+    <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Dragon_Charge</iconPath>
+    <cooldownTicksRange>2000</cooldownTicksRange>
     <charges>2</charges>
     <cooldownPerCharge>true</cooldownPerCharge>
     <aiCanUse>false</aiCanUse>
@@ -103,7 +117,7 @@
         <canTargetMechs>true</canTargetMechs>
         <canTargetSelf>false</canTargetSelf>
       </targetParams>
-      <range>18</range>
+      <range>32</range>
       <warmupTime>1.0</warmupTime>
     </verbProperties>
     <comps>
@@ -117,6 +131,10 @@
         <collisionRadius>1.5</collisionRadius>        <!-- Larger collision radius -->
         <impactSound>Pawn_Melee_BigBash_HitPawn</impactSound>
         <damageHostileOnly>true</damageHostileOnly>        <!-- Set to false to damage everyone in the path -->
+
+        <!-- 新增：是否乘以近战伤害系数 -->
+        <multiplyInitialDamageByMeleeFactor>true</multiplyInitialDamageByMeleeFactor>
+        <multiplyPerTileDamageByMeleeFactor>false</multiplyPerTileDamageByMeleeFactor>
       </li>
       <li Class="CompProperties_AbilityEffecterOnCaster" MayRequire="Ludeon.Rimworld.Odyssey">
         <effecterDef>WarTrumpet</effecterDef>
