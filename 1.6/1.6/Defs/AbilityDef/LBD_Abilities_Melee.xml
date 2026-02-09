@@ -35,7 +35,7 @@
     <hostile>true</hostile>
     <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
     <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
-    <cooldownTicksRange>1000</cooldownTicksRange>
+    <cooldownTicksRange>600</cooldownTicksRange>
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
       <range>6</range>
@@ -101,7 +101,7 @@
     <label>龙车冲锋</label>
     <description>黑龙以自身为武器，快速向前撞击，伤害目标和在冲撞途中碰到的所有建筑和敌人。尽管因为身体变小破坏力大不如前，但是依然能将敌人顶个七荤八素。当一次冲击没有杀死敌人时，黑龙会自动进行下一次冲击。\n\n该技能受到近战伤害系数的额外加成。</description>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Dragon_Charge</iconPath>
-    <cooldownTicksRange>2000</cooldownTicksRange>
+    <cooldownTicksRange>300</cooldownTicksRange>
     <charges>2</charges>
     <cooldownPerCharge>true</cooldownPerCharge>
     <aiCanUse>false</aiCanUse>

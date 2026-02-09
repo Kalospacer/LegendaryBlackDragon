@@ -35,4 +35,16 @@
     <checkOverrideOnDamage>Always</checkOverrideOnDamage>
     <suspendable>false</suspendable>
   </JobDef>
+
+  <JobDef>
+    <defName>LBD_CastAbility_Angry</defName>
+    <driverClass>JobDriver_CastAbility</driverClass>
+    <reportString>要红温了！</reportString>
+    <abilityCasting>true</abilityCasting>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <playerInterruptible>true</playerInterruptible>
+    <casualInterruptible>false</casualInterruptible>
+    <checkOverrideOnDamage>Always</checkOverrideOnDamage>
+    <suspendable>false</suspendable>
+  </JobDef>
 </Defs>

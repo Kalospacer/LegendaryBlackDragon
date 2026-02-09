@@ -12,7 +12,8 @@
     <aiCanUse>true</aiCanUse>
     <ai_IsOffensive>true</ai_IsOffensive>
     <targetRequired>false</targetRequired>
-    <jobDef>CastAbilityOnThing</jobDef> <!-- 添加jobDef -->
+    <jobDef>LBD_CastAbility_Angry</jobDef> <!-- 添加jobDef -->
+    <waitForJobEnd>true</waitForJobEnd>
     <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
     <statBases>
       <Ability_Duration>960</Ability_Duration>
@@ -63,7 +64,7 @@
         <canTargetLocations>true</canTargetLocations>
       </targetParams>
     </verbProperties>
-    <cooldownTicksRange>900~900</cooldownTicksRange>
+    <cooldownTicksRange>3000~3000</cooldownTicksRange>
     <comps>
       <li Class="LegendaryBlackDragon.CompProperties_AbilitySustainedFlameCone">
         <!-- ===== 核心判定（伤害）===== -->
@@ -140,7 +141,7 @@
     <ai_SearchAOEForTargets>true</ai_SearchAOEForTargets>
     <hostile>true</hostile>
     <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
-    <cooldownTicksRange>900~900</cooldownTicksRange>
+    <cooldownTicksRange>3000~3000</cooldownTicksRange>
     <warmupStartSound>LBD_Dragon_Ability_Warmup</warmupStartSound>
     <verbProperties>
       <verbClass>LegendaryBlackDragon.Verb_CastAbility_FlyingSustainedFlameAura</verbClass>
@@ -201,7 +202,7 @@
     <jobDef>LBD_Job_Dragon_Launch_FireBall</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_FireBall</iconPath>
-    <cooldownTicksRange>5000</cooldownTicksRange>
+    <cooldownTicksRange>1000</cooldownTicksRange>
     <aiCanUse>false</aiCanUse>
     <displayOrder>300</displayOrder>
     <displayGizmoWhileUndrafted>false</displayGizmoWhileUndrafted>

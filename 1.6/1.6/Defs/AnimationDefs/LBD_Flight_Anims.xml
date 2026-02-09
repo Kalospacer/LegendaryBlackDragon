@@ -90,11 +90,11 @@
   </AnimationDef>
 
   <!-- North Frames -->
-  <GraphicStateDef><defName>LBD_FlyNorth_0</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_1_south</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>
-  <GraphicStateDef><defName>LBD_FlyNorth_1</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_2_south</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>
-  <GraphicStateDef><defName>LBD_FlyNorth_2</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_3_south</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>
-  <GraphicStateDef><defName>LBD_FlyNorth_3</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_4_south</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>
-  <GraphicStateDef><defName>LBD_FlyNorth_4</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_5_south</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>
+  <GraphicStateDef><defName>LBD_FlyNorth_0</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_1_north</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>
+  <GraphicStateDef><defName>LBD_FlyNorth_1</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_2_north</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>
+  <GraphicStateDef><defName>LBD_FlyNorth_2</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_3_north</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>
+  <GraphicStateDef><defName>LBD_FlyNorth_3</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_4_north</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>
+  <GraphicStateDef><defName>LBD_FlyNorth_4</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_5_north</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>
 
   <!-- East Frames -->
   <GraphicStateDef><defName>LBD_FlyEast_0</defName><defaultGraphicData><graphicClass>Graphic_Single</graphicClass><texPath>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_1_east</texPath><drawSize>1</drawSize></defaultGraphicData></GraphicStateDef>

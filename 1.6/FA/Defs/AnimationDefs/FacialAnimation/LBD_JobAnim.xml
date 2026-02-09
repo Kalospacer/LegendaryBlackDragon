@@ -81,6 +81,28 @@
     <priority>1000</priority>
   </FacialAnimation.FaceAnimationDef>
 
+  <!-- 喷火 -->
+  <FacialAnimation.FaceAnimationDef MayRequire="Nals.FacialAnimation">
+    <defName>LBD_Fatalis_Race_AttackMelee_1</defName>
+    <raceName>LBD_Fatalis_Race</raceName>
+    <animationFrames>
+      <li>
+        <duration>1</duration>
+        <browShapeDef>angled</browShapeDef>
+        <lidShapeDef>arrow_close</lidShapeDef>
+        <headShapeDef>blush</headShapeDef>
+        <mouthShapeDef>openex</mouthShapeDef>
+      </li>
+    </animationFrames>
+    <targetJobs>
+      <li>LBD_CastAbilityMaintainFlame</li>
+      <li>LBD_CastAbilityMaintainFlameAura</li>
+      <li>LBD_Job_Dragon_Launch_FireBall</li>
+      <li>LBD_CastAbility_Angry</li>
+    </targetJobs>
+    <priority>10300</priority>
+  </FacialAnimation.FaceAnimationDef>
+
   <!-- 近战和站立战斗 -->
   <FacialAnimation.FaceAnimationDef MayRequire="Nals.FacialAnimation">
     <defName>LBD_Fatalis_Race_AttackMelee_1</defName>
