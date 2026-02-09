@@ -50,9 +50,10 @@
       <texPath>LegendaryBlackDragon/Mote/LBD_Fire_Mote</texPath>
       <graphicClass>Graphic_MoteWithAgeSecs</graphicClass>
       <shaderType>MoteIncineratorBeam</shaderType>
+      <color>(0.15,0.15,0.85)</color>
       <shaderParameters>
-        <_GradientTex>/Things/Mote/IncineratorBeamGradient</_GradientTex>
-        <_AgeScalarNoise>/LegendaryBlackDragon/Mote/LBD_IncineratorBeamAgeNoise_Blue</_AgeScalarNoise>
+        <_GradientTex>/LegendaryBlackDragon/Mote/LBD_IncineratorBeamGradient_Blue</_GradientTex>
+        <_AgeScalarNoise>/Things/Mote/IncineratorBeamAgeNoise</_AgeScalarNoise>
         <_ScrollSpeedA>-4 </_ScrollSpeedA>
         <_ScrollSpeedB>3</_ScrollSpeedB>
         <_Intensity>0</_Intensity>
