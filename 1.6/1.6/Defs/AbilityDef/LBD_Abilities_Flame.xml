@@ -3,7 +3,7 @@
   <AbilityDef>
     <defName>LBD_SustainedFlameCone</defName>
     <label>扇形龙焰</label>
-    <description>黑龙经过短暂蓄力后，持续向前方扇形区域喷射龙焰。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。</description>
+    <description>黑龙经过短暂蓄力后，持续向前方扇形区域喷射龙焰。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。</description>
     <iconPath>UI/Abilities/FireSpew</iconPath>
     <jobDef>LBD_CastAbilityMaintainFlame</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
@@ -86,7 +86,7 @@
   <AbilityDef>
     <defName>LBD_SustainedFlameAura</defName>
     <label>环形龙焰</label>
-    <description>黑龙经过短暂蓄力后，向地上喷射龙焰，龙焰会被大地反射，并灼烧周围一切。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。</description>
+    <description>黑龙经过短暂蓄力后，向地上喷射龙焰，龙焰会被大地反射，并灼烧周围一切。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。</description>
     <iconPath>UI/Abilities/FireBurst</iconPath>
     <jobDef>LBD_CastAbilityMaintainFlameAura</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
@@ -136,6 +136,17 @@
         <fuelSpawnChancePerTick>0.15</fuelSpawnChancePerTick>
         <canHitFilledCells>true</canHitFilledCells>
         <affectCaster>false</affectCaster>
+        <!-- 状态列表 -->
+        <states>
+          <!-- 火焰强化状态 -->
+          <li Class="LegendaryBlackDragon.FlameAuraState">
+            <hediffDef>LBD_Angry_Bluefire</hediffDef>
+            <damAmount>25</damAmount>
+            <armorPenetration>1.5</armorPenetration>
+            <effecterDef>LBD_Fire_Burst_Blue</effecterDef>
+            <fuelSpawnChancePerTick>0.5</fuelSpawnChancePerTick>
+          </li>
+        </states>
       </li>
     </comps>
   </AbilityDef>
@@ -143,7 +154,9 @@
   <AbilityDef>
     <defName>LBD_FireBall</defName>
     <label>火球喷射</label>
-    <description>黑龙向目标位置喷射一发火球，火球在命中后会爆炸并造成范围性伤害。</description>
+    <description>黑龙向目标位置喷射火球，火球在命中后会爆炸并造成范围性伤害。\n\n如果进入核心超压状态，黑龙喷射的火球将转变为蓝紫色火球，精准度下降但是一次性喷射三发，伤害和穿甲能力得到大幅提升。</description>
+    <jobDef>LBD_Job_Dragon_Launch_FireBall</jobDef>
+    <waitForJobEnd>true</waitForJobEnd>
     <iconPath>UI/Abilities/FireBurst</iconPath>
     <cooldownTicksRange>5000</cooldownTicksRange>
     <aiCanUse>false</aiCanUse>
@@ -163,8 +176,26 @@
       </targetParams>
     </verbProperties>
     <comps>
-      <li Class="CompProperties_AbilityLaunchProjectile">
+      <li Class="LegendaryBlackDragon.CompProperties_AbilityLaunchMultiProjectile">
+        <!-- 默认状态参数 -->
         <projectileDef>LBD_FireBall_Proj</projectileDef>
+        <numProjectiles>1</numProjectiles>
+        
+        <!-- 偏移配置 -->
+        <offsetRadius>0</offsetRadius>
+        <useRandomOffset>true</useRandomOffset>
+        <offsetInCircle>true</offsetInCircle>
+        <avoidOverlap>false</avoidOverlap>
+        <shotIntervalTicks>15</shotIntervalTicks>
+        
+        <states>
+          <li Class="LegendaryBlackDragon.ProjectileState">
+            <hediffDef>LBD_Angry_Bluefire</hediffDef>
+            <numProjectiles>3</numProjectiles>
+            <projectileDef>LBD_FireBall_Blue_Proj</projectileDef>
+            <offsetRadius>4.9</offsetRadius>
+          </li>
+        </states>
       </li>
     </comps>
   </AbilityDef>
@@ -176,7 +207,8 @@
       <texPath>LegendaryBlackDragon/Mote/LBD_Fireball_Mote</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>MoteGlow</shaderType>
-      <drawSize>(2.5, 3)</drawSize>
+      <color>(0.9,0.3,0.2)</color>
+      <drawSize>(2.2, 3)</drawSize>
     </graphicData>
     <projectile>
       <damageDef>LBD_DRM_Flame</damageDef>
@@ -187,6 +219,30 @@
       <screenShakeFactor>0.75</screenShakeFactor>
       <explosionChanceToStartFire>1</explosionChanceToStartFire>
       <armorPenetrationBase>1</armorPenetrationBase>
+      <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
+      <!-- <flyOverhead>true</flyOverhead> -->
+    </projectile>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>LBD_FireBall_Blue_Proj</defName>
+    <label>火球</label>
+    <thingClass>Projectile_Explosive</thingClass>
+    <graphicData>
+      <texPath>LegendaryBlackDragon/Mote/LBD_Fireball_Mote</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>MoteGlow</shaderType>
+      <color>(0.15,0.15,0.85)</color>
+      <drawSize>(2.2, 3)</drawSize>
+    </graphicData>
+    <projectile>
+      <damageDef>LBD_DRM_Flame</damageDef>
+      <damageAmountBase>50</damageAmountBase>
+      <speed>65</speed>
+      <!-- <soundAmbient>FleshmelterBolt_Launch</soundAmbient> -->
+      <explosionRadius>3.49</explosionRadius>
+      <screenShakeFactor>0.5</screenShakeFactor>
+      <explosionChanceToStartFire>1</explosionChanceToStartFire>
+      <armorPenetrationBase>1.5</armorPenetrationBase>
       <preExplosionSpawnSingleThingDef>Filth_BlastMark</preExplosionSpawnSingleThingDef>
       <!-- <flyOverhead>true</flyOverhead> -->
     </projectile>

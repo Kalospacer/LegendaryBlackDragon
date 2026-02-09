@@ -10,7 +10,8 @@ namespace LegendaryBlackDragon
         public static ThingDef LBD_DragonSkyNukeFlyerLeaving;
         public static ThingDef LBD_DragonSkyNukeFlyerArrival;
         public static SoundDef LBD_Dragon_Fire_Ability_Maintain;
-        
+        public static JobDef LBD_Job_Dragon_Launch_FireBall;
+
         static LBD_DefOf()
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(LBD_DefOf));

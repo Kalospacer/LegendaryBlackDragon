@@ -9,5 +9,8 @@
         <severityPerDamageDealt>0.02</severityPerDamageDealt>
       </li>
     </additionalHediffs>
+
+    <buildingDamageFactorImpassable>10</buildingDamageFactorImpassable>
+    <buildingDamageFactorPassable>10</buildingDamageFactorPassable>
   </DamageDef>
 </Defs>

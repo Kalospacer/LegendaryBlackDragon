@@ -23,4 +23,16 @@
     <checkOverrideOnDamage>Always</checkOverrideOnDamage>
     <suspendable>false</suspendable>
   </JobDef>
+
+  <JobDef>
+    <defName>LBD_Job_Dragon_Launch_FireBall</defName>
+    <driverClass>LegendaryBlackDragon.JobDriver_CastAbilityMaintainMultiProjectile</driverClass>
+    <reportString>喷射火焰中。</reportString>
+    <abilityCasting>true</abilityCasting>
+    <alwaysShowWeapon>true</alwaysShowWeapon>
+    <playerInterruptible>true</playerInterruptible>
+    <casualInterruptible>false</casualInterruptible>
+    <checkOverrideOnDamage>Always</checkOverrideOnDamage>
+    <suspendable>false</suspendable>
+  </JobDef>
 </Defs>

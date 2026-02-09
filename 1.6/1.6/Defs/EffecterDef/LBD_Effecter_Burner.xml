@@ -125,7 +125,6 @@
         </curve>
       </li>
     </scalers>
-    
   </FleckDef>
 
   <EffecterDef>
@@ -172,4 +171,83 @@
       </li>
     </children>
   </EffecterDef>
+  <EffecterDef>
+    <defName>LBD_Fire_Burst_Blue</defName>
+    <children>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <positionRadius>0</positionRadius>
+        <fleckDef>LBD_FireSpew_Blue</fleckDef>
+        <chancePerTick>1</chancePerTick>
+        <speed>9.5</speed>
+        <scale>0.8~1.2</scale>
+        <angle>0~360</angle>
+        <positionLerpFactor>0.85</positionLerpFactor>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <positionRadius>0</positionRadius>
+        <fleckDef>FireSpew_Base</fleckDef>
+        <chancePerTick>1</chancePerTick>
+        <speed>0.6</speed>
+        <scale>0.8</scale>
+        <angle>0~360</angle>
+        <positionLerpFactor>0.75</positionLerpFactor>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <positionRadius>0</positionRadius>
+        <fleckDef>LBD_FireSpew_Glow_Blue</fleckDef>
+        <chancePerTick>0.16</chancePerTick>
+        <positionLerpFactor>0.65</positionLerpFactor>
+      </li>
+      <li>
+        <subEffecterClass>SubEffecter_SprayerChance</subEffecterClass>
+        <positionRadius>0</positionRadius>
+        <fleckDef>FuelSpray</fleckDef>
+        <chancePerTick>1</chancePerTick>
+        <speed>6.5</speed>
+        <scale>0.8~1.2</scale>
+        <angle>0~360</angle>
+        <fleckUsesAngleForVelocity>true</fleckUsesAngleForVelocity>
+      </li>
+    </children>
+  </EffecterDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LBD_FireSpew_Blue</defName>
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <fadeInTime>0.2</fadeInTime>
+    <solidTime>0.4</solidTime>
+    <fadeOutTime>0.2</fadeOutTime>
+    <rotateTowardsMoveDirection>true</rotateTowardsMoveDirection>
+    <rotateTowardsMoveDirectionExtraAngle>-90</rotateTowardsMoveDirectionExtraAngle>
+    <graphicData>
+      <graphicClass>Graphic_FleckPulse</graphicClass>
+      <shaderType>GlowAnimated</shaderType>
+      <texPath>Things/Mote/FireSpew_A</texPath>
+      <color>(0.15,0.15,0.85)</color>
+
+      <shaderParameters>
+        <_NumFrames>5</_NumFrames>
+        <_FramesPerSec>7</_FramesPerSec>
+      </shaderParameters>
+      <drawSize>1.2</drawSize>
+    </graphicData>
+  </FleckDef>
+  <FleckDef ParentName="FleckBase_Thrown">
+    <defName>LBD_FireSpew_Glow_Blue</defName>
+    <altitudeLayer>LightingOverlay</altitudeLayer>
+    <fadeInTime>0.1</fadeInTime>
+    <solidTime>0.105</solidTime>
+    <fadeOutTime>0.3</fadeOutTime>
+    <graphicData>
+      <graphicClass>Graphic_Fleck</graphicClass>
+      <texPath>Things/Mote/FireGlow</texPath>
+      <shaderType>MoteGlow</shaderType>
+      <drawSize>7</drawSize>
+      <color>(0, 0, 1, 0.75)</color>
+    </graphicData>
+  </FleckDef>
 </Defs>
