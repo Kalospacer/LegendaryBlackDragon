@@ -3,13 +3,13 @@
 	<ThingDef ParentName="ApparelMakeableBase">
 		<defName>LBD_Miraboreasu_Armor</defName>
 		<label>黑龙铠甲</label>
-    <description>黑龙所穿的由龙鳞和龙骨构成的盔甲——似乎并不是可以被打造出来的装备，而是黑龙通过自己的力量创造出来的。</description>
+    <description>黑龙所穿的由龙鳞和龙骨构成的盔甲——这似乎并不是可以被打造出来的装备，而是黑龙通过自己的力量创造出来的。</description>
     <graphicData>
 			<texPath>LegendaryBlackDragon/Things/Miraboreasu/Clothes/Armor/Miraboreasu_Armor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
 		</graphicData>
-	  <!-- <destroyOnDrop>true</destroyOnDrop> -->
+	  <destroyOnDrop>true</destroyOnDrop>
 		<costStuffCount>0</costStuffCount>
     <useHitPoints>false</useHitPoints>
 		<tradeTags Inherit="False"/>
@@ -64,5 +64,75 @@
 		<equippedStatOffsets>
       <IncomingDamageFactor>-0.5</IncomingDamageFactor>
 		</equippedStatOffsets>
+	</ThingDef>
+	<ThingDef ParentName="ApparelMakeableBase">
+		<defName>LBD_Miraboreasu_Base_Cloth</defName>
+		<label>黑龙的常服</label>
+    <description>黑龙所穿供日常活动的衣服，由于没有阻碍，黑龙可以尽情地使用自己的超速再生能力恢复身体的伤势——这似乎并不是可以被打造出来的装备，而是黑龙通过自己的力量创造出来的。</description>
+    <graphicData>
+			<texPath>LegendaryBlackDragon/Things/Miraboreasu/Clothes/Armor/Miraboreasu_Armor</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
+		</graphicData>
+	  <destroyOnDrop>true</destroyOnDrop>
+		<costStuffCount>0</costStuffCount>
+    <useHitPoints>false</useHitPoints>
+		<tradeTags Inherit="False"/>
+    <tradeability>None</tradeability>
+		<thingCategories>
+			<li>Apparel</li>
+		</thingCategories>
+    <apparel>
+      <tags>
+			  <li>LBD_Miraboreasu_Cloth</li>
+      </tags>
+			<bodyPartGroups>
+        <!-- <li>FullHead</li> -->
+				<li>Neck</li>
+				<li>Torso</li>
+				<li>Shoulders</li>
+				<li>Arms</li>
+				<li>Legs</li>
+			</bodyPartGroups>
+      <renderSkipFlags>
+        <li>None</li>
+      </renderSkipFlags>
+			<wornGraphicPath>LegendaryBlackDragon/Things/Miraboreasu/Clothes/Armor/Miraboreasu_Armor</wornGraphicPath>
+			<layers>
+        <li>Middle</li>
+			</layers>
+      <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <canBeGeneratedToSatisfyWarmth>false</canBeGeneratedToSatisfyWarmth>
+      <canBeGeneratedToSatisfyToxicEnvironmentResistance>false</canBeGeneratedToSatisfyToxicEnvironmentResistance>
+      <useWornGraphicMask>true</useWornGraphicMask>
+    </apparel>
+    <colorGenerator Class="ColorGenerator_Options">
+      <options>
+        <li>
+          <weight>10</weight>
+          <only>(1,1,1,1)</only>
+        </li>
+      </options>
+    </colorGenerator>
+    <recipeMaker Inherit="False" IsNull="True"/>
+    <costList Inherit="False"/>
+		<statBases>
+			<WorkToMake>25000</WorkToMake>
+			<Mass>0.5</Mass>
+			<Flammability>0</Flammability>
+			<EquipDelay>1</EquipDelay>
+
+      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+      <ArmorRating_Heat>0.1</ArmorRating_Heat>
+		</statBases>
+		<equippedStatOffsets>
+      <MoveSpeed>1</MoveSpeed>
+		</equippedStatOffsets>
+    <comps>
+      <li Class="CompProperties_CauseHediff_Apparel">
+        <hediff>LBD_Dragon_Regeneration</hediff>
+      </li>
+    </comps>
 	</ThingDef>
 </Defs>

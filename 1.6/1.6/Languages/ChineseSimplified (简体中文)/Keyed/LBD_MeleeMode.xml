@@ -8,4 +8,7 @@
   <LBD_Custom_Scratch_Mode>挠击（黑龙的徒手近战攻击会将敌人击飞）</LBD_Custom_Scratch_Mode>
   <LBD_Custom_Slam_Mode>拍击（黑龙的徒手近战攻击会伤害多个敌人）</LBD_Custom_Slam_Mode>
   <LBD_CurrentModeIndicator>近战姿态：{0}</LBD_CurrentModeIndicator>
+
+  <LBD_SwitchPresets>切换服装</LBD_SwitchPresets>
+  <LBD_SwitchPresetsDesc>黑龙可以随时切换其所穿着的衣服</LBD_SwitchPresetsDesc>
 </LanguageData>

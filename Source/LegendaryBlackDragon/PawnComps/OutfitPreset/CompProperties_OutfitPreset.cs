@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using System.Text;
 using Verse;
 using RimWorld;
-using UnityEngine; 
-
+using UnityEngine;
 
 namespace LegendaryBlackDragon
 {
@@ -11,30 +10,30 @@ namespace LegendaryBlackDragon
     {
         // 预设的服装/装备方案列表
         public List<OutfitPreset> availablePresets = new List<OutfitPreset>();
-        
+
         // 默认选择的预设索引
         public int defaultPresetIndex = 0;
-        
+
         // Gizmo图标路径
-        public string gizmoIconPath = "UI/Commands/Default";
-        
+        public string gizmoIconPath = "LegendaryBlackDragon/UI/Commands/LBD_OutfitPreset";
+
         public CompProperties_OutfitPreset()
         {
             compClass = typeof(CompOutfitPreset);
         }
     }
-    
+
     public class OutfitPreset : IExposable
     {
         public string label = "未命名方案";
         public string description = "";
-        
+
         // 装备列表（武器、工具等）
         public List<ThingDef> equipmentDefs = new List<ThingDef>();
-        
+
         // 服装列表（衣服、护甲等）
         public List<ThingDef> apparelDefs = new List<ThingDef>();
-        
+
         public void ExposeData()
         {
             Scribe_Values.Look(ref label, "label", "未命名方案");
@@ -43,12 +42,11 @@ namespace LegendaryBlackDragon
             Scribe_Collections.Look(ref apparelDefs, "apparelDefs", LookMode.Def);
         }
     }
-    
+
     public class CompOutfitPreset : ThingComp
     {
         public CompProperties_OutfitPreset Props => (CompProperties_OutfitPreset)props;
         
-        // 当前选择的预设索引
         private int currentPresetIndex = -1;
         
         public Pawn Pawn => parent as Pawn;
@@ -57,7 +55,6 @@ namespace LegendaryBlackDragon
         {
             base.Initialize(props);
             
-            // 初始化当前选择
             if (currentPresetIndex == -1 && Props.availablePresets.Count > 0)
             {
                 currentPresetIndex = Props.defaultPresetIndex;
@@ -72,7 +69,6 @@ namespace LegendaryBlackDragon
             
             Scribe_Values.Look(ref currentPresetIndex, "currentPresetIndex", -1);
             
-            // 加载后验证索引有效性
             if (Scribe.mode == LoadSaveMode.PostLoadInit && currentPresetIndex >= Props.availablePresets.Count)
             {
                 currentPresetIndex = 0;
@@ -81,13 +77,12 @@ namespace LegendaryBlackDragon
         
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
-            // 只有玩家派系的pawn才显示Gizmo，并且有多个预设可选
             if (Pawn?.Faction == Faction.OfPlayer && Props.availablePresets.Count > 1)
             {
                 yield return new Command_Action
                 {
-                    defaultLabel = "切换服装/装备",
-                    defaultDesc = "在预设的服装和装备方案之间切换",
+                    defaultLabel = "LBD_SwitchPresets".Translate(),
+                    defaultDesc = "LBD_SwitchPresetsDesc".Translate(),
                     icon = ContentFinder<Texture2D>.Get(Props.gizmoIconPath, false) ?? BaseContent.BadTex,
                     action = () => ShowPresetSelectionMenu(),
                     hotKey = KeyBindingDefOf.Misc2
@@ -108,44 +103,13 @@ namespace LegendaryBlackDragon
                 var preset = Props.availablePresets[i];
                 
                 string prefix = (i == currentPresetIndex) ? "✓ " : "   ";
-                string tooltip = preset.description + "\n\n包含物品:\n";
-                
-                bool hasItems = false;
-                
-                // 添加装备信息
-                if (preset.equipmentDefs.Count > 0)
-                {
-                    hasItems = true;
-                    tooltip += "装备:\n";
-                    foreach (var thingDef in preset.equipmentDefs)
-                    {
-                        tooltip += $"  {thingDef?.LabelCap ?? "未知物品"}\n";
-                    }
-                    tooltip += "\n";
-                }
-                
-                // 添加服装信息
-                if (preset.apparelDefs.Count > 0)
-                {
-                    hasItems = true;
-                    tooltip += "服装:\n";
-                    foreach (var thingDef in preset.apparelDefs)
-                    {
-                        tooltip += $"  {thingDef?.LabelCap ?? "未知物品"}\n";
-                    }
-                }
-                
-                if (!hasItems)
-                {
-                    tooltip += "  (无物品)";
-                }
                 
                 options.Add(new FloatMenuOption(
                     prefix + preset.label,
-                    () => SwitchToPreset(index)
+                    () => SimpleSwitchToPreset(index)
                 )
                 {
-                    tooltip = tooltip.TrimEndNewlines()
+                    tooltip = preset.description
                 });
             }
             
@@ -156,145 +120,94 @@ namespace LegendaryBlackDragon
         }
         
         /// <summary>
-        /// 切换到指定预设
+        /// 简单的切换方法 - 只处理服装
         /// </summary>
-        private void SwitchToPreset(int index)
+        private void SimpleSwitchToPreset(int index)
         {
-            if (index < 0 || index >= Props.availablePresets.Count || Pawn == null)
+            if (index < 0 || index >= Props.availablePresets.Count || Pawn == null || Pawn.apparel == null)
                 return;
                 
             try
             {
-                // 1. 清除当前装备和服装
-                ClearCurrentOutfit();
+                // 1. 清除当前所有服装
+                ClearAllApparel();
                 
-                // 2. 应用新预设
+                // 2. 穿戴新服装
                 var preset = Props.availablePresets[index];
-                ApplyPresetOutfit(preset);
+                WearPresetApparel(preset);
                 
                 // 3. 更新当前索引
                 currentPresetIndex = index;
-                
-                // 4. 发送消息通知
-                Messages.Message($"已切换到方案: {preset.label}", Pawn, MessageTypeDefOf.SilentInput);
             }
             catch (System.Exception ex)
             {
                 Log.Error($"切换方案时出错: {ex.Message}\n{ex.StackTrace}");
-                Messages.Message($"切换方案失败: {ex.Message}", Pawn, MessageTypeDefOf.RejectInput);
             }
         }
         
         /// <summary>
-        /// 清除当前所有装备和服装
+        /// 清除所有服装
         /// </summary>
-        private void ClearCurrentOutfit()
+        private void ClearAllApparel()
         {
-            // 清除装备（武器、工具等）
-            if (Pawn.equipment != null)
+            if (Pawn.apparel == null)
+                return;
+                
+            // 使用临时列表存储要清除的服装
+            List<Apparel> apparelToRemove = new List<Apparel>();
+            
+            // 收集所有要清除的服装
+            foreach (var apparel in Pawn.apparel.WornApparel)
             {
-                var equipmentList = Pawn.equipment.AllEquipmentListForReading;
-                foreach (var equipment in equipmentList)
-                {
-                    if (Pawn.equipment.TryDropEquipment(equipment, out var dropped, Pawn.PositionHeld))
-                    {
-                        if (dropped != null && !dropped.Destroyed)
-                        {
-                            dropped.Destroy(DestroyMode.Vanish);
-                        }
-                    }
-                }
+                if (apparel != null)
+                    apparelToRemove.Add(apparel);
             }
             
-            // 清除服装（衣服、护甲等）
-            if (Pawn.apparel != null)
+            // 清除服装（从后往前清除，避免索引问题）
+            for (int i = apparelToRemove.Count - 1; i >= 0; i--)
             {
-                var apparelList = Pawn.apparel.WornApparel;
-                foreach (var apparel in apparelList)
+                var apparel = apparelToRemove[i];
+                try
                 {
-                    if (Pawn.apparel.TryDrop(apparel, out var dropped, Pawn.PositionHeld))
+                    // 直接移除并销毁
+                    Pawn.apparel.Remove(apparel);
+                    if (!apparel.Destroyed)
                     {
-                        if (dropped != null && !dropped.Destroyed)
-                        {
-                            dropped.Destroy(DestroyMode.Vanish);
-                        }
+                        apparel.Destroy(DestroyMode.Vanish);
                     }
+                }
+                catch (System.Exception ex)
+                {
+                    Log.Warning($"清除服装 {apparel?.LabelCap ?? "未知"} 时出错: {ex.Message}");
                 }
             }
         }
         
         /// <summary>
-        /// 应用预设的装备和服装
+        /// 穿戴预设服装
         /// </summary>
-        private void ApplyPresetOutfit(OutfitPreset preset)
+        private void WearPresetApparel(OutfitPreset preset)
         {
-            // 1. 应用装备（武器、工具等）
-            if (Pawn.equipment != null)
+            if (Pawn.apparel == null)
+                return;
+                
+            foreach (var thingDef in preset.apparelDefs)
             {
-                foreach (var thingDef in preset.equipmentDefs)
+                if (thingDef == null) continue;
+                
+                try
                 {
-                    if (thingDef == null) continue;
-                    
-                    Thing thing = ThingMaker.MakeThing(thingDef);
-                    if (thing is ThingWithComps thingWithComps)
-                    {
-                        try
-                        {
-                            // 如果是主要武器，需要特殊处理
-                            if (thingWithComps.def.equipmentType == EquipmentType.Primary)
-                            {
-                                // 如果有主武器，先卸下
-                                if (Pawn.equipment.Primary != null)
-                                {
-                                    if (Pawn.equipment.TryDropEquipment(Pawn.equipment.Primary, out var dropped, Pawn.PositionHeld))
-                                    {
-                                        if (dropped != null && !dropped.Destroyed)
-                                        {
-                                            dropped.Destroy(DestroyMode.Vanish);
-                                        }
-                                    }
-                                }
-                                
-                                Pawn.equipment.AddEquipment(thingWithComps);
-                            }
-                            else
-                            {
-                                // 其他装备直接添加
-                                Pawn.equipment.AddEquipment(thingWithComps);
-                            }
-                        }
-                        catch (System.Exception ex)
-                        {
-                            Log.Error($"添加装备 {thingDef.defName} 到 {Pawn.LabelShort} 时出错: {ex.Message}");
-                        }
-                    }
-                }
-            }
-            
-            // 2. 应用服装（衣服、护甲等）
-            if (Pawn.apparel != null)
-            {
-                foreach (var thingDef in preset.apparelDefs)
-                {
-                    if (thingDef == null) continue;
-                    
+                    // 生成服装
                     Thing thing = ThingMaker.MakeThing(thingDef);
                     if (thing is Apparel apparel)
                     {
-                        try
-                        {
-                            // 穿戴服装（自动处理冲突，替换不兼容的服装）
-                            Pawn.apparel.Wear(apparel, dropReplacedApparel: false);
-                        }
-                        catch (System.Exception ex)
-                        {
-                            Log.Error($"穿戴服装 {thingDef.defName} 到 {Pawn.LabelShort} 时出错: {ex.Message}");
-                        }
+                        // 直接穿戴，让RimWorld处理冲突
+                        Pawn.apparel.Wear(apparel, dropReplacedApparel: false);
                     }
-                    else
-                    {
-                        Log.Error($"预设中的物品 {thingDef.defName} 不是服装类型");
-                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Log.Error($"穿戴服装 {thingDef.defName} 时出错: {ex.Message}");
                 }
             }
         }

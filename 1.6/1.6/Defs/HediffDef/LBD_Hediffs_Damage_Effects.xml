@@ -105,4 +105,32 @@
       <li Class="HediffCompProperties_DisappearsOnDeath"/>
     </comps>
   </HediffDef>
+  <HediffDef>
+    <defName>LBD_Dragon_Regeneration</defName>
+    <label>超速愈合</label>
+    <description>黑龙的身躯是由某种超自然力量构成的，只要有一定的休息时间，所有的伤害都会被自动治愈。</description>
+    <hediffClass>HediffWithComps</hediffClass>
+    <everCurableByItem>false</everCurableByItem>
+    <duplicationAllowed>false</duplicationAllowed>
+    <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <statFactors>
+          <MeleeDamageFactor>2</MeleeDamageFactor>
+        </statFactors>
+        <damageFactors>
+					<LBD_DRM_Flame>0</LBD_DRM_Flame>
+				</damageFactors>
+      </li>
+    </stages>
+    <comps>
+      <li Class="LegendaryBlackDragon.HediffCompProperties_Regeneration">
+        <activeSeverity>0.5</activeSeverity>
+        <inactiveSeverity>1.5</inactiveSeverity>
+        <repairCooldownAfterDamage>600</repairCooldownAfterDamage>
+      </li>
+      <li Class="HediffCompProperties_RemoveIfApparelDropped" />
+    </comps>
+  </HediffDef>
 </Defs>
