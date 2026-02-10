@@ -11,4 +11,12 @@
 
   <LBD_SwitchPresets>切换服装</LBD_SwitchPresets>
   <LBD_SwitchPresetsDesc>黑龙可以随时切换其所穿着的衣服</LBD_SwitchPresetsDesc>
+
+  <LBD_Regeneration_Disable>超速回复</LBD_Regeneration_Disable>
+  <LBD_Regeneration_Enable>超速回复</LBD_Regeneration_Enable>
+  <LBD_Regeneration_DisableDesc>黑龙是否使用其超速恢复能力修复自身的伤口。</LBD_Regeneration_DisableDesc>
+  <LBD_Regeneration_EnableDesc>黑龙是否使用其超速恢复能力修复自身的伤口。</LBD_Regeneration_EnableDesc>
+  <LBD_Regeneration_Active>超速回复已启动</LBD_Regeneration_Active>
+  <LBD_Regeneration_Inactive>超速回复休眠中</LBD_Regeneration_Inactive>
+  <LBD_Regeneration_Disabled>超速回复不可用</LBD_Regeneration_Disabled>
 </LanguageData>

@@ -434,10 +434,8 @@ namespace LegendaryBlackDragon
             lastDamageTick = Find.TickManager.TicksGame;
         }
 
-        // 添加Gizmo（小工具）用于切换修复系统
         public override IEnumerable<Gizmo> CompGetGizmos()
         {
-            // 只有玩家派系的机械族才显示Gizmo
             if (Pawn.Faction == Faction.OfPlayer)
             {
                 Command_Toggle toggleCommand = new Command_Toggle
@@ -448,12 +446,6 @@ namespace LegendaryBlackDragon
                     isActive = () => repairSystemEnabled,
                     toggleAction = () => {
                         repairSystemEnabled = !repairSystemEnabled;
-                        Messages.Message(
-                            repairSystemEnabled ? 
-                            "LBD_Regeneration_EnabledMsg".Translate(Pawn.LabelShort) : 
-                            "LBD_Regeneration_DisabledMsg".Translate(Pawn.LabelShort), 
-                            MessageTypeDefOf.SilentInput
-                        );
                     },
                     hotKey = KeyBindingDefOf.Misc1
                 };
