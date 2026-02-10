@@ -11,13 +11,16 @@ namespace LegendaryBlackDragon
     {
         // 预设的服装/装备方案列表
         public List<OutfitPreset> availablePresets = new List<OutfitPreset>();
-        
+
         // 默认选择的预设索引
         public int defaultPresetIndex = 0;
-        
+
         // Gizmo图标路径
         public string gizmoIconPath = "UI/Commands/Default";
-        
+
+        // 是否在Gizmo上显示当前状态
+        public bool showStatusInGizmo = false;
+
         public CompProperties_OutfitPreset()
         {
             compClass = typeof(CompOutfitPreset);
@@ -84,14 +87,18 @@ namespace LegendaryBlackDragon
             // 只有玩家派系的pawn才显示Gizmo，并且有多个预设可选
             if (Pawn?.Faction == Faction.OfPlayer && Props.availablePresets.Count > 1)
             {
-                yield return new Command_Action
+                var command = new Command_Action
                 {
-                    defaultLabel = "切换服装/装备",
+                    defaultLabel = Props.showStatusInGizmo && currentPresetIndex >= 0 && currentPresetIndex < Props.availablePresets.Count
+                        ? Props.availablePresets[currentPresetIndex].label
+                        : "切换服装/装备",
                     defaultDesc = "在预设的服装和装备方案之间切换",
                     icon = ContentFinder<Texture2D>.Get(Props.gizmoIconPath, false) ?? BaseContent.BadTex,
                     action = () => ShowPresetSelectionMenu(),
                     hotKey = KeyBindingDefOf.Misc2
                 };
+
+                yield return command;
             }
         }
         
