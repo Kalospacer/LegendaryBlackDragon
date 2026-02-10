@@ -507,6 +507,7 @@
         </availablePresets>
         <defaultPresetIndex>0</defaultPresetIndex>
         <gizmoIconPath>UI/Commands/EquipPreset</gizmoIconPath>
+        <showStatusInGizmo>true</showStatusInGizmo>
       </li>
   
       <li Class="LegendaryBlackDragon.CompProperties_MeleeModeState">

@@ -13,6 +13,7 @@ namespace LegendaryBlackDragon
 
         // 默认选择的预设索引
         public int defaultPresetIndex = 0;
+        public bool showStatusInGizmo = false;
 
         // Gizmo图标路径
         public string gizmoIconPath = "LegendaryBlackDragon/UI/Commands/LBD_OutfitPreset";
@@ -81,7 +82,9 @@ namespace LegendaryBlackDragon
             {
                 var command = new Command_Action
                 {
-                    defaultLabel = "LBD_SwitchPresets".Translate(),
+                    defaultLabel = Props.showStatusInGizmo && currentPresetIndex >= 0 && currentPresetIndex < Props.availablePresets.Count
+                        ? Props.availablePresets[currentPresetIndex].label
+                        : "LBD_SwitchPresets".Translate(),
                     defaultDesc = "LBD_SwitchPresetsDesc".Translate(),
                     icon = ContentFinder<Texture2D>.Get(Props.gizmoIconPath, false) ?? BaseContent.BadTex,
                     action = () => ShowPresetSelectionMenu(),
