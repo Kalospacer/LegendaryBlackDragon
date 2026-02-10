@@ -495,6 +495,32 @@
         <flyingAnimationEast>LBD_FlyEast</flyingAnimationEast>
         <flyingAnimationSouth>LBD_FlySouth</flyingAnimationSouth>
       </li>
+      <li Class="LegendaryBlackDragon.CompProperties_OutfitPreset">
+        <availablePresets>
+          <li>
+            <label>黑龙盔甲</label>
+            <description>黑龙的盔甲拥有强大的保护能力，可以全方位地为黑龙提供对伤害的抵抗能力；但是在穿戴盔甲的情况下，黑龙的超再生能力无法启动。</description>
+            <equipmentDefs>
+            </equipmentDefs>
+            <apparelDefs>
+              <li>LBD_Miraboreasu_Armor</li>
+            </apparelDefs>
+          </li>
+          <li>
+            <label>常服</label>
+            <description>黑龙在非临战状态下穿的衣服，虽然没什么防御力，但是比起盔甲更加轻便，并且允许黑龙使用其超再生能力治疗自己。</description>
+            <equipmentDefs>
+            </equipmentDefs>
+            <apparelDefs>
+              <li>LBD_Miraboreasu_Armor</li>
+            </apparelDefs>
+          </li>
+        </availablePresets>
+        <defaultPresetIndex>0</defaultPresetIndex>
+        <gizmoIconPath>UI/Commands/EquipPreset</gizmoIconPath>
+        <showStatusInGizmo>true</showStatusInGizmo>
+      </li>
+  
       <li Class="LegendaryBlackDragon.CompProperties_MeleeModeState">
         <defaultScratchMode>false</defaultScratchMode>
       </li>

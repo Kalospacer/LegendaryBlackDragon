@@ -83,7 +83,7 @@
 
   <!-- 喷火 -->
   <FacialAnimation.FaceAnimationDef MayRequire="Nals.FacialAnimation">
-    <defName>LBD_Fatalis_Race_AttackMelee_1</defName>
+    <defName>LBD_Fatalis_Race_Use_Fire_Ability_1</defName>
     <raceName>LBD_Fatalis_Race</raceName>
     <animationFrames>
       <li>

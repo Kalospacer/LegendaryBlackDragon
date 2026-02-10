@@ -9,7 +9,7 @@
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
 		</graphicData>
-	  <destroyOnDrop>true</destroyOnDrop>
+	  <!-- <destroyOnDrop>true</destroyOnDrop> -->
 		<costStuffCount>0</costStuffCount>
     <useHitPoints>false</useHitPoints>
 		<tradeTags Inherit="False"/>
