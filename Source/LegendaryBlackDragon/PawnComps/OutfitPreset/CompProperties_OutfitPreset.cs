@@ -79,7 +79,7 @@ namespace LegendaryBlackDragon
         {
             if (Pawn?.Faction == Faction.OfPlayer && Props.availablePresets.Count > 1)
             {
-                yield return new Command_Action
+                var command = new Command_Action
                 {
                     defaultLabel = "LBD_SwitchPresets".Translate(),
                     defaultDesc = "LBD_SwitchPresetsDesc".Translate(),
@@ -87,6 +87,8 @@ namespace LegendaryBlackDragon
                     action = () => ShowPresetSelectionMenu(),
                     hotKey = KeyBindingDefOf.Misc2
                 };
+
+                yield return command;
             }
         }
         
