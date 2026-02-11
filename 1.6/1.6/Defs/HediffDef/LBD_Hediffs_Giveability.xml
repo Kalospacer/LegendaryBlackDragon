@@ -96,4 +96,19 @@
       </li>
     </comps>
   </HediffDef>
+
+  <HediffDef>
+    <defName>LBD_ExtraHediff_Calm</defName>
+    <label>压制怒火</label>
+    <description>自从被天尊们打败之后，黑龙或许会对自己的自负有一点点反思吧？</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <everCurableByItem>false</everCurableByItem>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <becomeVisible>true</becomeVisible>
+        <MentalBreakThreshold>-0.2</MentalBreakThreshold>
+      </li>
+    </stages>
+  </HediffDef>
 </Defs>

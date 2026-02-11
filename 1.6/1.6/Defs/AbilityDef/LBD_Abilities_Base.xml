@@ -135,6 +135,15 @@
             <iconScale>1</iconScale>
             <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
           </li>
+          <li>
+            <hediff>LBD_ExtraHediff_Calm</hediff>
+            <weight>1</weight>
+            <descriptionOverride>降低黑龙的崩溃临界值</descriptionOverride>
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Extra_Hediff</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
         </hediffPool>
         
         <choiceCount>3</choiceCount>
