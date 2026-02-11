@@ -3,7 +3,7 @@
   <Operation Class="PatchOperationAdd">
     <xpath>Defs/StorytellerDef[@Name="BaseStoryteller"]/comps</xpath>
     <value>
-      <li Class="EndfieldPerlica.StorytellerCompProperties_DaysAfterStart">
+      <li Class="LegendaryBlackDragon.StorytellerCompProperties_DaysAfterStart">
         <incident>LBD_GiveQuest_Dragon_Fall</incident>
         <daysAfterStart>0.05</daysAfterStart>
         <delayTicks>1</delayTicks>
