@@ -52,7 +52,7 @@
   <AbilityDef>
     <defName>LBD_Upgrade_Skill</defName>
     <label>过去的记忆</label>
-    <description>黑龙唤醒曾为龙形态的战斗记忆，获得新的技能和增益。</description>
+    <description>黑龙唤醒曾为龙形态的战斗记忆，获得新的技能和增益。\n\n获得的记忆是永久存在的，并且在后续不会再次抽到。</description>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Upgrade_Skill</iconPath>
     <displayOrder>210</displayOrder>
     <aiCanUse>false</aiCanUse>
@@ -136,9 +136,36 @@
             <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
           </li>
           <li>
+            <hediff>LBD_Dragon_Jump</hediff>
+            <weight>1</weight>
+            <!-- <descriptionOverride>A dangerous disease that can be fatal if untreated.</descriptionOverride> -->
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Dragon_Jump</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
+          <li>
             <hediff>LBD_ExtraHediff_Calm</hediff>
             <weight>1</weight>
             <descriptionOverride>降低黑龙的崩溃临界值</descriptionOverride>
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Extra_Hediff</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
+          <li>
+            <hediff>LBD_ExtraHediff_Armor</hediff>
+            <weight>1</weight>
+            <descriptionOverride>增加黑龙的护甲</descriptionOverride>
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Extra_Hediff</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
+          <li>
+            <hediff>LBD_ExtraHediff_Hitchance</hediff>
+            <weight>1</weight>
+            <descriptionOverride>增加黑龙的近战命中率和减少近战冷却时间</descriptionOverride>
             <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Extra_Hediff</iconPath>
             <iconColor>(1, 1, 1, 1)</iconColor>
             <iconScale>1</iconScale>

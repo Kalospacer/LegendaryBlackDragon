@@ -150,4 +150,32 @@
       <heightFactor>0</heightFactor>
     </pawnFlyer>
   </ThingDef>
+  
+  <AbilityDef>
+    <defName>LBD_Dragon_Jump</defName>
+    <label>高空机动</label>
+    <description>黑龙使用其强壮的翅膀快速抬升高度，并抵达一个新的位置。</description>
+    <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Dragon_Jump</iconPath>
+    <cooldownTicksRange>1000</cooldownTicksRange>
+    <hostile>false</hostile>
+    <casterMustBeCapableOfViolence>false</casterMustBeCapableOfViolence>
+    <charges>3</charges>
+    <cooldownPerCharge>true</cooldownPerCharge>
+    <verbProperties>
+      <verbClass>Verb_CastAbilityJump</verbClass>
+      <violent>false</violent>
+      <forceNormalTimeSpeed>false</forceNormalTimeSpeed>
+      <warmupTime>0</warmupTime>
+      <range>50</range>
+      <requireLineOfSight>false</requireLineOfSight>
+      <soundCast>Longjump_Jump</soundCast>
+      <soundLanding>Longjump_Land</soundLanding>
+      <targetParams>
+        <canTargetLocations>true</canTargetLocations>
+        <canTargetPawns>true</canTargetPawns>
+        <canTargetBuildings>false</canTargetBuildings>
+      </targetParams>
+    </verbProperties>
+    <jobDef>CastJump</jobDef>
+  </AbilityDef>
 </Defs>

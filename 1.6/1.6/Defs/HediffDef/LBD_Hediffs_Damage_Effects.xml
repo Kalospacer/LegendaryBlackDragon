@@ -116,9 +116,6 @@
     <isBad>false</isBad>
     <stages>
       <li>
-        <statFactors>
-          <MeleeDamageFactor>2</MeleeDamageFactor>
-        </statFactors>
       </li>
     </stages>
     <comps>

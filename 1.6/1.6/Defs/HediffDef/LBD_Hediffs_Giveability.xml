@@ -96,6 +96,18 @@
       </li>
     </comps>
   </HediffDef>
+  <HediffDef ParentName="LBD_HediffGiveAbility_Base">
+    <defName>LBD_Dragon_Jump</defName>
+    <label>高空机动</label>
+    <description>黑龙使用其强壮的翅膀快速抬升高度，并抵达一个新的位置。</description>
+    <comps>
+      <li Class="HediffCompProperties_GiveAbility">
+        <abilityDefs>
+          <li>LBD_Dragon_Jump</li>
+        </abilityDefs>
+      </li>
+    </comps>
+  </HediffDef>
 
   <HediffDef>
     <defName>LBD_ExtraHediff_Calm</defName>
@@ -107,7 +119,61 @@
     <stages>
       <li>
         <becomeVisible>true</becomeVisible>
-        <MentalBreakThreshold>-0.2</MentalBreakThreshold>
+        <statOffsets>
+          <MentalBreakThreshold>-0.2</MentalBreakThreshold>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LBD_ExtraHediff_Armor</defName>
+    <label>熔融钢甲</label>
+    <description>黑龙可以将被其捕食的猎人们的盔甲融化并附着在龙甲外层，增加其防御能力。</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <everCurableByItem>false</everCurableByItem>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <becomeVisible>true</becomeVisible>
+        <statOffsets>
+          <ArmorRating_Blunt>0.3</ArmorRating_Blunt>
+          <ArmorRating_Sharp>0.3</ArmorRating_Sharp>
+          <ArmorRating_Heat>0.3</ArmorRating_Heat>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LBD_ExtraHediff_Hitchance</defName>
+    <label>肉体蛮力</label>
+    <description>黑龙相较于别的古龙种来说四肢和身躯都较为瘦长，但是这无法掩盖其破坏性的肉体力量。</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <everCurableByItem>false</everCurableByItem>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <becomeVisible>true</becomeVisible>
+        <statOffsets>
+          <MeleeHitChance>4</MeleeHitChance>
+          <MeleeCooldownFactor>-0.5</MeleeCooldownFactor>
+        </statOffsets>
+      </li>
+    </stages>
+  </HediffDef>
+  <HediffDef>
+    <defName>LBD_ExtraHediff_Noblood</defName>
+    <label>混沌躯体</label>
+    <description>黑龙</description>
+    <hediffClass>Hediff_High</hediffClass>
+    <everCurableByItem>false</everCurableByItem>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <becomeVisible>true</becomeVisible>
+        <statOffsets>
+          <MeleeHitChance>4</MeleeHitChance>
+          <MeleeCooldownFactor>-0.5</MeleeCooldownFactor>
+        </statOffsets>
       </li>
     </stages>
   </HediffDef>
