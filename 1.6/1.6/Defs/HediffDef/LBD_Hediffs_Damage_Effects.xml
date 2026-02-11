@@ -148,6 +148,9 @@
         <damageFactors>
 					<LBD_DRM_Flame>0</LBD_DRM_Flame>
 				</damageFactors>
+        <statFactors>
+          <StaggerDurationFactor>0</StaggerDurationFactor>
+        </statFactors>
       </li>
     </stages>
   </HediffDef>

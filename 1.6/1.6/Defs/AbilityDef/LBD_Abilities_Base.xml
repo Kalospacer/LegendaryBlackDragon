@@ -85,7 +85,7 @@
             <hediff>LBD_SustainedFlameCone</hediff>
             <weight>1</weight>
             <!-- <descriptionOverride>A dangerous disease that can be fatal if untreated.</descriptionOverride> -->
-            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_SustainedFlameCone</iconPath>
+            <iconPath>UI/Abilities/FireSpew</iconPath>
             <iconColor>(1, 1, 1, 1)</iconColor>
             <iconScale>1</iconScale>
             <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
@@ -94,7 +94,7 @@
             <hediff>LBD_SustainedFlameAura</hediff>
             <weight>1</weight>
             <!-- <descriptionOverride>A dangerous disease that can be fatal if untreated.</descriptionOverride> -->
-            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_SustainedFlameAura</iconPath>
+            <iconPath>UI/Abilities/FireBurst</iconPath>
             <iconColor>(1, 1, 1, 1)</iconColor>
             <iconScale>1</iconScale>
             <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
