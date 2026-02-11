@@ -26,8 +26,11 @@
 
   <ItemGroup>
     <Compile Remove="Comps\**" />
+    <Compile Remove="HarmonyPatches\**" />
     <EmbeddedResource Remove="Comps\**" />
+    <EmbeddedResource Remove="HarmonyPatches\**" />
     <None Remove="Comps\**" />
+    <None Remove="HarmonyPatches\**" />
   </ItemGroup>
 
   <ItemGroup>

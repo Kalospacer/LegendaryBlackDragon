@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <HediffDef Name="LBD_HediffGiveAbility_Base" Abstract="True">
+    <hediffClass>Hediff_High</hediffClass>
+    <everCurableByItem>false</everCurableByItem>
+    <isBad>false</isBad>
+    <stages>
+      <li>
+        <becomeVisible>false</becomeVisible>
+      </li>
+    </stages>
+    <comps>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LBD_HediffGiveAbility_Base">
+    <defName>LBD_Angry_Bluefire_Switch</defName>
+    <label>红温</label>
+    <description>因为无法快速解决蝼蚁而感到烦闷，黑龙打算释放她最恐怖的毁灭之力。在这种情况下，黑龙的近战能力和火焰喷吐能力将得到极大的加强，但是心情会下降一段时间。</description>
+    <comps>
+      <li Class="HediffCompProperties_GiveAbility">
+        <abilityDefs>
+          <li>LBD_Angry_Bluefire_Switch</li>
+        </abilityDefs>
+      </li>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LBD_HediffGiveAbility_Base">
+    <defName>LBD_SustainedFlameCone</defName>
+    <label>扇形龙焰</label>
+    <description>黑龙经过短暂蓄力后，持续向前方扇形区域喷射龙焰。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。</description>
+    <comps>
+      <li Class="HediffCompProperties_GiveAbility">
+        <abilityDefs>
+          <li>LBD_SustainedFlameCone</li>
+        </abilityDefs>
+      </li>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LBD_HediffGiveAbility_Base">
+    <defName>LBD_SustainedFlameAura</defName>
+    <label>环形龙焰</label>
+    <description>黑龙经过短暂蓄力后，向地上喷射龙焰，龙焰会被大地反射，并灼烧周围一切。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。</description>
+    <comps>
+      <li Class="HediffCompProperties_GiveAbility">
+        <abilityDefs>
+          <li>LBD_SustainedFlameAura</li>
+        </abilityDefs>
+      </li>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LBD_HediffGiveAbility_Base">
+    <defName>LBD_FireBall</defName>
+    <label>火球喷射</label>
+    <description>黑龙向目标位置喷射火球，火球在命中后会爆炸并造成范围性伤害。\n\n如果进入核心超压状态，黑龙喷射的火球将转变为蓝紫色火球，精准度下降但是一次性喷射三发，伤害和穿甲能力得到大幅提升。</description>
+    <comps>
+      <li Class="HediffCompProperties_GiveAbility">
+        <abilityDefs>
+          <li>LBD_FireBall</li>
+        </abilityDefs>
+      </li>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LBD_HediffGiveAbility_Base">
+    <defName>LBD_TailSweep</defName>
+    <label>扫尾</label>
+    <description>黑龙甩动尾巴猛抽面前的敌人，对扇形范围内所有的敌对目标造成伤害，如果对方在攻击中幸存，就会被黑龙击飞并眩晕一段时间。\n\n该技能受到近战伤害系数的额外加成。</description>
+    <comps>
+      <li Class="HediffCompProperties_GiveAbility">
+        <abilityDefs>
+          <li>LBD_TailSweep</li>
+        </abilityDefs>
+      </li>
+    </comps>
+  </HediffDef>
+  <HediffDef ParentName="LBD_HediffGiveAbility_Base">
+    <defName>LBD_Dragon_Charge</defName>
+    <label>龙车冲锋</label>
+    <description>黑龙以自身为武器，快速向前撞击，伤害目标和在冲撞途中碰到的所有建筑和敌人。尽管因为身体变小破坏力大不如前，但是依然能将敌人顶个七荤八素。当一次冲击没有杀死敌人时，黑龙会自动进行下一次冲击。\n\n该技能受到近战伤害系数的额外加成。</description>
+   <comps>
+      <li Class="HediffCompProperties_GiveAbility">
+        <abilityDefs>
+          <li>LBD_TailSweep</li>
+        </abilityDefs>
+      </li>
+    </comps>
+  </HediffDef>
+</Defs>

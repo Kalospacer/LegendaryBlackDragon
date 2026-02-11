@@ -133,4 +133,26 @@
       <li Class="HediffCompProperties_RemoveIfApparelDropped" />
     </comps>
   </HediffDef>
+  <HediffDef ParentName="InjuryBase">
+    <defName>LBD_DragonLanceStab</defName>
+    <label>击龙枪伤</label>
+    <labelNoun>被击龙枪打穿留下的伤口。</labelNoun>
+    <description>被击龙枪打穿留下的伤口。</description>
+    <duplicationAllowed>false</duplicationAllowed>
+    <injuryProps>
+      <painPerSeverity>9999</painPerSeverity>
+      <averagePainPerSeverityPermanent>9999</averagePainPerSeverityPermanent>
+      <bleedRate>0</bleedRate>
+      <canMerge>false</canMerge>
+      <destroyedLabel>Cut off</destroyedLabel>
+      <destroyedOutLabel>Cut out</destroyedOutLabel>
+    </injuryProps>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+    </comps>
+  </HediffDef>
 </Defs>

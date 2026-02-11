@@ -7,7 +7,7 @@
 		<fixedGender>Female</fixedGender>
 		<defaultFactionType>PlayerColony</defaultFactionType>
 		<invNutrition>0</invNutrition>
-		<combatPower>50</combatPower>
+		<combatPower>500</combatPower>
 		<isFighter>true</isFighter>
 		<trader>false</trader>
 		<chemicalAddictionChance>0</chemicalAddictionChance>
@@ -69,9 +69,10 @@
 		</xenotypeSet>
 		<useFactionXenotypes>false</useFactionXenotypes>
     <startingHediffs>
-      <!-- <li>
-        <def>EF_Perlica_Hair_Draw_Hediff</def>
-      </li> -->
+      <li>
+        <def>LBD_DragonLanceStab</def>
+        <severity>10</severity>
+      </li>
     </startingHediffs>
 		<apparelMoney>0</apparelMoney>
 		<humanPregnancyChance>0</humanPregnancyChance>

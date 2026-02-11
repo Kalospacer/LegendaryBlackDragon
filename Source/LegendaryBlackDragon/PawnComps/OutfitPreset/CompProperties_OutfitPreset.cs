@@ -91,6 +91,11 @@ namespace LegendaryBlackDragon
                     hotKey = KeyBindingDefOf.Misc2
                 };
 
+                if (Pawn.Downed)
+                {
+                    command.Disable("AbilityCantApplyDowned".Translate(Pawn));
+                }
+
                 yield return command;
             }
         }

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <IncidentDef>
+    <defName>LBD_GiveQuest_Dragon_Fall</defName>
+    <category>GiveQuest</category>
+    <label>黑龙坠落</label>
+    <targetTags>
+      <li>Map_PlayerHome</li>
+    </targetTags>
+    <questScriptDef>LBD_Dragon_Fall</questScriptDef>
+    <workerClass>IncidentWorker_GiveQuest</workerClass>
+    <baseChance>0</baseChance>
+  </IncidentDef>
+  <QuestScriptDef>
+    <defName>LBD_Dragon_Fall</defName>
+    <rootSelectionWeight>0</rootSelectionWeight>
+    <autoAccept>true</autoAccept>
+    <sendAvailableLetter>true</sendAvailableLetter>
+    <defaultChallengeRating>1</defaultChallengeRating>
+    <defaultCharity>false</defaultCharity>
+    <isRootSpecial>true</isRootSpecial>
+    <defaultHidden>true</defaultHidden>
+    <questNameRules>
+      <rulesStrings>
+        <li>questName->LBD_Dragon_Fall_questName</li>
+      </rulesStrings>
+    </questNameRules>
+    <questDescriptionRules>
+      <include>
+        <li>QuestHospitalityCommon</li>
+      </include>
+      <rulesStrings>
+        <li>questDescription->LBD_Dragon_Fall_questDescription</li>
+      </rulesStrings>
+    </questDescriptionRules>
+
+    <root Class="QuestNode_Sequence">
+      <nodes>
+        <li Class="QuestNode_GetMap" />
+        <li Class="QuestNode_SpawnSkyfaller">
+          <skyfallerDef>LBD_Dragon_Fall_Incoming</skyfallerDef>
+          <!-- <innerThings></innerThings> -->
+          <!-- <factionOfForSafeSpot></factionOfForSafeSpot> -->
+          <lookForSafeSpot>true</lookForSafeSpot>
+          <tryLandInShipLandingZone>false</tryLandInShipLandingZone>
+        </li>
+        <li Class="QuestNode_Delay">
+          <delayTicks>120</delayTicks>
+          <!-- <delayTicks>360</delayTicks> -->
+          <node Class="QuestNode_Sequence">
+            <nodes>
+              <li Class="QuestNode_Letter">
+                <label>坠落的黑影</label>
+                <text>一个黑影坠落在殖民地附近——似乎是一名少女。虽然没有任何保护，但是她在坠落到地上后依然活着，只是晕了过去。\n\n似乎你应该过去看看？</text>
+              </li>
+              <li Class="QuestNode_End">
+                <outcome>Success</outcome>
+                <sendStandardLetter>false</sendStandardLetter>
+              </li>
+            </nodes>
+          </node>
+        </li>
+      </nodes>
+    </root>
+  </QuestScriptDef>
+  <ThingDef ParentName="SkyfallerBase">
+    <defName>LBD_Dragon_Fall_Incoming</defName>
+    <label>黑龙（坠落中）</label>
+    <size>(1,1)</size>
+    <thingClass>LegendaryBlackDragon.Skyfaller_PawnSpawner</thingClass>
+    <graphicData>
+      <texPath>LegendaryBlackDragon/Things/Miraboreasu/Skyfaller/LBD_Dragon_Fall_Incoming</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutFlying</shaderType>
+      <drawSize>(1,1)</drawSize>
+    </graphicData>
+    <skyfaller>
+      <movementType>Accelerate</movementType>
+      <shadow>Things/Skyfaller/SkyfallerShadowDropPod</shadow>
+      <shadowSize>(1, 1)</shadowSize>
+      <anticipationSound>DropPod_Fall</anticipationSound>
+      <anticipationSoundTicks>100</anticipationSoundTicks>
+      <impactSound>Explosion_Vaporize</impactSound>
+      <moteSpawnTime>0.05</moteSpawnTime>
+      <motesPerCell>1</motesPerCell>
+      <cameraShake>1</cameraShake>
+      <angleCurve>
+        <points>
+          <li>(0,0)</li>
+          <li>(1, 1)</li>
+        </points>
+      </angleCurve>
+      <!-- <spawnThing></spawnThing> -->
+      <explosionRadius>6</explosionRadius>
+      <explosionDamage>Bomb</explosionDamage>
+      <explosionDamageFactor>0</explosionDamageFactor>
+    </skyfaller>
+    <comps>
+      <li Class="CompProperties_Effecter">
+        <effecterDef>Smoke_Joint</effecterDef>
+      </li>
+      <li Class="LegendaryBlackDragon.CompProperties_SkyfallerPawnSpawner">
+        <pawnKind>LBD_Miraboreasu</pawnKind>
+        <faction>PlayerColony</faction>
+        <spawnDrafted>false</spawnDrafted>
+        <spawnHostile>false</spawnHostile>
+      </li>
+    </comps>
+  </ThingDef>
+</Defs>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patch>
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/StorytellerDef[@Name="BaseStoryteller"]/comps</xpath>
+    <value>
+      <li Class="EndfieldPerlica.StorytellerCompProperties_DaysAfterStart">
+        <incident>LBD_GiveQuest_Dragon_Fall</incident>
+        <daysAfterStart>0.05</daysAfterStart>
+        <delayTicks>1</delayTicks>
+      </li>
+    </value>
+  </Operation>
+</Patch>
