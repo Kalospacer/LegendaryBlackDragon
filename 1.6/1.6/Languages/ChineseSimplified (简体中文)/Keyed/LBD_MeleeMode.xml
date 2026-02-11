@@ -19,4 +19,15 @@
   <LBD_Regeneration_Active>超速回复已启动</LBD_Regeneration_Active>
   <LBD_Regeneration_Inactive>超速回复休眠中</LBD_Regeneration_Inactive>
   <LBD_Regeneration_Disabled>超速回复不可用</LBD_Regeneration_Disabled>
+
+  <LBD_Upgrade_Skill_Title>战斗记忆</LBD_Upgrade_Skill_Title>
+  <LBD_Upgrade_Skill_Selected>黑龙的一部分战斗记忆已被唤醒。</LBD_Upgrade_Skill_Selected>
+  <LBD_HediffGacha_Title>选择一个战斗记忆</LBD_HediffGacha_Title>
+  <LBD_HediffGacha_TargetInfo>目标：{0}</LBD_HediffGacha_TargetInfo>
+  <LBD_HediffGacha_Select>选择</LBD_HediffGacha_Select>
+  <LBD_HediffGacha_Selected>{0} 获得了 {1}</LBD_HediffGacha_Selected>
+  <LBD_HediffGacha_Hint>点击按钮选择一个战斗记忆</LBD_HediffGacha_Hint>
+  <LBD_HediffGacha_HintWithCancel>点击按钮选择一个战斗记忆，或按ESC取消</LBD_HediffGacha_HintWithCancel>
+  <LBD_HediffGacha_NeedPawnTarget>需要选择一个目标角色</LBD_HediffGacha_NeedPawnTarget>
+  <LBD_HediffGacha_EmptyPool>已获得所有的战斗记忆</LBD_HediffGacha_EmptyPool>
 </LanguageData>

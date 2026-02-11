@@ -15,8 +15,8 @@
 		<forceNormalGearQuality>true</forceNormalGearQuality>
 		<initialWillRange>99~99</initialWillRange>
 		<initialResistanceRange>99~99</initialResistanceRange>
-		<minGenerationAge>19</minGenerationAge>
-		<maxGenerationAge>25</maxGenerationAge>
+		<minGenerationAge>2000</minGenerationAge>
+		<maxGenerationAge>2500</maxGenerationAge>
 		<canBeScattered>false</canBeScattered>
 
 		<flyingAnimationFramePathPrefix>LegendaryBlackDragon/Things/Miraboreasu/Addons/Flying/Miraboreasu_Wing_Flying_</flyingAnimationFramePathPrefix>
@@ -26,13 +26,7 @@
 		<flyingAnimationInheritColors>false</flyingAnimationInheritColors>
 
 		<abilities>
-			<li>LBD_Angry_Bluefire_Switch</li>
-			<li>LBD_ToggleMeleeMode</li>
-      <li>LBD_Dragon_Charge</li>
-      <li>LBD_TailSweep</li>
-      <li>LBD_SustainedFlameCone</li>
-      <li>LBD_SustainedFlameAura</li>
-      <li>LBD_FireBall</li>
+			<li>LBD_Upgrade_Skill</li>
 		</abilities>
 		<nameMaker>LBD_Miraboreasu_NameMaker</nameMaker>
 		<fixedChildBackstories>
@@ -152,8 +146,11 @@
     <titleShort>巨兽</titleShort>
     <description>作为不详的象征，黑龙的诞生和其他古龙种一样笼罩在迷雾中，人们对这种超脱于生态系统的巨兽知之甚少，其名字已经成为命运之战的象征。黑龙对自身以外的事物都极度蔑视，不认同任何存在。</description>
     <skillGains>
-      <Social>4</Social>
-      <Intellectual>4</Intellectual>
+      <Artistic>-10</Artistic>
+      <Plants>-10</Plants>
+      <Medicine>-10</Medicine>
+      <Animals>-10</Animals>
+      <Social>-10</Social>
     </skillGains>
     <!-- <workDisables>ManualDumb,Cooking,Mining</workDisables> -->
     <requiredWorkTags>Violent</requiredWorkTags>
@@ -165,7 +162,15 @@
     <bodyTypeMale>Thin</bodyTypeMale>
     <forcedTraitsChance>
       <li>
-        <defName Degree="2">Nerves</defName>
+        <defName Degree="0">Greedy</defName>
+        <chance>100</chance>
+      </li>
+      <li>
+        <defName Degree="0">Psychopath</defName>
+        <chance>100</chance>
+      </li>
+      <li>
+        <defName Degree="0">Bloodlust</defName>
         <chance>100</chance>
       </li>
     </forcedTraitsChance>
@@ -179,13 +184,13 @@
     <slot>Adulthood</slot>
     <title>毁灭之兆</title>
     <titleShort>黑龙</titleShort>
-    <description>传说中，曾经君临于世界的繁荣大国修雷德国，其王都在一夜之间被黑龙毁灭，曾经夸耀荣华的宫殿被付之一炬，以古城为中心的旧王都化为无法感受任何生命气息的不毛之地。黑龙将焚尽后的修雷德城堡作为自己的巢穴，这一带都被视为无法踏足的禁区，直到四位天尊骑乘翼龙飞临此地······</description>
+    <description>传说中，曾经君临于世界的繁荣大国修雷德国，其王都在一夜之间被黑龙毁灭，曾经夸耀荣华的宫殿被付之一炬，以古城为中心的旧王都化为无法感受任何生命气息的不毛之地。黑龙将焚尽后的修雷德城堡作为自己的巢穴，这一带都被视为无法踏足的禁区······</description>
     <skillGains>
-      <Shooting>4</Shooting>
       <Intellectual>5</Intellectual>
-      <Social>3</Social>
       <Crafting>5</Crafting>
-      <Artistic>3</Artistic>
+      <Melee>10</Melee>
+      <Shooting>2</Shooting>
+      <Mining>5</Mining>
     </skillGains>
     <!-- <workDisables>ManualDumb,Cooking,Mining</workDisables> -->
     <requiredWorkTags>Violent</requiredWorkTags>
@@ -197,7 +202,11 @@
     <bodyTypeMale>Thin</bodyTypeMale>
     <forcedTraitsChance>
       <li>
-        <defName Degree="0">FastLearner</defName>
+        <defName Degree="0">Tough</defName>
+        <chance>100</chance>
+      </li>
+      <li>
+        <defName Degree="0">Abrasive</defName>
         <chance>100</chance>
       </li>
     </forcedTraitsChance>

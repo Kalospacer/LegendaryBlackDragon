@@ -413,6 +413,7 @@
       <flightStartChanceOnJobStart>1.0</flightStartChanceOnJobStart>
       <baseHealthScale>3</baseHealthScale>
       <baseBodySize>0.8</baseBodySize>
+      <lifeExpectancy>25000</lifeExpectancy>
       <lifeStageWorkSettings MayRequire="Ludeon.RimWorld.Biotech">
         <Firefighter>0</Firefighter>
         <Patient>0</Patient>
@@ -459,6 +460,7 @@
           <minAge>1</minAge>
         </li>
       </lifeStageAges>
+      <ageGenerationCurve Inherit="False" IsNull="True"/>
     </race>
 
     <tools>

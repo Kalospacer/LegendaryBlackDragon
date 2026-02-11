@@ -63,7 +63,7 @@ namespace LegendaryBlackDragon
             List<HediffPoolEntry> entries, 
             Pawn target, 
             Action<HediffDef> selectCallback,
-            string title = "DD_HediffGacha_Title",
+            string title = "LBD_HediffGacha_Title",
             bool canCancel = false,
             CompProperties_AbilityHediffGacha properties = null)
         {
@@ -134,7 +134,7 @@ namespace LegendaryBlackDragon
             Text.Font = GameFont.Small;
             Text.Anchor = TextAnchor.MiddleCenter;
             
-            string targetInfo = "DD_HediffGacha_TargetInfo".Translate(targetPawn.LabelShortCap);
+            string targetInfo = "LBD_HediffGacha_TargetInfo".Translate(targetPawn.LabelShortCap);
             Rect infoRect = new Rect(0f, 38f, inRect.width, 20f);
             
             GUI.color = new Color(0.8f, 0.8f, 0.8f, openAnimProgress);
@@ -279,7 +279,7 @@ namespace LegendaryBlackDragon
             
             Rect buttonRect = new Rect(rect.x + padding + 10f, rect.yMax - 40f, contentWidth - 20f, 30f);
             
-            if (Widgets.ButtonText(buttonRect, "DD_HediffGacha_Select".Translate()))
+            if (Widgets.ButtonText(buttonRect, "LBD_HediffGacha_Select".Translate()))
             {
                 SoundDefOf.Click.PlayOneShotOnCamera();
                 SelectHediff(entry.hediff);
@@ -388,8 +388,8 @@ namespace LegendaryBlackDragon
             GUI.color = new Color(0.6f, 0.6f, 0.6f, openAnimProgress);
             
             string hint = allowCancel 
-                ? "DD_HediffGacha_HintWithCancel".Translate() 
-                : "DD_HediffGacha_Hint".Translate();
+                ? "LBD_HediffGacha_HintWithCancel".Translate() 
+                : "LBD_HediffGacha_Hint".Translate();
                 
             Rect hintRect = new Rect(0f, inRect.height - 25f, inRect.width, 20f);
             Widgets.Label(hintRect, hint);

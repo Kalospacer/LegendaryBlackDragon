@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <AbilityDef>
+    <defName>LBD_DragonSkyNukeStrike</defName>
+    <label>dragon sky nuke</label>
+    <description>The black dragon leaves the map, turns the sky crimson, and unleashes a two-stage burning strike before returning.</description>
+    <iconPath>UI/Abilities/FireBurst</iconPath>
+    <targetRequired>false</targetRequired>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <showCastingProgressBar>true</showCastingProgressBar>
+    <aiCanUse>true</aiCanUse>
+    <ai_IsIncendiary>true</ai_IsIncendiary>
+    <hostile>true</hostile>
+    <casterMustBeCapableOfViolence>true</casterMustBeCapableOfViolence>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0.8</warmupTime>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <cooldownTicksRange>3000~3000</cooldownTicksRange>
+    <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_AbilityDragonSkyNuke">
+        <strikeControllerDef>LBD_DragonSkyNukeStrikeController</strikeControllerDef>
+        <phase1DelayTicksRange>180~300</phase1DelayTicksRange>
+        <phase1DurationTicks>300</phase1DurationTicks>
+        <phase1WaveIntervalTicks>30</phase1WaveIntervalTicks>
+        <phase2IntervalTicks>60</phase2IntervalTicks>
+        <phase2PulseCount>20</phase2PulseCount>
+        <phase2IgniteCellsPerPulse>-1</phase2IgniteCellsPerPulse>
+        <phase2IgniteFireSize>0.16</phase2IgniteFireSize>
+        <phase2ExplosionRadius>1.9</phase2ExplosionRadius>
+        <phase2ExplosionDamage>0</phase2ExplosionDamage>
+        <phase2ExplosionChanceToStartFire>0.35</phase2ExplosionChanceToStartFire>
+        <phase2ExplosionVisualsPerPulse>24</phase2ExplosionVisualsPerPulse>
+        <damageDef>LBD_DRM_Flame</damageDef>
+        <damageAmount>18</damageAmount>
+        <armorPenetration>2</armorPenetration>
+        <phase1ItemEffecterDef>LBD_BurnerUsed_Long</phase1ItemEffecterDef>
+        <phase1EffecterMaintainTicks>20</phase1EffecterMaintainTicks>
+        <phase1IgniteFireSize>0.2</phase1IgniteFireSize>
+        <incomingWaveCells>12</incomingWaveCells>
+        <incomingWaveWidth>2</incomingWaveWidth>
+        <skyFadeInTicks>20</skyFadeInTicks>
+        <skyFadeOutTicks>50</skyFadeOutTicks>
+      </li>
+    </comps>
+  </AbilityDef>
+  
+  <AbilityDef>
+    <defName>LBD_Upgrade_Skill</defName>
+    <label>过去的记忆</label>
+    <description>黑龙唤醒曾为龙形态的战斗记忆，获得新的技能和增益。</description>
+    <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Upgrade_Skill</iconPath>
+    <displayOrder>210</displayOrder>
+    <aiCanUse>false</aiCanUse>
+    <targetRequired>false</targetRequired>
+    <cooldownTicksRange>300000</cooldownTicksRange>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <sendLetterOnCooldownComplete>true</sendLetterOnCooldownComplete>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>2</warmupTime>
+      <range>0</range>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_AbilityHediffGacha">
+        <hediffPool>
+          <li>
+            <hediff>LBD_Angry_Bluefire_Switch</hediff>
+            <weight>1</weight>
+            <!-- <descriptionOverride>A dangerous disease that can be fatal if untreated.</descriptionOverride> -->
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Angry_Bluefire_Switch</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
+          <li>
+            <hediff>LBD_SustainedFlameCone</hediff>
+            <weight>1</weight>
+            <!-- <descriptionOverride>A dangerous disease that can be fatal if untreated.</descriptionOverride> -->
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_SustainedFlameCone</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
+          <li>
+            <hediff>LBD_SustainedFlameAura</hediff>
+            <weight>1</weight>
+            <!-- <descriptionOverride>A dangerous disease that can be fatal if untreated.</descriptionOverride> -->
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_SustainedFlameAura</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
+          <li>
+            <hediff>LBD_FireBall</hediff>
+            <weight>1</weight>
+            <!-- <descriptionOverride>A dangerous disease that can be fatal if untreated.</descriptionOverride> -->
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_FireBall</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
+          <li>
+            <hediff>LBD_TailSweep</hediff>
+            <weight>1</weight>
+            <!-- <descriptionOverride>A dangerous disease that can be fatal if untreated.</descriptionOverride> -->
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_TailSweep</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
+          <li>
+            <hediff>LBD_Dragon_Charge</hediff>
+            <weight>1</weight>
+            <!-- <descriptionOverride>A dangerous disease that can be fatal if untreated.</descriptionOverride> -->
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Dragon_Charge</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
+          <li>
+            <hediff>LBD_ToggleMeleeMode</hediff>
+            <weight>1</weight>
+            <!-- <descriptionOverride>A dangerous disease that can be fatal if untreated.</descriptionOverride> -->
+            <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_ToggleMeleeMode</iconPath>
+            <iconColor>(1, 1, 1, 1)</iconColor>
+            <iconScale>1</iconScale>
+            <iconBackgroundColor>(1, 1, 1, 0)</iconBackgroundColor>
+          </li>
+        </hediffPool>
+        
+        <choiceCount>3</choiceCount>
+        <useWeights>true</useWeights>
+        <allowDuplicates>false</allowDuplicates>
+        <windowTitle>LBD_Upgrade_Skill_Title</windowTitle>
+        <allowCancel>false</allowCancel>
+        <showSelectionMessage>true</showSelectionMessage>
+        <selectionMessageKey>LBD_Upgrade_Skill_Selected</selectionMessageKey>
+        
+        <!-- 自定义卡片颜色 -->
+        <cardDefaultBackground>(0.1, 0.1, 0.12, 1)</cardDefaultBackground>
+        <cardHoverBackground>(0.2, 0.2, 0.25, 1)</cardHoverBackground>
+        <cardDefaultBorder>(0.3, 0.3, 0.35, 1)</cardDefaultBorder>
+        <cardHoverBorder>(0.9, 0.8, 0.5, 1)</cardHoverBorder>
+      </li>
+    </comps>
+  </AbilityDef>
+</Defs>

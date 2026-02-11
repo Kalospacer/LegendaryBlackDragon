@@ -84,4 +84,16 @@
       </li>
     </comps>
   </HediffDef>
+  <HediffDef ParentName="LBD_HediffGiveAbility_Base">
+    <defName>LBD_ToggleMeleeMode</defName>
+    <label>切换拍击/挠击</label>
+    <description>当未装备武器时，黑龙可在两种徒手近战姿态下切换：拍击与挠击。</description>
+    <comps>
+      <li Class="HediffCompProperties_GiveAbility">
+        <abilityDefs>
+          <li>LBD_ToggleMeleeMode</li>
+        </abilityDefs>
+      </li>
+    </comps>
+  </HediffDef>
 </Defs>
