@@ -151,6 +151,7 @@
         <statFactors>
           <StaggerDurationFactor>0</StaggerDurationFactor>
         </statFactors>
+        <foodPoisoningChanceFactor>0</foodPoisoningChanceFactor>
       </li>
     </stages>
   </HediffDef>
@@ -176,4 +177,18 @@
       </li>
     </comps>
   </HediffDef>
+  <ThoughtDef>
+    <defName>LBD_Angry_Bluefire_Switch_Though</defName>
+    <workerClass>ThoughtWorker_Hediff</workerClass>
+    <hediff>LBD_Angry_Bluefire_Switch</hediff>
+    <validWhileDespawned>true</validWhileDespawned>
+    <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
+    <stages>
+      <li>
+        <label>红温</label>
+        <description>你们能不能死快点？</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
 </Defs>

@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <Compile Remove="Abilities\CompProperties_AbilityEF_LightingStrike.cs" />
+    <Compile Remove="EventSystem\Condition\Condition_UniquePawnExists.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4633" />
@@ -191,10 +192,6 @@
     
     
     
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Abilities\" />
   </ItemGroup>
 </Project>
 

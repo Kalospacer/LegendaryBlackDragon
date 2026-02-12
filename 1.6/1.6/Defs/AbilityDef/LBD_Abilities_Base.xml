@@ -58,8 +58,8 @@
     <aiCanUse>false</aiCanUse>
     <targetRequired>false</targetRequired>
     <cooldownTicksRange>300000</cooldownTicksRange>
-    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
-    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <!-- <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted> -->
     <sendLetterOnCooldownComplete>true</sendLetterOnCooldownComplete>
     <verbProperties>
       <verbClass>Verb_CastAbility</verbClass>
@@ -175,7 +175,11 @@
         
         <choiceCount>3</choiceCount>
         <useWeights>true</useWeights>
+
+        <!-- 只有以下两个都为false才能避免重复抽取 -->
         <allowDuplicates>false</allowDuplicates>
+        <replaceExisting>false</replaceExisting>
+
         <windowTitle>LBD_Upgrade_Skill_Title</windowTitle>
         <allowCancel>false</allowCancel>
         <showSelectionMessage>true</showSelectionMessage>
@@ -186,6 +190,30 @@
         <cardHoverBackground>(0.2, 0.2, 0.25, 1)</cardHoverBackground>
         <cardDefaultBorder>(0.3, 0.3, 0.35, 1)</cardDefaultBorder>
         <cardHoverBorder>(0.9, 0.8, 0.5, 1)</cardHoverBorder>
+      </li>
+    </comps>
+  </AbilityDef>
+
+  <!-- 使用完整功能的 AbilityComp -->
+  <AbilityDef>
+    <defName>LBD_TalkWith_BlackDragon</defName>
+    <label>与米拉对话</label>
+    <description>打开与黑龙的对话窗口</description>
+    <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_TalkWith_BlackDragon</iconPath>
+    <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
+    <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>
+    <targetRequired>false</targetRequired>
+    <verbProperties>
+      <verbClass>Verb_CastAbility</verbClass>
+      <warmupTime>0</warmupTime>
+      <targetParams>
+        <canTargetSelf>true</canTargetSelf>
+      </targetParams>
+    </verbProperties>
+    <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_AbilityOpenCustomUI">
+        <uiDefName>LBD_MainEvent_UI_1</uiDefName>
+        <delayTicks>0</delayTicks>
       </li>
     </comps>
   </AbilityDef>

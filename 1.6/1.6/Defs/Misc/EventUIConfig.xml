@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <LegendaryBlackDragon.EventUIConfigDef>
+    <defName>LBD_EventUIConfig</defName>
+    
+    <!-- 主窗口设置 -->
+    <showMainWindow>false</showMainWindow>
+    <useDefaultBackground>false</useDefaultBackground>
+    <customBackgroundImagePath>DivineDiurganate/Event/tile_large_bg</customBackgroundImagePath>
+    <!-- <backgroundImagePath>Wula/Events/Portraits/PIA</backgroundImagePath> -->
+    
+    <windowSize>(600,900)</windowSize>
+
+    <!-- 元素显示控制 -->
+    <showPortrait>true</showPortrait>
+    <showLabel>false</showLabel>
+    <showCharacterName>true</showCharacterName>
+    <showDescriptions>true</showDescriptions>
+    <showOptions>true</showOptions>
+    
+    <!-- 游戏控制设置 -->
+    <pauseGameOnOpen>true</pauseGameOnOpen>
+
+    <!-- 元素尺寸 -->
+    <portraitSize>(600,400)</portraitSize>
+    <labelSize>(600,40)</labelSize>
+    <characterNameSize>(600,30)</characterNameSize>
+    <descriptionsSize>(560,200)</descriptionsSize>
+    <optionsListSize>(600,200)</optionsListSize>
+    <optionSize>(500,150)</optionSize>
+    
+    <!-- 元素间距 (x=上间距, y=下间距) -->
+    <portraitMargins>(0,10)</portraitMargins>
+    <labelMargins>(10,0)</labelMargins>
+    <characterNameMargins>(10,0)</characterNameMargins>
+    <descriptionsMargins>(10,10)</descriptionsMargins>
+    <optionsListMargins>(5,0)</optionsListMargins>
+    
+    <!-- 描述区域内边距 (x=上下间距, y=左右间距) -->
+    <descriptionsPadding>(0,0)</descriptionsPadding>
+
+    <!-- 选项列表内边距 (x=左右间距, y=上下间距) -->
+    <optionsListPadding>(20,20)</optionsListPadding>
+    
+    <!-- 选项设置 -->
+    <optionSpacing>20</optionSpacing>
+    
+    <!-- 调试和样式 -->
+    <drawBorders>false</drawBorders>
+    <showDefName>false</showDefName>
+    <labelFont>Medium</labelFont>
+  </LegendaryBlackDragon.EventUIConfigDef>
+</Defs>

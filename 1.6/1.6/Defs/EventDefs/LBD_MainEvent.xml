@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <LegendaryBlackDragon.EventDef>
+    <defName>LBD_MainEvent_UI_1</defName>
+    <label>Event</label>
+    <portraitPath>LegendaryBlackDragon/Event/Portraits/DD_Michelle_1</portraitPath>
+    <characterName>测试</characterName>
+    <descriptions>
+      <li><text>测试测试测试</text></li>
+    </descriptions>
+    <!-- <conditionalDescriptions>
+      <li>
+        <conditions>
+        </conditions>
+        <text>\n(You shouldn't have gotten Michelle before this part of the story; I have to help you skip this part now.)</text>
+      </li>
+    </conditionalDescriptions> -->
+    <options>
+      <li>
+        <label>测试1</label>
+        <useCustomColors>false</useCustomColors>
+        <conditions>
+        </conditions>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="LegendaryBlackDragon.Effect_OpenCustomUI">
+                <defName>LBD_MainEvent_UI_1</defName>
+              </li>
+              <li Class="LegendaryBlackDragon.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+      <li>
+        <label>测试2</label>
+        <useCustomColors>false</useCustomColors>
+        <optionEffects>
+          <li>
+            <effects>
+              <li Class="LegendaryBlackDragon.Effect_CloseDialog" />
+            </effects>
+          </li>
+        </optionEffects>
+      </li>
+    </options>
+  </LegendaryBlackDragon.EventDef>
+</Defs>

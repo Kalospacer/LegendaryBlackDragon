@@ -230,12 +230,6 @@ namespace LegendaryBlackDragon
                 {
                     Props.impactSound.PlayOneShot(new TargetInfo(targetThing.Position, caster.Map));
                 }
-                
-                // 记录日志（调试用）
-                if (Prefs.DevMode)
-                {
-                    Log.Message($"[CompAbilityEffect_FanShapedStunKnockback] 对非Pawn物体 {targetThing.LabelCap} 造成 {finalDamage:F1} 伤害");
-                }
             }
         }
 
@@ -723,21 +717,6 @@ namespace LegendaryBlackDragon
             }
             
             return true;
-        }
-        
-        /// <summary>
-        /// 获取调试信息
-        /// </summary>
-        public string GetDebugInfo()
-        {
-            var sb = new System.Text.StringBuilder();
-            sb.AppendLine("=== CompAbilityEffect_FanShapedStunKnockback 调试信息 ===");
-            sb.AppendLine($"影响非Pawn物体: {Props.affectNonPawnThings}");
-            sb.AppendLine($"对非Pawn物体造成伤害: {Props.canDamageNonPawnThings}");
-            sb.AppendLine($"非Pawn物体伤害倍率: {Props.nonPawnDamageMultiplier:F2}");
-            sb.AppendLine($"对非Pawn物体应用特殊效果: {Props.applySpecialEffectsToNonPawn}");
-            sb.AppendLine($"主要攻击效果器: {Props.impactEffecter?.defName ?? "null"}");
-            return sb.ToString();
         }
     }
 }

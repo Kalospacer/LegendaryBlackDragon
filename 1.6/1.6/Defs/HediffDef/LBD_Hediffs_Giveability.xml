@@ -79,7 +79,7 @@
    <comps>
       <li Class="HediffCompProperties_GiveAbility">
         <abilityDefs>
-          <li>LBD_TailSweep</li>
+          <li>LBD_Dragon_Charge</li>
         </abilityDefs>
       </li>
     </comps>

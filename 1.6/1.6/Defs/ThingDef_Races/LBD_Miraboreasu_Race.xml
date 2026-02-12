@@ -375,6 +375,31 @@
         <relationChanceModifierChild>0</relationChanceModifierChild>
         <relationChanceModifierSibling>0</relationChanceModifierSibling>
       </relationSettings>
+      <thoughtSettings>
+        <!-- 不会产生的想法 -->
+        <cannotReceiveThoughts>
+          <li>AteWithoutTable</li>
+          <li>SleptOnGround</li>
+          <li>SleptOutside</li>
+          <li>AteCorpse</li>
+          <li>AteHumanlikeMeatAsIngredient</li>
+          <li>AteHumanlikeMeatAsIngredientCannibal</li>
+          <li>AteHumanlikeMeatDirect</li>
+          <li>AteInsectMeatAsIngredient</li>
+          <li>AteInsectMeatDirect</li>
+          <li>AteHumanlikeMeatDirectCannibal</li>
+          <li>AteKibble</li>
+          <li>AteRawFood</li>
+          <li>AteRottenFood</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">AteNutrientPasteMeal</li>
+          <li MayRequire="Ludeon.RimWorld.Biotech">AteBabyFood</li>
+          <li MayRequire="Ludeon.RimWorld.Anomaly">AteTwistedMeat</li>
+        </cannotReceiveThoughts>
+        <!-- 该种族特有想法 -->
+        <restrictedThoughts>
+          <li>LBD_Angry_Bluefire_Switch_Though</li>
+        </restrictedThoughts>
+      </thoughtSettings>
     </alienRace>
 
     <!-- 基础属性设置 -->

@@ -71,7 +71,7 @@
         <!-- 伤害扇形最大距离（格） -->
         <range>22.9</range>
         <!-- 伤害扇形在最远端的宽度（格） -->
-        <lineWidthEnd>12</lineWidthEnd>
+        <lineWidthEnd>16</lineWidthEnd>
         <!-- 伤害类型与单次脉冲伤害 -->
         <damageDef>LBD_DRM_Flame</damageDef>
         <damageAmount>12</damageAmount>
@@ -251,7 +251,7 @@
       <texPath>LegendaryBlackDragon/Mote/LBD_Fireball_Mote</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>MoteGlow</shaderType>
-      <color>(0.9,0.3,0.2)</color>
+      <!-- <color>(0.9,0.3,0.2)</color> -->
       <drawSize>(2.2, 3)</drawSize>
     </graphicData>
     <projectile>
@@ -272,10 +272,10 @@
     <label>火球</label>
     <thingClass>Projectile_Explosive</thingClass>
     <graphicData>
-      <texPath>LegendaryBlackDragon/Mote/LBD_Fireball_Mote</texPath>
+      <texPath>LegendaryBlackDragon/Mote/LBD_Fireball_Blue_Mote</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>MoteGlow</shaderType>
-      <color>(0.15,0.15,0.85)</color>
+      <!-- <color>(0.15,0.15,0.85)</color> -->
       <drawSize>(2.2, 3)</drawSize>
     </graphicData>
     <projectile>
