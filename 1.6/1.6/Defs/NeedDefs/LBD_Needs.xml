@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <NeedDef>
+    <defName>Need_LBD_BlackDragon</defName>
+    <label>焚烧</label>
+    <description>黑龙的脾气不是太好，她更喜欢用无尽的烈火焚烧挑战她的宵小之辈，而不是在野地里面种菜挖矿。如果此项需求过低，黑龙会自己尝试去居住区外烧可燃物解闷——使用黑龙的喷火类技能也可以满足需求。</description>
+    <listPriority>800</listPriority>
+    <showOnNeedList>true</showOnNeedList>
+    <major>true</major>
+    <showForCaravanMembers>true</showForCaravanMembers>
+    <showUnitTicks>true</showUnitTicks>
+    <freezeWhileSleeping>true</freezeWhileSleeping>
+    <minIntelligence>Humanlike</minIntelligence>
+    <needClass>LegendaryBlackDragon.Need_BlackDragon</needClass>
+    
+    <!-- ModExtension 配置 -->
+    <modExtensions>
+      <li Class="LegendaryBlackDragon.NeedExtension_BlackDragon">
+        <!-- 阶段 Thought 配置 -->
+        <stage1Thought>Thought_BlackDragon_Stage1</stage1Thought>
+        <stage2Thought>Thought_BlackDragon_Stage2</stage2Thought>
+        <stage3Thought>Thought_BlackDragon_Stage3</stage3Thought>
+        <stage4Thought>Thought_BlackDragon_Stage4</stage4Thought>
+        
+        <!-- 阶段阈值 -->
+        <stage4Threshold>0.75</stage4Threshold>
+        <stage3Threshold>0.50</stage3Threshold>
+        <stage2Threshold>0.25</stage2Threshold>
+        <stage1Threshold>0.0</stage1Threshold>
+        
+        <!-- Need 恢复配置 -->
+        <baseFallRatePerDay>-0.10</baseFallRatePerDay>
+        <fireStartingGain>1</fireStartingGain>
+        
+        <!-- 点火行为配置 -->
+        <allowFireStarting>true</allowFireStarting>
+        <minFireStartingNeed>0.40</minFireStartingNeed>
+        <onlyOutsideHomeArea>true</onlyOutsideHomeArea>
+        
+        <!-- 紧急状态配置 -->
+        <emergencyFireStarting>true</emergencyFireStarting>
+        <emergencyThreshold>0.15</emergencyThreshold>
+        <emergencyFireGain>0.25</emergencyFireGain>
+        
+        <!-- 冷却时间 -->
+        <fireCooldownTicks>6000</fireCooldownTicks>
+        
+        <!-- 阶段持续时间乘数 -->
+        <stageDurationMultiplier>1.0</stageDurationMultiplier>
+      </li>
+    </modExtensions>
+  </NeedDef>
+
+  <ThoughtDef>
+    <defName>Thought_BlackDragon_Stage1</defName>
+    <thoughtClass>LegendaryBlackDragon.Thought_BlackDragon_Stage1</thoughtClass>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>破坏饥渴</label>
+        <description>这个殖民地真的超！级！无！聊！——我要去找点东西烧了。</description>
+        <baseMoodEffect>-20</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>Thought_BlackDragon_Stage2</defName>
+    <thoughtClass>LegendaryBlackDragon.Thought_BlackDragon_Stage2</thoughtClass>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>破坏欲</label>
+        <description>好无聊，想烧点东西···</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>Thought_BlackDragon_Stage3</defName>
+    <thoughtClass>LegendaryBlackDragon.Thought_BlackDragon_Stage3</thoughtClass>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>火焰满足</label>
+        <description>至少这个殖民地还能给我提供些别的乐子。</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  <ThoughtDef>
+    <defName>Thought_BlackDragon_Stage4</defName>
+    <thoughtClass>LegendaryBlackDragon.Thought_BlackDragon_Stage4</thoughtClass>
+    <stackLimit>1</stackLimit>
+    <stages>
+      <li>
+        <label>火焰愉悦</label>
+        <description>烧死你们！</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+</Defs>

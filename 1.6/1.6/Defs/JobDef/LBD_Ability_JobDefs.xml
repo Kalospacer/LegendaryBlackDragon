@@ -47,4 +47,15 @@
     <checkOverrideOnDamage>Always</checkOverrideOnDamage>
     <suspendable>false</suspendable>
   </JobDef>
+
+  <JobDef>
+    <defName>LBD_Job_RandomStartFire</defName>
+    <driverClass>LegendaryBlackDragon.JobDriver_BlackDragonIgnite</driverClass>
+    <reportString>郁闷地烧东西玩。</reportString>
+    <alwaysShowWeapon>false</alwaysShowWeapon>
+    <playerInterruptible>true</playerInterruptible>
+    <casualInterruptible>false</casualInterruptible>
+    <checkOverrideOnDamage>Always</checkOverrideOnDamage>
+    <suspendable>false</suspendable>
+  </JobDef>
 </Defs>
