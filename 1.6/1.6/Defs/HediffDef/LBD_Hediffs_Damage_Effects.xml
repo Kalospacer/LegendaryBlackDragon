@@ -180,7 +180,7 @@
   <HediffDef>
     <defName>LBD_Need_LBD_BlackDragon_Change</defName>
     <label>喷火</label>
-    <description></description>
+    <description>呼呼呼~</description>
     <hediffClass>Hediff_High</hediffClass>
     <everCurableByItem>false</everCurableByItem>
     <duplicationAllowed>false</duplicationAllowed>

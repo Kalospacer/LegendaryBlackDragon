@@ -150,6 +150,20 @@ namespace LegendaryBlackDragon
             }
         }
         
+        /// <summary>
+        /// 是否拥有火焰活动 Hediff
+        /// </summary>
+        public bool HasFireActivityHediff
+        {
+            get
+            {
+                if (Extension == null || Extension.fireActivityHediff == null)
+                    return false;
+                    
+                return pawn.health?.hediffSet?.HasHediff(Extension.fireActivityHediff) == true;
+            }
+        }
+        
         // === 构造函数 ===
         
         public Need_BlackDragon(Pawn pawn) : base(pawn)
@@ -187,18 +201,34 @@ namespace LegendaryBlackDragon
             // 更新阶段持续时间
             currentStageDuration += 150; // 每个NeedInterval是150ticks
             
-            // 计算自然下降
-            float fallRate = Extension.baseFallRatePerDay / 60000f * 150f; // 转换为每150ticks的下降量
-            
-            // 如果在低阶段停留时间较长，下降更快
-            if (CurrentStage == BlackDragonStage.Stage1 || CurrentStage == BlackDragonStage.Stage2)
+            // 检查是否拥有火焰活动 Hediff
+            if (HasFireActivityHediff && Extension.hediffNeedGainPerSecond > 0)
             {
-                float multiplier = 1.0f + (currentStageDuration / 60000f) * Extension.stageDurationMultiplier;
-                fallRate *= multiplier;
+                // 拥有 Hediff，增加 Need
+                float gain = Extension.hediffNeedGainPerSecond * 2.5f; // 每150ticks
+                CurLevel = Mathf.Min(1f, CurLevel + gain);
+                
+                // 调试日志
+                if (pawn.IsColonist && Find.TickManager.TicksGame % 600 == 0)
+                {
+                    Log.Message($"[BlackDragon] {pawn.LabelShort} 拥有火焰活动Hediff，Need增加: {gain:F4}");
+                }
             }
-            
-            // 应用下降
-            CurLevel = Mathf.Max(0f, CurLevel + fallRate);
+            else
+            {
+                // 没有 Hediff，自然下降
+                float fallRate = Extension.baseFallRatePerDay / 60000f * 150f; // 转换为每150ticks的下降量
+                
+                // 如果在低阶段停留时间较长，下降更快
+                if (CurrentStage == BlackDragonStage.Stage1 || CurrentStage == BlackDragonStage.Stage2)
+                {
+                    float multiplier = 1.0f + (currentStageDuration / 60000f) * Extension.stageDurationMultiplier;
+                    fallRate *= multiplier;
+                }
+                
+                // 应用下降
+                CurLevel = Mathf.Max(0f, CurLevel + fallRate);
+            }
             
             // 更新当前阶段
             UpdateCurrentStage();
@@ -537,6 +567,63 @@ namespace LegendaryBlackDragon
         {
             ResetSearchState();
         }
+        
+        // === UI 相关方法 ===
+        
+        public override string GetTipString()
+        {
+            string baseTip = base.GetTipString();
+            
+            string stageText = "LBD_BlackDragon_Stage".Translate() + ": " + GetStageLabel(CurrentStage);
+            string stageDesc = GetStageDescription(CurrentStage);
+            
+            string cooldownText = "";
+            if (IsOnCooldown)
+            {
+                cooldownText = "\n" + "LBD_BlackDragon_Cooldown".Translate(CooldownSecondsRemaining.ToString("F1"));
+            }
+            
+            string activityText = "";
+            if (HasFireActivityHediff)
+            {
+                activityText = "\n" + "LBD_BlackDragon_FireActivityActive".Translate();
+            }
+            else if (IsExecutingFireStartJob)
+            {
+                activityText = "\n" + "LBD_BlackDragon_ExecutingFireStart".Translate();
+            }
+            else if (ShouldAttemptFireStart)
+            {
+                activityText = "\n" + "LBD_BlackDragon_SeekingFireStart".Translate();
+            }
+            
+            return baseTip + "\n\n" + stageText + "\n" + stageDesc + cooldownText + activityText;
+        }
+        
+        private string GetStageLabel(BlackDragonStage stage)
+        {
+            switch (stage)
+            {
+                case BlackDragonStage.Stage1: return "LBD_BlackDragon_Stage1_Label".Translate();
+                case BlackDragonStage.Stage2: return "LBD_BlackDragon_Stage2_Label".Translate();
+                case BlackDragonStage.Stage3: return "LBD_BlackDragon_Stage3_Label".Translate();
+                case BlackDragonStage.Stage4: return "LBD_BlackDragon_Stage4_Label".Translate();
+                default: return "Unknown".Translate();
+            }
+        }
+        
+        private string GetStageDescription(BlackDragonStage stage)
+        {
+            switch (stage)
+            {
+                case BlackDragonStage.Stage1: return "LBD_BlackDragon_Stage1_Desc".Translate();
+                case BlackDragonStage.Stage2: return "LBD_BlackDragon_Stage2_Desc".Translate();
+                case BlackDragonStage.Stage3: return "LBD_BlackDragon_Stage3_Desc".Translate();
+                case BlackDragonStage.Stage4: return "LBD_BlackDragon_Stage4_Desc".Translate();
+                default: return "";
+            }
+        }
+        
         // === 调试方法 ===
         
         public string GetDebugInfo()
@@ -552,6 +639,7 @@ namespace LegendaryBlackDragon
                    $"Searching For Target: {isSearchingForTarget}\n" +
                    $"Search Retry Count: {searchRetryCount}\n" +
                    $"Executing Fire Job: {IsExecutingFireStartJob}\n" +
+                   $"Has Fire Activity Hediff: {HasFireActivityHediff}\n" +
                    $"Current Thought: {currentThought?.def?.defName ?? "None"}";
         }
     }

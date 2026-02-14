@@ -9,37 +9,48 @@ namespace LegendaryBlackDragon
     /// </summary>
     public class NeedExtension_BlackDragon : DefModExtension
     {
-        // 四个阶段的 ThoughtDef
+        // === 四个阶段的 ThoughtDef ===
         public ThoughtDef stage1Thought;
         public ThoughtDef stage2Thought;
         public ThoughtDef stage3Thought;
         public ThoughtDef stage4Thought;
         
-        // 每个阶段对应的 Need 百分比阈值
+        // === 阶段阈值配置 ===
         public float stage4Threshold = 0.75f;    // 阶段4: 75%-100%
         public float stage3Threshold = 0.50f;    // 阶段3: 50%-75%
         public float stage2Threshold = 0.25f;    // 阶段2: 25%-50%
         public float stage1Threshold = 0f;       // 阶段1: 0%-25%
         
-        // Need 恢复速率（每秒）
+        // === Need 恢复速率配置 ===
         public float baseFallRatePerDay = -0.10f;  // 每天自然下降10%
         public float fireStartingGain = 0.15f;     // 每次点火获得的 Need 值
         
-        // 点火行为配置
+        // === 点火行为配置 ===
         public bool allowFireStarting = true;
         public float minFireStartingNeed = 0.40f;  // 低于40%时尝试点火
         public bool onlyOutsideHomeArea = true;    // 只在家园区域外点火
         
-        // 紧急状态配置
+        // === 紧急状态配置 ===
         public bool emergencyFireStarting = true;  // 紧急点火（当Need极低时）
         public float emergencyThreshold = 0.15f;   // 紧急阈值
         public float emergencyFireGain = 0.25f;    // 紧急点火获得更多
         
-        // 点火冷却时间（ticks）
+        // === 点火冷却时间 ===
         public int fireCooldownTicks = 6000;       // 100秒
         
-        // 阶段持续时间乘数（在某个阶段停留时间越长，Need下降越快）
+        // === 阶段持续时间乘数 ===
         public float stageDurationMultiplier = 1.0f;
+        
+        // === 简化的 Hediff 配置 ===
+        /// <summary>
+        /// 当 Pawn 拥有此 Hediff 时，视为在施行放火行为
+        /// </summary>
+        public HediffDef fireActivityHediff;
+        
+        /// <summary>
+        /// 拥有 fireActivityHediff 时，每秒恢复的 Need 值
+        /// </summary>
+        public float hediffNeedGainPerSecond = 0.02f;
         
         /// <summary>
         /// 根据 Need 百分比获取当前阶段

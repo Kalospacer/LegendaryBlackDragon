@@ -47,8 +47,15 @@
         
         <!-- 阶段持续时间乘数 -->
         <stageDurationMultiplier>1.0</stageDurationMultiplier>
+
+        
+        <!-- === 新增：Hediff 配置 === -->
+        <!-- 火焰活动 Hediff -->
+        <fireActivityHediff>LBD_Need_LBD_BlackDragon_Change</fireActivityHediff>
+        <!-- 拥有 Hediff 时每秒恢复的 Need 值 -->
+        <hediffNeedGainPerSecond>0.1</hediffNeedGainPerSecond>
       </li>
-    </modExtensions>
+    </modEx0tensions>
   </NeedDef>
 
   <ThoughtDef>
