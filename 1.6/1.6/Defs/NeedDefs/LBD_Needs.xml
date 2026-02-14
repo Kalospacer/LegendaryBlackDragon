@@ -23,13 +23,13 @@
         <stage4Thought>Thought_BlackDragon_Stage4</stage4Thought>
         
         <!-- 阶段阈值 -->
-        <stage4Threshold>0.75</stage4Threshold>
+        <stage4Threshold>0.7</stage4Threshold>
         <stage3Threshold>0.50</stage3Threshold>
         <stage2Threshold>0.25</stage2Threshold>
         <stage1Threshold>0.0</stage1Threshold>
         
         <!-- Need 恢复配置 -->
-        <baseFallRatePerDay>-0.10</baseFallRatePerDay>
+        <baseFallRatePerDay>-0.20</baseFallRatePerDay>
         <fireStartingGain>1</fireStartingGain>
         
         <!-- 点火行为配置 -->
