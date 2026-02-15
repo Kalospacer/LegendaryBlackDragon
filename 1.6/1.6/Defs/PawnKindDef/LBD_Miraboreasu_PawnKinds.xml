@@ -29,6 +29,13 @@
 			<li>LBD_Upgrade_Skill</li>
 		</abilities>
 		<nameMaker>LBD_Miraboreasu_NameMaker</nameMaker>
+		<backstoryFiltersOverride>
+			<li>
+				<categories>
+					<li>LBD_Miraboreasu_Backstory_Categories</li>
+				</categories>
+			</li>
+		</backstoryFiltersOverride>
 		<fixedChildBackstories>
 			<li>LBD_Miraboreasu_Childhood</li>
 		</fixedChildBackstories>
