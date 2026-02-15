@@ -207,12 +207,6 @@ namespace LegendaryBlackDragon
                 // 拥有 Hediff，增加 Need
                 float gain = Extension.hediffNeedGainPerSecond * 2.5f; // 每150ticks
                 CurLevel = Mathf.Min(1f, CurLevel + gain);
-                
-                // 调试日志
-                if (pawn.IsColonist && Find.TickManager.TicksGame % 600 == 0)
-                {
-                    Log.Message($"[BlackDragon] {pawn.LabelShort} 拥有火焰活动Hediff，Need增加: {gain:F4}");
-                }
             }
             else
             {
@@ -348,7 +342,6 @@ namespace LegendaryBlackDragon
                     if (searchRetryCount >= 5) // 最多重试5次
                     {
                         ResetSearchState();
-                        Log.Message($"[BlackDragon] {pawn.LabelShort} 多次尝试寻找点火目标失败，暂时放弃");
                     }
                 }
             }
@@ -506,8 +499,6 @@ namespace LegendaryBlackDragon
             
             // 强制Pawn开始任务
             pawn.jobs.StartJob(job, JobCondition.InterruptForced, null, false, true, null, null, false, false);
-            
-            Log.Message($"[BlackDragon] {pawn.LabelShort} 开始点火任务，目标: {target.Label}");
         }
         
         /// <summary>
@@ -549,15 +540,6 @@ namespace LegendaryBlackDragon
             // 更新阶段和 Thought
             UpdateCurrentStage();
             UpdateThought();
-            
-            // 发送消息（如果玩家可见）
-            if (pawn.Faction == Faction.OfPlayer || pawn.IsPrisonerOfColony)
-            {
-                Messages.Message("LBD_BlackDragon_FireStarted".Translate(pawn.LabelShortCap), 
-                    pawn, MessageTypeDefOf.NeutralEvent);
-            }
-            
-            Log.Message($"[BlackDragon] {pawn.LabelShort} 点火成功，Need恢复: {gain:F2}");
         }
         
         /// <summary>
@@ -566,81 +548,6 @@ namespace LegendaryBlackDragon
         public void ReportFireStartFailed()
         {
             ResetSearchState();
-        }
-        
-        // === UI 相关方法 ===
-        
-        public override string GetTipString()
-        {
-            string baseTip = base.GetTipString();
-            
-            string stageText = "LBD_BlackDragon_Stage".Translate() + ": " + GetStageLabel(CurrentStage);
-            string stageDesc = GetStageDescription(CurrentStage);
-            
-            string cooldownText = "";
-            if (IsOnCooldown)
-            {
-                cooldownText = "\n" + "LBD_BlackDragon_Cooldown".Translate(CooldownSecondsRemaining.ToString("F1"));
-            }
-            
-            string activityText = "";
-            if (HasFireActivityHediff)
-            {
-                activityText = "\n" + "LBD_BlackDragon_FireActivityActive".Translate();
-            }
-            else if (IsExecutingFireStartJob)
-            {
-                activityText = "\n" + "LBD_BlackDragon_ExecutingFireStart".Translate();
-            }
-            else if (ShouldAttemptFireStart)
-            {
-                activityText = "\n" + "LBD_BlackDragon_SeekingFireStart".Translate();
-            }
-            
-            return baseTip + "\n\n" + stageText + "\n" + stageDesc + cooldownText + activityText;
-        }
-        
-        private string GetStageLabel(BlackDragonStage stage)
-        {
-            switch (stage)
-            {
-                case BlackDragonStage.Stage1: return "LBD_BlackDragon_Stage1_Label".Translate();
-                case BlackDragonStage.Stage2: return "LBD_BlackDragon_Stage2_Label".Translate();
-                case BlackDragonStage.Stage3: return "LBD_BlackDragon_Stage3_Label".Translate();
-                case BlackDragonStage.Stage4: return "LBD_BlackDragon_Stage4_Label".Translate();
-                default: return "Unknown".Translate();
-            }
-        }
-        
-        private string GetStageDescription(BlackDragonStage stage)
-        {
-            switch (stage)
-            {
-                case BlackDragonStage.Stage1: return "LBD_BlackDragon_Stage1_Desc".Translate();
-                case BlackDragonStage.Stage2: return "LBD_BlackDragon_Stage2_Desc".Translate();
-                case BlackDragonStage.Stage3: return "LBD_BlackDragon_Stage3_Desc".Translate();
-                case BlackDragonStage.Stage4: return "LBD_BlackDragon_Stage4_Desc".Translate();
-                default: return "";
-            }
-        }
-        
-        // === 调试方法 ===
-        
-        public string GetDebugInfo()
-        {
-            return $"=== BlackDragon Need Debug ===\n" +
-                   $"Need: {CurLevelPercentage:P1} ({CurLevel:F2}/{MaxLevel})\n" +
-                   $"Stage: {CurrentStage}\n" +
-                   $"Stage Duration: {currentStageDuration} ticks\n" +
-                   $"Should Fire Start: {ShouldAttemptFireStart}\n" +
-                   $"On Cooldown: {IsOnCooldown}\n" +
-                   $"Cooldown Remaining: {CooldownSecondsRemaining:F1}s\n" +
-                   $"Last Fire Start: {lastFireStartTick}\n" +
-                   $"Searching For Target: {isSearchingForTarget}\n" +
-                   $"Search Retry Count: {searchRetryCount}\n" +
-                   $"Executing Fire Job: {IsExecutingFireStartJob}\n" +
-                   $"Has Fire Activity Hediff: {HasFireActivityHediff}\n" +
-                   $"Current Thought: {currentThought?.def?.defName ?? "None"}";
         }
     }
 }

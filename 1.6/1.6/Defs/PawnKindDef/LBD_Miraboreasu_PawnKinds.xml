@@ -202,7 +202,7 @@
     <bodyTypeMale>Thin</bodyTypeMale>
     <forcedTraitsChance>
       <li>
-        <defName Degree="0">Tough</defName>
+        <defName Degree="0">LBD_BlackDragon_Trait</defName>
         <chance>100</chance>
       </li>
       <li>
@@ -216,4 +216,33 @@
     </passions>
     <shuffleable>false</shuffleable>
   </AlienRace.AlienBackstoryDef>
+  <TraitDef>
+    <defName>LBD_BlackDragon_Trait</defName>
+    <commonality>0</commonality>
+    <disabledWorkTags>Firefighting</disabledWorkTags>
+    <degreeDatas>
+      <li>
+        <label>黑龙</label>
+        <description>{PAWN_nameDef} 是一只上古巨兽——虽然不知道因为什么原因从修雷德废墟掉到了边缘世界，还变成了这副模样。{PAWN_pronoun} 是毁灭的化身，只有面前的蝼蚁陷入火海构成的地狱，才会让{PAWN_pronoun}感到愉悦。</description>
+        <theOnlyAllowedMentalBreaks>
+          <li>FireStartingSpree</li>
+        </theOnlyAllowedMentalBreaks>
+        <allowedMeditationFocusTypes><li>Flame</li></allowedMeditationFocusTypes>
+        <enablesNeeds>
+          <li>Need_LBD_BlackDragon</li>
+        </enablesNeeds>
+        <disablesNeeds>
+          <li>Food</li>
+			    <li>Outdoors</li>
+        </disablesNeeds>
+        <statFactors>
+          <StaggerDurationFactor>0</StaggerDurationFactor>
+          <IncomingDamageFactor>0.5</IncomingDamageFactor>
+        </statFactors>
+      </li>
+    </degreeDatas>
+    <exclusionTags>
+      <li>Toughness</li>
+    </exclusionTags>
+  </TraitDef>
 </Defs>

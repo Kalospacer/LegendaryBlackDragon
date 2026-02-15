@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <NeedDef>
     <defName>Need_LBD_BlackDragon</defName>
@@ -12,6 +12,7 @@
     <freezeWhileSleeping>true</freezeWhileSleeping>
     <minIntelligence>Humanlike</minIntelligence>
     <needClass>LegendaryBlackDragon.Need_BlackDragon</needClass>
+    <onlyIfCausedByTrait>true</onlyIfCausedByTrait>
     
     <!-- ModExtension 配置 -->
     <modExtensions>
@@ -55,7 +56,7 @@
         <!-- 拥有 Hediff 时每秒恢复的 Need 值 -->
         <hediffNeedGainPerSecond>0.1</hediffNeedGainPerSecond>
       </li>
-    </modEx0tensions>
+    </modExtensions>
   </NeedDef>
 
   <ThoughtDef>

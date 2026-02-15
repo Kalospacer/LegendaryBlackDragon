@@ -127,34 +127,6 @@
       <li Class="HediffCompProperties_RemoveIfApparelDropped" />
     </comps>
   </HediffDef>
-  <HediffDef>
-    <defName>LBD_Dragon_Base</defName>
-    <label>黑龙</label>
-    <description>作为传说中的古龙种，黑龙表现出大量不符合科学的特性。</description>
-    <hediffClass>Hediff_High</hediffClass>
-    <everCurableByItem>false</everCurableByItem>
-    <duplicationAllowed>false</duplicationAllowed>
-    <keepOnBodyPartRestoration>True</keepOnBodyPartRestoration>
-    <isBad>false</isBad>
-    <stages>
-      <li>
-        <disablesNeeds>
-          <li>Food</li>
-			    <li>Outdoors</li>
-        </disablesNeeds>
-        <enablesNeeds>
-          <li>Need_LBD_BlackDragon</li>
-        </enablesNeeds>
-        <damageFactors>
-					<LBD_DRM_Flame>0</LBD_DRM_Flame>
-				</damageFactors>
-        <statFactors>
-          <StaggerDurationFactor>0</StaggerDurationFactor>
-        </statFactors>
-        <foodPoisoningChanceFactor>0</foodPoisoningChanceFactor>
-      </li>
-    </stages>
-  </HediffDef>
   <HediffDef ParentName="InjuryBase">
     <defName>LBD_DragonLanceStab</defName>
     <label>击龙枪伤</label>
