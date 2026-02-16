@@ -245,6 +245,7 @@
         <statFactors>
           <StaggerDurationFactor>0</StaggerDurationFactor>
           <IncomingDamageFactor>0.5</IncomingDamageFactor>
+          <CaravanBonusSpeedFactor>3</CaravanBonusSpeedFactor>
         </statFactors>
       </li>
     </degreeDatas>
