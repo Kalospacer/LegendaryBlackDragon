@@ -66,6 +66,7 @@
 				<Waster MayRequire="Ludeon.RimWorld.Biotech">0</Waster>
 				<Yttakin MayRequire="Ludeon.RimWorld.Biotech">0</Yttakin>
 				<Highmate MayRequire="Ludeon.RimWorld.Biotech">0</Highmate>
+				<LBD_Miraboreasu_Xenotype MayRequire="Ludeon.RimWorld.Biotech">100</LBD_Miraboreasu_Xenotype>
 			</xenotypeChances>
 		</xenotypeSet>
 		<useFactionXenotypes>false</useFactionXenotypes>

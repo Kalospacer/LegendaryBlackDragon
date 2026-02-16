@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
+    <defName>LBD_Miraboreasu_Xenotype</defName>
+    <label>LBD_Miraboreasu_Xenotype</label>
+    <description>LBD_Miraboreasu_Xenotype</description>
+    <descriptionShort>LBD_Miraboreasu_Xenotype</descriptionShort>
+    <iconPath>LegendaryBlackDragon/UI/Icons/LBD_Miraboreasu_Xenotype</iconPath>
+	<inheritable>true</inheritable>
+    <combatPowerFactor>1</combatPowerFactor>
+    <factionlessGenerationWeight>0</factionlessGenerationWeight>
+    <genes>
+		<li>DarkVision</li>
+		<li>AddictionImmune_Alcohol</li>
+    </genes>
+  </XenotypeDef>
+
+</Defs>
