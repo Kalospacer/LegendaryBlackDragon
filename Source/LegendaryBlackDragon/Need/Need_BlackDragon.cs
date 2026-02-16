@@ -260,9 +260,14 @@ namespace LegendaryBlackDragon
             // 移除旧的 Thought
             if (currentThought != null)
             {
-                pawn.needs.mood.thoughts.memories.RemoveMemory(currentThought);
+                // 增加安全性检查：只有当想法确实存在于记忆中时才尝试移除
+                if (pawn.needs.mood.thoughts.memories.Memories.Contains(currentThought))
+                {
+                    pawn.needs.mood.thoughts.memories.RemoveMemory(currentThought);
+                }
                 currentThought = null;
             }
+
             
             // 添加新的 Thought
             ThoughtDef thoughtDef = Extension.GetThoughtForStage(CurrentStage);
