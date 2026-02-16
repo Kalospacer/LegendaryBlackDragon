@@ -66,7 +66,7 @@
           </colorChannels>
           <bodyAddons>
             <li>
-              <name>米拉波里亚斯之角</name>
+              <name>米拉波雷亚斯之角</name>
               <userCustomizable>true</userCustomizable>
               <path>LegendaryBlackDragon/Things/Miraboreasu/Addons/Miraboreasu_Horn</path>
               <inFrontOfBody>true</inFrontOfBody>
@@ -568,11 +568,11 @@
   </AlienRace.ThingDef_AlienRace>
   <StyleItemCategoryDef>
     <defName>LBD_Miraboreasu_Style</defName>
-    <label>米拉波里亚斯</label>
+    <label>米拉波雷亚斯</label>
   </StyleItemCategoryDef>
 	<HairDef>
 		<defName>LBD_Miraboreasu_Hair</defName>
-		<label>米拉波里亚斯的头发</label>
+		<label>米拉波雷亚斯的头发</label>
 		<hairGender>Female</hairGender>
 		<texPath>LegendaryBlackDragon/Things/Miraboreasu/Hair/Miraboreasu_Hair</texPath>
 		<category>LBD_Miraboreasu_Style</category>
