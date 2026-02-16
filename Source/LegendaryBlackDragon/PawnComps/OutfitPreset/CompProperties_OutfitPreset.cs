@@ -26,7 +26,7 @@ namespace LegendaryBlackDragon
 
     public class OutfitPreset : IExposable
     {
-        public string label = "未命名方案";
+        public string label = "LBD_UnnamedPreset".Translate();
         public string description = "";
 
         // 装备列表（武器、工具等）
@@ -37,7 +37,8 @@ namespace LegendaryBlackDragon
 
         public void ExposeData()
         {
-            Scribe_Values.Look(ref label, "label", "未命名方案");
+            string unnamed = "LBD_UnnamedPreset".Translate();
+            Scribe_Values.Look(ref label, "label", unnamed);
             Scribe_Values.Look(ref description, "description", "");
             Scribe_Collections.Look(ref equipmentDefs, "equipmentDefs", LookMode.Def);
             Scribe_Collections.Look(ref apparelDefs, "apparelDefs", LookMode.Def);

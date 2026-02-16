@@ -11,7 +11,7 @@ namespace LegendaryBlackDragon
         public IncidentDef incident;
         
         // 游戏开始后多少天触发（必需）
-        public int daysAfterStart = 1;
+        public float daysAfterStart = 1f;
         
         // 延迟ticks（可选，事件触发后的延迟）
         public int delayTicks = 0;
@@ -44,10 +44,10 @@ namespace LegendaryBlackDragon
             }
             
             // 验证天数
-            if (daysAfterStart < 0)
+            if (daysAfterStart < 0f)
             {
                 Log.Warning($"[DaysAfterStart] StorytellerCompProperties_DaysAfterStart: daysAfterStart 为负数，已设为0");
-                daysAfterStart = 0;
+                daysAfterStart = 0f;
             }
             
             // 验证延迟

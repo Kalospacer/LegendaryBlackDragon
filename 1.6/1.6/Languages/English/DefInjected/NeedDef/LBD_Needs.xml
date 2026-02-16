@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <Need_LBD_BlackDragon.label>Incineration</Need_LBD_BlackDragon.label>
+  <Need_LBD_BlackDragon.description>Miraboreasu doesn't have a very good temper. She prefers to burn the pests who challenge her with endless fire, rather than planting vegetables or mining in the wild. If this need is too low, she will try to go outside the residential area to burn flammable objects for fun—using her fire-breathing skills can also satisfy the need.</Need_LBD_BlackDragon.description>
+
+  <Thought_BlackDragon_Stage1.stages.0.label>Destruction Thirst</Thought_BlackDragon_Stage1.stages.0.label>
+  <Thought_BlackDragon_Stage1.stages.0.description>This colony is SO! BORED! — I'm going to find something to burn.</Thought_BlackDragon_Stage1.stages.0.description>
+  <Thought_BlackDragon_Stage2.stages.0.label>Destruction Desire</Thought_BlackDragon_Stage2.stages.0.label>
+  <Thought_BlackDragon_Stage2.stages.0.description>So bored, want to burn something...</Thought_BlackDragon_Stage2.stages.0.description>
+  <Thought_BlackDragon_Stage3.stages.0.label>Flame Satisfaction</Thought_BlackDragon_Stage3.stages.0.label>
+  <Thought_BlackDragon_Stage3.stages.0.description>At least this colony can provide me with some other fun.</Thought_BlackDragon_Stage3.stages.0.description>
+  <Thought_BlackDragon_Stage4.stages.0.label>Flame Pleasure</Thought_BlackDragon_Stage4.stages.0.label>
+  <Thought_BlackDragon_Stage4.stages.0.description>Burn you all to death!</Thought_BlackDragon_Stage4.stages.0.description>
+</LanguageData>

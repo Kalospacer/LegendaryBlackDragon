@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <LBD_Angry_Bluefire_Switch.label>Red Heat</LBD_Angry_Bluefire_Switch.label>
+  <LBD_Angry_Bluefire_Switch.description>Feeling annoyed by the inability to quickly resolve the pests, Miraboreasu intends to release her most terrifying destructive power. In this state, her melee and flame breath abilities will be greatly enhanced, but her mood will decrease for a while.</LBD_Angry_Bluefire_Switch.description>
+
+  <LBD_SustainedFlameCone.label>Fan-shaped Dragonfire</LBD_SustainedFlameCone.label>
+  <LBD_SustainedFlameCone.description>After a short warmup, Miraboreasu continuously sprays dragonfire in a fan-shaped area ahead. The dragonfire she sprays is formed by non-natural forces, and both flesh and steel will turn to ash under her wrath.\n\nIf in the True Power state, the flame will turn into a blue-purple flame, and the damage and armor penetration will be greatly improved.</LBD_SustainedFlameCone.description>
+
+  <LBD_SustainedFlameAura.label>Circular Dragonfire</LBD_SustainedFlameAura.label>
+  <LBD_SustainedFlameAura.description>After a short warmup, Miraboreasu sprays dragonfire onto the ground, which is reflected and burns everything around. The dragonfire she sprays is formed by non-natural forces, and both flesh and steel will turn to ash under her wrath.\n\nIf in the True Power state, the flame will turn into a blue-purple flame, and the damage and armor penetration will be greatly improved.</LBD_SustainedFlameAura.description>
+
+  <LBD_FireBall.label>Fireball Spit</LBD_FireBall.label>
+  <LBD_FireBall.description>Miraboreasu spits fireballs at the target location, which explode on impact and cause area damage.\n\nIf in the True Power state, the fireballs will turn into blue-purple fireballs, the accuracy decreases but three are fired at once, and the damage and armor penetration will be greatly improved.</LBD_FireBall.description>
+
+  <LBD_TailSweep.label>Tail Sweep</LBD_TailSweep.label>
+  <LBD_TailSweep.description>Miraboreasu swings her tail to strike the enemies in front, dealing damage to all hostile targets in a fan-shaped range. If they survive, they will be knocked back and stunned for a while.\n\nThis skill receives an additional bonus from the melee damage factor.</LBD_TailSweep.description>
+
+  <LBD_Dragon_Charge.label>Dragon Charge</LBD_Dragon_Charge.label>
+  <LBD_Dragon_Charge.description>Miraboreasu uses her body as a weapon, quickly rushing forward, damaging targets and all buildings and enemies encountered along the way. Although her destructive power is not what it used to be due to her smaller body, she can still knock enemies senseless. When an impact does not kill the enemy, she will automatically perform the next impact.\n\nThis skill receives an additional bonus from the melee damage factor.</LBD_Dragon_Charge.description>
+
+  <LBD_ToggleMeleeMode.label>Toggle Slam/Scratch</LBD_ToggleMeleeMode.label>
+  <LBD_ToggleMeleeMode.description>When unarmed, Miraboreasu can switch between two unarmed melee stances: Slam and Scratch.</LBD_ToggleMeleeMode.description>
+
+  <LBD_Dragon_Jump.label>High-altitude Maneuver</LBD_Dragon_Jump.label>
+  <LBD_Dragon_Jump.description>Miraboreasu uses her strong wings to quickly raise her height and reach a new location.</description>
+
+  <LBD_ExtraHediff_Calm.label>Suppressed Wrath</LBD_ExtraHediff_Calm.label>
+  <LBD_ExtraHediff_Armor.label>Molten Steel Armor</LBD_ExtraHediff_Armor.label>
+  <LBD_ExtraHediff_Hitchance.label>Physical Brute Force</LBD_ExtraHediff_Hitchance.label>
+  <LBD_ExtraHediff_Noblood.label>Chaotic Body</LBD_ExtraHediff_Noblood.label>
+</LanguageData>

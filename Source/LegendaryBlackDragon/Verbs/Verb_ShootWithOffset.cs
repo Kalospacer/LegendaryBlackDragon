@@ -94,7 +94,7 @@ namespace LegendaryBlackDragon
         {
             if (Prefs.DevMode)
             {
-                return $"射击计数: {shotCount}";
+                return "LBD_ShotCount".Translate(shotCount);
             }
             return null;
         }

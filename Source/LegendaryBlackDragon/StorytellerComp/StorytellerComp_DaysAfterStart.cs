@@ -10,13 +10,6 @@ namespace LegendaryBlackDragon
     {
         #region 字段
         private StorytellerCompProperties_DaysAfterStart Props => (StorytellerCompProperties_DaysAfterStart)props;
-        
-        // 状态跟踪
-        private bool hasTriggered = false;
-        private int lastCheckTick = -1;
-        
-        // 检查间隔（ticks），避免每帧都检查
-        private const int CHECK_INTERVAL_TICKS = 6000; // 每6000ticks（游戏内1/10天）检查一次
         #endregion
 
         #region 主要方法
@@ -25,52 +18,46 @@ namespace LegendaryBlackDragon
         /// </summary>
         public override IEnumerable<FiringIncident> MakeIntervalIncidents(IIncidentTarget target)
         {
-            // 如果已经触发过，不再检查
-            if (hasTriggered)
-                yield break;
-            
-            int currentTick = Find.TickManager.TicksGame;
-            
-            // 检查间隔，避免每帧都检查
-            if (currentTick - lastCheckTick < CHECK_INTERVAL_TICKS)
-                yield break;
-            
-            lastCheckTick = currentTick;
-            
             // 检查是否满足天数条件
-            if (!CheckDaysCondition())
+            if (!CheckDaysCondition(target))
                 yield break;
             
             // 生成事件
             FiringIncident incident = CreateIncident(target);
             if (incident != null)
             {
-                hasTriggered = true;
                 yield return incident;
             }
         }
         
         /// <summary>
-        /// 检查天数条件
+        /// 检查触发条件
         /// </summary>
-        private bool CheckDaysCondition()
+        private bool CheckDaysCondition(IIncidentTarget target)
         {
             try
             {
                 // 确保游戏已经开始
-                if (Current.Game == null || Find.TickManager == null)
+                if (Current.Game == null || Find.TickManager == null || target.StoryState == null)
                     return false;
-                
-                // 确保有玩家派系
-                if (Faction.OfPlayer == null)
-                    return false;
+
+                // 检查是否已经触发过
+                if (target.StoryState.lastFireTicks.TryGetValue(Props.incident, out int lastTick))
+                {
+                    if (!Props.repeatable)
+                        return false;
+
+                    // 检查重复间隔
+                    if (Find.TickManager.TicksGame - lastTick < Props.repeatIntervalDays * 60000)
+                        return false;
+                }
                 
                 // 计算已经过去的天数
-                int daysPassed = GenDate.DaysPassed;
+                float daysPassed = GenDate.DaysPassedFloat;
                 
                 if (Props.debugLogging)
                 {
-                    Log.Message($"[DaysAfterStart] 已过天数: {daysPassed}, 触发天数: {Props.daysAfterStart}");
+                    Log.Message($"[DaysAfterStart] 目标: {target}, 已过天数: {daysPassed}, 触发门槛: {Props.daysAfterStart}");
                 }
                 
                 // 检查是否达到触发天数
@@ -78,7 +65,7 @@ namespace LegendaryBlackDragon
             }
             catch (Exception ex)
             {
-                Log.Error($"[DaysAfterStart] 检查天数条件时出错: {ex}");
+                Log.Error($"[DaysAfterStart] 检查条件时出错: {ex}");
                 return false;
             }
         }
@@ -130,7 +117,7 @@ namespace LegendaryBlackDragon
                 if (Props.debugLogging)
                 {
                     Log.Message($"[DaysAfterStart] 创建事件: {Props.incident.defName}, " +
-                               $"目标地图: {map.Parent.Label}, " +
+                               $"目标: {target}, " +
                                $"已过天数: {GenDate.DaysPassed}");
                 }
                 
@@ -140,22 +127,6 @@ namespace LegendaryBlackDragon
             {
                 Log.Error($"[DaysAfterStart] 创建事件时出错: {ex}");
                 return null;
-            }
-        }
-        #endregion
-
-        #region 序列化和状态管理
-        /// <summary>
-        /// 序列化状态
-        /// </summary>
-        public void ExposeData()
-        {
-            Scribe_Values.Look(ref hasTriggered, "hasTriggered", false);
-            Scribe_Values.Look(ref lastCheckTick, "lastCheckTick", -1);
-            
-            if (Scribe.mode == LoadSaveMode.PostLoadInit)
-            {
-                // 加载后可以执行一些初始化
             }
         }
         #endregion
@@ -177,26 +148,31 @@ namespace LegendaryBlackDragon
         /// <summary>
         /// 获取状态信息（调试用）
         /// </summary>
-        public string GetStatus()
+        public string GetStatus(IIncidentTarget target)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("=== DaysAfterStart StorytellerComp Status ===");
+            sb.AppendLine($"Target: {target}");
             sb.AppendLine($"Incident: {Props.incident?.defName ?? "NULL"}");
             sb.AppendLine($"Days after start: {Props.daysAfterStart}");
-            sb.AppendLine($"Current days passed: {GenDate.DaysPassed}");
-            sb.AppendLine($"Has triggered: {hasTriggered}");
-            sb.AppendLine($"Last check tick: {lastCheckTick}");
-            sb.AppendLine($"Debug logging: {Props.debugLogging}");
+            sb.AppendLine($"Current days passed: {GenDate.DaysPassedFloat}");
+            
+            bool fired = target.StoryState.lastFireTicks.TryGetValue(Props.incident, out int lastTick);
+            sb.AppendLine($"Has fired: {fired}");
+            if (fired)
+            {
+                sb.AppendLine($"Last fire tick: {lastTick} ({(Find.TickManager.TicksGame - lastTick).ToStringTicksToDays()} days ago)");
+            }
+            
+            sb.AppendLine($"Repeatable: {Props.repeatable}");
+            if (Props.repeatable)
+            {
+                sb.AppendLine($"Repeat interval days: {Props.repeatIntervalDays}");
+            }
             
             // 检查条件
-            bool canTrigger = CheckDaysCondition();
-            sb.AppendLine($"Can trigger: {canTrigger}");
-            
-            if (Current.Game != null && Faction.OfPlayer != null)
-            {
-                sb.AppendLine($"Player faction: {Faction.OfPlayer.Name}");
-                sb.AppendLine($"Player maps: {Find.Maps.Count(m => m.IsPlayerHome)}");
-            }
+            bool canTrigger = CheckDaysCondition(target);
+            sb.AppendLine($"Can trigger now: {canTrigger}");
             
             return sb.ToString();
         }
@@ -206,30 +182,15 @@ namespace LegendaryBlackDragon
         /// <summary>
         /// 强制触发事件（调试用）
         /// </summary>
-        public void ForceTrigger()
+        public void ForceTrigger(IIncidentTarget target)
         {
-            if (hasTriggered)
-            {
-                Log.Warning("[DaysAfterStart] 事件已经触发过");
-                return;
-            }
-            
-            Map map = Find.AnyPlayerHomeMap;
-            if (map == null)
-            {
-                Log.Error("[DaysAfterStart] 没有找到玩家家园地图，无法强制触发");
-                return;
-            }
-            
             // 创建并直接触发事件
-            FiringIncident incident = CreateIncident(map);
+            FiringIncident incident = CreateIncident(target);
             if (incident != null)
             {
-                hasTriggered = true;
-                incident.parms.target = map;
-                
                 if (Props.incident.Worker.TryExecute(incident.parms))
                 {
+                    target.StoryState.Notify_IncidentFired(incident);
                     Log.Message($"[DaysAfterStart] 成功强制触发事件: {Props.incident.defName}");
                 }
                 else
@@ -237,16 +198,6 @@ namespace LegendaryBlackDragon
                     Log.Error($"[DaysAfterStart] 强制触发事件失败: {Props.incident.defName}");
                 }
             }
-        }
-        
-        /// <summary>
-        /// 重置触发状态（调试用）
-        /// </summary>
-        public void Reset()
-        {
-            hasTriggered = false;
-            lastCheckTick = -1;
-            Log.Message("[DaysAfterStart] 触发状态已重置");
         }
         #endregion
     }

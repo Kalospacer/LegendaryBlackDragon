@@ -19,7 +19,7 @@ namespace LegendaryBlackDragon
             var eventVarManager = Find.World.GetComponent<EventVariableManager>();
             if (!eventVarManager.HasVariable(name))
             {
-                reason = $"Variable '{name}' not found.";
+                reason = "LBD_Condition_VariableNotFound".Translate(name);
                 return false;
             }
 
@@ -31,7 +31,7 @@ namespace LegendaryBlackDragon
                 compareValueStr = eventVarManager.GetVariable<object>(valueVariableName)?.ToString();
                 if (compareValueStr == null)
                 {
-                    reason = $"Comparison variable '{valueVariableName}' not set.";
+                    reason = "LBD_Condition_ComparisonVariableNotSet".Translate(valueVariableName);
                     return false;
                 }
             }
@@ -58,13 +58,13 @@ namespace LegendaryBlackDragon
             }
             catch (System.Exception)
             {
-                reason = "Type mismatch or parsing error during comparison.";
+                reason = "LBD_Condition_TypeMismatch".Translate();
                 return false;
             }
 
             if (!met)
             {
-                reason = $"Requires {name} = {compareValueStr} (Current: {variable})";
+                reason = "LBD_Condition_RequiresEqual".Translate(name, compareValueStr, variable);
             }
             else
             {
@@ -99,7 +99,7 @@ namespace LegendaryBlackDragon
                 compareValue = eventVarManager.GetVariable<float>(valueVariableName, float.NaN);
                 if (float.IsNaN(compareValue))
                 {
-                    reason = $"Comparison variable '{valueVariableName}' not set or not a number.";
+                    reason = "LBD_Condition_ComparisonVariableNotNumber".Translate(valueVariableName);
                     return false;
                 }
             }
@@ -107,7 +107,7 @@ namespace LegendaryBlackDragon
             bool met = Compare(variable, compareValue);
             if (!met)
             {
-                reason = $"Requires {name} {GetOperatorString()} {compareValue} (Current: {variable})";
+                reason = "LBD_Condition_RequiresComparison".Translate(name, GetOperatorString(), compareValue, variable);
             }
             else
             {
@@ -152,7 +152,7 @@ namespace LegendaryBlackDragon
             var eventVarManager = Find.World.GetComponent<EventVariableManager>();
             if (!eventVarManager.HasVariable(name))
             {
-                reason = $"Variable '{name}' not found.";
+                reason = "LBD_Condition_VariableNotFound".Translate(name);
                 return false;
             }
 
@@ -164,7 +164,7 @@ namespace LegendaryBlackDragon
                 compareValueStr = eventVarManager.GetVariable<object>(valueVariableName)?.ToString();
                 if (compareValueStr == null)
                 {
-                    reason = $"Comparison variable '{valueVariableName}' not set.";
+                    reason = "LBD_Condition_ComparisonVariableNotSet".Translate(valueVariableName);
                     return false;
                 }
             }
@@ -192,14 +192,14 @@ namespace LegendaryBlackDragon
             catch (System.Exception e)
             {
                 Log.Message($"[EventSystem] Condition_VariableNotEqual: Could not compare '{variable}' and '{compareValueStr}'. Error: {e.Message}");
-                reason = "Type mismatch or parsing error during comparison.";
+                reason = "LBD_Condition_TypeMismatch".Translate();
                 return false;
             }
             
             Log.Message($"[EventSystem] Condition_VariableNotEqual check: Name='{name}', Type='{variable?.GetType().Name ?? "null"}', CurrentValue='{variable}', CompareValue='{compareValueStr}', Met={met}");
             if (!met)
             {
-                reason = $"Requires {name} != {compareValueStr} (Current: {variable})";
+                reason = "LBD_Condition_RequiresNotEqual".Translate(name, compareValueStr, variable);
             }
             else
             {
@@ -217,14 +217,14 @@ namespace LegendaryBlackDragon
         {
             if (factionDef == null)
             {
-                reason = "FactionDef not specified in Condition_FactionExists.";
+                reason = "LBD_Condition_FactionDefNotSpecified".Translate();
                 return false;
             }
 
             bool exists = Find.FactionManager.FirstFactionOfDef(factionDef) != null;
             if (!exists)
             {
-                reason = $"Faction '{factionDef.label}' does not exist in the world.";
+                reason = "LBD_Condition_FactionDoesNotExist".Translate(factionDef.label);
             }
             else
             {

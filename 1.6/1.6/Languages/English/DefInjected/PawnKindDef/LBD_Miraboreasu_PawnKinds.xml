@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <LBD_Miraboreasu.label>Miraboreasu</LBD_Miraboreasu.label>
+
+  <LBD_Miraboreasu_Childhood.title>Forbidden Beast</LBD_Miraboreasu_Childhood.title>
+  <LBD_Miraboreasu_Childhood.titleShort>Beast</LBD_Miraboreasu_Childhood.titleShort>
+  <LBD_Miraboreasu_Childhood.description>As a symbol of misfortune, Miraboreasu's birth, like other Elder Dragons, is shrouded in mist. Little is known about this beast that transcends the ecosystem, and its name has become a symbol of the battle of destiny. Miraboreasu feels extreme contempt for anything other than itself and does not recognize any existence.</LBD_Miraboreasu_Childhood.description>
+
+  <LBD_Miraboreasu_Adulthood.title>Omen of Ruin</LBD_Miraboreasu_Adulthood.title>
+  <LBD_Miraboreasu_Adulthood.titleShort>Miraboreasu</LBD_Miraboreasu_Adulthood.titleShort>
+  <LBD_Miraboreasu_Adulthood.description>Legend has it that the prosperous Kingdom of Schrade was destroyed by Miraboreasu in a single night. The once-glittering palace was put to the torch, and the old capital centered on the ancient castle became a barren land where no sign of life could be felt. Miraboreasu made the burnt Schrade Castle its nest, and this area was regarded as a forbidden zone that could not be set foot in...</LBD_Miraboreasu_Adulthood.description>
+
+  <LBD_BlackDragon_Trait.degreeDatas.黑龙.label>Miraboreasu</LBD_BlackDragon_Trait.degreeDatas.黑龙.label>
+  <LBD_BlackDragon_Trait.degreeDatas.黑龙.description>{PAWN_nameDef} is an ancient beast—though for some reason she fell from the ruins of Schrade to the rimworld and became like this. {PAWN_pronoun} is the incarnation of destruction, and only seeing the ants before her fall into a hell of fire will make {PAWN_pronoun} feel pleasure.</LBD_BlackDragon_Trait.degreeDatas.黑龙.description>
+
+  <LBD_Miraboreasu_NameMaker.rulePack.rulesStrings.0>r_name->[LBD_Miraboreasu_FirstName] [LBD_Miraboreasu_LastName]</LBD_Miraboreasu_NameMaker.rulePack.rulesStrings.0>
+  <LBD_Miraboreasu_NameMaker.rulePack.rulesStrings.1>LBD_Miraboreasu_nickName->Miraboreasu</LBD_Miraboreasu_NameMaker.rulePack.rulesStrings.1>
+  <LBD_Miraboreasu_NameMaker.rulePack.rulesStrings.2>LBD_Miraboreasu_FirstName->Mira</LBD_Miraboreasu_NameMaker.rulePack.rulesStrings.2>
+  <LBD_Miraboreasu_NameMaker.rulePack.rulesStrings.3>LBD_Miraboreasu_LastName->Boreasu</LBD_Miraboreasu_NameMaker.rulePack.rulesStrings.3>
+</LanguageData>

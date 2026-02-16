@@ -4,9 +4,9 @@
     <defName>LBD_MainEvent_UI_1</defName>
     <label>Event</label>
     <portraitPath>LegendaryBlackDragon/Event/Portraits/DD_Michelle_1</portraitPath>
-    <characterName>测试</characterName>
+    <characterName>米歇尔</characterName>
     <descriptions>
-      <li><text>测试测试测试</text></li>
+      <li><text>在一片死寂的废墟中，这名少女静静地站立着。她的眼神深邃而冰冷，仿佛穿越了无数个世纪的尘埃。虽然外表柔弱，但你却能从她身上感受到一股令人窒息的压迫感——那是属于传说中“黑龙”的气息。</text></li>
     </descriptions>
     <!-- <conditionalDescriptions>
       <li>
@@ -17,7 +17,7 @@
     </conditionalDescriptions> -->
     <options>
       <li>
-        <label>测试1</label>
+        <label>你是谁？</label>
         <useCustomColors>false</useCustomColors>
         <conditions>
         </conditions>
@@ -33,7 +33,7 @@
         </optionEffects>
       </li>
       <li>
-        <label>测试2</label>
+        <label>保持沉默。</label>
         <useCustomColors>false</useCustomColors>
         <optionEffects>
           <li>

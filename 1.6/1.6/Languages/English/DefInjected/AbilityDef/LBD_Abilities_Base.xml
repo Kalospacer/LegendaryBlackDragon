@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <LBD_DragonSkyNukeStrike.label>Celestial Dragonfire</LBD_DragonSkyNukeStrike.label>
+  <LBD_DragonSkyNukeStrike.description>Miraboreasu leaves the map, turns the sky crimson, and unleashes a two-stage burning strike before returning.</LBD_DragonSkyNukeStrike.description>
+
+  <LBD_Upgrade_Skill.label>Battle Memories</LBD_Upgrade_Skill.label>
+  <LBD_Upgrade_Skill.description>Awaken battle memories of the dragon form, gaining new abilities and buffs.\n\nMemories gained are permanent and will not be drawn again.</LBD_Upgrade_Skill.description>
+
+  <LBD_TalkWith_BlackDragon.label>Talk with Mira</LBD_TalkWith_BlackDragon.label>
+  <LBD_TalkWith_BlackDragon.description>Open the dialogue window with Miraboreasu.</LBD_TalkWith_BlackDragon.description>
+</LanguageData>

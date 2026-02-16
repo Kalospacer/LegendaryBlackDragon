@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <LBD_Dragon_Fall.questNameRules.rulesStrings.0>questName->The Fall of Miraboreasu</LBD_Dragon_Fall.questNameRules.rulesStrings.0>
+  <LBD_Dragon_Fall.questDescriptionRules.rulesStrings.0>questDescription->A mysterious figure has fallen from the sky near your colony. It appears to be a young girl, radiating the ominous energy of Miraboreasu.</LBD_Dragon_Fall.questDescriptionRules.rulesStrings.0>
+  <LBD_Dragon_Fall.root.nodes.2.node.nodes.0.label>Falling Shadow</LBD_Dragon_Fall.root.nodes.2.node.nodes.0.label>
+  <LBD_Dragon_Fall.root.nodes.2.node.nodes.0.text>A dark shadow has crashed near the colony—it seems to be a young girl. Despite the lack of any protection, she survived the impact and is currently unconscious.\n\nPerhaps you should go and investigate? It feels as if the legendary Miraboreasu has descended.</LBD_Dragon_Fall.root.nodes.2.node.nodes.0.text>
+</LanguageData>

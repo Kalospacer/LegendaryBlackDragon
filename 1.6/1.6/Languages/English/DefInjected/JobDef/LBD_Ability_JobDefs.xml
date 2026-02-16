@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <LBD_CastAbilityMaintainFlame.reportString>Spewing fire.</LBD_CastAbilityMaintainFlame.reportString>
+  <LBD_CastAbilityMaintainFlameAura.reportString>Spewing fire.</LBD_CastAbilityMaintainFlameAura.reportString>
+  <LBD_Job_Dragon_Launch_FireBall.reportString>Spewing fire.</LBD_Job_Dragon_Launch_FireBall.reportString>
+  <LBD_CastAbility_Angry.reportString>Getting heated up!</LBD_CastAbility_Angry.reportString>
+  <LBD_Job_RandomStartFire.reportString>Burning things out of boredom.</LBD_Job_RandomStartFire.reportString>
+</LanguageData>

@@ -866,7 +866,7 @@ namespace LegendaryBlackDragon
         private void SendSpawnMessage(Pawn pawn, UniquePawnExtension extension)
         {
             string messageKey = extension.spawnMessageKey;
-            string defaultMessage = $"{pawn.LabelCap} 已出现！";
+            string defaultMessage = "LBD_UniquePawnSpawned".Translate(pawn.LabelCap);
             
             Messages.Message(defaultMessage, pawn, MessageTypeDefOf.PositiveEvent);
         }
@@ -926,22 +926,22 @@ namespace LegendaryBlackDragon
         public string GetStatistics()
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.AppendLine("=== 特殊Pawn管理器统计 ===");
-            sb.AppendLine($"存档ID: {archiveId}");
-            sb.AppendLine($"初始化状态: {initializedAfterLoad}");
-            sb.AppendLine($"已注册Pawn数量: {pawnRecords.Count}");
-            sb.AppendLine($"待处理关系: {pendingRelations.Count}");
-            sb.AppendLine($"日志条目: {logEntries.Count}");
+            sb.AppendLine("LBD_Statistics_UniquePawnManager".Translate());
+            sb.AppendLine("LBD_Statistics_ArchiveID".Translate(archiveId));
+            sb.AppendLine("LBD_Statistics_Initialized".Translate(initializedAfterLoad));
+            sb.AppendLine("LBD_Statistics_RegisteredCount".Translate(pawnRecords.Count));
+            sb.AppendLine("LBD_Statistics_PendingRelations".Translate(pendingRelations.Count));
+            sb.AppendLine("LBD_Statistics_LogEntries".Translate(logEntries.Count));
             sb.AppendLine();
             
-            sb.AppendLine("已注册的特殊Pawn:");
+            sb.AppendLine("LBD_Statistics_RegisteredPawns".Translate());
             foreach (var kvp in pawnRecords)
             {
                 var record = kvp.Value;
-                sb.AppendLine($"  • {record.pawn?.LabelCap ?? "未知"} ({record.pawnKindDef?.label ?? "未知"})");
-                sb.AppendLine($"    键: {kvp.Key}");
-                sb.AppendLine($"    ID: {record.pawnID}");
-                sb.AppendLine($"    生成时间: {record.spawnTime}");
+                sb.AppendLine($"  • {record.pawn?.LabelCap ?? "LBD_Unknown".Translate()} ({record.pawnKindDef?.label ?? "LBD_Unknown".Translate()})");
+                sb.AppendLine("LBD_Statistics_Key".Translate(kvp.Key));
+                sb.AppendLine("LBD_Statistics_ID".Translate(record.pawnID));
+                sb.AppendLine("LBD_Statistics_SpawnTime".Translate(record.spawnTime));
             }
             
             return sb.ToString();

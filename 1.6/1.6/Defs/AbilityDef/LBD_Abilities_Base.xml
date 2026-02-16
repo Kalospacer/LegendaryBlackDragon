@@ -2,8 +2,8 @@
 <Defs>
   <AbilityDef>
     <defName>LBD_DragonSkyNukeStrike</defName>
-    <label>dragon sky nuke</label>
-    <description>The black dragon leaves the map, turns the sky crimson, and unleashes a two-stage burning strike before returning.</description>
+    <label>天劫龙焰</label>
+    <description>黑龙离开地图，将天空染成绯红，在返回前释放两阶段的焚烧打击。</description>
     <iconPath>UI/Abilities/FireBurst</iconPath>
     <targetRequired>false</targetRequired>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>

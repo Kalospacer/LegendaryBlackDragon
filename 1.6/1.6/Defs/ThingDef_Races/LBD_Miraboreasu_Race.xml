@@ -2,7 +2,7 @@
 <Defs>
   <AlienRace.ThingDef_AlienRace ParentName="Human">
     <defName>LBD_Fatalis_Race</defName>
-    <label>Fatalis</label>
+    <label>Miraboreasu</label>
     <description>古龙种之一，本体拥有修长的蛇颈和尾巴，以及一对巨大而强壮的翅膀，全身覆盖着坚硬的黑色鳞片，背部排列着白色的尖刺。头部有四根向后弯曲的角、几排巨大的牙齿和鳍状的耳朵。\n\n至少传说中是这样的。</description>
     
     <alienRace>
@@ -66,7 +66,7 @@
           </colorChannels>
           <bodyAddons>
             <li>
-              <name>Miraboreasu Horn</name>
+              <name>米拉波里亚斯之角</name>
               <userCustomizable>true</userCustomizable>
               <path>LegendaryBlackDragon/Things/Miraboreasu/Addons/Miraboreasu_Horn</path>
               <inFrontOfBody>true</inFrontOfBody>
@@ -568,11 +568,11 @@
   </AlienRace.ThingDef_AlienRace>
   <StyleItemCategoryDef>
     <defName>LBD_Miraboreasu_Style</defName>
-    <label>Miraboreasu</label>
+    <label>米拉波里亚斯</label>
   </StyleItemCategoryDef>
 	<HairDef>
 		<defName>LBD_Miraboreasu_Hair</defName>
-		<label>Miraboreasu's Hair</label>
+		<label>米拉波里亚斯的头发</label>
 		<hairGender>Female</hairGender>
 		<texPath>LegendaryBlackDragon/Things/Miraboreasu/Hair/Miraboreasu_Hair</texPath>
 		<category>LBD_Miraboreasu_Style</category>

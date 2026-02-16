@@ -38,11 +38,11 @@ namespace LegendaryBlackDragon
             Listing_Standard listing = new Listing_Standard();
             listing.Begin(inRect);
 
-            if (listing.ButtonText("Refresh"))
+            if (listing.ButtonText("LBD_Refresh".Translate()))
             {
                 RefreshBuffers();
             }
-            if (listing.ButtonText("Clear All Variables"))
+            if (listing.ButtonText("LBD_ClearAllVariables".Translate()))
             {
                 manager.ClearAll();
                 RefreshBuffers();
@@ -71,7 +71,7 @@ namespace LegendaryBlackDragon
                 string newValue = Widgets.TextField(rowRect.RightPart(0.6f).LeftPart(0.8f).Rounded(), buffer);
                 editBuffers[key] = newValue;
 
-                if (Widgets.ButtonText(rowRect.RightPart(0.1f).Rounded(), "Set"))
+                if (Widgets.ButtonText(rowRect.RightPart(0.1f).Rounded(), "LBD_Set".Translate()))
                 {
                     // Attempt to parse and set the variable
                     if (value is int)

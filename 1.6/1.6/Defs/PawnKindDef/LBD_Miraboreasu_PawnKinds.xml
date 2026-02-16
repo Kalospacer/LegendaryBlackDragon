@@ -138,10 +138,10 @@
 		<defName>LBD_Miraboreasu_NameMaker</defName>
 		<rulePack>
 			<rulesStrings>
-				<li>r_name->[LBD_Miraboreasu_FirstName] '[LBD_Miraboreasu_nickName]' [LBD_Miraboreasu_LastName]</li>
-				<li>LBD_Miraboreasu_nickName->Miraboreasu</li>
-				<li>LBD_Miraboreasu_FirstName->Mira</li>
-				<li>LBD_Miraboreasu_LastName->Boreasu</li>
+				<li>r_name->[LBD_Miraboreasu_FirstName]·[LBD_Miraboreasu_LastName]</li>
+				<li>LBD_Miraboreasu_nickName->米拉波里亚斯</li>
+				<li>LBD_Miraboreasu_FirstName->米拉</li>
+				<li>LBD_Miraboreasu_LastName->波里亚斯</li>
 			</rulesStrings>
 		</rulePack>
 	</RulePackDef>

@@ -85,7 +85,7 @@ namespace LegendaryBlackDragon
             }
             else
             {
-                selectedDescription = "Error: No descriptions found in def.";
+                selectedDescription = "LBD_ErrorNoDescription".Translate();
             }
         }
 
