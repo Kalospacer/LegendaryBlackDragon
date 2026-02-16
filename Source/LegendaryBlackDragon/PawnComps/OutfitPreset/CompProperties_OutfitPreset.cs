@@ -26,7 +26,7 @@ namespace LegendaryBlackDragon
 
     public class OutfitPreset : IExposable
     {
-        public string label = "LBD_UnnamedPreset".Translate();
+        public string label;
         public string description = "";
 
         // 装备列表（武器、工具等）
@@ -37,8 +37,7 @@ namespace LegendaryBlackDragon
 
         public void ExposeData()
         {
-            string unnamed = "LBD_UnnamedPreset".Translate();
-            Scribe_Values.Look(ref label, "label", unnamed);
+            Scribe_Values.Look(ref label, "label", "LBD_UnnamedPreset");
             Scribe_Values.Look(ref description, "description", "");
             Scribe_Collections.Look(ref equipmentDefs, "equipmentDefs", LookMode.Def);
             Scribe_Collections.Look(ref apparelDefs, "apparelDefs", LookMode.Def);
@@ -84,7 +83,7 @@ namespace LegendaryBlackDragon
                 var command = new Command_Action
                 {
                     defaultLabel = Props.showStatusInGizmo && currentPresetIndex >= 0 && currentPresetIndex < Props.availablePresets.Count
-                        ? Props.availablePresets[currentPresetIndex].label
+                        ? (Props.availablePresets[currentPresetIndex].label ?? "LBD_UnnamedPreset").Translate()
                         : "LBD_SwitchPresets".Translate(),
                     defaultDesc = "LBD_SwitchPresetsDesc".Translate(),
                     icon = ContentFinder<Texture2D>.Get(Props.gizmoIconPath, false) ?? BaseContent.BadTex,
@@ -116,7 +115,7 @@ namespace LegendaryBlackDragon
                 string prefix = (i == currentPresetIndex) ? "✓ " : "   ";
                 
                 options.Add(new FloatMenuOption(
-                    prefix + preset.label,
+                    prefix + (preset.label ?? "LBD_UnnamedPreset").Translate(),
                     () => SimpleSwitchToPreset(index)
                 )
                 {
