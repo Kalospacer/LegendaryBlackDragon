@@ -1,153 +1,181 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using RimWorld;
 using Verse;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LegendaryBlackDragon
 {
     public class StorytellerComp_DaysAfterStart : StorytellerComp
     {
-        #region 字段
         private StorytellerCompProperties_DaysAfterStart Props => (StorytellerCompProperties_DaysAfterStart)props;
-        #endregion
 
-        #region 主要方法
-        /// <summary>
-        /// 故事讲述者组件的主要入口点 - 每过一段时间调用
-        /// </summary>
         public override IEnumerable<FiringIncident> MakeIntervalIncidents(IIncidentTarget target)
         {
-            // 检查是否满足天数条件
-            if (!CheckDaysCondition(target))
+            if (Props?.incident == null || target == null)
+            {
                 yield break;
-            
-            // 生成事件
+            }
+
+            // Evaluate only on the primary player-home map to avoid duplicate triggers from temporary maps
+            if (target is not Map mapTarget || !mapTarget.IsPlayerHome || mapTarget != Find.AnyPlayerHomeMap)
+            {
+                yield break;
+            }
+
+            if (!CheckDaysCondition())
+            {
+                yield break;
+            }
+
             FiringIncident incident = CreateIncident(target);
             if (incident != null)
             {
                 yield return incident;
             }
         }
-        
-        /// <summary>
-        /// 检查触发条件
-        /// </summary>
-        private bool CheckDaysCondition(IIncidentTarget target)
+
+        private bool CheckDaysCondition()
         {
             try
             {
-                // 确保游戏已经开始
-                if (Current.Game == null || Find.TickManager == null || target.StoryState == null)
-                    return false;
-
-                // 检查是否已经触发过
-                if (target.StoryState.lastFireTicks.TryGetValue(Props.incident, out int lastTick))
+                if (Current.Game == null || Find.TickManager == null)
                 {
-                    if (!Props.repeatable)
-                        return false;
-
-                    // 检查重复间隔
-                    if (Find.TickManager.TicksGame - lastTick < Props.repeatIntervalDays * 60000)
-                        return false;
+                    return false;
                 }
-                
-                // 计算已经过去的天数
+
+                if (!Props.repeatable && HasTriggeredGlobally())
+                {
+                    return false;
+                }
+
+                if (Props.repeatable)
+                {
+                    int latestFireTick = GetLatestFireTick(Props.incident);
+                    if (latestFireTick >= 0)
+                    {
+                        int repeatIntervalTicks = Props.repeatIntervalDays * 60000;
+                        if (repeatIntervalTicks > 0 && Find.TickManager.TicksGame - latestFireTick < repeatIntervalTicks)
+                        {
+                            return false;
+                        }
+                    }
+                }
+
                 float daysPassed = GenDate.DaysPassedFloat;
-                
                 if (Props.debugLogging)
                 {
-                    Log.Message($"[DaysAfterStart] 目标: {target}, 已过天数: {daysPassed}, 触发门槛: {Props.daysAfterStart}");
+                    Log.Message($"[DaysAfterStart] daysPassed={daysPassed}, threshold={Props.daysAfterStart}, incident={Props.incident.defName}");
                 }
-                
-                // 检查是否达到触发天数
+
                 return daysPassed >= Props.daysAfterStart;
             }
             catch (Exception ex)
             {
-                Log.Error($"[DaysAfterStart] 检查条件时出错: {ex}");
+                Log.Error($"[DaysAfterStart] CheckDaysCondition error: {ex}");
                 return false;
             }
         }
-        
-        /// <summary>
-        /// 创建要触发的事件
-        /// </summary>
+
+        private bool HasTriggeredGlobally()
+        {
+            if (Props?.incident == null)
+            {
+                return false;
+            }
+
+            if (GetLatestFireTick(Props.incident) >= 0)
+            {
+                return true;
+            }
+
+            QuestScriptDef questScript = Props.incident.questScriptDef;
+            if (questScript != null && Find.QuestManager != null)
+            {
+                return Find.QuestManager.QuestsListForReading.Any(q => q.root == questScript);
+            }
+
+            return false;
+        }
+
+        private static int GetLatestFireTick(IncidentDef incident)
+        {
+            if (incident == null)
+            {
+                return -1;
+            }
+
+            int latest = -1;
+
+            if (Find.World?.StoryState?.lastFireTicks != null &&
+                Find.World.StoryState.lastFireTicks.TryGetValue(incident, out int worldTick))
+            {
+                latest = worldTick;
+            }
+
+            foreach (Map map in Find.Maps)
+            {
+                if (map?.StoryState?.lastFireTicks == null)
+                {
+                    continue;
+                }
+
+                if (map.StoryState.lastFireTicks.TryGetValue(incident, out int mapTick) && mapTick > latest)
+                {
+                    latest = mapTick;
+                }
+            }
+
+            return latest;
+        }
+
         private FiringIncident CreateIncident(IIncidentTarget target)
         {
             try
             {
-                // 确保有有效的事件
                 if (Props.incident == null)
                 {
-                    Log.Error("[DaysAfterStart] IncidentDef 为 null");
+                    Log.Error("[DaysAfterStart] IncidentDef is null");
                     return null;
                 }
-                
-                // 获取目标地图
-                Map map = target as Map;
-                if (map == null)
+
+                if (!Props.incident.TargetAllowed(target))
                 {
-                    // 尝试获取任意玩家家园地图
-                    map = Find.AnyPlayerHomeMap;
-                    if (map == null)
-                    {
-                        if (Props.debugLogging)
-                            Log.Warning("[DaysAfterStart] 没有找到玩家家园地图");
-                        return null;
-                    }
+                    return null;
                 }
-                
-                // 生成事件参数
+
                 IncidentParms parms = GenerateParms(Props.incident.category, target);
-                
-                // 检查事件是否可以触发
                 if (!Props.incident.Worker.CanFireNow(parms))
                 {
                     if (Props.debugLogging)
                     {
-                        Log.Warning($"[DaysAfterStart] 事件 {Props.incident.defName} 当前无法触发");
+                        Log.Warning($"[DaysAfterStart] Incident {Props.incident.defName} cannot fire now for target {target}");
                     }
                     return null;
                 }
-                
-                // 创建并返回事件
+
                 FiringIncident firingIncident = new FiringIncident(Props.incident, this, parms);
-                
+
                 if (Props.debugLogging)
                 {
-                    Log.Message($"[DaysAfterStart] 创建事件: {Props.incident.defName}, " +
-                               $"目标: {target}, " +
-                               $"已过天数: {GenDate.DaysPassed}");
+                    Log.Message($"[DaysAfterStart] Created incident {Props.incident.defName} for target {target} at day {GenDate.DaysPassedFloat}");
                 }
-                
+
                 return firingIncident;
             }
             catch (Exception ex)
             {
-                Log.Error($"[DaysAfterStart] 创建事件时出错: {ex}");
+                Log.Error($"[DaysAfterStart] CreateIncident error: {ex}");
                 return null;
             }
         }
-        #endregion
 
-        #region 工具方法
-        /// <summary>
-        /// 生成事件参数
-        /// </summary>
         public override IncidentParms GenerateParms(IncidentCategoryDef category, IIncidentTarget target)
         {
-            IncidentParms parms = StorytellerUtility.DefaultParmsNow(category, target);
-            
-            // 可以根据需要调整参数
-            // 例如：parms.forced = true; // 强制触发
-            
-            return parms;
+            return StorytellerUtility.DefaultParmsNow(category, target);
         }
-        
-        /// <summary>
-        /// 获取状态信息（调试用）
-        /// </summary>
+
         public string GetStatus(IIncidentTarget target)
         {
             StringBuilder sb = new StringBuilder();
@@ -156,49 +184,33 @@ namespace LegendaryBlackDragon
             sb.AppendLine($"Incident: {Props.incident?.defName ?? "NULL"}");
             sb.AppendLine($"Days after start: {Props.daysAfterStart}");
             sb.AppendLine($"Current days passed: {GenDate.DaysPassedFloat}");
-            
-            bool fired = target.StoryState.lastFireTicks.TryGetValue(Props.incident, out int lastTick);
-            sb.AppendLine($"Has fired: {fired}");
-            if (fired)
-            {
-                sb.AppendLine($"Last fire tick: {lastTick} ({(Find.TickManager.TicksGame - lastTick).ToStringTicksToDays()} days ago)");
-            }
-            
+            sb.AppendLine($"Has triggered globally: {HasTriggeredGlobally()}");
             sb.AppendLine($"Repeatable: {Props.repeatable}");
             if (Props.repeatable)
             {
                 sb.AppendLine($"Repeat interval days: {Props.repeatIntervalDays}");
             }
-            
-            // 检查条件
-            bool canTrigger = CheckDaysCondition(target);
-            sb.AppendLine($"Can trigger now: {canTrigger}");
-            
+            sb.AppendLine($"Can trigger now: {CheckDaysCondition()}");
             return sb.ToString();
         }
-        #endregion
 
-        #region 调试方法
-        /// <summary>
-        /// 强制触发事件（调试用）
-        /// </summary>
         public void ForceTrigger(IIncidentTarget target)
         {
-            // 创建并直接触发事件
             FiringIncident incident = CreateIncident(target);
-            if (incident != null)
+            if (incident == null)
             {
-                if (Props.incident.Worker.TryExecute(incident.parms))
-                {
-                    target.StoryState.Notify_IncidentFired(incident);
-                    Log.Message($"[DaysAfterStart] 成功强制触发事件: {Props.incident.defName}");
-                }
-                else
-                {
-                    Log.Error($"[DaysAfterStart] 强制触发事件失败: {Props.incident.defName}");
-                }
+                return;
+            }
+
+            if (Props.incident.Worker.TryExecute(incident.parms))
+            {
+                target.StoryState.Notify_IncidentFired(incident);
+                Log.Message($"[DaysAfterStart] Force triggered incident: {Props.incident.defName}");
+            }
+            else
+            {
+                Log.Error($"[DaysAfterStart] Force trigger failed: {Props.incident.defName}");
             }
         }
-        #endregion
     }
 }
