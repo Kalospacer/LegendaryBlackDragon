@@ -536,6 +536,18 @@
         <gizmoIconPath>LegendaryBlackDragon/UI/Commands/LBD_OutfitPreset</gizmoIconPath>
         <showStatusInGizmo>true</showStatusInGizmo>
       </li>
+      <li Class="LegendaryBlackDragon.CompProperties_HediffGiver">
+        <hediffs>
+          <li>LBD_DragonLanceStab</li>
+        </hediffs>
+        <bodyPart>LBD_Precious_Jade_Bodypart</bodyPart>
+        <initialSeverity>10</initialSeverity>
+        
+        <addChance>1.0</addChance>
+        <allowDuplicates>false</allowDuplicates>
+        <partSelectionMode>First</partSelectionMode>
+        <skipIfPartMissing>true</skipIfPartMissing>
+      </li>
   
       <li Class="LegendaryBlackDragon.CompProperties_MeleeModeState">
         <defaultScratchMode>false</defaultScratchMode>

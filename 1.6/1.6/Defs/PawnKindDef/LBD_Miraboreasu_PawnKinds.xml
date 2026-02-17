@@ -70,12 +70,6 @@
 			</xenotypeChances>
 		</xenotypeSet>
 		<useFactionXenotypes>false</useFactionXenotypes>
-    <startingHediffs>
-      <li>
-        <def>LBD_DragonLanceStab</def>
-        <severity>10</severity>
-      </li>
-    </startingHediffs>
 		<apparelMoney>0</apparelMoney>
 		<humanPregnancyChance>0</humanPregnancyChance>
 
