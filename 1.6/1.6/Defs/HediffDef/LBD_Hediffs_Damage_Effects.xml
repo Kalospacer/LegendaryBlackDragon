@@ -176,7 +176,7 @@
   <ThoughtDef>
     <defName>LBD_Angry_Bluefire_Switch_Though</defName>
     <workerClass>ThoughtWorker_Hediff</workerClass>
-    <hediff>LBD_Angry_Bluefire</hediff>
+    <hediff>LBD_Angry_Bluefire_Switch</hediff>
     <validWhileDespawned>true</validWhileDespawned>
     <developmentalStageFilter>Baby, Child, Adult</developmentalStageFilter>
     <stages>
