@@ -1,8 +1,6 @@
 using HarmonyLib;
-using RimWorld;
-using System;
-using UnityEngine.UIElements.Experimental;
 using Verse;
+using RimWorld;
 using Verse.AI;
 
 namespace LegendaryBlackDragon
@@ -70,7 +68,7 @@ namespace LegendaryBlackDragon
             {
                 shouldBeFlying = true;
             }
-            else if (compProps.flightCondition == FlightCondition.DraftedAndMove && (___pawn.Drafted || ___pawn.pather.Moving) && ___pawn.Awake() && !___pawn.Downed)
+            else if (compProps.flightCondition == FlightCondition.DraftedAndMove && ___pawn.Drafted || ___pawn.pather.Moving)
             {
                 shouldBeFlying = true;
             }

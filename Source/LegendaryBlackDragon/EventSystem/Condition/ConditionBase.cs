@@ -64,7 +64,7 @@ namespace LegendaryBlackDragon
 
             if (!met)
             {
-                reason = "LBD_Condition_RequiresEqual".Translate(name, compareValueStr, variable);
+                reason = string.Format("LBD_Condition_RequiresEqual".Translate().RawText, name, compareValueStr, variable);
             }
             else
             {
@@ -199,7 +199,7 @@ namespace LegendaryBlackDragon
             Log.Message($"[EventSystem] Condition_VariableNotEqual check: Name='{name}', Type='{variable?.GetType().Name ?? "null"}', CurrentValue='{variable}', CompareValue='{compareValueStr}', Met={met}");
             if (!met)
             {
-                reason = "LBD_Condition_RequiresNotEqual".Translate(name, compareValueStr, variable);
+                reason = string.Format("LBD_Condition_RequiresNotEqual".Translate().RawText, name, compareValueStr, variable);
             }
             else
             {
