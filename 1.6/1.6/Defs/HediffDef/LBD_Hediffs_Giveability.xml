@@ -22,9 +22,6 @@
           <li>LBD_Angry_Bluefire_Switch</li>
         </abilityDefs>
       </li>
-      <li Class="HediffCompProperties_Disappears">
-        <disappearAfterTicks>120000</disappearAfterTicks>
-      </li>
     </comps>
   </HediffDef>
   <HediffDef ParentName="LBD_HediffGiveAbility_Base">
