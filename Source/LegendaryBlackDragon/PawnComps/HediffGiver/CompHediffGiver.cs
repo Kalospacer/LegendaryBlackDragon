@@ -454,7 +454,7 @@ namespace LegendaryBlackDragon
             
             // 序列化已应用的hediff部位记录
             Scribe_Collections.Look(ref appliedHediffParts, "appliedHediffParts", 
-                LookMode.Def, LookMode.Deep);
+                LookMode.Def, LookMode.BodyPart);
             
             if (Props.debugLogging && Scribe.mode == LoadSaveMode.LoadingVars)
             {
