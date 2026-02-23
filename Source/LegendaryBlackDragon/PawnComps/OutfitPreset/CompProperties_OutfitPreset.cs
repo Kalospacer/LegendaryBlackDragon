@@ -1,8 +1,9 @@
-using System.Collections.Generic;
-using System.Text;
-using Verse;
 using RimWorld;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using UnityEngine;
+using Verse;
 
 namespace LegendaryBlackDragon
 {
@@ -154,45 +155,65 @@ namespace LegendaryBlackDragon
                 Log.Error($"切换方案时出错: {ex.Message}\n{ex.StackTrace}");
             }
         }
-        
-        /// <summary>
-        /// 清除所有服装
-        /// </summary>
+
         private void ClearAllApparel()
         {
             if (Pawn.apparel == null)
                 return;
-                
+
+            // 定义要清除的服装列表
+            List<string> targetApparelDefNames = new List<string>
+            {
+                "LBD_Miraboreasu_Armor",
+                "LBD_Miraboreasu_Base_Cloth"
+            };
+
             // 使用临时列表存储要清除的服装
             List<Apparel> apparelToRemove = new List<Apparel>();
-            
-            // 收集所有要清除的服装
+
+            // 收集特定服装
             foreach (var apparel in Pawn.apparel.WornApparel)
             {
-                if (apparel != null)
+                if (apparel != null && targetApparelDefNames.Contains(apparel.def.defName))
+                {
                     apparelToRemove.Add(apparel);
+                }
             }
-            
+
+            // 如果没有找到目标服装，直接返回
+            if (apparelToRemove.Count == 0)
+            {
+                return;
+            }
+
             // 清除服装（从后往前清除，避免索引问题）
+            int removedCount = 0;
             for (int i = apparelToRemove.Count - 1; i >= 0; i--)
             {
                 var apparel = apparelToRemove[i];
                 try
                 {
-                    // 直接移除并销毁
-                    Pawn.apparel.Remove(apparel);
-                    if (!apparel.Destroyed)
+                    // 移除服装
+                    if (Pawn.apparel.WornApparel.Contains(apparel))
                     {
-                        apparel.Destroy(DestroyMode.Vanish);
+                        Pawn.apparel.Remove(apparel);
+                        removedCount++;
+
+                        // 销毁服装
+                        if (!apparel.Destroyed)
+                        {
+                            apparel.Destroy(DestroyMode.Vanish);
+                        }
                     }
                 }
                 catch (System.Exception ex)
                 {
-                    Log.Warning($"清除服装 {apparel?.LabelCap ?? "未知"} 时出错: {ex.Message}");
+                    Log.Error($"清除服装 {apparel?.LabelCap ?? "未知"} 时出错: {ex.Message}");
                 }
             }
+
         }
-        
+
         /// <summary>
         /// 穿戴预设服装
         /// </summary>
@@ -212,7 +233,7 @@ namespace LegendaryBlackDragon
                     if (thing is Apparel apparel)
                     {
                         // 直接穿戴，让RimWorld处理冲突
-                        Pawn.apparel.Wear(apparel, dropReplacedApparel: false);
+                        Pawn.apparel.Wear(apparel, dropReplacedApparel: true, locked : true);
                     }
                 }
                 catch (System.Exception ex)

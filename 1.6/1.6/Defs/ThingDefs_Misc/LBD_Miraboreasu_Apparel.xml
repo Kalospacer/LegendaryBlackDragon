@@ -10,7 +10,8 @@
       <shaderType>CutoutComplex</shaderType>
 		</graphicData>
     <generateCommonality>0.0001</generateCommonality>
-	  <destroyOnDrop>true</destroyOnDrop>
+	  <!-- <destroyOnDrop>true</destroyOnDrop> -->
+    <smeltable>false</smeltable>
 		<costStuffCount>0</costStuffCount>
     <useHitPoints>false</useHitPoints>
 		<tradeTags Inherit="False"/>
@@ -57,6 +58,7 @@
 			<Mass>0.5</Mass>
 			<Flammability>0</Flammability>
 			<EquipDelay>1</EquipDelay>
+      <DeteriorationRate>0</DeteriorationRate>
 
       <ArmorRating_Blunt>1</ArmorRating_Blunt>
       <ArmorRating_Sharp>1</ArmorRating_Sharp>
@@ -65,6 +67,9 @@
 		<equippedStatOffsets>
       <IncomingDamageFactor>-0.5</IncomingDamageFactor>
 		</equippedStatOffsets>
+    <comps>
+      <li Class="LegendaryBlackDragon.CompProperties_DestroyOnUnequip"/>
+    </comps>
 	</ThingDef>
 	<ThingDef ParentName="ApparelMakeableBase">
 		<defName>LBD_Miraboreasu_Base_Cloth</defName>
@@ -76,7 +81,8 @@
       <shaderType>CutoutComplex</shaderType>
 		</graphicData>
     <generateCommonality>0</generateCommonality>
-	  <destroyOnDrop>true</destroyOnDrop>
+	  <!-- <destroyOnDrop>true</destroyOnDrop> -->
+    <smeltable>false</smeltable>
 		<costStuffCount>0</costStuffCount>
     <useHitPoints>false</useHitPoints>
 		<tradeTags Inherit="False"/>
@@ -123,6 +129,7 @@
 			<Mass>0.5</Mass>
 			<Flammability>0</Flammability>
 			<EquipDelay>1</EquipDelay>
+      <DeteriorationRate>0</DeteriorationRate>
 
       <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
       <ArmorRating_Sharp>0.2</ArmorRating_Sharp>
@@ -135,6 +142,7 @@
       <li Class="CompProperties_CauseHediff_Apparel">
         <hediff>LBD_Dragon_Regeneration</hediff>
       </li>
+      <li Class="LegendaryBlackDragon.CompProperties_DestroyOnUnequip"/>
     </comps>
 	</ThingDef>
 </Defs>
