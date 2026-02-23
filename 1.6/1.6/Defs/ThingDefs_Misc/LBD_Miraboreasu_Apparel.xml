@@ -9,6 +9,7 @@
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
 		</graphicData>
+    <generateCommonality>0.0001</generateCommonality>
 	  <destroyOnDrop>true</destroyOnDrop>
 		<costStuffCount>0</costStuffCount>
     <useHitPoints>false</useHitPoints>
@@ -74,6 +75,7 @@
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
 		</graphicData>
+    <generateCommonality>0</generateCommonality>
 	  <destroyOnDrop>true</destroyOnDrop>
 		<costStuffCount>0</costStuffCount>
     <useHitPoints>false</useHitPoints>

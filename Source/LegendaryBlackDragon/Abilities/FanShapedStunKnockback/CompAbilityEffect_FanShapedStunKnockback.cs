@@ -11,6 +11,11 @@ namespace LegendaryBlackDragon
         private readonly List<IntVec3> tmpCells = new List<IntVec3>();
         private Effecter effecter;
         
+        // === 新增：调试计数器 ===
+        private static int knockbackAttempts = 0;
+        private static int knockbackSuccesses = 0;
+        private static int knockbackFailures = 0;
+        
         public new CompProperties_AbilityFanShapedStunKnockback Props => (CompProperties_AbilityFanShapedStunKnockback)props;
 
         public override void Apply(LocalTargetInfo target, LocalTargetInfo dest)
@@ -43,8 +48,15 @@ namespace LegendaryBlackDragon
                 }
             }
             
-            // 4. 播放整体攻击效果（参考Verb_MeleeAttack_Cleave）
+            // 4. 播放整体攻击效果
             PlayMainAttackEffect(caster, target);
+            
+            // 5. 记录调试信息
+            if (DebugSettings.godMode)
+            {
+                Log.Message($"[FanShapedKnockback] Applied to {affectedTargets.Count} targets. " +
+                           $"Total attempts: {knockbackAttempts}, Successes: {knockbackSuccesses}, Failures: {knockbackFailures}");
+            }
         }
         
         /// <summary>
@@ -59,7 +71,6 @@ namespace LegendaryBlackDragon
             if (Props.impactEffecter != null)
             {
                 effecter = Props.impactEffecter.Spawn();
-                // 关键修复：第一个参数是施法者位置，第二个参数是目标位置
                 effecter.Trigger(new TargetInfo(caster.Position, caster.Map), target.ToTargetInfo(caster.Map));
                 effecter.Cleanup();
                 effecter = null;
@@ -73,7 +84,7 @@ namespace LegendaryBlackDragon
         }
 
         /// <summary>
-        /// 收集扇形区域内的所有目标（包括Pawn和非Pawn物体）
+        /// 收集扇形区域内的所有目标
         /// </summary>
         private List<Thing> CollectAffectedTargets(Pawn caster, List<IntVec3> cells)
         {
@@ -115,7 +126,7 @@ namespace LegendaryBlackDragon
                     // 非Pawn物体的处理
                     else if (Props.affectNonPawnThings && thing is ThingWithComps thingWithComps)
                     {
-                        // 检查是否为敌人（如果物体有派系）
+                        // 检查是否为敌人
                         if (Props.onlyAffectEnemies)
                         {
                             bool isEnemy = IsThingEnemy(caster, thingWithComps);
@@ -141,14 +152,11 @@ namespace LegendaryBlackDragon
         /// </summary>
         private bool IsThingEnemy(Pawn caster, Thing thing)
         {
-            // 如果物体有派系，检查是否敌对
             if (thing.Faction != null)
             {
                 return caster.HostileTo(thing);
             }
             
-            // 如果物体是建筑且没有派系，根据设置决定
-            // 默认情况下，视为中立（只有当onlyAffectEnemies为false时才影响）
             return false;
         }
         
@@ -157,14 +165,11 @@ namespace LegendaryBlackDragon
         /// </summary>
         private bool CanBeDamaged(Thing thing)
         {
-            // 检查是否有生命值组件
             if (thing.def.useHitPoints)
             {
-                // 检查是否被摧毁或已死亡
                 if (thing.Destroyed || thing.HitPoints <= 0)
                     return false;
                     
-                // 检查是否可以承受伤害
                 if (thing.def.destroyable)
                     return true;
             }
@@ -180,10 +185,7 @@ namespace LegendaryBlackDragon
             if (targetThing == null || caster == null)
                 return;
             
-            // 1. 造成伤害
             ApplyDamageToNonPawn(caster, targetThing);
-            
-            // 注意：非Pawn物体不进行击退，也不眩晕
         }
         
         /// <summary>
@@ -194,16 +196,11 @@ namespace LegendaryBlackDragon
             if (!Props.canDamageNonPawnThings)
                 return;
             
-            // 获取调整后的伤害值
             float adjustedDamage = GetAdjustedDamage(caster);
-            
-            // 应用非Pawn物体的伤害倍率
             float finalDamage = adjustedDamage * Props.nonPawnDamageMultiplier;
             
-            // 检查目标是否可以被伤害
             if (targetThing.def.useHitPoints && targetThing.HitPoints > 0)
             {
-                // 创建伤害信息
                 DamageInfo damageInfo = new DamageInfo(
                     Props.damageDef,
                     finalDamage,
@@ -213,19 +210,15 @@ namespace LegendaryBlackDragon
                     null
                 );
                 
-                // 应用伤害
                 targetThing.TakeDamage(damageInfo);
                 
-                // 播放个体命中效果
                 if (Props.applySpecialEffectsToNonPawn && Props.impactEffecter != null && caster.Map != null)
                 {
                     Effecter effect = Props.impactEffecter.Spawn();
-                    // 关键修复：第一个参数是施法者，第二个参数是目标
                     effect.Trigger(new TargetInfo(caster.Position, caster.Map), new TargetInfo(targetThing.Position, caster.Map));
                     effect.Cleanup();
                 }
                 
-                // 播放个体命中音效
                 if (Props.applySpecialEffectsToNonPawn && Props.impactSound != null && caster.Map != null)
                 {
                     Props.impactSound.PlayOneShot(new TargetInfo(targetThing.Position, caster.Map));
@@ -251,6 +244,7 @@ namespace LegendaryBlackDragon
 
             return 1f;
         }
+        
         /// <summary>
         /// 获取眩晕时间系数
         /// </summary>
@@ -269,6 +263,7 @@ namespace LegendaryBlackDragon
 
             return 1f;
         }
+        
         /// <summary>
         /// 获取调整后的伤害值
         /// </summary>
@@ -278,6 +273,7 @@ namespace LegendaryBlackDragon
             float multiplier = GetDamageMultiplier(caster);
             return baseDamage * multiplier;
         }
+        
         /// <summary>
         /// 获取调整后的眩晕时间
         /// </summary>
@@ -287,8 +283,9 @@ namespace LegendaryBlackDragon
             float multiplier = GetStunMultiplier(caster);
             return Mathf.RoundToInt(baseStunTicks * multiplier);
         }
+        
         /// <summary>
-        /// 显示伤害和眩晕加成信息（用于预览）
+        /// 显示伤害和眩晕加成信息
         /// </summary>
         public string GetAdjustedDamageAndStunInfo(Pawn caster)
         {
@@ -297,7 +294,6 @@ namespace LegendaryBlackDragon
             float damageMultiplier = GetDamageMultiplier(caster);
             float stunMultiplier = GetStunMultiplier(caster);
 
-            // 如果都不需要乘以系数，则不显示信息
             if (damageMultiplier == 1f && stunMultiplier == 1f)
             {
                 return string.Empty;
@@ -336,61 +332,50 @@ namespace LegendaryBlackDragon
             IntVec3 casterPos = caster.Position;
             IntVec3 clampedTarget = targetCell.ClampInsideMap(caster.Map);
             
-            // 如果施法者和目标在同一位置，则没有扇形
             if (casterPos == clampedTarget)
                 return tmpCells;
             
             Vector3 casterVector = casterPos.ToVector3Shifted().Yto0();
             
-            // 计算方向向量和角度
             float horizontalLength = (clampedTarget - casterPos).LengthHorizontal;
             float dirX = (clampedTarget.x - casterPos.x) / horizontalLength;
             float dirZ = (clampedTarget.z - casterPos.z) / horizontalLength;
             
-            // 调整目标点到扇形半径
             clampedTarget.x = Mathf.RoundToInt(casterPos.x + dirX * Props.range);
             clampedTarget.z = Mathf.RoundToInt(casterPos.z + dirZ * Props.range);
             
-            // 计算扇形的中心角
             float targetAngle = Vector3.SignedAngle(
                 clampedTarget.ToVector3Shifted().Yto0() - casterVector, 
                 Vector3.right, 
                 Vector3.up);
             
-            // 计算扇形的半角（从中心线到边缘）
             float halfWidth = Props.lineWidthEnd / 2f;
             float coneEdgeDistance = Mathf.Sqrt(
                 Mathf.Pow((clampedTarget - casterPos).LengthHorizontal, 2f) + 
                 Mathf.Pow(halfWidth, 2f));
             float halfAngle = Mathf.Rad2Deg * Mathf.Asin(halfWidth / coneEdgeDistance);
             
-            // 限制最大角度不超过设定值
             halfAngle = Mathf.Min(halfAngle, Props.coneSizeDegrees / 2f);
             
-            // 遍历半径内的所有单元格，检查是否在扇形内
             int radialCellCount = GenRadial.NumCellsInRadius(Props.range);
             for (int i = 0; i < radialCellCount; i++)
             {
                 IntVec3 cell = casterPos + GenRadial.RadialPattern[i];
                 
-                // 检查单元格是否有效
                 if (!CanUseCell(caster, cell))
                     continue;
                 
-                // 计算单元格相对于施法者的角度
                 float cellAngle = Vector3.SignedAngle(
                     cell.ToVector3Shifted().Yto0() - casterVector, 
                     Vector3.right, 
                     Vector3.up);
                 
-                // 检查角度差是否在扇形范围内
                 if (Mathf.Abs(Mathf.DeltaAngle(cellAngle, targetAngle)) <= halfAngle)
                 {
                     tmpCells.Add(cell);
                 }
             }
             
-            // 添加从施法者到目标点的直线上的单元格
             List<IntVec3> lineCells = GenSight.BresenhamCellsBetween(casterPos, clampedTarget);
             for (int i = 0; i < lineCells.Count; i++)
             {
@@ -409,10 +394,8 @@ namespace LegendaryBlackDragon
         /// </summary>
         private void ApplyEffectToPawn(Pawn caster, Pawn target, LocalTargetInfo targetInfo)
         {
-            // 1. 造成伤害
             bool targetDied = ApplyDamageAndStun(caster, target);
             
-            // 2. 如果目标存活，执行击退
             if (!targetDied && target != null && !target.Dead && !target.Downed)
             {
                 PerformKnockback(caster, target);
@@ -424,11 +407,9 @@ namespace LegendaryBlackDragon
         /// </summary>
         private bool ApplyDamageAndStun(Pawn caster, Pawn target)
         {
-            // 获取调整后的伤害和眩晕时间
             float adjustedDamage = GetAdjustedDamage(caster);
             int adjustedStunTicks = GetAdjustedStunTicks(caster);
 
-            // 创建伤害信息
             DamageInfo damageInfo = new DamageInfo(
                 Props.damageDef,
                 adjustedDamage,
@@ -437,10 +418,9 @@ namespace LegendaryBlackDragon
                 caster,
                 null
             );
-            // 应用伤害
+            
             target.TakeDamage(damageInfo);
 
-            // 检查目标是否死亡
             bool targetDied = target.Dead || target.Destroyed;
 
             if (targetDied)
@@ -448,41 +428,210 @@ namespace LegendaryBlackDragon
                 return true;
             }
 
-            // 播放个体命中效果（可选，因为已经有主要攻击效果）
             if (Props.applySpecialEffectsToNonPawn && Props.impactEffecter != null && caster.Map != null)
             {
                 Effecter effect = Props.impactEffecter.Spawn();
-                // 关键修复：第一个参数是施法者，第二个参数是目标
                 effect.Trigger(new TargetInfo(caster.Position, caster.Map), new TargetInfo(target.Position, caster.Map));
                 effect.Cleanup();
             }
 
-            // 应用眩晕 - 只在目标存活时应用
             if (adjustedStunTicks > 0 && !target.Dead)
             {
                 target.stances?.stunner?.StunFor(adjustedStunTicks, caster);
             }
+            
             return false;
         }
 
         /// <summary>
-        /// 执行击退
+        /// === 新增：击退位置提前校验 ===
+        /// </summary>
+        private bool IsValidKnockbackDestination(IntVec3 destination, Map map, Pawn victim, Pawn caster)
+        {
+            // 基本空值检查
+            if (destination == null || map == null || victim == null || caster == null)
+            {
+                Log.Warning("[FanShapedKnockback] Invalid parameters for destination validation");
+                return false;
+            }
+
+            // 检查目的地是否在游戏世界内
+            if (!destination.IsValid)
+            {
+                Log.Warning($"[FanShapedKnockback] Destination {destination} is invalid");
+                return false;
+            }
+
+            // 检查目的地是否在地图范围内
+            if (!destination.InBounds(map))
+            {
+                Log.Warning($"[FanShapedKnockback] Destination {destination} is out of map bounds");
+                return false;
+            }
+
+            // 检查目的地是否可站立
+            if (!destination.Standable(map))
+            {
+                Log.Warning($"[FanShapedKnockback] Destination {destination} is not standable");
+                return false;
+            }
+
+            // 检查目的地是否有其他pawn（避免重叠）
+            Pawn existingPawn = destination.GetFirstPawn(map);
+            if (existingPawn != null && existingPawn != victim)
+            {
+                Log.Warning($"[FanShapedKnockback] Destination {destination} already occupied by {existingPawn.Label}");
+                return false;
+            }
+
+            // 检查目的地是否有不可穿过的建筑或障碍物
+            Building building = destination.GetEdifice(map);
+            if (building != null && building.def.passability == Traversability.Impassable)
+            {
+                if (!Props.canKnockbackIntoWalls)
+                {
+                    Log.Warning($"[FanShapedKnockback] Destination {destination} has impassable building: {building.Label}");
+                    return false;
+                }
+            }
+
+            // 检查视线要求
+            if (Props.requireLineOfSight && !GenSight.LineOfSight(victim.Position, destination, map))
+            {
+                Log.Warning($"[FanShapedKnockback] No line of sight from {victim.Position} to {destination}");
+                return false;
+            }
+
+            // 检查目的地是否在水体中
+            TerrainDef terrain = destination.GetTerrain(map);
+            if (terrain != null && terrain.IsWater)
+            {
+                Log.Warning($"[FanShapedKnockback] Destination {destination} is in water terrain: {terrain.defName}");
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// === 修改后的执行击退方法 ===
         /// </summary>
         private void PerformKnockback(Pawn caster, Pawn target)
         {
+            knockbackAttempts++;
+            
             if (target == null || target.Destroyed || target.Dead || caster.Map == null)
+            {
+                Log.Warning($"[FanShapedKnockback] Knockback pre-check failed for {target?.Label ?? "null"}");
+                knockbackFailures++;
                 return;
+            }
 
-            // 计算击退方向（从施法者指向目标）
+            // 计算击退方向
             IntVec3 knockbackDirection = CalculateKnockbackDirection(caster, target.Position);
             
             // 寻找最远的可站立击退位置
             IntVec3 knockbackDestination = FindFarthestStandablePosition(caster, target, knockbackDirection);
             
-            // 如果找到了有效位置，执行击退飞行
-            if (knockbackDestination.IsValid && knockbackDestination != target.Position)
+            // 提前校验目的地
+            if (IsValidKnockbackDestination(knockbackDestination, caster.Map, target, caster))
             {
-                CreateKnockbackFlyer(caster, target, knockbackDestination);
+                if (knockbackDestination != target.Position)
+                {
+                    bool flyerCreated = TryCreateKnockbackFlyer(caster, target, knockbackDestination);
+                    if (flyerCreated)
+                    {
+                        knockbackSuccesses++;
+                        Log.Message($"[FanShapedKnockback] Successfully knocked back {target.Label} to {knockbackDestination}");
+                    }
+                    else
+                    {
+                        knockbackFailures++;
+                        ApplyFallbackStun(target, caster);
+                    }
+                }
+                else
+                {
+                    Log.Warning($"[FanShapedKnockback] Destination same as current position for {target.Label}");
+                    knockbackFailures++;
+                }
+            }
+            else
+            {
+                Log.Warning($"[FanShapedKnockback] Invalid knockback destination for {target.Label}: {knockbackDestination}");
+                knockbackFailures++;
+                ApplyFallbackStun(target, caster);
+            }
+        }
+
+        /// <summary>
+        /// === 新增：安全创建击退飞行器 ===
+        /// </summary>
+        private bool TryCreateKnockbackFlyer(Pawn caster, Pawn target, IntVec3 destination)
+        {
+            try
+            {
+                Map map = caster.Map;
+                
+                if (!IsValidKnockbackDestination(destination, map, target, caster))
+                {
+                    Log.Error($"[FanShapedKnockback] Final destination validation failed for {target.Label} at {destination}");
+                    return false;
+                }
+
+                // 使用自定义飞行器或默认飞行器
+                ThingDef flyerDef = Props.knockbackFlyerDef ?? ThingDefOf.PawnFlyer;
+                
+                // 创建飞行器
+                PawnFlyer flyer = PawnFlyer.MakeFlyer(
+                    flyerDef,
+                    target,
+                    destination,
+                    Props.flightEffecterDef,
+                    Props.landingSound,
+                    false,
+                    null,
+                    parent,
+                    new LocalTargetInfo(destination)
+                );
+
+                if (flyer == null)
+                {
+                    Log.Error($"[FanShapedKnockback] Failed to create PawnFlyer for {target.Label}");
+                    return false;
+                }
+
+                // 检查PawnFlyer是否有效
+                if (flyer.DestinationPos == null)
+                {
+                    Log.Error($"[FanShapedKnockback] Created PawnFlyer has invalid destination: {flyer.DestinationPos}");
+                    flyer.Destroy(DestroyMode.Vanish);
+                    return false;
+                }
+
+                // 生成PawnFlyer
+                GenSpawn.Spawn(flyer, destination, map);
+                return true;
+            }
+            catch (System.Exception ex)
+            {
+                Log.Error($"[FanShapedKnockback] Exception creating PawnFlyer for {target?.Label ?? "null"}: {ex}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// === 新增：备选击晕效果 ===
+        /// </summary>
+        private void ApplyFallbackStun(Pawn target, Pawn caster)
+        {
+            int adjustedStunTicks = GetAdjustedStunTicks(caster);
+            int extraStunTicks = Mathf.RoundToInt(adjustedStunTicks * 0.5f); // 增加50%击晕时间
+            
+            if (extraStunTicks > 0 && target.stances?.stunner != null)
+            {
+                target.stances.stunner.StunFor(extraStunTicks, caster, addBattleLog: false, showMote: true);
+                Log.Message($"[FanShapedKnockback] Applied fallback stun for {target.Label}: {extraStunTicks} ticks");
             }
         }
 
@@ -493,7 +642,6 @@ namespace LegendaryBlackDragon
         {
             IntVec3 direction = targetPosition - caster.Position;
             
-            // 标准化方向（保持整数坐标）
             if (direction.x != 0 || direction.z != 0)
             {
                 if (Mathf.Abs(direction.x) > Mathf.Abs(direction.z))
@@ -511,7 +659,7 @@ namespace LegendaryBlackDragon
         }
 
         /// <summary>
-        /// 寻找最远的可站立击退位置
+        /// === 修改后的寻找最远可站立位置方法 ===
         /// </summary>
         private IntVec3 FindFarthestStandablePosition(Pawn caster, Pawn target, IntVec3 direction)
         {
@@ -524,10 +672,8 @@ namespace LegendaryBlackDragon
             {
                 IntVec3 testPos = currentPos + (direction * distance);
                 
-                if (!testPos.InBounds(map))
-                    continue;
-
-                if (IsCellStandableAndEmpty(caster, target, testPos, map))
+                // 使用新的校验方法
+                if (IsValidKnockbackDestination(testPos, map, target, caster))
                 {
                     farthestValidPos = testPos;
                     break;
@@ -538,66 +684,25 @@ namespace LegendaryBlackDragon
         }
 
         /// <summary>
-        /// 检查格子是否可站立且没有其他Pawn
+        /// === 新增：检查格子是否可站立且没有其他Pawn（兼容旧代码）===
         /// </summary>
         private bool IsCellStandableAndEmpty(Pawn caster, Pawn target, IntVec3 cell, Map map)
         {
-            if (!cell.InBounds(map))
-                return false;
-
-            // 检查是否可站立
-            if (!cell.Standable(map))
-                return false;
-
-            // 检查是否有建筑阻挡
-            if (!Props.canKnockbackIntoWalls)
-            {
-                Building edifice = cell.GetEdifice(map);
-                if (edifice != null && !(edifice is Building_Door))
-                    return false;
-            }
-
-            // 检查视线
-            if (Props.requireLineOfSight && !GenSight.LineOfSight(target.Position, cell, map))
-                return false;
-
-            // 检查是否有其他pawn
-            List<Thing> thingList = cell.GetThingList(map);
-            foreach (Thing thing in thingList)
-            {
-                if (thing is Pawn otherPawn && otherPawn != target)
-                    return false;
-            }
-
-            return true;
+            return IsValidKnockbackDestination(cell, map, target, caster);
         }
 
         /// <summary>
-        /// 创建击退飞行器
+        /// === 旧版本的CreateKnockbackFlyer方法（已弃用）===
+        /// 保留供兼容，但新代码应使用TryCreateKnockbackFlyer
         /// </summary>
         private void CreateKnockbackFlyer(Pawn caster, Pawn target, IntVec3 destination)
         {
-            Map map = caster.Map;
+            Log.Warning($"[FanShapedKnockback] Deprecated CreateKnockbackFlyer called for {target.Label}. Use TryCreateKnockbackFlyer instead.");
             
-            // 使用自定义飞行器或默认飞行器
-            ThingDef flyerDef = Props.knockbackFlyerDef ?? ThingDefOf.PawnFlyer;
-            
-            // 创建飞行器
-            PawnFlyer flyer = PawnFlyer.MakeFlyer(
-                flyerDef,
-                target,
-                destination,
-                Props.flightEffecterDef,
-                Props.landingSound,
-                false, // 不携带物品
-                null,  // 不覆盖起始位置
-                parent, // 传递Ability对象
-                new LocalTargetInfo(destination)
-            );
-
-            if (flyer != null)
+            // 转换为新的安全方法
+            if (!TryCreateKnockbackFlyer(caster, target, destination))
             {
-                GenSpawn.Spawn(flyer, destination, map);
+                ApplyFallbackStun(target, caster);
             }
         }
 
@@ -654,7 +759,6 @@ namespace LegendaryBlackDragon
             IntVec3 casterPos = caster.Position;
             Vector3 casterVector = casterPos.ToVector3Shifted().Yto0();
             
-            // 计算中心线
             float horizontalLength = (targetCell - casterPos).LengthHorizontal;
             float dirX = (targetCell.x - casterPos.x) / horizontalLength;
             float dirZ = (targetCell.z - casterPos.z) / horizontalLength;
@@ -675,7 +779,6 @@ namespace LegendaryBlackDragon
             float halfAngle = Mathf.Rad2Deg * Mathf.Asin(halfWidth / coneEdgeDistance);
             halfAngle = Mathf.Min(halfAngle, Props.coneSizeDegrees / 2f);
             
-            // 绘制两条边界线
             float leftAngle = targetAngle - halfAngle;
             float rightAngle = targetAngle + halfAngle;
             
@@ -707,7 +810,6 @@ namespace LegendaryBlackDragon
             if (caster == null || caster.Map == null)
                 return false;
             
-            // 检查目标是否在范围内
             float distance = caster.Position.DistanceTo(target.Cell);
             if (distance > Props.range)
             {
