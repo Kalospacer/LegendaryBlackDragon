@@ -103,7 +103,7 @@
                 </li>
                 <li>
                   <def>Ear</def>
-                  <customLabel>左耳</customLabel>
+                  <customLabel>left ear</customLabel>
                   <coverage>0.07</coverage>
                   <flipGraphic>true</flipGraphic>
                   <groups>
@@ -113,7 +113,7 @@
                 </li>
                 <li>
                   <def>Ear</def>
-                  <customLabel>右耳</customLabel>
+                  <customLabel>right ear</customLabel>
                   <coverage>0.07</coverage>
                   <groups>
                     <li>UpperHead</li>
@@ -152,7 +152,7 @@
         </li>
         <li>
           <def>Shoulder</def>
-          <customLabel>左肩</customLabel>
+          <customLabel>left shoulder</customLabel>
           <coverage>0.12</coverage>
           <groups>
             <li>Shoulders</li>
@@ -170,7 +170,7 @@
 						</li> -->
             <li>
               <def>Arm</def>
-              <customLabel>左臂</customLabel>
+              <customLabel>left arm</customLabel>
               <coverage>0.77</coverage>
               <groups>
                 <li>Arms</li>
@@ -196,7 +196,7 @@
 								</li> -->
                 <li>
                   <def>Hand</def>
-                  <customLabel>左手</customLabel>
+                  <customLabel>left hand</customLabel>
                   <coverage>0.14</coverage>
                   <height>Bottom</height>
                   <groups>
@@ -205,7 +205,7 @@
                   <parts>
                     <li>
                       <def>Finger</def>
-                      <customLabel>左尾指</customLabel>
+                      <customLabel>left little finger</customLabel>
                       <coverage>0.06</coverage>
                       <groups>
                         <li>Hands</li>
@@ -214,7 +214,7 @@
                     </li>
                     <li>
                       <def>Finger</def>
-                      <customLabel>左无名指</customLabel>
+                      <customLabel>left ring finger</customLabel>
                       <coverage>0.07</coverage>
                       <groups>
                         <li>Hands</li>
@@ -223,7 +223,7 @@
                     </li>
                     <li>
                       <def>Finger</def>
-                      <customLabel>左中指</customLabel>
+                      <customLabel>left middle finger</customLabel>
                       <coverage>0.08</coverage>
                       <groups>
                         <li>Hands</li>
@@ -232,7 +232,7 @@
                     </li>
                     <li>
                       <def>Finger</def>
-                      <customLabel>左食指</customLabel>
+                      <customLabel>left index finger</customLabel>
                       <coverage>0.07</coverage>
                       <groups>
                         <li>Hands</li>
@@ -241,7 +241,7 @@
                     </li>
                     <li>
                       <def>Finger</def>
-                      <customLabel>左拇指</customLabel>
+                      <customLabel>left thumb</customLabel>
                       <coverage>0.08</coverage>
                       <groups>
                         <li>Hands</li>
@@ -256,7 +256,7 @@
         </li>
         <li>
           <def>Shoulder</def>
-          <customLabel>右肩</customLabel>
+          <customLabel>right shoulder</customLabel>
           <coverage>0.12</coverage>
           <groups>
             <li>Shoulders</li>
@@ -274,7 +274,7 @@
 						</li> -->
             <li>
               <def>Arm</def>
-              <customLabel>右臂</customLabel>
+              <customLabel>right arm</customLabel>
               <coverage>0.77</coverage>
               <groups>
                 <li>Arms</li>
@@ -300,7 +300,7 @@
 								</li> -->
                 <li>
                   <def>Hand</def>
-                  <customLabel>右手</customLabel>
+                  <customLabel>right hand</customLabel>
                   <coverage>0.14</coverage>
                   <height>Bottom</height>
                   <groups>
@@ -309,7 +309,7 @@
                   <parts>
                     <li>
                       <def>Finger</def>
-                      <customLabel>右尾指</customLabel>
+                      <customLabel>right little finger</customLabel>
                       <coverage>0.06</coverage>
                       <groups>
                         <li>Hands</li>
@@ -318,7 +318,7 @@
                     </li>
                     <li>
                       <def>Finger</def>
-                      <customLabel>右无名指</customLabel>
+                      <customLabel>right ring finger</customLabel>
                       <coverage>0.07</coverage>
                       <groups>
                         <li>Hands</li>
@@ -327,7 +327,7 @@
                     </li>
                     <li>
                       <def>Finger</def>
-                      <customLabel>右中指</customLabel>
+                      <customLabel>right middle finger</customLabel>
                       <coverage>0.08</coverage>
                       <groups>
                         <li>Hands</li>
@@ -336,7 +336,7 @@
                     </li>
                     <li>
                       <def>Finger</def>
-                      <customLabel>右食指</customLabel>
+                      <customLabel>right index finger</customLabel>
                       <coverage>0.07</coverage>
                       <groups>
                         <li>Hands</li>
@@ -345,7 +345,7 @@
                     </li>
                     <li>
                       <def>Finger</def>
-                      <customLabel>右拇指</customLabel>
+                      <customLabel>right thumb</customLabel>
                       <coverage>0.08</coverage>
                       <groups>
                         <li>Hands</li>
@@ -368,7 +368,7 @@
         </li>
         <li>
           <def>Leg</def>
-          <customLabel>左腿</customLabel>
+          <customLabel>left leg</customLabel>
           <coverage>0.14</coverage>
           <height>Bottom</height>
           <groups>
@@ -395,7 +395,7 @@
 						</li> -->
             <li>
               <def>Foot</def>
-              <customLabel>左足</customLabel>
+              <customLabel>left foot</customLabel>
               <coverage>0.1</coverage>
               <groups>
                 <li>Feet</li>
@@ -403,7 +403,7 @@
               <parts>
                 <li>
                   <def>Toe</def>
-                  <customLabel>左小趾</customLabel>
+                  <customLabel>left little toe</customLabel>
                   <coverage>0.06</coverage>
                   <groups>
                     <li>Feet</li>
@@ -411,7 +411,7 @@
                 </li>
                 <li>
                   <def>Toe</def>
-                  <customLabel>左次小趾</customLabel>
+                  <customLabel>left fourth toe</customLabel>
                   <coverage>0.07</coverage>
                   <groups>
                     <li>Feet</li>
@@ -419,7 +419,7 @@
                 </li>
                 <li>
                   <def>Toe</def>
-                  <customLabel>左三趾</customLabel>
+                  <customLabel>left third toe</customLabel>
                   <coverage>0.08</coverage>
                   <groups>
                     <li>Feet</li>
@@ -427,7 +427,7 @@
                 </li>
                 <li>
                   <def>Toe</def>
-                  <customLabel>左二趾</customLabel>
+                  <customLabel>left second toe</customLabel>
                   <coverage>0.09</coverage>
                   <groups>
                     <li>Feet</li>
@@ -435,7 +435,7 @@
                 </li>
                 <li>
                   <def>Toe</def>
-                  <customLabel>左大拇趾</customLabel>
+                  <customLabel>left big toe</customLabel>
                   <coverage>0.09</coverage>
                   <groups>
                     <li>Feet</li>
@@ -447,7 +447,7 @@
         </li>
         <li>
           <def>Leg</def>
-          <customLabel>右腿</customLabel>
+          <customLabel>right leg</customLabel>
           <coverage>0.14</coverage>
           <height>Bottom</height>
           <groups>
@@ -474,7 +474,7 @@
 						</li> -->
             <li>
               <def>Foot</def>
-              <customLabel>右足</customLabel>
+              <customLabel>right foot</customLabel>
               <coverage>0.1</coverage>
               <groups>
                 <li>Feet</li>
@@ -482,7 +482,7 @@
               <parts>
                 <li>
                   <def>Toe</def>
-                  <customLabel>右小趾</customLabel>
+                  <customLabel>right little toe</customLabel>
                   <coverage>0.06</coverage>
                   <groups>
                     <li>Feet</li>
@@ -490,7 +490,7 @@
                 </li>
                 <li>
                   <def>Toe</def>
-                  <customLabel>右次小趾</customLabel>
+                  <customLabel>right fourth toe</customLabel>
                   <coverage>0.07</coverage>
                   <groups>
                     <li>Feet</li>
@@ -498,7 +498,7 @@
                 </li>
                 <li>
                   <def>Toe</def>
-                  <customLabel>右三趾</customLabel>
+                  <customLabel>right third toe</customLabel>
                   <coverage>0.08</coverage>
                   <groups>
                     <li>Feet</li>
@@ -506,7 +506,7 @@
                 </li>
                 <li>
                   <def>Toe</def>
-                  <customLabel>右二趾</customLabel>
+                  <customLabel>right second toe</customLabel>
                   <coverage>0.09</coverage>
                   <groups>
                     <li>Feet</li>
@@ -514,7 +514,7 @@
                 </li>
                 <li>
                   <def>Toe</def>
-                  <customLabel>右大拇趾</customLabel>
+                  <customLabel>right big toe</customLabel>
                   <coverage>0.09</coverage>
                   <groups>
                     <li>Feet</li>
