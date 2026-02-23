@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 要红温了！ -->
+  <LBD_CastAbility_Angry.reportString>要红温了！</LBD_CastAbility_Angry.reportString>
+  
+  <!-- EN: 喷射火焰中。 -->
+  <LBD_CastAbilityMaintainFlame.reportString>喷射火焰中。</LBD_CastAbilityMaintainFlame.reportString>
+  
+  <!-- EN: 喷射火焰中。 -->
+  <LBD_CastAbilityMaintainFlameAura.reportString>喷射火焰中。</LBD_CastAbilityMaintainFlameAura.reportString>
+  
+  <!-- EN: 喷射火焰中。 -->
+  <LBD_Job_Dragon_Launch_FireBall.reportString>喷射火焰中。</LBD_Job_Dragon_Launch_FireBall.reportString>
+  
+  <!-- EN: 郁闷地烧东西玩。 -->
+  <LBD_Job_RandomStartFire.reportString>郁闷地烧东西玩。</LBD_Job_RandomStartFire.reportString>
+  
+</LanguageData>

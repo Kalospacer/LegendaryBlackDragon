@@ -3,7 +3,7 @@
   <JobDef>
     <defName>LBD_CastAbilityMaintainFlame</defName>
     <driverClass>LegendaryBlackDragon.JobDriver_CastAbilityMaintainFlame</driverClass>
-    <reportString>喷射火焰中。</reportString>
+    <reportString>Spewing fire.</reportString>
     <abilityCasting>true</abilityCasting>
     <alwaysShowWeapon>true</alwaysShowWeapon>
     <playerInterruptible>true</playerInterruptible>
@@ -15,7 +15,7 @@
   <JobDef>
     <defName>LBD_CastAbilityMaintainFlameAura</defName>
     <driverClass>LegendaryBlackDragon.JobDriver_CastAbilityMaintainFlameAura</driverClass>
-    <reportString>喷射火焰中。</reportString>
+    <reportString>Spewing fire.</reportString>
     <abilityCasting>true</abilityCasting>
     <alwaysShowWeapon>true</alwaysShowWeapon>
     <playerInterruptible>true</playerInterruptible>
@@ -27,7 +27,7 @@
   <JobDef>
     <defName>LBD_Job_Dragon_Launch_FireBall</defName>
     <driverClass>LegendaryBlackDragon.JobDriver_CastAbilityMaintainMultiProjectile</driverClass>
-    <reportString>喷射火焰中。</reportString>
+    <reportString>Spewing fire.</reportString>
     <abilityCasting>true</abilityCasting>
     <alwaysShowWeapon>true</alwaysShowWeapon>
     <playerInterruptible>true</playerInterruptible>
@@ -39,7 +39,7 @@
   <JobDef>
     <defName>LBD_CastAbility_Angry</defName>
     <driverClass>JobDriver_CastAbility</driverClass>
-    <reportString>要红温了！</reportString>
+    <reportString>Getting Angry!</reportString>
     <abilityCasting>true</abilityCasting>
     <alwaysShowWeapon>true</alwaysShowWeapon>
     <playerInterruptible>true</playerInterruptible>
@@ -51,7 +51,7 @@
   <JobDef>
     <defName>LBD_Job_RandomStartFire</defName>
     <driverClass>LegendaryBlackDragon.JobDriver_BlackDragonIgnite</driverClass>
-    <reportString>郁闷地烧东西玩。</reportString>
+    <reportString>Burning things out of boredom.</reportString>
     <alwaysShowWeapon>false</alwaysShowWeapon>
     <playerInterruptible>true</playerInterruptible>
     <casualInterruptible>false</casualInterruptible>

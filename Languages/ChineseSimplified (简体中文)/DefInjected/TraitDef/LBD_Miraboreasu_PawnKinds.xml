@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 黑龙 -->
+  <LBD_BlackDragon_Trait.degreeDatas.0.label>黑龙</LBD_BlackDragon_Trait.degreeDatas.0.label>
+  <!-- EN: {PAWN_nameDef} 是一只上古巨兽——虽然不知道因为什么原因从修雷德废墟掉到了边缘世界，还变成了这副模样。{PAWN_pronoun} 是毁灭的化身，只有面前的蝼蚁陷入火海构成的地狱，才会让{PAWN_pronoun}感到愉悦。 -->
+  <LBD_BlackDragon_Trait.degreeDatas.0.description>{PAWN_nameDef} 是一只上古巨兽——虽然不知道因为什么原因从修雷德废墟掉到了边缘世界，还变成了这副模样。{PAWN_pronoun} 是毁灭的化身，只有面前的蝼蚁陷入火海构成的地狱，才会让{PAWN_pronoun}感到愉悦。</LBD_BlackDragon_Trait.degreeDatas.0.description>
+  
+</LanguageData>

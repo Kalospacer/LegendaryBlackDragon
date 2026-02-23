@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: human -->
+  <Human.label>人类</Human.label>
+  <!-- EN: A baseline human, mostly unmodified by gene engineering and mostly unchanged by evolutionary pressures on non-Earth planets. -->
+  <Human.description>普通的人类，绝大多数都没有被基因工程改造，也没有因类地星球上的生存压力而进化。</Human.description>
+  <!-- EN: left fist -->
+  <Human.tools.left_fist.label>左拳</Human.tools.left_fist.label>
+  <!-- EN: fist -->
+  <Human.tools.left_fist.labelNoLocation>拳</Human.tools.left_fist.labelNoLocation>
+  <!-- EN: right fist -->
+  <Human.tools.right_fist.label>右拳</Human.tools.right_fist.label>
+  <!-- EN: fist -->
+  <Human.tools.right_fist.labelNoLocation>拳</Human.tools.right_fist.labelNoLocation>
+  <!-- EN: teeth -->
+  <Human.tools.teeth.label>牙齿</Human.tools.teeth.label>
+  <!-- EN: head -->
+  <Human.tools.head.label>头</Human.tools.head.label>
+  
+  <!-- EN: 黑龙 -->
+  <LBD_Fatalis_Race.label>黑龙</LBD_Fatalis_Race.label>
+  <!-- EN: 古龙种之一，本体拥有修长的蛇颈和尾巴，以及一对巨大而强壮的翅膀，全身覆盖着坚硬的黑色鳞片，背部排列着白色的尖刺。头部有四根向后弯曲的角、几排巨大的牙齿和鳍状的耳朵。\n\n至少传说中是这样的。 -->
+  <LBD_Fatalis_Race.description>古龙种之一，本体拥有修长的蛇颈和尾巴，以及一对巨大而强壮的翅膀，全身覆盖着坚硬的黑色鳞片，背部排列着白色的尖刺。头部有四根向后弯曲的角、几排巨大的牙齿和鳍状的耳朵。\n\n至少传说中是这样的。</LBD_Fatalis_Race.description>
+  <!-- EN: left fist -->
+  <LBD_Fatalis_Race.tools.left_fist.label>左拳</LBD_Fatalis_Race.tools.left_fist.label>
+  <!-- EN: fist -->
+  <LBD_Fatalis_Race.tools.left_fist.labelNoLocation>拳</LBD_Fatalis_Race.tools.left_fist.labelNoLocation>
+  <!-- EN: right fist -->
+  <LBD_Fatalis_Race.tools.right_fist.label>右拳</LBD_Fatalis_Race.tools.right_fist.label>
+  <!-- EN: fist -->
+  <LBD_Fatalis_Race.tools.right_fist.labelNoLocation>拳</LBD_Fatalis_Race.tools.right_fist.labelNoLocation>
+  <!-- EN: teeth -->
+  <LBD_Fatalis_Race.tools.teeth.label>牙齿</LBD_Fatalis_Race.tools.teeth.label>
+  <!-- EN: head -->
+  <LBD_Fatalis_Race.tools.head.label>头</LBD_Fatalis_Race.tools.head.label>
+  <!-- EN: 龙爪 -->
+  <LBD_Fatalis_Race.tools.4.label>龙爪</LBD_Fatalis_Race.tools.4.label>
+  
+</LanguageData>

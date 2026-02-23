@@ -2,8 +2,8 @@
 <Defs>
   <AbilityDef>
     <defName>LBD_ToggleMeleeMode</defName>
-    <label>切换拍击/挠击</label>
-    <description>当未装备武器时，黑龙可在两种徒手近战姿态下切换：拍击与挠击。</description>
+    <label>Toggle Slam/Scratch</label>
+    <description>When unarmed, Miraboreasu can switch between two melee stances: Slam and Scratch.</description>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_ToggleMeleeMode</iconPath>
     <targetRequired>false</targetRequired>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
@@ -28,8 +28,8 @@
 
   <AbilityDef>
     <defName>LBD_TailSweep</defName>
-    <label>扫尾</label>
-    <description>黑龙甩动尾巴猛抽面前的敌人，对扇形范围内所有的敌对目标造成伤害，如果对方在攻击中幸存，就会被黑龙击飞并眩晕一段时间。\n\n该技能受到近战伤害系数的额外加成。</description>
+    <label>Tail Sweep</label>
+    <description>Miraboreasu swings her tail to strike enemies in front, dealing damage to all hostile targets in a fan-shaped area. Survivors are knocked back and stunned.\n\nThis ability receives extra scaling from melee damage factor.</description>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_TailSweep</iconPath>
     <aiCanUse>true</aiCanUse>
     <hostile>true</hostile>
@@ -98,8 +98,8 @@
 
   <AbilityDef>
     <defName>LBD_Dragon_Charge</defName>
-    <label>龙车冲锋</label>
-    <description>黑龙以自身为武器，快速向前撞击，伤害目标和在冲撞途中碰到的所有建筑和敌人。尽管因为身体变小破坏力大不如前，但是依然能将敌人顶个七荤八素。当一次冲击没有杀死敌人时，黑龙会自动进行下一次冲击。\n\n该技能受到近战伤害系数的额外加成。</description>
+    <label>Dragon Charge</label>
+    <description>Using her body as a weapon, Miraboreasu charges forward rapidly, damaging the target and all buildings and enemies in her path. Although her destructive power is reduced due to her smaller size, she can still leave enemies in disarray. If a strike doesn't kill the enemy, she will automatically perform another charge.\n\nThis ability receives extra scaling from melee damage factor.</description>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Dragon_Charge</iconPath>
     <cooldownTicksRange>300</cooldownTicksRange>
     <charges>2</charges>
@@ -153,8 +153,8 @@
   
   <AbilityDef>
     <defName>LBD_Dragon_Jump</defName>
-    <label>高空机动</label>
-    <description>黑龙使用其强壮的翅膀快速抬升高度，并抵达一个新的位置。</description>
+    <label>Aerial Maneuver</label>
+    <description>Miraboreasu uses her strong wings to rapidly gain altitude and reach a new location.</description>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Dragon_Jump</iconPath>
     <cooldownTicksRange>1000</cooldownTicksRange>
     <hostile>false</hostile>

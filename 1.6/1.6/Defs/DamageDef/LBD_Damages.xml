@@ -2,7 +2,7 @@
 <Defs>
   <DamageDef ParentName="Flame">
     <defName>LBD_DRM_Flame</defName>
-    <label>龙焰</label>
+    <label>Dragonflame</label>
     <additionalHediffs>
       <li>
         <hediff>LBD_DRM_ArmorMeltdown</hediff>

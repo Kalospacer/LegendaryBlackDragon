@@ -45,7 +45,6 @@
 		<apparelRequired>
 			<li>LBD_Miraboreasu_Armor</li>
 		</apparelRequired>
-		<forcedHairColor>(255,255,255,255)</forcedHairColor>
     <itemQuality>Excellent</itemQuality>
     <weaponMoney>9999~9999</weaponMoney>
     <weaponTags>
@@ -134,9 +133,9 @@
 		<rulePack>
 			<rulesStrings>
 				<li>r_name->[LBD_Miraboreasu_FirstName]·[LBD_Miraboreasu_LastName]</li>
-				<li>LBD_Miraboreasu_nickName->米拉波雷亚斯</li>
-				<li>LBD_Miraboreasu_FirstName->米拉</li>
-				<li>LBD_Miraboreasu_LastName->波雷亚斯</li>
+				<li>LBD_Miraboreasu_nickName->Miraboreasu</li>
+				<li>LBD_Miraboreasu_FirstName->Mira</li>
+				<li>LBD_Miraboreasu_LastName->Boreasu</li>
 			</rulesStrings>
 		</rulePack>
 	</RulePackDef>
@@ -144,9 +143,9 @@
   <AlienRace.AlienBackstoryDef>
     <defName>LBD_Miraboreasu_Childhood</defName>
     <slot>Childhood</slot>
-    <title>禁忌巨兽</title>
-    <titleShort>巨兽</titleShort>
-    <description>作为不详的象征，黑龙的诞生和其他古龙种一样笼罩在迷雾中，人们对这种超脱于生态系统的巨兽知之甚少，其名字已经成为命运之战的象征。黑龙对自身以外的事物都极度蔑视，不认同任何存在。</description>
+    <title>Forbidden Beast</title>
+    <titleShort>Beast</titleShort>
+    <description>As a symbol of misfortune, Miraboreasu's birth, like other Elder Dragons, is shrouded in mist. Little is known about this beast that transcends the ecosystem, and its name has become a symbol of the battle of destiny. Miraboreasu feels extreme contempt for anything other than itself and does not recognize any existence.</description>
     <skillGains>
       <Artistic>-10</Artistic>
       <Plants>-10</Plants>
@@ -184,9 +183,9 @@
   <AlienRace.AlienBackstoryDef>
     <defName>LBD_Miraboreasu_Adulthood</defName>
     <slot>Adulthood</slot>
-    <title>毁灭之兆</title>
-    <titleShort>黑龙</titleShort>
-    <description>传说中，曾经君临于世界的繁荣大国修雷德国，其王都在一夜之间被黑龙毁灭，曾经夸耀荣华的宫殿被付之一炬，以古城为中心的旧王都化为无法感受任何生命气息的不毛之地。黑龙将焚尽后的修雷德城堡作为自己的巢穴，这一带都被视为无法踏足的禁区······</description>
+    <title>Omen of Ruin</title>
+    <titleShort>Black Dragon</titleShort>
+    <description>Legend has it that the prosperous Kingdom of Schrade was destroyed by Miraboreasu in a single night. The once-glittering palace was put to the torch, and the old capital centered on the ancient castle became a barren land where no sign of life could be felt. Miraboreasu made the burnt Schrade Castle its nest, and this area was regarded as a forbidden zone that could not be set foot in...</description>
     <skillGains>
       <Intellectual>5</Intellectual>
       <Crafting>5</Crafting>
@@ -224,8 +223,8 @@
     <disabledWorkTags>Firefighting</disabledWorkTags>
     <degreeDatas>
       <li>
-        <label>黑龙</label>
-        <description>{PAWN_nameDef} 是一只上古巨兽——虽然不知道因为什么原因从修雷德废墟掉到了边缘世界，还变成了这副模样。{PAWN_pronoun} 是毁灭的化身，只有面前的蝼蚁陷入火海构成的地狱，才会让{PAWN_pronoun}感到愉悦。</description>
+        <label>Black Dragon</label>
+        <description>{PAWN_nameDef} is an ancient beast—though for some reason she fell from the ruins of Schrade to the rimworld and became like this. {PAWN_pronoun} is the incarnation of destruction, and only seeing the ants before her fall into a hell of fire will make {PAWN_pronoun} feel pleasure.</description>
         <theOnlyAllowedMentalBreaks>
           <li>FireStartingSpree</li>
         </theOnlyAllowedMentalBreaks>

@@ -2,8 +2,8 @@
 <Defs>
   <AbilityDef>
     <defName>LBD_DragonSkyNukeStrike</defName>
-    <label>天劫龙焰</label>
-    <description>黑龙离开地图，将天空染成绯红，在返回前释放两阶段的焚烧打击。</description>
+    <label>Dragonfire of Retribution</label>
+    <description>The Black Dragon departs from the map, painting the sky crimson, and unleashes a two-stage incinerating strike before returning.</description>
     <iconPath>UI/Abilities/FireBurst</iconPath>
     <targetRequired>false</targetRequired>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
@@ -51,8 +51,8 @@
   
   <AbilityDef>
     <defName>LBD_Upgrade_Skill</defName>
-    <label>过去的记忆</label>
-    <description>黑龙唤醒曾为龙形态的战斗记忆，获得新的技能和增益。\n\n获得的记忆是永久存在的，并且在后续不会再次抽到。</description>
+    <label>Battle Memories</label>
+    <description>Awaken battle memories of the dragon form, gaining new abilities and buffs.\n\nMemories gained are permanent and will not be drawn again.</description>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Upgrade_Skill</iconPath>
     <displayOrder>210</displayOrder>
     <aiCanUse>false</aiCanUse>
@@ -194,11 +194,10 @@
     </comps>
   </AbilityDef>
 
-  <!-- 使用完整功能的 AbilityComp -->
   <AbilityDef>
     <defName>LBD_TalkWith_BlackDragon</defName>
-    <label>与米拉对话</label>
-    <description>打开与黑龙的对话窗口</description>
+    <label>Talk with Mira</label>
+    <description>Open the dialogue window with Miraboreasu.</description>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_TalkWith_BlackDragon</iconPath>
     <displayGizmoWhileUndrafted>true</displayGizmoWhileUndrafted>
     <disableGizmoWhileUndrafted>false</disableGizmoWhileUndrafted>

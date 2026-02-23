@@ -3,7 +3,7 @@
   <IncidentDef>
     <defName>LBD_GiveQuest_Dragon_Fall</defName>
     <category>GiveQuest</category>
-    <label>黑龙坠落</label>
+    <label>Dragon Fall</label>
     <targetTags>
       <li>Map_PlayerHome</li>
     </targetTags>
@@ -50,8 +50,8 @@
           <node Class="QuestNode_Sequence">
             <nodes>
               <li Class="QuestNode_Letter">
-                <label>坠落的黑影</label>
-                <text>一个黑影坠落在殖民地附近——似乎是一名少女。虽然没有任何保护，但是她在坠落到地上后依然活着，只是晕了过去。\n\n似乎你应该过去看看？</text>
+                <label>Falling Shadow</label>
+                <text>A dark shadow has crashed near the colony—it seems to be a young girl. Despite the lack of any protection, she survived the impact and is currently unconscious.\n\nPerhaps you should go and investigate? It feels as if the legendary Miraboreasu has descended.</text>
               </li>
               <li Class="QuestNode_End">
                 <outcome>Success</outcome>
@@ -65,7 +65,7 @@
   </QuestScriptDef>
   <ThingDef ParentName="SkyfallerBase">
     <defName>LBD_Dragon_Fall_Incoming</defName>
-    <label>黑龙（坠落中）</label>
+    <label>Black Dragon</label>
     <size>(1,1)</size>
     <thingClass>LegendaryBlackDragon.Skyfaller_PawnSpawner</thingClass>
     <graphicData>

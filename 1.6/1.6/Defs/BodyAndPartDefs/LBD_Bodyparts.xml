@@ -529,7 +529,7 @@
   </BodyDef>
   <BodyPartDef>
     <defName>LBD_Fatalis_Skeleton_Bodypart</defName>
-    <label>龙骨</label>
+    <label>Dragonbone</label>
     <hitPoints>30</hitPoints>
     <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>
@@ -542,7 +542,7 @@
   </BodyPartDef>
   <BodyPartDef>
     <defName>LBD_Precious_Jade_Bodypart</defName>
-    <label>黑龙的宝玉</label>
+    <label>Miraboreasu Crystal</label>
     <hitPoints>120</hitPoints>
     <skinCovered>false</skinCovered>
     <bleedRate>0</bleedRate>
@@ -564,7 +564,7 @@
   </BodyPartDef>
   <BodyPartDef>
     <defName>LBD_Horn_Bodypart</defName>
-    <label>黑龙角</label>
+    <label>Miraboreasu Horn</label>
     <hitPoints>30</hitPoints>
     <permanentInjuryChanceFactor>0</permanentInjuryChanceFactor>
     <skinCovered>false</skinCovered>

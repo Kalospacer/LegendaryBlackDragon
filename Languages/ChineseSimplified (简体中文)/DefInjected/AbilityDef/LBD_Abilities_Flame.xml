@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 红温 -->
+  <LBD_Angry_Bluefire_Switch.label>红温</LBD_Angry_Bluefire_Switch.label>
+  <!-- EN: 因为无法快速解决蝼蚁而感到烦闷，黑龙打算释放她最恐怖的毁灭之力。在这种情况下，黑龙的近战能力和火焰喷吐能力将得到极大的加强，但是心情会下降一段时间。 -->
+  <LBD_Angry_Bluefire_Switch.description>因为无法快速解决蝼蚁而感到烦闷，黑龙打算释放她最恐怖的毁灭之力。在这种情况下，黑龙的近战能力和火焰喷吐能力将得到极大的加强，但是心情会下降一段时间。</LBD_Angry_Bluefire_Switch.description>
+  
+  <!-- EN: 火球喷射 -->
+  <LBD_FireBall.label>火球喷射</LBD_FireBall.label>
+  <!-- EN: 黑龙向目标位置喷射火球，火球在命中后会爆炸并造成范围性伤害。\n\n如果进入核心超压状态，黑龙喷射的火球将转变为蓝紫色火球，精准度下降但是一次性喷射三发，伤害和穿甲能力得到大幅提升。 -->
+  <LBD_FireBall.description>黑龙向目标位置喷射火球，火球在命中后会爆炸并造成范围性伤害。\n\n如果进入核心超压状态，黑龙喷射的火球将转变为蓝紫色火球，精准度下降但是一次性喷射三发，伤害和穿甲能力得到大幅提升。</LBD_FireBall.description>
+  
+  <!-- EN: 环形龙焰 -->
+  <LBD_SustainedFlameAura.label>环形龙焰</LBD_SustainedFlameAura.label>
+  <!-- EN: 黑龙经过短暂蓄力后，向地上喷射龙焰，龙焰会被大地反射，并灼烧周围一切。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。 -->
+  <LBD_SustainedFlameAura.description>黑龙经过短暂蓄力后，向地上喷射龙焰，龙焰会被大地反射，并灼烧周围一切。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。</LBD_SustainedFlameAura.description>
+  
+  <!-- EN: 扇形龙焰 -->
+  <LBD_SustainedFlameCone.label>扇形龙焰</LBD_SustainedFlameCone.label>
+  <!-- EN: 黑龙经过短暂蓄力后，持续向前方扇形区域喷射龙焰。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。 -->
+  <LBD_SustainedFlameCone.description>黑龙经过短暂蓄力后，持续向前方扇形区域喷射龙焰。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。</LBD_SustainedFlameCone.description>
+  
+</LanguageData>

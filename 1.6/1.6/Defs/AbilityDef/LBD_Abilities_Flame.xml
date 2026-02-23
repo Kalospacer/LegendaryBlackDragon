@@ -2,8 +2,8 @@
 <Defs>
   <AbilityDef>
     <defName>LBD_Angry_Bluefire_Switch</defName>
-    <label>红温</label>
-    <description>因为无法快速解决蝼蚁而感到烦闷，黑龙打算释放她最恐怖的毁灭之力。在这种情况下，黑龙的近战能力和火焰喷吐能力将得到极大的加强，但是心情会下降一段时间。</description>
+    <label>Angry</label>
+    <description>Feeling annoyed by the inability to quickly eliminate pests, Miraboreasu unleashes her most terrifying destructive power. In this state, her melee and fire-breathing abilities are greatly enhanced, but her mood will drop for a period of time.</description>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Angry_Bluefire_Switch</iconPath>
     <cooldownTicksRange>120000</cooldownTicksRange>    <!-- 2 days -->
     <hostile>false</hostile>
@@ -46,8 +46,8 @@
 
   <AbilityDef>
     <defName>LBD_SustainedFlameCone</defName>
-    <label>扇形龙焰</label>
-    <description>黑龙经过短暂蓄力后，持续向前方扇形区域喷射龙焰。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。</description>
+    <label>Fan-shaped Dragonfire</label>
+    <description>After a brief charge, Miraboreasu continuously breathes dragonfire in a fan-shaped area ahead. The dragonfire she breathes is formed by unnatural power, turning both flesh and steel to ash under her wrath.\n\nIf entering the True Power state, the fire turns blue-purple, with significantly increased damage and armor penetration.</description>
     <iconPath>UI/Abilities/FireSpew</iconPath>
     <jobDef>LBD_CastAbilityMaintainFlame</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
@@ -138,8 +138,8 @@
 
   <AbilityDef>
     <defName>LBD_SustainedFlameAura</defName>
-    <label>环形龙焰</label>
-    <description>黑龙经过短暂蓄力后，向地上喷射龙焰，龙焰会被大地反射，并灼烧周围一切。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。</description>
+    <label>Circular Dragonfire</label>
+    <description>After a brief charge, Miraboreasu breathes dragonfire onto the ground, which is reflected and burns everything around. The dragonfire she breathes is formed by unnatural power, turning both flesh and steel to ash under her wrath.\n\nIf entering the True Power state, the fire turns blue-purple, with significantly increased damage and armor penetration.</description>
     <iconPath>UI/Abilities/FireBurst</iconPath>
     <jobDef>LBD_CastAbilityMaintainFlameAura</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
@@ -215,8 +215,8 @@
 
   <AbilityDef>
     <defName>LBD_FireBall</defName>
-    <label>火球喷射</label>
-    <description>黑龙向目标位置喷射火球，火球在命中后会爆炸并造成范围性伤害。\n\n如果进入核心超压状态，黑龙喷射的火球将转变为蓝紫色火球，精准度下降但是一次性喷射三发，伤害和穿甲能力得到大幅提升。</description>
+    <label>Fireball</label>
+    <description>Miraboreasu spits fireballs at the target location, which explode on impact and cause area damage.\n\nIf entering the True Power state, the fireballs turn blue-purple. Accuracy decreases but three fireballs are spit at once, with significantly increased damage and armor penetration.</description>
     <jobDef>LBD_Job_Dragon_Launch_FireBall</jobDef>
     <waitForJobEnd>true</waitForJobEnd>
     <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_FireBall</iconPath>
@@ -272,7 +272,7 @@
   </AbilityDef>
   <ThingDef ParentName="BaseBullet">
     <defName>LBD_FireBall_Proj</defName>
-    <label>火球</label>
+    <label>FireBall</label>
     <thingClass>Projectile_Explosive</thingClass>
     <graphicData>
       <texPath>LegendaryBlackDragon/Mote/LBD_Fireball_Mote</texPath>
@@ -296,7 +296,7 @@
   </ThingDef>
   <ThingDef ParentName="BaseBullet">
     <defName>LBD_FireBall_Blue_Proj</defName>
-    <label>火球</label>
+    <label>FireBall</label>
     <thingClass>Projectile_Explosive</thingClass>
     <graphicData>
       <texPath>LegendaryBlackDragon/Mote/LBD_Fireball_Blue_Mote</texPath>

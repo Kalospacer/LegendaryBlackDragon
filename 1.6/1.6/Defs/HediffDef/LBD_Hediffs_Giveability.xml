@@ -14,8 +14,8 @@
   </HediffDef>
   <HediffDef ParentName="LBD_HediffGiveAbility_Base">
     <defName>LBD_Angry_Bluefire_Switch</defName>
-    <label>红温</label>
-    <description>因为无法快速解决蝼蚁而感到烦闷，黑龙打算释放她最恐怖的毁灭之力。在这种情况下，黑龙的近战能力和火焰喷吐能力将得到极大的加强，但是心情会下降一段时间。</description>
+    <label>Angry</label>
+    <description>Feeling annoyed by the inability to quickly eliminate pests, Miraboreasu unleashes her most terrifying destructive power. In this state, her melee and fire-breathing abilities are greatly enhanced, but her mood will drop for a period of time.</description>
     <comps>
       <li Class="HediffCompProperties_GiveAbility">
         <abilityDefs>
@@ -26,8 +26,8 @@
   </HediffDef>
   <HediffDef ParentName="LBD_HediffGiveAbility_Base">
     <defName>LBD_SustainedFlameCone</defName>
-    <label>扇形龙焰</label>
-    <description>黑龙经过短暂蓄力后，持续向前方扇形区域喷射龙焰。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。</description>
+    <label>Fan-shaped Dragonfire</label>
+    <description>After a brief charge, Miraboreasu continuously breathes dragonfire in a fan-shaped area ahead. The dragonfire she breathes is formed by unnatural power, turning both flesh and steel to ash under her wrath.\n\nIf entering the True Power state, the fire turns blue-purple, with significantly increased damage and armor penetration.</description>
     <comps>
       <li Class="HediffCompProperties_GiveAbility">
         <abilityDefs>
@@ -38,8 +38,8 @@
   </HediffDef>
   <HediffDef ParentName="LBD_HediffGiveAbility_Base">
     <defName>LBD_SustainedFlameAura</defName>
-    <label>环形龙焰</label>
-    <description>黑龙经过短暂蓄力后，向地上喷射龙焰，龙焰会被大地反射，并灼烧周围一切。她所喷射的龙焰是由非自然力量形成的，无论是肉体还是钢铁都会在其怒火下化为灰烬。\n\n如果进入核心超压状态，黑龙喷射的火焰将转变为蓝紫色火焰，并且伤害和穿甲能力得到大幅提升。</description>
+    <label>Circular Dragonfire</label>
+    <description>After a brief charge, Miraboreasu breathes dragonfire onto the ground, which is reflected and burns everything around. The dragonfire she breathes is formed by unnatural power, turning both flesh and steel to ash under her wrath.\n\nIf entering the True Power state, the fire turns blue-purple, with significantly increased damage and armor penetration.</description>
     <comps>
       <li Class="HediffCompProperties_GiveAbility">
         <abilityDefs>
@@ -50,8 +50,8 @@
   </HediffDef>
   <HediffDef ParentName="LBD_HediffGiveAbility_Base">
     <defName>LBD_FireBall</defName>
-    <label>火球喷射</label>
-    <description>黑龙向目标位置喷射火球，火球在命中后会爆炸并造成范围性伤害。\n\n如果进入核心超压状态，黑龙喷射的火球将转变为蓝紫色火球，精准度下降但是一次性喷射三发，伤害和穿甲能力得到大幅提升。</description>
+    <label>Fireball</label>
+    <description>Miraboreasu spits fireballs at the target location, which explode on impact and cause area damage.\n\nIf entering the True Power state, the fireballs turn blue-purple. Accuracy decreases but three fireballs are spit at once, with significantly increased damage and armor penetration.</description>
     <comps>
       <li Class="HediffCompProperties_GiveAbility">
         <abilityDefs>
@@ -62,8 +62,8 @@
   </HediffDef>
   <HediffDef ParentName="LBD_HediffGiveAbility_Base">
     <defName>LBD_TailSweep</defName>
-    <label>扫尾</label>
-    <description>黑龙甩动尾巴猛抽面前的敌人，对扇形范围内所有的敌对目标造成伤害，如果对方在攻击中幸存，就会被黑龙击飞并眩晕一段时间。\n\n该技能受到近战伤害系数的额外加成。</description>
+    <label>Tail Sweep</label>
+    <description>Miraboreasu swings her tail to strike enemies in front, dealing damage to all hostile targets in a fan-shaped area. Survivors are knocked back and stunned.\n\nThis ability receives extra scaling from melee damage factor.</description>
     <comps>
       <li Class="HediffCompProperties_GiveAbility">
         <abilityDefs>
@@ -74,9 +74,9 @@
   </HediffDef>
   <HediffDef ParentName="LBD_HediffGiveAbility_Base">
     <defName>LBD_Dragon_Charge</defName>
-    <label>龙车冲锋</label>
-    <description>黑龙以自身为武器，快速向前撞击，伤害目标和在冲撞途中碰到的所有建筑和敌人。尽管因为身体变小破坏力大不如前，但是依然能将敌人顶个七荤八素。当一次冲击没有杀死敌人时，黑龙会自动进行下一次冲击。\n\n该技能受到近战伤害系数的额外加成。</description>
-   <comps>
+    <label>Dragon Charge</label>
+    <description>Using her body as a weapon, Miraboreasu charges forward rapidly, damaging the target and all buildings and enemies in her path. Although her destructive power is reduced due to her smaller size, she can still leave enemies in disarray. If a strike doesn't kill the enemy, she will automatically perform another charge.\n\nThis ability receives extra scaling from melee damage factor.</description>
+    <comps>
       <li Class="HediffCompProperties_GiveAbility">
         <abilityDefs>
           <li>LBD_Dragon_Charge</li>
@@ -86,8 +86,8 @@
   </HediffDef>
   <HediffDef ParentName="LBD_HediffGiveAbility_Base">
     <defName>LBD_ToggleMeleeMode</defName>
-    <label>切换拍击/挠击</label>
-    <description>当未装备武器时，黑龙可在两种徒手近战姿态下切换：拍击与挠击。</description>
+    <label>Toggle Slam/Scratch</label>
+    <description>When unarmed, Miraboreasu can switch between two melee stances: Slam and Scratch.</description>
     <comps>
       <li Class="HediffCompProperties_GiveAbility">
         <abilityDefs>
@@ -98,8 +98,8 @@
   </HediffDef>
   <HediffDef ParentName="LBD_HediffGiveAbility_Base">
     <defName>LBD_Dragon_Jump</defName>
-    <label>高空机动</label>
-    <description>黑龙使用其强壮的翅膀快速抬升高度，并抵达一个新的位置。</description>
+    <label>Aerial Maneuver</label>
+    <description>Miraboreasu uses her strong wings to rapidly gain altitude and reach a new location.</description>
     <comps>
       <li Class="HediffCompProperties_GiveAbility">
         <abilityDefs>
@@ -111,8 +111,8 @@
 
   <HediffDef>
     <defName>LBD_ExtraHediff_Calm</defName>
-    <label>压制怒火</label>
-    <description>自从被天尊们打败之后，黑龙或许会对自己的自负有一点点反思吧？</description>
+    <label>Suppressed Wrath</label>
+    <description>Since being defeated by the Master Hunter, perhaps Black Dragon will have a little reflection on her own arrogance?</description>
     <hediffClass>Hediff_High</hediffClass>
     <everCurableByItem>false</everCurableByItem>
     <isBad>false</isBad>
@@ -127,8 +127,8 @@
   </HediffDef>
   <HediffDef>
     <defName>LBD_ExtraHediff_Armor</defName>
-    <label>熔融钢甲</label>
-    <description>黑龙可以将被其捕食的猎人们的盔甲融化并附着在龙甲外层，增加其防御能力。</description>
+    <label>Molten Steel Armor</label>
+    <description>The Black Dragon can melt the armor of its prey and attach it to the outer layer of its dragon scales, thereby enhancing its defensive capabilities.</description>
     <hediffClass>Hediff_High</hediffClass>
     <everCurableByItem>false</everCurableByItem>
     <isBad>false</isBad>
@@ -145,8 +145,8 @@
   </HediffDef>
   <HediffDef>
     <defName>LBD_ExtraHediff_Hitchance</defName>
-    <label>肉体蛮力</label>
-    <description>黑龙相较于别的古龙种来说四肢和身躯都较为瘦长，但是这无法掩盖其破坏性的肉体力量。</description>
+    <label>Physical Brute Force</label>
+    <description>Compared to other ancient dragon species, the Black Dragon has slender limbs and a long body, but this cannot conceal its destructive physical strength.</description>
     <hediffClass>Hediff_High</hediffClass>
     <everCurableByItem>false</everCurableByItem>
     <isBad>false</isBad>
@@ -162,8 +162,8 @@
   </HediffDef>
   <HediffDef>
     <defName>LBD_ExtraHediff_Noblood</defName>
-    <label>混沌躯体</label>
-    <description>黑龙</description>
+    <label>Chaotic Body</label>
+    <description>Is Black Dragon's fighting skill innate or acquired through fierce battles? Perhaps it's a bit of both.</description>
     <hediffClass>Hediff_High</hediffClass>
     <everCurableByItem>false</everCurableByItem>
     <isBad>false</isBad>

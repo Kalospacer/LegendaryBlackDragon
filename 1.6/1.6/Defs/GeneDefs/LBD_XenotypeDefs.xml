@@ -2,16 +2,16 @@
 <Defs>
   <XenotypeDef MayRequire="Ludeon.RimWorld.Biotech">
     <defName>LBD_Miraboreasu_Xenotype</defName>
-    <label>LBD_Miraboreasu_Xenotype</label>
-    <description>LBD_Miraboreasu_Xenotype</description>
-    <descriptionShort>LBD_Miraboreasu_Xenotype</descriptionShort>
+    <label>Fatalis</label>
+    <description>Miraboreasu , the war of fate. Her abilities stem from something other than genes, and there are only a few words here.</description>
+    <descriptionShort>Miraboreasu , the war of fate.</descriptionShort>
     <iconPath>LegendaryBlackDragon/UI/Icons/LBD_Miraboreasu_Xenotype</iconPath>
-	<inheritable>true</inheritable>
+    <inheritable>true</inheritable>
     <combatPowerFactor>1</combatPowerFactor>
     <factionlessGenerationWeight>0</factionlessGenerationWeight>
     <genes>
-		<li>DarkVision</li>
-		<li>AddictionImmune_Alcohol</li>
+      <li>DarkVision</li>
+      <li>AddictionImmune_Alcohol</li>
     </genes>
   </XenotypeDef>
 

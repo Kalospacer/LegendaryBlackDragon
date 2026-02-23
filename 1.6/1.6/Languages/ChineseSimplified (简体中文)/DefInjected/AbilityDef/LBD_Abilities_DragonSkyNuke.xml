@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<LanguageData>
-  <LBD_DragonSkyNukeStrike.label>黑龙天坠</LBD_DragonSkyNukeStrike.label>
-  <LBD_DragonSkyNukeStrike.description>黑龙离场，天空染成血红。延迟后进入第一阶段：从地图边缘方向引入小火，所有非建筑目标触发特效，室外可燃物强制点燃但不施加直接伤害。5秒后进入第二阶段：对预载的室外暴露目标按固定间隔进行20轮伤害脉冲，结束后黑龙返回原位。</LBD_DragonSkyNukeStrike.description>
-</LanguageData>

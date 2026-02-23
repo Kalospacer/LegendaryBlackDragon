@@ -7,6 +7,8 @@
         <incident>LBD_GiveQuest_Dragon_Fall</incident>
         <daysAfterStart>0.05</daysAfterStart>
         <delayTicks>1</delayTicks>
+        <repeatable>false</repeatable>
+        <debugLogging>True</debugLogging>
       </li>
     </value>
   </Operation>

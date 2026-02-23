@@ -2,8 +2,8 @@
 <Defs>
   <NeedDef>
     <defName>Need_LBD_BlackDragon</defName>
-    <label>焚烧</label>
-    <description>黑龙的脾气不是太好，她更喜欢用无尽的烈火焚烧挑战她的宵小之辈，而不是在野地里面种菜挖矿。如果此项需求过低，黑龙会自己尝试去居住区外烧可燃物解闷——使用黑龙的喷火类技能也可以满足需求。</description>
+    <label>Incineration</label>
+    <description>Miraboreasu doesn't have a very good temper. She prefers to burn the pests who challenge her with endless fire, rather than planting vegetables or mining in the wild. If this need is too low, she will try to go outside the residential area to burn flammable objects for fun—using her fire-breathing skills can also satisfy the need.</description>
     <listPriority>800</listPriority>
     <showOnNeedList>true</showOnNeedList>
     <major>true</major>
@@ -65,8 +65,8 @@
     <stackLimit>1</stackLimit>
     <stages>
       <li>
-        <label>破坏饥渴</label>
-        <description>这个殖民地真的超！级！无！聊！——我要去找点东西烧了。</description>
+        <label>Destruction Thirst</label>
+        <description>This colony is SO! BORED! — I'm going to find something to burn.</description>
         <baseMoodEffect>-20</baseMoodEffect>
       </li>
     </stages>
@@ -77,8 +77,8 @@
     <stackLimit>1</stackLimit>
     <stages>
       <li>
-        <label>破坏欲</label>
-        <description>好无聊，想烧点东西···</description>
+        <label>Destruction Desire</label>
+        <description>So bored, want to burn something...</description>
         <baseMoodEffect>-5</baseMoodEffect>
       </li>
     </stages>
@@ -89,8 +89,8 @@
     <stackLimit>1</stackLimit>
     <stages>
       <li>
-        <label>火焰满足</label>
-        <description>至少这个殖民地还能给我提供些别的乐子。</description>
+        <label>Flame Satisfaction</label>
+        <description>At least this colony can provide me with some other fun.</description>
         <baseMoodEffect>3</baseMoodEffect>
       </li>
     </stages>
@@ -101,8 +101,8 @@
     <stackLimit>1</stackLimit>
     <stages>
       <li>
-        <label>火焰愉悦</label>
-        <description>烧死你们！</description>
+        <label>Flame Pleasure</label>
+        <description>BURN TO DEATH!</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
     </stages>
