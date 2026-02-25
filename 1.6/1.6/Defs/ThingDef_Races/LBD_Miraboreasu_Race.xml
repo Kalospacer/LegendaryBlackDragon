@@ -355,7 +355,10 @@
           </headOffsetDirectional>
         </alienPartGenerator>
         <growthAges>
-          <li>0</li>
+          <li>25</li>
+          <li>50</li>
+          <li>75</li>
+          <li>100</li>
         </growthAges>
         <!-- 年龄工作效率等的覆盖 -->
         <ageStatOverrides>
@@ -680,19 +683,19 @@
         </li>
         <li>
           <def>HumanlikeChild</def>
-          <minAge>0.25</minAge>
+          <minAge>25</minAge>
         </li>
         <li MayRequire="Ludeon.RimWorld.Biotech">
           <def>HumanlikePreTeenager</def>
-          <minAge>0.5</minAge>
+          <minAge>50</minAge>
         </li>
         <li>
           <def>HumanlikeTeenager</def>
-          <minAge>0.75</minAge>
+          <minAge>75</minAge>
         </li>
         <li>
           <def>HumanlikeAdult</def>
-          <minAge>1</minAge>
+          <minAge>100</minAge>
         </li>
       </lifeStageAges>
       <ageGenerationCurve Inherit="False" IsNull="True"/>

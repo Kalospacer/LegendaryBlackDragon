@@ -14,7 +14,6 @@ namespace LegendaryBlackDragon
             if (parent != null && !parent.Destroyed)
             {
                 parent.Destroy(DestroyMode.Vanish);
-                Log.Error("额，你是不是在尝试扒光黑龙？");
             }
         }
     }

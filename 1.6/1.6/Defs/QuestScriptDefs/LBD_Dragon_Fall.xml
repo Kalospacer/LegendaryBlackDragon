@@ -10,6 +10,7 @@
     <questScriptDef>LBD_Dragon_Fall</questScriptDef>
     <workerClass>IncidentWorker_GiveQuest</workerClass>
     <baseChance>0</baseChance>
+    <minRefireDays>999999</minRefireDays>
   </IncidentDef>
   <QuestScriptDef>
     <defName>LBD_Dragon_Fall</defName>

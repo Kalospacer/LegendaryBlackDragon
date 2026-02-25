@@ -53,8 +53,6 @@ namespace LegendaryBlackDragon
             serializedTriggerRecordValues = new List<TriggerRecord>();
             serializedCompEnabledStatesKeys = new List<string>();
             serializedCompEnabledStatesValues = new List<bool>();
-            
-            Log.Message("[DaysAfterStartManager] Initialized global manager");
         }
         
         public override void ExposeData()
@@ -122,8 +120,6 @@ namespace LegendaryBlackDragon
                         }
                     }
                 }
-                
-                Log.Message($"[DaysAfterStartManager] Loaded {triggerRecords?.Count ?? 0} trigger records");
             }
             
             Scribe_Values.Look(ref debugMode, "debugMode", false);
@@ -166,11 +162,6 @@ namespace LegendaryBlackDragon
                 {
                     compEnabledStates[compId] = true;
                 }
-                
-                if (debugMode)
-                {
-                    Log.Message($"[DaysAfterStartManager] Registered comp: {compId}, Incident: {props.incident?.defName}");
-                }
             }
         }
         
@@ -183,11 +174,6 @@ namespace LegendaryBlackDragon
             {
                 registeredCompProperties.Remove(compId);
                 compEnabledStates.Remove(compId);
-                
-                if (debugMode)
-                {
-                    Log.Message($"[DaysAfterStartManager] Unregistered comp: {compId}");
-                }
             }
         }
         
@@ -202,10 +188,6 @@ namespace LegendaryBlackDragon
             // 检查是否启用
             if (!IsCompEnabled(compId))
             {
-                if (debugMode)
-                {
-                    Log.Message($"[DaysAfterStartManager] Comp {compId} is disabled");
-                }
                 return false;
             }
             
@@ -248,11 +230,6 @@ namespace LegendaryBlackDragon
             record.TriggerCount++;
             record.HasTriggered = true;
             
-            if (debugMode)
-            {
-                Log.Message($"[DaysAfterStartManager] Recorded trigger for {compId}, Incident: {incident.defName}, Count: {record.TriggerCount}");
-            }
-            
             triggerRecords[compId] = record;
         }
         
@@ -292,11 +269,6 @@ namespace LegendaryBlackDragon
             if (compEnabledStates.ContainsKey(compId))
             {
                 compEnabledStates[compId] = enabled;
-                
-                if (debugMode)
-                {
-                    Log.Message($"[DaysAfterStartManager] Comp {compId} {(enabled ? "enabled" : "disabled")}");
-                }
             }
         }
         
@@ -317,11 +289,6 @@ namespace LegendaryBlackDragon
             };
             
             scheduledTriggers.Add(scheduledTrigger);
-            
-            if (debugMode)
-            {
-                Log.Message($"[DaysAfterStartManager] Scheduled trigger for {compId}, Incident: {incident.defName}, in {delayTicks} ticks");
-            }
         }
         
         /// <summary>
@@ -366,11 +333,6 @@ namespace LegendaryBlackDragon
                 if (props.incident.Worker.TryExecute(parms))
                 {
                     trigger.Target.StoryState.Notify_IncidentFired(new FiringIncident(props.incident, null, parms));
-                    
-                    if (debugMode)
-                    {
-                        Log.Message($"[DaysAfterStartManager] Executed scheduled trigger for {trigger.CompId}, Incident: {trigger.Incident.defName}");
-                    }
                 }
                 else
                 {
@@ -395,11 +357,6 @@ namespace LegendaryBlackDragon
             {
                 triggerRecords.Remove(key);
             }
-            
-            if (invalidKeys.Count > 0 && debugMode)
-            {
-                Log.Message($"[DaysAfterStartManager] Cleaned up {invalidKeys.Count} invalid trigger records");
-            }
         }
         
         /// <summary>
@@ -410,11 +367,6 @@ namespace LegendaryBlackDragon
             if (triggerRecords.ContainsKey(compId))
             {
                 triggerRecords.Remove(compId);
-                
-                if (debugMode)
-                {
-                    Log.Message($"[DaysAfterStartManager] Reset trigger record for {compId}");
-                }
             }
         }
         
@@ -425,8 +377,6 @@ namespace LegendaryBlackDragon
         {
             int count = triggerRecords.Count;
             triggerRecords.Clear();
-            
-            Log.Message($"[DaysAfterStartManager] Reset all {count} trigger records");
         }
         
         /// <summary>
@@ -480,7 +430,6 @@ namespace LegendaryBlackDragon
         public void ToggleDebugMode()
         {
             debugMode = !debugMode;
-            Log.Message($"[DaysAfterStartManager] Debug mode {(debugMode ? "enabled" : "disabled")}");
         }
         
         /// <summary>
@@ -508,8 +457,6 @@ namespace LegendaryBlackDragon
                 
                 // 记录触发
                 RecordTrigger(compId, props.incident);
-                
-                Log.Message($"[DaysAfterStartManager] Force triggered {compId}, Incident: {props.incident.defName}");
             }
             else
             {

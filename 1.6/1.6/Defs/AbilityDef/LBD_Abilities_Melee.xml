@@ -62,7 +62,7 @@
         <armorPenetration>1</armorPenetration>
         
         <!-- 眩晕参数 -->
-        <stunTicks>120</stunTicks>
+        <stunTicks>0</stunTicks>
         
         <!-- 击退参数 -->
         <maxKnockbackDistance>3</maxKnockbackDistance>
@@ -79,7 +79,7 @@
         <impactSound>Pawn_Melee_BigBash_HitPawn</impactSound>
         
         <!-- 飞行效果 -->
-        <knockbackFlyerDef>PawnFlyer</knockbackFlyerDef>
+        <knockbackFlyerDef>LBD_PawnFlyer_Stun</knockbackFlyerDef>
         <!-- <flightEffecterDef>FlightEffect_Knockback</flightEffecterDef> -->
         <landingSound>PawnFlyer_Land</landingSound>
         
@@ -91,10 +91,18 @@
     
         <!-- 近战伤害系数加成 -->
         <multiplyDamageByMeleeFactor>true</multiplyDamageByMeleeFactor>
-        <multiplyStunTimeByMeleeFactor>true</multiplyStunTimeByMeleeFactor>
+        <multiplyStunTimeByMeleeFactor>false</multiplyStunTimeByMeleeFactor>
       </li>
     </comps>
   </AbilityDef>
+  <ThingDef ParentName="PawnFlyerBase">
+    <defName>LBD_PawnFlyer_Stun</defName>
+    <thingClass>LegendaryBlackDragon.SaferPawnFlyer</thingClass>
+    <pawnFlyer>
+      <flightSpeed>8</flightSpeed>
+      <stunDurationTicksRange>180~240</stunDurationTicksRange>
+    </pawnFlyer>
+  </ThingDef>
 
   <AbilityDef>
     <defName>LBD_Dragon_Charge</defName>

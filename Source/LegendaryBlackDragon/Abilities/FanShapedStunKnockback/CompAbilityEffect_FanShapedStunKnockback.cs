@@ -547,7 +547,6 @@ namespace LegendaryBlackDragon
                     else
                     {
                         knockbackFailures++;
-                        ApplyFallbackStun(target, caster);
                     }
                 }
                 else
@@ -560,7 +559,6 @@ namespace LegendaryBlackDragon
             {
                 Log.Warning($"[FanShapedKnockback] Invalid knockback destination for {target.Label}: {knockbackDestination}");
                 knockbackFailures++;
-                ApplyFallbackStun(target, caster);
             }
         }
 
@@ -620,20 +618,6 @@ namespace LegendaryBlackDragon
             }
         }
 
-        /// <summary>
-        /// === 新增：备选击晕效果 ===
-        /// </summary>
-        private void ApplyFallbackStun(Pawn target, Pawn caster)
-        {
-            int adjustedStunTicks = GetAdjustedStunTicks(caster);
-            int extraStunTicks = Mathf.RoundToInt(adjustedStunTicks * 0.5f); // 增加50%击晕时间
-            
-            if (extraStunTicks > 0 && target.stances?.stunner != null)
-            {
-                target.stances.stunner.StunFor(extraStunTicks, caster, addBattleLog: false, showMote: true);
-                Log.Message($"[FanShapedKnockback] Applied fallback stun for {target.Label}: {extraStunTicks} ticks");
-            }
-        }
 
         /// <summary>
         /// 计算击退方向
@@ -689,21 +673,6 @@ namespace LegendaryBlackDragon
         private bool IsCellStandableAndEmpty(Pawn caster, Pawn target, IntVec3 cell, Map map)
         {
             return IsValidKnockbackDestination(cell, map, target, caster);
-        }
-
-        /// <summary>
-        /// === 旧版本的CreateKnockbackFlyer方法（已弃用）===
-        /// 保留供兼容，但新代码应使用TryCreateKnockbackFlyer
-        /// </summary>
-        private void CreateKnockbackFlyer(Pawn caster, Pawn target, IntVec3 destination)
-        {
-            Log.Warning($"[FanShapedKnockback] Deprecated CreateKnockbackFlyer called for {target.Label}. Use TryCreateKnockbackFlyer instead.");
-            
-            // 转换为新的安全方法
-            if (!TryCreateKnockbackFlyer(caster, target, destination))
-            {
-                ApplyFallbackStun(target, caster);
-            }
         }
 
         /// <summary>
