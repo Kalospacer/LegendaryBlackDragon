@@ -11,7 +11,7 @@ namespace LegendaryBlackDragon
         public float lineWidthEnd = 3f;          // 扇形末端宽度
         
         // 伤害参数
-        public DamageDef damageDef = DamageDefOf.Blunt;
+        public DamageDef damageDef;
         public float damageAmount = 15f;
         public float armorPenetration = 0f;
         
@@ -53,6 +53,8 @@ namespace LegendaryBlackDragon
         public CompProperties_AbilityFanShapedStunKnockback()
         {
             compClass = typeof(CompAbilityEffect_FanShapedStunKnockback);
+            // 在构造函数中初始化DefOf，而不是在字段声明中
+            damageDef = DamageDefOf.Blunt;
         }
     }
 }

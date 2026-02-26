@@ -81,7 +81,7 @@
         <!-- 飞行效果 -->
         <knockbackFlyerDef>LBD_PawnFlyer_Stun</knockbackFlyerDef>
         <!-- <flightEffecterDef>FlightEffect_Knockback</flightEffecterDef> -->
-        <landingSound>PawnFlyer_Land</landingSound>
+        <landingSound>Longjump_Land</landingSound>
         
         <!-- 过滤设置 -->
         <affectCaster>false</affectCaster>

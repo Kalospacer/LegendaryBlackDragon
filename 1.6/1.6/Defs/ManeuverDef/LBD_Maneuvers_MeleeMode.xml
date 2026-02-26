@@ -11,7 +11,7 @@
       <scratchKnockbackCells>2</scratchKnockbackCells>
       <scratchStunTicks>45</scratchStunTicks>
       <scratchKnockbackFlyerDef>PawnFlyer</scratchKnockbackFlyerDef>
-      <scratchLandingSound>PawnFlyer_Land</scratchLandingSound>
+      <scratchLandingSound>Longjump_Land</scratchLandingSound>
     </verb>
     <logEntryDef>MeleeAttack</logEntryDef>
     <combatLogRulesHit>Maneuver_Scratch_MeleeHit</combatLogRulesHit>

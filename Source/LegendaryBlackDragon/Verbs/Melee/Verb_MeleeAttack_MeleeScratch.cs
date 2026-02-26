@@ -193,7 +193,7 @@ namespace LegendaryBlackDragon
             int knockbackCells = Mathf.Max(0, props?.scratchKnockbackCells ?? DefaultScratchKnockbackCells);
             int stunTicks = Mathf.Max(0, props?.scratchStunTicks ?? DefaultScratchStunTicks);
             ThingDef flyerDef = props?.scratchKnockbackFlyerDef ?? ThingDefOf.PawnFlyer;
-            SoundDef landingSound = props?.scratchLandingSound ?? DefDatabase<SoundDef>.GetNamedSilentFail("PawnFlyer_Land");
+            SoundDef landingSound = props?.scratchLandingSound ?? DefDatabase<SoundDef>.GetNamedSilentFail("Longjump_Land");
             EffecterDef flightEffecter = props?.scratchFlightEffecterDef;
 
             IntVec3 from = caster.Position;
