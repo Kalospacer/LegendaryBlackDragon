@@ -28,7 +28,7 @@ namespace LegendaryBlackDragon
                     defaultLabel = "Toggle Flight",
                     defaultDesc = "Toggle flight mode on or off.",
                     Order = 100f,
-                    icon = Verse.ContentFinder<UnityEngine.Texture2D>.Get("StellarisDaughter/UI/Commands/SD_FlightToggle", false)
+                    icon = Verse.ContentFinder<UnityEngine.Texture2D>.Get("UI/Commands/LBD_FlightToggle", false)
                            ?? RimWorld.TexCommand.GatherSpotActive,
                     isActive = () => flightEnabled,
                     toggleAction = () =>
