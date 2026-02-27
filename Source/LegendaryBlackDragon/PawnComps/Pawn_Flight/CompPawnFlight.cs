@@ -23,12 +23,12 @@ namespace LegendaryBlackDragon
         {
             if (Props.showFlightToggle && parent is Pawn pawn && pawn.Faction == RimWorld.Faction.OfPlayer)
             {
-                yield return new Verse.Command_Toggle
+                yield return new Command_Toggle
                 {
                     defaultLabel = "Toggle Flight",
                     defaultDesc = "Toggle flight mode on or off.",
                     Order = 100f,
-                    icon = Verse.ContentFinder<UnityEngine.Texture2D>.Get("UI/Commands/LBD_FlightToggle", false)
+                    icon = ContentFinder<UnityEngine.Texture2D>.Get("LegendaryBlackDragon/UI/Commands/LBD_FlightToggle", false)
                            ?? RimWorld.TexCommand.GatherSpotActive,
                     isActive = () => flightEnabled,
                     toggleAction = () =>
