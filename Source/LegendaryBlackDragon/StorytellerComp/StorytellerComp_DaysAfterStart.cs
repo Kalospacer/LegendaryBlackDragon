@@ -66,11 +66,6 @@ namespace LegendaryBlackDragon
                     {
                         ScheduleDelayedTrigger(target);
                         hasScheduledTrigger = true;
-                        
-                        if (Props.debugLogging)
-                        {
-                            Log.Message($"[DaysAfterStart] Scheduled delayed trigger for {CompId}, {Props.delayTicks} ticks");
-                        }
                     }
                     else
                     {
@@ -135,10 +130,6 @@ namespace LegendaryBlackDragon
                 }
 
                 float daysPassed = GenDate.DaysPassedFloat;
-                if (Props.debugLogging)
-                {
-                    Log.Message($"[DaysAfterStart] daysPassed={daysPassed}, threshold={Props.daysAfterStart}, incident={Props.incident.defName}");
-                }
 
                 return daysPassed >= Props.daysAfterStart;
             }
@@ -217,19 +208,10 @@ namespace LegendaryBlackDragon
                 IncidentParms parms = GenerateParms(Props.incident.category, target);
                 if (!Props.incident.Worker.CanFireNow(parms))
                 {
-                    if (Props.debugLogging)
-                    {
-                        Log.Warning($"[DaysAfterStart] Incident {Props.incident.defName} cannot fire now for target {target}");
-                    }
                     return null;
                 }
 
                 FiringIncident firingIncident = new FiringIncident(Props.incident, this, parms);
-
-                if (Props.debugLogging)
-                {
-                    Log.Message($"[DaysAfterStart] Created incident {Props.incident.defName} for target {target} at day {GenDate.DaysPassedFloat}");
-                }
 
                 return firingIncident;
             }
@@ -294,8 +276,6 @@ namespace LegendaryBlackDragon
                 {
                     manager.RecordTrigger(CompId, Props.incident);
                 }
-                
-                Log.Message($"[DaysAfterStart] Force triggered incident: {Props.incident.defName}");
             }
             else
             {

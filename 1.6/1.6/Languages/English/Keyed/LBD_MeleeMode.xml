@@ -64,4 +64,7 @@
   <LBD_Condition_FactionDefNotSpecified>FactionDef not specified in Condition_FactionExists.</LBD_Condition_FactionDefNotSpecified>
   <LBD_Condition_FactionDoesNotExist>Faction '{0}' does not exist in the world.</LBD_Condition_FactionDoesNotExist>
   <LBD_Unknown>Unknown</LBD_Unknown>
+
+  <LBD_ToggleFlight>Flight Toggle</LBD_ToggleFlight>
+  <LBD_ToggleFlightDesc>Manually control whether the black dragon flight.</LBD_ToggleFlightDesc>
 </LanguageData>
