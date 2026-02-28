@@ -25,8 +25,8 @@ namespace LegendaryBlackDragon
             {
                 yield return new Command_Toggle
                 {
-                    defaultLabel = "Toggle Flight",
-                    defaultDesc = "Toggle flight mode on or off.",
+                    defaultLabel = "LBD_ToggleFlight".Translate(),
+                    defaultDesc = "LBD_ToggleFlightDesc".Translate(),
                     Order = 100f,
                     icon = ContentFinder<UnityEngine.Texture2D>.Get("LegendaryBlackDragon/UI/Commands/LBD_FlightToggle", false)
                            ?? RimWorld.TexCommand.GatherSpotActive,

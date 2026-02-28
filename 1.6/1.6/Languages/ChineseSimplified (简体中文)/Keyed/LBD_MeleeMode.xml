@@ -64,4 +64,7 @@
   <LBD_Condition_FactionDefNotSpecified>Condition_FactionExists 中未指定 FactionDef。</LBD_Condition_FactionDefNotSpecified>
   <LBD_Condition_FactionDoesNotExist>派系 '{0}' 在世界中不存在。</LBD_Condition_FactionDoesNotExist>
   <LBD_Unknown>未知</LBD_Unknown>
+
+  <LBD_ToggleFlight>飞行姿态</LBD_ToggleFlight>
+  <LBD_ToggleFlightDesc>手动控制黑龙是否飞行。</LBD_ToggleFlightDesc>
 </LanguageData>
