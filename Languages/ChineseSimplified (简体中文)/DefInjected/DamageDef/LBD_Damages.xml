@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<LanguageData>
-  
-  <!-- EN: 龙焰 -->
-  <LBD_DRM_Flame.label>融甲烈焰</LBD_DRM_Flame.label>
-  <!-- EN: {0} has burned to death. -->
-  <LBD_DRM_Flame.deathMessage>{0} 被焚烧致死。</LBD_DRM_Flame.deathMessage>
-  
-</LanguageData>

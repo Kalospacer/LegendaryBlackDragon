@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<LanguageData>
-  
-  <!-- EN: 焚烧 -->
-  <Need_LBD_BlackDragon.label>焚烧</Need_LBD_BlackDragon.label>
-  <!-- EN: 黑龙的脾气不是太好，她更喜欢用无尽的烈火焚烧挑战她的宵小之辈，而不是在野地里面种菜挖矿。如果此项需求过低，黑龙会自己尝试去居住区外烧可燃物解闷——使用黑龙的喷火类技能也可以满足需求。 -->
-  <Need_LBD_BlackDragon.description>黑龙的脾气不是太好，她更喜欢用无尽的烈火焚烧挑战她的宵小之辈，而不是在野地里面种菜挖矿。如果此项需求过低，黑龙会自己尝试去居住区外烧可燃物解闷——使用黑龙的喷火类技能也可以满足需求。</Need_LBD_BlackDragon.description>
-  
-</LanguageData>
