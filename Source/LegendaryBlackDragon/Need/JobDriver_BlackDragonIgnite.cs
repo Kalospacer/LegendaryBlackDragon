@@ -25,10 +25,6 @@ namespace LegendaryBlackDragon
             
             // 第一个 Toil：移动到目标
             Toil gotoToil = Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch).FailOnBurningImmobile(TargetIndex.A);
-            if (job.ensureReachable)
-            {
-                gotoToil.FailOnCannotReach(TargetIndex.A, PathEndMode.Touch);
-            }
             yield return gotoToil;
             
             // 第二个 Toil：执行点火
