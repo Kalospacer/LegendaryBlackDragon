@@ -11,6 +11,7 @@ namespace LegendaryBlackDragon
         public float inactiveSeverity = 1.5f;    // 其他情况的严重性
         public bool useRepairResource = false;
         public NeedDef repairResourceNeed;
+        public List<HediffDef> additionalRepairableHediffs;
         public float repairCostPerHP = 0.03f;
         public int repairCooldownAfterDamage = 600; // 受到伤害后的修复冷却时间
 
@@ -394,8 +395,7 @@ namespace LegendaryBlackDragon
                 return false;
             }
             
-            // 如果是机械族特有的hediff，可以修复
-            if (IsMechSpecificHediff(hediff))
+            if (Props.additionalRepairableHediffs?.Contains(hediff.def) == true)
                 return true;
             
             // 如果是损伤类型的hediff，可以修复
@@ -465,16 +465,6 @@ namespace LegendaryBlackDragon
             {
                 return false;
             }
-        }
-
-        // 检查是否是机械族特有的hediff（可能不可治疗但需要修复）
-        private bool IsMechSpecificHediff(Hediff hediff)
-        {
-            // 机械族的损伤可能不是标准的Hediff_Injury
-            // 这里可以根据需要添加更多机械族特有的hediff判断
-            return hediff.def.defName.Contains("Mech") || 
-                   hediff.def.defName.Contains("Mechanical") ||
-                   hediff.def.defName.Contains("Gunshot"); // 包括枪伤
         }
 
         public override void Notify_PawnPostApplyDamage(DamageInfo dinfo, float totalDamageDealt)

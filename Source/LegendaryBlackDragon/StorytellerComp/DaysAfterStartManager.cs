@@ -23,9 +23,6 @@ namespace LegendaryBlackDragon
         // 配置状态：compId -> 是否启用
         private Dictionary<string, bool> compEnabledStates;
         
-        // 延迟触发队列
-        private List<ScheduledTrigger> scheduledTriggers;
-        
         // 调试模式
         private bool debugMode = false;
         private const int DebugLogInterval = 60000; // 每游戏分钟记录一次
@@ -47,8 +44,6 @@ namespace LegendaryBlackDragon
             registeredCompProperties = new Dictionary<string, StorytellerCompProperties_DaysAfterStart>();
             triggerRecords = new Dictionary<string, TriggerRecord>();
             compEnabledStates = new Dictionary<string, bool>();
-            scheduledTriggers = new List<ScheduledTrigger>();
-            
             serializedTriggerRecordKeys = new List<string>();
             serializedTriggerRecordValues = new List<TriggerRecord>();
             serializedCompEnabledStatesKeys = new List<string>();
@@ -62,9 +57,6 @@ namespace LegendaryBlackDragon
             // 序列化触发记录
             if (Scribe.mode == LoadSaveMode.Saving)
             {
-                // 保存时清理无效记录
-                CleanupInvalidRecords();
-                
                 // 将字典转换为列表以便序列化
                 serializedTriggerRecordKeys = new List<string>(triggerRecords.Keys);
                 serializedTriggerRecordValues = new List<TriggerRecord>(triggerRecords.Values);
@@ -124,16 +116,13 @@ namespace LegendaryBlackDragon
             
             Scribe_Values.Look(ref debugMode, "debugMode", false);
             
-            // 注意：registeredCompProperties 不需要序列化，因为会在游戏加载时重新注册
-            // scheduledTriggers 也不需要序列化，因为它们是临时的
+            // registeredCompProperties 不需要序列化，因为会在游戏加载时重新注册。
+            // 延迟事件使用原版 IncidentQueue，由游戏负责序列化。
         }
         
         public override void GameComponentTick()
         {
             base.GameComponentTick();
-            
-            // 处理延迟触发
-            ProcessScheduledTriggers();
             
             // 定期调试日志
             if (debugMode && Find.TickManager.TicksGame % DebugLogInterval == 0)
@@ -275,88 +264,16 @@ namespace LegendaryBlackDragon
         /// <summary>
         /// 获取延迟触发到指定时间
         /// </summary>
-        public void ScheduleTrigger(string compId, IncidentDef incident, int delayTicks, IIncidentTarget target)
+        public bool ScheduleTrigger(string compId, IncidentDef incident, int delayTicks, IIncidentTarget target)
         {
-            if (delayTicks <= 0 || target == null)
-                return;
-            
-            var scheduledTrigger = new ScheduledTrigger
+            if (string.IsNullOrEmpty(compId) || incident == null || delayTicks <= 0 || target == null || Find.Storyteller == null)
             {
-                CompId = compId,
-                Incident = incident,
-                TriggerTick = Find.TickManager.TicksGame + delayTicks,
-                Target = target
-            };
-            
-            scheduledTriggers.Add(scheduledTrigger);
-        }
-        
-        /// <summary>
-        /// 处理延迟触发
-        /// </summary>
-        private void ProcessScheduledTriggers()
-        {
-            if (scheduledTriggers.Count == 0)
-                return;
-            
-            int currentTick = Find.TickManager.TicksGame;
-            var triggersToExecute = scheduledTriggers.Where(t => t.TriggerTick <= currentTick).ToList();
-            
-            foreach (var trigger in triggersToExecute)
-            {
-                ExecuteScheduledTrigger(trigger);
-                scheduledTriggers.Remove(trigger);
+                return false;
             }
-        }
-        
-        /// <summary>
-        /// 执行延迟触发
-        /// </summary>
-        private void ExecuteScheduledTrigger(ScheduledTrigger trigger)
-        {
-            try
-            {
-                if (!registeredCompProperties.ContainsKey(trigger.CompId))
-                {
-                    Log.Warning($"[DaysAfterStartManager] Scheduled trigger for unknown comp: {trigger.CompId}");
-                    return;
-                }
-                
-                var props = registeredCompProperties[trigger.CompId];
-                if (props.incident == null || trigger.Incident == null)
-                    return;
-                
-                // 创建事件参数
-                IncidentParms parms = StorytellerUtility.DefaultParmsNow(props.incident.category, trigger.Target);
-                
-                // 执行事件
-                if (props.incident.Worker.TryExecute(parms))
-                {
-                    trigger.Target.StoryState.Notify_IncidentFired(new FiringIncident(props.incident, null, parms));
-                }
-                else
-                {
-                    Log.Warning($"[DaysAfterStartManager] Failed to execute scheduled trigger for {trigger.CompId}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"[DaysAfterStartManager] Error executing scheduled trigger: {ex}");
-            }
-        }
-        
-        /// <summary>
-        /// 清理无效记录
-        /// </summary>
-        private void CleanupInvalidRecords()
-        {
-            // 移除没有对应注册组件的记录
-            var invalidKeys = triggerRecords.Keys.Where(key => !registeredCompProperties.ContainsKey(key)).ToList();
-            
-            foreach (var key in invalidKeys)
-            {
-                triggerRecords.Remove(key);
-            }
+
+            IncidentParms parms = StorytellerUtility.DefaultParmsNow(incident.category, target);
+            int fireTick = Find.TickManager.TicksGame + delayTicks;
+            return Find.Storyteller.incidentQueue.Add(incident, fireTick, parms, 0);
         }
         
         /// <summary>
@@ -390,7 +307,7 @@ namespace LegendaryBlackDragon
             sb.AppendLine($"Registered Components: {registeredCompProperties.Count}");
             sb.AppendLine($"Trigger Records: {triggerRecords.Count}");
             sb.AppendLine($"Enabled Components: {compEnabledStates.Count(kv => kv.Value)}");
-            sb.AppendLine($"Scheduled Triggers: {scheduledTriggers.Count}");
+            sb.AppendLine($"Queued Incidents: {Find.Storyteller?.incidentQueue?.Count ?? 0}");
             sb.AppendLine($"Debug Mode: {debugMode}");
             
             // 显示所有注册组件
@@ -528,47 +445,6 @@ namespace LegendaryBlackDragon
             Scribe_Values.Look(ref lastTriggerTick, "lastTriggerTick", 0);
             Scribe_Values.Look(ref triggerCount, "triggerCount", 0);
             Scribe_Values.Look(ref hasTriggered, "hasTriggered", false);
-        }
-    }
-    
-    /// <summary>
-    /// 延迟触发类
-    /// </summary>
-    public class ScheduledTrigger : IExposable
-    {
-        // 使用字段而不是属性
-        public string compId;
-        public IncidentDef incident;
-        public int triggerTick;
-        // 注意：IIncidentTarget 不能直接序列化，我们只存储临时数据
-        
-        public string CompId
-        {
-            get => compId;
-            set => compId = value;
-        }
-        
-        public IncidentDef Incident
-        {
-            get => incident;
-            set => incident = value;
-        }
-        
-        public int TriggerTick
-        {
-            get => triggerTick;
-            set => triggerTick = value;
-        }
-        
-        public IIncidentTarget Target { get; set; }
-        
-        public void ExposeData()
-        {
-            // 直接使用字段进行序列化
-            Scribe_Values.Look(ref compId, "compId");
-            Scribe_Defs.Look(ref incident, "incident");
-            Scribe_Values.Look(ref triggerTick, "triggerTick", 0);
-            // 注意：IIncidentTarget 不能直接序列化，我们只存储临时数据
         }
     }
 }

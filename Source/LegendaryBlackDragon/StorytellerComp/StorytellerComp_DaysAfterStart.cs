@@ -64,8 +64,7 @@ namespace LegendaryBlackDragon
                     // 如果有延迟，安排延迟触发
                     if (Props.delayTicks > 0)
                     {
-                        ScheduleDelayedTrigger(target);
-                        hasScheduledTrigger = true;
+                        hasScheduledTrigger = ScheduleDelayedTrigger(target);
                     }
                     else
                     {
@@ -108,16 +107,21 @@ namespace LegendaryBlackDragon
         /// <summary>
         /// 安排延迟触发
         /// </summary>
-        private void ScheduleDelayedTrigger(IIncidentTarget target)
+        private bool ScheduleDelayedTrigger(IIncidentTarget target)
         {
             var manager = DaysAfterStartManager.Instance;
-            if (manager != null)
+            if (manager == null)
             {
-                manager.ScheduleTrigger(CompId, Props.incident, Props.delayTicks, target);
-                
-                // 记录触发（即使延迟，也视为已触发，防止立即再次触发）
-                manager.RecordTrigger(CompId, Props.incident);
+                return false;
             }
+
+            if (!manager.ScheduleTrigger(CompId, Props.incident, Props.delayTicks, target))
+            {
+                return false;
+            }
+
+            manager.RecordTrigger(CompId, Props.incident);
+            return true;
         }
 
         private bool CheckDaysCondition()
