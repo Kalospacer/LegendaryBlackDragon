@@ -122,6 +122,7 @@
       <li Class="LegendaryBlackDragon.HediffCompProperties_Regeneration">
         <activeSeverity>0.5</activeSeverity>
         <inactiveSeverity>1.5</inactiveSeverity>
+        <useRepairResource>false</useRepairResource>
         <repairCooldownAfterDamage>600</repairCooldownAfterDamage>
       </li>
       <li Class="HediffCompProperties_RemoveIfApparelDropped" />

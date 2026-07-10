@@ -256,26 +256,41 @@ namespace LegendaryBlackDragon
         {
             if (Extension == null || pawn == null || pawn.needs == null || pawn.needs.mood == null)
                 return;
-                
-            // 移除旧的 Thought
-            if (currentThought != null)
+
+            MemoryThoughtHandler memories = pawn.needs.mood.thoughts.memories;
+            ThoughtDef desiredThoughtDef = Extension.GetThoughtForStage(CurrentStage);
+
+            for (int i = memories.Memories.Count - 1; i >= 0; i--)
             {
-                // 增加安全性检查：只有当想法确实存在于记忆中时才尝试移除
-                if (pawn.needs.mood.thoughts.memories.Memories.Contains(currentThought))
+                Thought_Memory memory = memories.Memories[i];
+                if (IsStageThought(memory.def) && memory.def != desiredThoughtDef)
                 {
-                    pawn.needs.mood.thoughts.memories.RemoveMemory(currentThought);
+                    memories.RemoveMemory(memory);
                 }
-                currentThought = null;
             }
 
-            
-            // 添加新的 Thought
-            ThoughtDef thoughtDef = Extension.GetThoughtForStage(CurrentStage);
-            if (thoughtDef != null)
+            currentThought = desiredThoughtDef == null
+                ? null
+                : memories.GetFirstMemoryOfDef(desiredThoughtDef);
+
+            if (desiredThoughtDef != null && currentThought == null)
             {
-                currentThought = (Thought_Memory)ThoughtMaker.MakeThought(thoughtDef);
-                pawn.needs.mood.thoughts.memories.TryGainMemory(currentThought);
+                Thought_Memory newThought = ThoughtMaker.MakeThought(desiredThoughtDef) as Thought_Memory;
+                if (newThought != null)
+                {
+                    memories.TryGainMemory(newThought);
+                    currentThought = memories.GetFirstMemoryOfDef(desiredThoughtDef);
+                }
             }
+        }
+
+        private bool IsStageThought(ThoughtDef thoughtDef)
+        {
+            return thoughtDef != null &&
+                   (thoughtDef == Extension.stage1Thought ||
+                    thoughtDef == Extension.stage2Thought ||
+                    thoughtDef == Extension.stage3Thought ||
+                    thoughtDef == Extension.stage4Thought);
         }
         
         /// <summary>

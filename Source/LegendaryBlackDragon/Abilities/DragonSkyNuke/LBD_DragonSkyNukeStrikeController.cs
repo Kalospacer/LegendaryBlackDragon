@@ -314,7 +314,7 @@ namespace LegendaryBlackDragon
                 return;
             }
 
-            FinishStrike();
+            StartPhase1();
         }
 
         private void StartPhase1()
@@ -649,35 +649,10 @@ namespace LegendaryBlackDragon
             }
 
             CachePhase1Targets();
-            ExecutePhase1LongEvent();
             PreloadPhase2Targets();
             PreloadPhase2OutdoorCells();
             BuildPhase2PulsePlan();
-            ExecutePhase2LongEvent();
             strikePrecomputeDone = true;
-        }
-
-        private void ExecutePhase1LongEvent()
-        {
-            TriggerPhase1ItemEffects();
-            IgniteOutdoorItemsGuaranteed();
-
-            int waveCount = Mathf.Max(1, Mathf.CeilToInt(phase1DurationTicks / (float)Mathf.Max(1, phase1WaveIntervalTicks)));
-            for (int i = 0; i < waveCount; i++)
-            {
-                SpawnIncomingSmallFireWave();
-            }
-        }
-
-        private void ExecutePhase2LongEvent()
-        {
-            phase2PulsesDone = 0;
-            for (int pulse = 0; pulse < phase2PulseCount; pulse++)
-            {
-                ApplyPhase2PulseDamage();
-                IgnitePhase2PulseFire(pulse);
-                phase2PulsesDone++;
-            }
         }
 
         private void BuildPhase2PulsePlan()

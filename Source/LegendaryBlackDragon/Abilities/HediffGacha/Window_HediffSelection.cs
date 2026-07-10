@@ -259,9 +259,7 @@ namespace LegendaryBlackDragon
             float descHeight = CardHeight - (currentY - rect.y) - 50f;
             Rect descRect = new Rect(rect.x + padding, currentY, contentWidth, descHeight);
             
-            string description = !string.IsNullOrEmpty(entry.descriptionOverride) 
-                ? entry.descriptionOverride 
-                : entry.hediff.Description;
+            string description = GetEntryDescription(entry);
             
             if (description.Length > 200)
             {
@@ -292,11 +290,19 @@ namespace LegendaryBlackDragon
             if (isHovered)
             {
                 string tooltip = entry.hediff.LabelCap + "\n\n" + 
-                               (!string.IsNullOrEmpty(entry.descriptionOverride) 
-                                    ? entry.descriptionOverride 
-                                    : entry.hediff.Description);
+                               GetEntryDescription(entry);
                 TooltipHandler.TipRegion(rect, tooltip);
             }
+        }
+
+        private static string GetEntryDescription(HediffPoolEntry entry)
+        {
+            if (!entry.descriptionOverride.NullOrEmpty())
+            {
+                return entry.descriptionOverride.Translate();
+            }
+
+            return entry.hediff.Description;
         }
         
         private void DrawHediffIcon(Rect rect, HediffPoolEntry entry)

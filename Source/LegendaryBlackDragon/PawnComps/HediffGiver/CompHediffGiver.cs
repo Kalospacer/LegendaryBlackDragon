@@ -137,7 +137,7 @@ namespace LegendaryBlackDragon
                 {
                     string message = Props.applicationMessageKey != null
                         ? Props.applicationMessageKey.Translate(pawn.LabelShort)
-                        : "ARA_HediffGiver_Applied".Translate(pawn.LabelShort, Props.hediffs.Count);
+                        : "LBD_HediffGiver_Applied".Translate(pawn.LabelShort, Props.hediffs.Count);
                         
                     Messages.Message(message, pawn, MessageTypeDefOf.NeutralEvent);
                 }

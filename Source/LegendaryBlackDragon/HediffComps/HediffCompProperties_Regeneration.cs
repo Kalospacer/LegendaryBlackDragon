@@ -9,11 +9,32 @@ namespace LegendaryBlackDragon
     {
         public float activeSeverity = 0.5f;      // 有能量且损伤时的严重性
         public float inactiveSeverity = 1.5f;    // 其他情况的严重性
-        public float repairCostPerHP = 0.03f;     // 每点生命值修复的能量消耗
+        public bool useRepairResource = false;
+        public NeedDef repairResourceNeed;
+        public float repairCostPerHP = 0.03f;
         public int repairCooldownAfterDamage = 600; // 受到伤害后的修复冷却时间
+
         public HediffCompProperties_Regeneration()
         {
             compClass = typeof(HediffComp_Regeneration);
+        }
+
+        public override IEnumerable<string> ConfigErrors(HediffDef parentDef)
+        {
+            foreach (string error in base.ConfigErrors(parentDef))
+            {
+                yield return error;
+            }
+
+            if (useRepairResource && repairResourceNeed == null)
+            {
+                yield return "useRepairResource is enabled but repairResourceNeed is null";
+            }
+
+            if (repairCostPerHP < 0f)
+            {
+                yield return "repairCostPerHP must be non-negative";
+            }
         }
     }
 
@@ -210,18 +231,16 @@ namespace LegendaryBlackDragon
 
             if (partToRepair != null)
             {
-                // 计算修复成本 - 使用正常损伤的修复成本
                 float repairCost = minHealth * Props.repairCostPerHP;
-                
-                // 根据机械族的能量消耗属性调整成本
-                var mechEnergyLoss = Pawn.GetStatValue(StatDefOf.MechEnergyLossPerHP);
-                if (mechEnergyLoss > 0)
+
+                if (!CanAffordRepair(repairCost))
                 {
-                    repairCost *= mechEnergyLoss;
+                    return false;
                 }
 
-                if (ConvertMissingPartToInjury(partToRepair, repairCost))
+                if (ConvertMissingPartToInjury(partToRepair))
                 {
+                    ConsumeRepairCost(repairCost);
                     return true;
                 }
             }
@@ -259,26 +278,58 @@ namespace LegendaryBlackDragon
                 float currentHealth = Pawn.health.hediffSet.GetPartHealth(partToRepair);
                 float healthToRepair = maxHealth - currentHealth;
 
-                // 计算修复成本
-                float repairCost = healthToRepair;
-
-                // 根据机械族的能量消耗属性调整成本
-                var mechEnergyLoss = Pawn.GetStatValue(StatDefOf.MechEnergyLossPerHP);
-                if (mechEnergyLoss > 0)
+                float repairCost = healthToRepair * Props.repairCostPerHP;
+                if (!CanAffordRepair(repairCost))
                 {
-                    repairCost *= mechEnergyLoss;
+                    return false;
                 }
 
-                if (RepairDamagedPart(partToRepair, repairCost))
+                if (RepairDamagedPart(partToRepair))
                 {
+                    ConsumeRepairCost(repairCost);
                     return true;
                 }
             }
             return false;
         }
 
+        private bool CanAffordRepair(float repairCost)
+        {
+            if (!Props.useRepairResource || repairCost <= 0f)
+            {
+                return true;
+            }
+
+            if (Props.repairResourceNeed == null)
+            {
+                return false;
+            }
+
+            Need resourceNeed = Pawn.needs?.TryGetNeed(Props.repairResourceNeed);
+            return resourceNeed != null && resourceNeed.CurLevel >= repairCost;
+        }
+
+        private void ConsumeRepairCost(float repairCost)
+        {
+            if (!Props.useRepairResource || repairCost <= 0f)
+            {
+                return;
+            }
+
+            if (Props.repairResourceNeed == null)
+            {
+                return;
+            }
+
+            Need resourceNeed = Pawn.needs?.TryGetNeed(Props.repairResourceNeed);
+            if (resourceNeed != null)
+            {
+                resourceNeed.CurLevel = Mathf.Max(0f, resourceNeed.CurLevel - repairCost);
+            }
+        }
+
         // 新的修复逻辑：完美修复所有伤口
-        private bool RepairDamagedPart(BodyPartRecord part, float repairCost)
+        private bool RepairDamagedPart(BodyPartRecord part)
         {
             try
             {
@@ -376,7 +427,7 @@ namespace LegendaryBlackDragon
         }
 
         // 将缺失部件转换为指定的hediff
-        private bool ConvertMissingPartToInjury(Hediff_MissingPart missingPart, float repairCost)
+        private bool ConvertMissingPartToInjury(Hediff_MissingPart missingPart)
         {
             try
             {

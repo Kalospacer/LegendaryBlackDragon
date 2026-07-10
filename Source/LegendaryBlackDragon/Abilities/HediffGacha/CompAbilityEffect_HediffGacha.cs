@@ -215,7 +215,7 @@ namespace LegendaryBlackDragon
             if (Props.showSelectionMessage)
             {
                 string message = Props.selectionMessageKey.NullOrEmpty()
-                    ? "DD_HediffGacha_Selected".Translate(cachedTarget.LabelShortCap, selectedHediff.LabelCap)
+                    ? "LBD_HediffGacha_Selected".Translate(cachedTarget.LabelShortCap, selectedHediff.LabelCap)
                     : Props.selectionMessageKey.Translate(cachedTarget.LabelShortCap, selectedHediff.LabelCap);
 
                 Messages.Message(message, cachedTarget, MessageTypeDefOf.PositiveEvent);
@@ -287,7 +287,7 @@ namespace LegendaryBlackDragon
             if (target.Pawn == null)
             {
                 if (throwMessages)
-                    Messages.Message("DD_HediffGacha_NeedPawnTarget".Translate(),
+                    Messages.Message("LBD_HediffGacha_NeedPawnTarget".Translate(),
                                     MessageTypeDefOf.RejectInput);
                 return false;
             }
@@ -296,7 +296,7 @@ namespace LegendaryBlackDragon
             if (Props.hediffPool.NullOrEmpty())
             {
                 if (throwMessages)
-                    Messages.Message("DD_HediffGacha_EmptyPool".Translate(),
+                    Messages.Message("LBD_HediffGacha_EmptyPool".Translate(),
                                     MessageTypeDefOf.RejectInput);
                 return false;
             }

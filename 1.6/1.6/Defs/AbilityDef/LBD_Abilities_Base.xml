@@ -147,7 +147,7 @@
           <li>
             <hediff>LBD_ExtraHediff_Calm</hediff>
             <weight>1</weight>
-            <descriptionOverride>降低黑龙的崩溃临界值</descriptionOverride>
+            <descriptionOverride>LBD_Upgrade_Calm_Description</descriptionOverride>
             <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Extra_Hediff</iconPath>
             <iconColor>(1, 1, 1, 1)</iconColor>
             <iconScale>1</iconScale>
@@ -156,7 +156,7 @@
           <li>
             <hediff>LBD_ExtraHediff_Armor</hediff>
             <weight>1</weight>
-            <descriptionOverride>增加黑龙的护甲</descriptionOverride>
+            <descriptionOverride>LBD_Upgrade_Armor_Description</descriptionOverride>
             <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Extra_Hediff</iconPath>
             <iconColor>(1, 1, 1, 1)</iconColor>
             <iconScale>1</iconScale>
@@ -165,7 +165,7 @@
           <li>
             <hediff>LBD_ExtraHediff_Hitchance</hediff>
             <weight>1</weight>
-            <descriptionOverride>增加黑龙的近战命中率和减少近战冷却时间</descriptionOverride>
+            <descriptionOverride>LBD_Upgrade_Hitchance_Description</descriptionOverride>
             <iconPath>LegendaryBlackDragon/UI/Abilities/LBD_Extra_Hediff</iconPath>
             <iconColor>(1, 1, 1, 1)</iconColor>
             <iconScale>1</iconScale>

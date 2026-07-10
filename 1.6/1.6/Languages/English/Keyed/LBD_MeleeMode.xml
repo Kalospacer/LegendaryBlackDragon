@@ -30,6 +30,18 @@
   <LBD_HediffGacha_HintWithCancel>Click the button to choose a battle memory, or press ESC to cancel.</LBD_HediffGacha_HintWithCancel>
   <LBD_HediffGacha_NeedPawnTarget>You must select a target pawn.</LBD_HediffGacha_NeedPawnTarget>
   <LBD_HediffGacha_EmptyPool>All battle memories have been obtained.</LBD_HediffGacha_EmptyPool>
+  <LBD_HediffGacha_NoOptions>No battle memories are currently available.</LBD_HediffGacha_NoOptions>
+  <LBD_HediffGacha_NoNewHediffs>{0} has awakened all available battle memories.</LBD_HediffGacha_NoNewHediffs>
+  <LBD_HediffGiver_Applied>{0} received {1} effect(s).</LBD_HediffGiver_Applied>
+
+  <LBD_Upgrade_Calm_Description>Reduces Miraboreasu's mental break threshold.</LBD_Upgrade_Calm_Description>
+  <LBD_Upgrade_Armor_Description>Increases Miraboreasu's armor.</LBD_Upgrade_Armor_Description>
+  <LBD_Upgrade_Hitchance_Description>Increases Miraboreasu's melee hit chance and reduces melee cooldown.</LBD_Upgrade_Hitchance_Description>
+
+  <LBD_OutfitPreset_Armor_Label>Black Dragon Armor</LBD_OutfitPreset_Armor_Label>
+  <LBD_OutfitPreset_Armor_Description>Miraboreasu's armor provides powerful all-round protection, but prevents her hyper-regeneration from activating while worn.</LBD_OutfitPreset_Armor_Description>
+  <LBD_OutfitPreset_Casual_Label>Casual Outfit</LBD_OutfitPreset_Casual_Label>
+  <LBD_OutfitPreset_Casual_Description>Miraboreasu's non-combat clothing offers little protection, but is lighter than her armor and allows hyper-regeneration to heal her wounds.</LBD_OutfitPreset_Casual_Description>
 
   <BlackDragon_FireStartCount>Ignition Count</BlackDragon_FireStartCount>
   <LBD_AdjustedEffects>Adjusted Effects:</LBD_AdjustedEffects>
@@ -38,6 +50,7 @@
 
   <LBD_UniquePawnSpawned>{0} has appeared!</LBD_UniquePawnSpawned>
   <LBD_UnnamedPreset>Unnamed Preset</LBD_UnnamedPreset>
+  <LBD_UnnamedPresetDesc>No description is available for this outfit.</LBD_UnnamedPresetDesc>
   <LBD_ShotCount>Shot count: {0}</LBD_ShotCount>
   <LBD_Refresh>Refresh</LBD_Refresh>
   <LBD_ClearAllVariables>Clear All Variables</LBD_ClearAllVariables>

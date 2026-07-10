@@ -30,6 +30,18 @@
   <LBD_HediffGacha_HintWithCancel>点击按钮选择一个战斗记忆，或按ESC取消</LBD_HediffGacha_HintWithCancel>
   <LBD_HediffGacha_NeedPawnTarget>需要选择一个目标角色</LBD_HediffGacha_NeedPawnTarget>
   <LBD_HediffGacha_EmptyPool>已获得所有的战斗记忆</LBD_HediffGacha_EmptyPool>
+  <LBD_HediffGacha_NoOptions>当前没有可供选择的战斗记忆。</LBD_HediffGacha_NoOptions>
+  <LBD_HediffGacha_NoNewHediffs>{0} 已唤醒所有可获得的战斗记忆。</LBD_HediffGacha_NoNewHediffs>
+  <LBD_HediffGiver_Applied>{0} 获得了 {1} 个效果。</LBD_HediffGiver_Applied>
+
+  <LBD_Upgrade_Calm_Description>降低黑龙的崩溃临界值。</LBD_Upgrade_Calm_Description>
+  <LBD_Upgrade_Armor_Description>增加黑龙的护甲。</LBD_Upgrade_Armor_Description>
+  <LBD_Upgrade_Hitchance_Description>增加黑龙的近战命中率并减少近战冷却时间。</LBD_Upgrade_Hitchance_Description>
+
+  <LBD_OutfitPreset_Armor_Label>黑龙盔甲</LBD_OutfitPreset_Armor_Label>
+  <LBD_OutfitPreset_Armor_Description>黑龙的盔甲拥有强大的保护能力，可以全方位地抵抗伤害；但是穿戴盔甲时，黑龙的超再生能力无法启动。</LBD_OutfitPreset_Armor_Description>
+  <LBD_OutfitPreset_Casual_Label>常服</LBD_OutfitPreset_Casual_Label>
+  <LBD_OutfitPreset_Casual_Description>黑龙在非临战状态下穿着的衣服，虽然防御力不高，但比盔甲更加轻便，并允许黑龙使用超再生能力治疗伤口。</LBD_OutfitPreset_Casual_Description>
 
   <BlackDragon_FireStartCount>点火次数</BlackDragon_FireStartCount>
   <LBD_AdjustedEffects>经调整后的效果：</LBD_AdjustedEffects>
@@ -38,6 +50,7 @@
 
   <LBD_UniquePawnSpawned>{0} 已出现！</LBD_UniquePawnSpawned>
   <LBD_UnnamedPreset>未命名方案</LBD_UnnamedPreset>
+  <LBD_UnnamedPresetDesc>该服装方案没有描述。</LBD_UnnamedPresetDesc>
   <LBD_ShotCount>射击计数: {0}</LBD_ShotCount>
   <LBD_Refresh>刷新</LBD_Refresh>
   <LBD_ClearAllVariables>清除所有变量</LBD_ClearAllVariables>

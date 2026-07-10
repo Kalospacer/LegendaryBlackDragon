@@ -227,13 +227,6 @@ namespace LegendaryBlackDragon
                 
                 destination = cell;
                 foundValidDestination = true;
-                
-                // 可选：如果找到有效位置，可以继续寻找更远的有效位置
-                // 或者直接使用第一个有效位置（这里我们选择第一个有效位置）
-                if (foundValidDestination)
-                {
-                    break;
-                }
             }
 
             // 如果找到有效目的地，创建PawnFlyer

@@ -276,7 +276,7 @@
           </colorChannels>
           <bodyAddons>
             <li>
-              <name>米拉波雷亚斯之角</name>
+              <name>Miraboreasu's horns</name>
               <userCustomizable>true</userCustomizable>
               <path>LegendaryBlackDragon/Things/Miraboreasu/Addons/Miraboreasu_Horn</path>
               <inFrontOfBody>true</inFrontOfBody>
@@ -727,8 +727,8 @@
       <li Class="LegendaryBlackDragon.CompProperties_OutfitPreset">
         <availablePresets>
           <li>
-            <label>黑龙盔甲</label>
-            <description>黑龙的盔甲拥有强大的保护能力，可以全方位地为黑龙提供对伤害的抵抗能力；但是在穿戴盔甲的情况下，黑龙的超再生能力无法启动。</description>
+            <label>LBD_OutfitPreset_Armor_Label</label>
+            <description>LBD_OutfitPreset_Armor_Description</description>
             <equipmentDefs>
             </equipmentDefs>
             <apparelDefs>
@@ -736,8 +736,8 @@
             </apparelDefs>
           </li>
           <li>
-            <label>常服</label>
-            <description>黑龙在非临战状态下穿的衣服，虽然没什么防御力，但是比起盔甲更加轻便，并且允许黑龙使用其超再生能力治疗自己。</description>
+            <label>LBD_OutfitPreset_Casual_Label</label>
+            <description>LBD_OutfitPreset_Casual_Description</description>
             <equipmentDefs>
             </equipmentDefs>
             <apparelDefs>
@@ -793,11 +793,11 @@
   </AlienRace.ThingDef_AlienRace>
   <StyleItemCategoryDef>
     <defName>LBD_Miraboreasu_Style</defName>
-    <label>米拉波雷亚斯</label>
+    <label>Miraboreasu</label>
   </StyleItemCategoryDef>
 	<HairDef>
 		<defName>LBD_Miraboreasu_Hair</defName>
-		<label>米拉波雷亚斯的头发</label>
+			<label>Miraboreasu's hair</label>
 		<hairGender>Female</hairGender>
 		<texPath>LegendaryBlackDragon/Things/Miraboreasu/Hair/Miraboreasu_Hair</texPath>
 		<category>LBD_Miraboreasu_Style</category>

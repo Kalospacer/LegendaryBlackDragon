@@ -120,7 +120,7 @@ namespace LegendaryBlackDragon
                     () => SimpleSwitchToPreset(index)
                 )
                 {
-                    tooltip = preset.description
+                    tooltip = (preset.description ?? "LBD_UnnamedPresetDesc").Translate()
                 });
             }
             

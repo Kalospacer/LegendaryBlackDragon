@@ -80,7 +80,7 @@ namespace LegendaryBlackDragon
         /// <summary>
         /// 窗口标题翻译键
         /// </summary>
-        public string windowTitle = "DD_HediffGacha_Title";
+        public string windowTitle = "LBD_HediffGacha_Title";
         
         /// <summary>
         /// 是否允许取消选择
@@ -98,7 +98,7 @@ namespace LegendaryBlackDragon
         public bool showSelectionMessage = true;
         
         /// <summary>
-        /// 选择消息的翻译键（可选，默认使用DD_HediffGacha_Selected）
+        /// 选择消息的翻译键（可选，默认使用LBD_HediffGacha_Selected）
         /// </summary>
         public string selectionMessageKey;
         

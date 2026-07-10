@@ -35,8 +35,10 @@ namespace LegendaryBlackDragon
         /// <summary>
         /// 验证配置
         /// </summary>
-        public void ResolveReferences()
+        public override void ResolveReferences(StorytellerDef parentDef)
         {
+            base.ResolveReferences(parentDef);
+
             // 验证事件定义
             if (incident == null)
             {
