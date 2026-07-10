@@ -1,5 +1,6 @@
 ﻿using Verse;
 using RimWorld;
+using System.Linq;
 
 namespace LegendaryBlackDragon
 {
@@ -9,6 +10,7 @@ namespace LegendaryBlackDragon
         public FactionDef faction;
         public bool spawnDrafted = false;
         public bool spawnHostile = false;
+        public bool preventDuplicatePawnKind = false;
 
         public CompProperties_SkyfallerPawnSpawner()
         {
@@ -23,6 +25,12 @@ namespace LegendaryBlackDragon
         public void SpawnPawn(Map map, IntVec3 position)
         {
             if (Props.pawnKind == null)
+            {
+                return;
+            }
+
+            if (Props.preventDuplicatePawnKind &&
+                PawnsFinder.AllMapsWorldAndTemporary_AliveOrDead.Any(pawn => pawn.kindDef == Props.pawnKind))
             {
                 return;
             }
